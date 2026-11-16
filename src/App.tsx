@@ -6,11 +6,14 @@ import ConstellationPage from './ConstellationPage'
 import { constellations } from './constellations'
 import AudioControls from './audio/AudioControls'
 import { audioManager } from './audio/AudioManager'
+import ArcMapPage from './ArcMapPage'
+import { learningArcs } from './arcActs'
 
 export default function App() {
   const [pulse, setPulse] = useState<Record<string, number>>({})
   const [progress, setProgress] = useState<Record<string, number>>({ time: 0 })
   const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
+  const [selectedArc, setSelectedArc] = useState<{ moduleId: string; starId: string } | null>(null)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
   const [homeTransition, setHomeTransition] = useState(false)
   const [stageProgress, setStageProgress] = useState<Record<string, { unlocked: string[]; completed: string[] }>>({
@@ -21,50 +24,71 @@ export default function App() {
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
-    return <ConstellationPage
-      moduleId={selectedModule.id}
-      unlockedStarIds={stageProgress[selectedModule.id]?.unlocked ?? [constellations[selectedModule.id].stars[0].id]}
-      completedStarIds={stageProgress[selectedModule.id]?.completed ?? []}
-      onBack={() => {
-        setHomeTransition(true)
-        setSelectedModuleId(null)
-      }}
-      onUnlockStar={(starId) => {
-        const config = constellations[selectedModule.id]
-        const moduleProgress = stageProgress[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
-        if (moduleProgress.unlocked.includes(starId) || moduleProgress.completed.includes(starId)) return
-        const before = new Set([...moduleProgress.unlocked, ...moduleProgress.completed])
-        const after = new Set([...before, starId])
-        audioManager.play('starUnlock')
-        if (config.edges.some((edge) => (edge.from === starId || edge.to === starId) && after.has(edge.from) && after.has(edge.to) && !(before.has(edge.from) && before.has(edge.to)))) {
-          audioManager.play('connection')
-        }
-        setStageProgress((current) => {
-          const currentProgress = current[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
-          if (currentProgress.unlocked.includes(starId) || currentProgress.completed.includes(starId)) return current
-          return { ...current, [selectedModule.id]: { ...currentProgress, unlocked: [...currentProgress.unlocked, starId] } }
-        })
-      }}
-      onCompleteStar={(starId) => {
-        const config = constellations[selectedModule.id]
-        const moduleProgress = stageProgress[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
-        if (moduleProgress.completed.includes(starId)) return
-        const starIndex = config.stars.findIndex((star) => star.id === starId)
-        const nextStar = config.stars[starIndex + 1]
-        const completed = [...moduleProgress.completed, starId]
-        const unlocked = nextStar && !moduleProgress.unlocked.includes(nextStar.id)
-          ? [...moduleProgress.unlocked, nextStar.id]
-          : moduleProgress.unlocked
-        const before = new Set([...moduleProgress.unlocked, ...moduleProgress.completed])
-        const after = new Set([...unlocked, ...completed])
-        if (completed.length === config.stars.length) audioManager.play('moduleComplete')
-        else if (nextStar && !moduleProgress.unlocked.includes(nextStar.id)) audioManager.play('starUnlock')
-        if (config.edges.some((edge) => after.has(edge.from) && after.has(edge.to) && !(before.has(edge.from) && before.has(edge.to)))) {
-          audioManager.play('connection')
-        }
-        setStageProgress((current) => ({ ...current, [selectedModule.id]: { unlocked, completed } }))
-      }}
-    />
+    return <>
+      <ConstellationPage
+        moduleId={selectedModule.id}
+        unlockedStarIds={stageProgress[selectedModule.id]?.unlocked ?? [constellations[selectedModule.id].stars[0].id]}
+        completedStarIds={stageProgress[selectedModule.id]?.completed ?? []}
+        onBack={() => {
+          setHomeTransition(true)
+          setSelectedArc(null)
+          setSelectedModuleId(null)
+        }}
+        onOpenArc={learningArcs[selectedModule.id] ? (star) => {
+          audioManager.play('navigation')
+          setSelectedArc({ moduleId: selectedModule.id, starId: star.id })
+        } : undefined}
+        onUnlockStar={(starId) => {
+          const config = constellations[selectedModule.id]
+          const moduleProgress = stageProgress[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
+          if (moduleProgress.unlocked.includes(starId) || moduleProgress.completed.includes(starId)) return
+          const before = new Set([...moduleProgress.unlocked, ...moduleProgress.completed])
+          const after = new Set([...before, starId])
+          audioManager.play('starUnlock')
+          if (config.edges.some((edge) => (edge.from === starId || edge.to === starId) && after.has(edge.from) && after.has(edge.to) && !(before.has(edge.from) && before.has(edge.to)))) {
+            audioManager.play('connection')
+          }
+          setStageProgress((current) => {
+            const currentProgress = current[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
+            if (currentProgress.unlocked.includes(starId) || currentProgress.completed.includes(starId)) return current
+            return { ...current, [selectedModule.id]: { ...currentProgress, unlocked: [...currentProgress.unlocked, starId] } }
+          })
+        }}
+        onCompleteStar={(starId) => {
+          const config = constellations[selectedModule.id]
+          const moduleProgress = stageProgress[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
+          if (moduleProgress.completed.includes(starId)) return
+          const starIndex = config.stars.findIndex((star) => star.id === starId)
+          const nextStar = config.stars[starIndex + 1]
+          const completed = [...moduleProgress.completed, starId]
+          const unlocked = nextStar && !moduleProgress.unlocked.includes(nextStar.id)
+            ? [...moduleProgress.unlocked, nextStar.id]
+            : moduleProgress.unlocked
+          const before = new Set([...moduleProgress.unlocked, ...moduleProgress.completed])
+          const after = new Set([...unlocked, ...completed])
+          if (completed.length === config.stars.length) audioManager.play('moduleComplete')
+          else if (nextStar && !moduleProgress.unlocked.includes(nextStar.id)) audioManager.play('starUnlock')
+          if (config.edges.some((edge) => after.has(edge.from) && after.has(edge.to) && !(before.has(edge.from) && before.has(edge.to)))) {
+            audioManager.play('connection')
+          }
+          setStageProgress((current) => ({ ...current, [selectedModule.id]: { unlocked, completed } }))
+        }}
+      />
+      {selectedArc && <ArcMapPage
+        key={`${selectedArc.moduleId}-${selectedArc.starId}`}
+        moduleId={selectedArc.moduleId}
+        onBack={() => {
+          audioManager.play('navigation')
+          setSelectedArc(null)
+        }}
+        onStartAct={(act) => {
+          const arc = learningArcs[selectedArc.moduleId]
+          window.dispatchEvent(new CustomEvent('stonephys:start-act', {
+            detail: { moduleId: selectedArc.moduleId, arcId: arc.id, actId: act.id, intent: act.status === 'completed' ? 'review' : 'start' },
+          }))
+        }}
+      />}
+    </>
   }
 
   return <main

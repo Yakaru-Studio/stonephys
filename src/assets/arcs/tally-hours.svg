@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460">
+  <defs><linearGradient id="moonlit" x2="0" y2="1"><stop stop-color="#282c34"/><stop offset=".58" stop-color="#665142"/><stop offset="1" stop-color="#c0844a"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="2"/><feColorMatrix values=".75 0 0 0 .1 .65 0 0 0 .06 .55 0 0 0 .02 0 0 0 .12 0"/></filter></defs>
+  <rect width="900" height="460" fill="url(#moonlit)"/><circle cx="685" cy="110" r="49" fill="#f0d7a0" opacity=".83"/>
+  <path d="M0 311 149 252 280 290 439 228 571 289 729 237 900 286V460H0Z" fill="#514035"/><path d="M0 362q169-48 323 4 162 55 307-3 126-49 270-15v112H0Z" fill="#342920"/>
+  <g transform="translate(412 320) rotate(-9)"><path d="M-117-77 114-105 135 84-95 111Z" fill="#9b7650" stroke="#4a3929" stroke-width="12"/><path d="M-86-43 78-62M-79-3 85-22M-72 37 92 18" stroke="#d1ac72" stroke-width="12" stroke-linecap="round"/><path d="M-60-70 4 75m35-160L102 60" stroke="#433124" stroke-width="10" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#bb8050" stroke-width="3" opacity=".58"><path d="M48 418q49-27 95-11m594-7q58-33 112-17"/></g><rect width="900" height="460" filter="url(#grain)" opacity=".42"/>
+</svg>

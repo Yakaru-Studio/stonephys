@@ -163,6 +163,8 @@ function NeuralVolume({active,pulse,progress}:{active:boolean;pulse:number;progr
   useFrame(({clock},delta)=>{
     if(!group.current)return
     const t=clock.elapsedTime
+    group.current.position.x=Math.sin(t*.21)*1.25
+    group.current.position.y=Math.sin(t*.37+1.2)*1.8
     group.current.rotation.x=.2+Math.sin(t*.29)*.045
     group.current.rotation.y=-.16+Math.cos(t*.23)*.06
     group.current.rotation.z=Math.sin(t*.17)*.025
@@ -172,7 +174,13 @@ function NeuralVolume({active,pulse,progress}:{active:boolean;pulse:number;progr
     group.current.scale.set(breath,breath,breath)
     const targetGrowth=Math.min(1,Math.round(progress/25)/4)
     growthCurrent.current+=(targetGrowth-growthCurrent.current)*(1-Math.exp(-4.5*delta))
-    branchGroups.current.forEach(branch=>branch?.scale.setScalar(.34+growthCurrent.current*.66))
+    branchGroups.current.forEach((branch,index)=>{
+      if(!branch)return
+      branch.scale.setScalar(.34+growthCurrent.current*.66)
+      const phase=t*.43+index*1.71
+      branch.rotation.z=Math.sin(phase)*.052
+      branch.rotation.x=Math.cos(phase*.83)*.035
+    })
     energyBurst.current=Math.max(0,energyBurst.current-delta*1.2)
     if(wave.current){
       wave.current.scale.setScalar(1.018+(1-energyBurst.current)*.68)

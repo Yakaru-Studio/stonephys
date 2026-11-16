@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460">
+  <defs><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#272b31"/><stop offset=".5" stop-color="#78533d"/><stop offset="1" stop-color="#d38d52"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2"/><feColorMatrix values=".75 0 0 0 .1 .65 0 0 0 .06 .55 0 0 0 .03 0 0 0 .12 0"/></filter></defs>
+  <rect width="900" height="460" fill="url(#sea)"/><circle cx="690" cy="126" r="58" fill="#f4d59a" opacity=".8"/>
+  <path d="M0 276q128-39 256 0t256 0 256 0 256 0v184H0Z" fill="#39404a"/><path d="M0 320q130-37 260 0t260 0 260 0 260 0v140H0Z" fill="#28313a"/><path d="M0 371q145-29 290 0t290 0 320 0v89H0Z" fill="#1e292f"/>
+  <g fill="none" stroke="#c18855" stroke-width="4" opacity=".75"><path d="M0 319q130-37 260 0t260 0 260 0 120 0M0 370q145-29 290 0t290 0 320 0"/></g>
+  <g transform="translate(440 263)" fill="#30251e" stroke="#30251e" stroke-linejoin="round"><path d="M-92 76h205l-22 20H-68Z"/><path d="M-8-58 50 72H-8Z"/><path d="M-10-47-45 69H-9Z" fill="#9f6944"/><path d="M-5-35 33 53m-45-66L12 32m-56 8h102" fill="none" stroke="#ddb071" stroke-width="3"/></g>
+  <g fill="#e9c58b" opacity=".8"><circle cx="138" cy="95" r="2"/><circle cx="304" cy="142" r="2.4"/><circle cx="495" cy="66" r="1.8"/><circle cx="812" cy="211" r="2"/></g><rect width="900" height="460" filter="url(#grain)" opacity=".4"/>
+</svg>

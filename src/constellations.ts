@@ -5,6 +5,7 @@ export type ConstellationStar = {
   x: number
   y: number
   radius?: number
+  emblem?: 'sun-moon'
 }
 
 export type ConstellationEdge = { from: string; to: string }
@@ -23,7 +24,7 @@ export const constellations: Record<string, ConstellationConfig> = {
     name: 'Tempo',
     eyebrow: 'A primeira medida',
     stars: [
-      { id: 'sky', title: 'O céu como relógio', description: 'Observe como o movimento do Sol e das estrelas ajudou os primeiros povos a perceber a passagem do tempo.', x: 300, y: 245, radius: 15 },
+      { id: 'sky', title: 'Arco I — Os Deuses da Luz e Escuridão', description: 'Explore como Sol e Lua marcaram os primeiros ciclos e inspiraram os deuses que explicavam a passagem do tempo.', x: 300, y: 245, radius: 15, emblem: 'sun-moon' },
       { id: 'shadow', title: 'A sombra que mede', description: 'Acompanhe a ideia de usar a posição da sombra para dividir o dia em intervalos.', x: 500, y: 245, radius: 12 },
       { id: 'sundial', title: 'O relógio de sol', description: 'Descubra como diferentes relógios de sol transformaram a observação do céu em uma ferramenta cotidiana.', x: 700, y: 245, radius: 14 },
       { id: 'water', title: 'O tempo que flui', description: 'Conheça clepsidras e outros instrumentos que mediam o tempo pelo fluxo constante da água.', x: 610, y: 435, radius: 12 },

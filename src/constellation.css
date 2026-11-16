@@ -7,10 +7,10 @@
 .neuron.opening .aura{animation:launch-aura .34s ease-out both}
 .constellation-sky,.constellation-map{position:absolute;inset:0;width:100%;height:100%}
 .constellation-sky{z-index:0}
-.constellation-map{z-index:1;overflow:visible;pointer-events:none}
+.constellation-map{z-index:1;overflow:visible;pointer-events:none;transform:scale(1.12);transform-origin:center center}
 .constellation-sky ellipse{filter:blur(28px)}
-.sky-star{fill:#dce7f4;opacity:.24}
-.sky-star-bright{fill:#e6c392;opacity:.46;filter:drop-shadow(0 0 3px rgba(228,176,106,.58))}
+.sky-star{fill:#dce7f4;opacity:.3}
+.sky-star-bright{fill:#e6c392;opacity:.58;filter:drop-shadow(0 0 3px rgba(228,176,106,.58))}
 .constellation-header{position:absolute;z-index:3;top:0;left:0;right:0;min-height:94px;padding:calc(env(safe-area-inset-top) + 13px) clamp(14px,4vw,32px) 12px;display:grid;grid-template-columns:42px 1fr auto;align-items:start;gap:10px;background:linear-gradient(180deg,rgba(5,9,15,.78),rgba(5,9,15,.08));pointer-events:none}
 .constellation-back{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(194,209,225,.1);border-radius:50%;color:#c8d3df;background:rgba(13,21,32,.35);cursor:pointer;pointer-events:auto;transition:background .2s,color .2s,border-color .2s}
 .constellation-back:hover{color:#fff;background:rgba(53,70,90,.42);border-color:rgba(194,209,225,.25)}
@@ -41,6 +41,19 @@
 .star-rays{fill:none;stroke:#d9e4f0;stroke-width:.8;stroke-linecap:round;opacity:.38;transition:stroke .25s,opacity .25s}
 .star-diamond{fill:rgba(174,196,218,.24);stroke:rgba(211,226,241,.5);stroke-width:1;transition:fill .25s,stroke .25s}
 .star-core{fill:#d7e7f7;opacity:.7;transition:fill .25s,opacity .25s}
+.star-has-emblem .star-rays,.star-has-emblem .star-diamond,.star-has-emblem .star-core{opacity:0}
+.star-sun-moon-emblem{fill:none;stroke:#fff0c1;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 2px rgba(0,0,0,.95))}
+.star-sun-moon-emblem .emblem-backplate{fill:#111a26;fill-opacity:.99;stroke:#ffd06d;stroke-width:1.8}
+.star-sun-moon-emblem .emblem-backplate-inner{fill:none;stroke:#fff0c1;stroke-width:.65;opacity:.78}
+.sun-moon-mark{fill:none;stroke:#fff8df;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.sun-moon-sun{fill:#ffb82e;stroke:#fff5d3;stroke-width:1.2}
+.sun-moon-rays{stroke:#ffe6a4;stroke-width:1.3}
+.sun-moon-crescent{fill:#e6f4ff;stroke:#fff;stroke-width:1.1}
+.sun-moon-star{fill:#fff2c1;stroke:#fff;stroke-width:.45}
+.stage-emblem-frame{width:60px;height:60px;margin:-4px 0 12px;display:grid;place-items:center;border:1px solid rgba(255,210,109,.68);border-radius:14px;background:radial-gradient(circle at 50% 40%,rgba(40,58,76,.98),rgba(9,16,25,.98));box-shadow:inset 0 0 0 3px rgba(255,210,109,.12),0 0 22px rgba(255,178,61,.16)}
+.stage-emblem-frame svg{width:48px;height:48px;overflow:visible}
+.stage-emblem-orbit{fill:none;stroke:rgba(255,220,157,.45);stroke-width:.65;stroke-dasharray:1 2}
+.stage-emblem-frame .sun-moon-mark{stroke-width:1.5;filter:drop-shadow(0 1px 2px #000)}
 .star-active .star-halo{opacity:.62}
 .star-active .star-orbit{stroke:rgba(255,195,105,.58);fill:rgba(50,36,22,.3)}
 .star-active .star-rays{stroke:#ffc864;opacity:.96}
@@ -111,7 +124,7 @@
 @media(min-width:1000px) and (orientation:landscape){
   .constellation-header{min-height:112px;padding-left:clamp(32px,4vw,72px);padding-right:clamp(32px,4vw,72px)}
   .constellation-heading{justify-self:start;text-align:left;margin-left:clamp(20px,3vw,48px)}
-  .constellation-map{inset:auto;width:min(86vw,94dvh);height:min(86vw,94dvh);left:40%;top:50%;transform:translate(-50%,-50%)}
+  .constellation-map{inset:auto;width:min(86vw,94dvh);height:min(86vw,94dvh);left:40%;top:50%;transform:translate(-50%,-50%) scale(1.12)}
   .constellation-footer{left:auto;right:clamp(36px,6vw,110px);top:50%;bottom:auto;transform:translateY(-50%);width:clamp(220px,21vw,310px);align-items:flex-start;gap:16px;padding:20px 0 20px 22px;border-left:1px solid rgba(183,201,220,.14);font-size:11px;text-align:left;letter-spacing:.07em}
   .constellation-footer::before{content:'PROGRESSO DA JORNADA';color:rgba(195,207,220,.5);font-size:9px;letter-spacing:.2em}
   .constellation-progress{height:3px;gap:6px}

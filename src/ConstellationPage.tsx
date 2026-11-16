@@ -10,6 +10,12 @@ const backgroundStars = [
   [905, 262], [90, 328], [209, 386], [335, 315], [478, 380], [763, 357], [876, 444], [127, 542],
   [254, 604], [389, 566], [618, 633], [842, 570], [89, 769], [198, 858], [390, 817], [556, 905],
   [727, 816], [913, 742], [796, 945], [325, 951], [578, 264], [40, 681],
+  [30, 35], [118, 45], [218, 54], [314, 32], [452, 49], [602, 37], [715, 55], [934, 45],
+  [58, 199], [145, 258], [233, 187], [378, 56], [470, 185], [581, 212], [744, 176], [856, 205],
+  [24, 422], [146, 453], [284, 477], [427, 332], [556, 358], [699, 309], [808, 292], [974, 373],
+  [42, 590], [173, 660], [295, 702], [446, 622], [566, 694], [738, 665], [954, 612], [924, 515],
+  [34, 836], [132, 926], [265, 886], [468, 940], [642, 864], [753, 934], [878, 886], [962, 970],
+  [49, 973], [183, 768], [361, 691], [642, 487], [806, 766], [967, 812], [520, 75], [869, 64],
 ]
 
 function getStarState(starId: string, unlockedStarIds: string[], completedStarIds: string[]) {
@@ -22,6 +28,15 @@ function connectionPath(from: ConstellationStar, to: ConstellationStar) {
   return `M ${from.x} ${from.y} L ${to.x} ${to.y}`
 }
 
+function SunMoonMark() {
+  return <g className="sun-moon-mark" aria-hidden="true">
+    <circle className="sun-moon-sun" cx="-6" cy="0" r="5" />
+    <path className="sun-moon-rays" d="M-6-9v-2m0 22v-2m9-9h2m-22 0h2m15.4-6.4 1.5-1.5m-15.8 15.8L-17.4 8m11.4 3v2m0-24v2m-6.4 15.4-1.5 1.5m15.8-15.8L3.4-8" />
+    <path className="sun-moon-crescent" d="M10-8a9 9 0 1 0 0 16A6.8 6.8 0 0 1 10-8Z" />
+    <circle className="sun-moon-star" cx="14" cy="-8" r="1.2" />
+  </g>
+}
+
 function StarButton({ star, state, onSelect, onUnlock }: {
   star: ConstellationStar
   state: string
@@ -31,7 +46,7 @@ function StarButton({ star, state, onSelect, onUnlock }: {
   const isLocked = state === 'locked'
   const activate = isLocked ? onUnlock : onSelect
   return <g
-    className={`constellation-star star-${state}`}
+    className={`constellation-star star-${state} ${star.emblem ? 'star-has-emblem' : ''}`}
     transform={`translate(${star.x} ${star.y})`}
     role="button"
     aria-label={`${star.title}${isLocked ? ', bloqueada, clique para desbloquear' : state === 'completed' ? ', concluída' : ', desbloqueada'}`}
@@ -50,6 +65,11 @@ function StarButton({ star, state, onSelect, onUnlock }: {
     <path className="star-rays" d="M0 -35V35M-35 0H35M-23 -23L23 23M23 -23L-23 23" />
     <path className="star-diamond" d="M0 -14L10 0L0 14L-10 0Z" />
     <circle className="star-core" r={star.radius ? Math.min(star.radius / 3, 5) : 4} />
+    {star.emblem === 'sun-moon' && <g className="star-sun-moon-emblem" aria-hidden="true">
+      <circle className="emblem-backplate" r="20" />
+      <circle className="emblem-backplate-inner" r="17" />
+      <SunMoonMark />
+    </g>}
     {state === 'completed' && <g className="star-completion-sigil" aria-hidden="true">
       <circle className="sigil-ring" r="8.5" />
       <path className="sigil-glyph" d="M0 -6L2 -2L6 0L2 2L0 6L-2 2L-6 0L-2 -2Z M0 -2V2M-11 0H-8M8 0H11M0 -11V-8M0 8V11" />
@@ -118,13 +138,14 @@ function ConstellationMap({ config, unlockedStarIds, completedStarIds, compactLa
   </svg>
 }
 
-export default function ConstellationPage({ moduleId, unlockedStarIds, completedStarIds, onBack, onUnlockStar, onCompleteStar }: {
+export default function ConstellationPage({ moduleId, unlockedStarIds, completedStarIds, onBack, onUnlockStar, onCompleteStar, onOpenArc }: {
   moduleId: string
   unlockedStarIds: string[]
   completedStarIds: string[]
   onBack: () => void
   onUnlockStar: (starId: string) => void
   onCompleteStar: (starId: string) => void
+  onOpenArc?: (star: ConstellationStar) => void
 }) {
   const config = constellations[moduleId]
   const [selectedStar, setSelectedStar] = useState<ConstellationStar | null>(null)
@@ -192,7 +213,7 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
       <ellipse cx="815" cy="485" rx="380" ry="500" fill="url(#constellation-nebula)" />
       <ellipse cx="120" cy="150" rx="310" ry="260" fill="url(#constellation-warm)" />
       <ellipse cx="850" cy="900" rx="350" ry="280" fill="url(#constellation-warm)" />
-      {backgroundStars.map(([x, y], index) => <circle key={`${x}-${y}`} cx={x} cy={y} r={index % 7 === 0 ? 1.5 : .9} className={index % 7 === 0 ? 'sky-star sky-star-bright' : 'sky-star'} />)}
+      {backgroundStars.map(([x, y], index) => <circle key={`${x}-${y}`} cx={x} cy={y} r={index % 13 === 0 ? 2 : index % 4 === 0 ? 1.2 : .82} className={index % 13 === 0 ? 'sky-star sky-star-bright' : 'sky-star'} />)}
     </svg>
 
     <header className="constellation-header">
@@ -226,8 +247,12 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
       <section className="stage-panel" role="dialog" aria-modal="true" aria-labelledby="stage-title" onClick={(event) => event.stopPropagation()}>
         <button className="stage-close" onClick={() => setSelectedStar(null)} aria-label="Fechar etapa"><X size={18} /></button>
         <p className="stage-eyebrow">{selectedIsCompleted ? 'ETAPA CONCLUÍDA' : isFinished ? 'CONSTELAÇÃO COMPLETA' : `ETAPA ${String(selectedIndex + 1).padStart(2, '0')}`}</p>
+        {selectedStar.emblem === 'sun-moon' && <div className="stage-emblem-frame" aria-label="Emblema do Sol e da Lua">
+          <svg viewBox="-24 -24 48 48" aria-hidden="true"><circle className="stage-emblem-orbit" r="22"/><SunMoonMark /></svg>
+        </div>}
         <h2 id="stage-title">{selectedStar.title}</h2>
         <p className="stage-description">{selectedStar.description}</p>
+        {onOpenArc && <button className="stage-open-arc" onClick={() => onOpenArc(selectedStar)}>Explorar arco <span aria-hidden="true">✧</span></button>}
         {selectedIsCompleted || isFinished
           ? <div className="stage-completed"><Check size={16} /> Descoberta registrada</div>
           : <button className="stage-complete" onClick={completeStage}>Concluir etapa <span aria-hidden="true">↗</span></button>}

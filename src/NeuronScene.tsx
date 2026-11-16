@@ -7,8 +7,8 @@ import {
   CatmullRomCurve3,
   Color,
   FrontSide,
+  IcosahedronGeometry,
   MeshBasicMaterial,
-  SphereGeometry,
   ShaderMaterial,
   Vector3,
   type Group,
@@ -16,7 +16,7 @@ import {
 } from 'three'
 
 const COOL='#66809e'
-type ModelData={surface:SphereGeometry;edges:BufferGeometry;facets:BufferGeometry;interior:BufferGeometry;filaments:BufferGeometry[];filamentHalos:BufferGeometry[];twigs:BufferGeometry[];tips:Vector3[];rootPoints:Vector3[];lightPoints:Vector3[]}
+type ModelData={surface:BufferGeometry;edges:BufferGeometry;facets:BufferGeometry;interior:BufferGeometry;filaments:BufferGeometry[];filamentHalos:BufferGeometry[];twigs:BufferGeometry[];tips:Vector3[];rootPoints:Vector3[];lightPoints:Vector3[]}
 
 function seeded(seed:number){const value=Math.sin(seed*127.1+311.7)*43758.5453;return value-Math.floor(value)}
 function taperedTube(points:Vector3[],rootRadius:number,withGlowGradient=false,tipBlend=.012){
@@ -49,9 +49,9 @@ function buildModel(progress:number):ModelData{
   const level=Math.min(4,Math.round(progress/25))
   const growth=level/4
   const extension=1
-  // Keep the soma rounded and membrane-like; the original reference reads as
-  // a soft luminous cell, not a faceted gemstone.
-  const surface=new SphereGeometry(61,20,14)
+  // A low-detail geodesic shell adds subtle triangular facets while keeping
+  // the soma rounded and membrane-like.
+  const surface=new IcosahedronGeometry(61,1)
   const position=surface.getAttribute('position')
   const colors:number[]=[]
   const anchors:Vector3[]=[]

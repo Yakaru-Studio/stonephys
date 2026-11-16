@@ -1,0 +1,22 @@
+.audio-control-root{position:relative;z-index:12;display:grid;place-items:center;pointer-events:auto}
+.audio-toggle,.audio-close{display:grid;place-items:center;border:1px solid rgba(190,207,226,.13);border-radius:50%;color:#c3cfdd;background:rgba(11,18,27,.5);cursor:pointer;transition:color .18s,border-color .18s,background .18s}
+.audio-toggle{width:38px;height:38px}
+.audio-toggle:hover,.audio-close:hover{color:#fff1d4;border-color:rgba(232,184,111,.42);background:rgba(30,37,46,.78)}
+.audio-panel{position:absolute;top:46px;right:0;width:min(320px,calc(100vw - 24px));padding:17px;border:1px solid rgba(184,202,221,.17);border-radius:15px;color:#dce5ef;background:linear-gradient(145deg,rgba(17,27,40,.98),rgba(7,12,19,.98));box-shadow:0 18px 55px rgba(0,0,0,.5);backdrop-filter:blur(18px);text-align:left;pointer-events:auto;animation:audio-panel-in .2s ease-out both}
+.audio-panel-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.audio-panel-header span{color:#d7a65f;font-size:8px;letter-spacing:.2em}
+.audio-panel-header h2{margin:3px 0 0;color:#eef3f8;font-size:17px;font-weight:500;letter-spacing:.02em}
+.audio-close{width:29px;height:29px}
+.audio-switch{min-height:38px;display:flex;align-items:center;justify-content:space-between;padding:0 2px;color:#d7e0ea;font-size:12px}
+.audio-switch span{display:flex;align-items:center;gap:8px}
+.audio-switch svg{color:#d8ab6b}
+.audio-switch input{width:16px;height:16px;accent-color:#d39a4d;cursor:pointer}
+.audio-volumes{display:grid;gap:8px;padding:10px 0 12px;border-top:1px solid rgba(184,202,221,.1);border-bottom:1px solid rgba(184,202,221,.1)}
+.audio-slider{display:grid;gap:5px;color:#adbaca;font-size:10px}
+.audio-slider span{display:flex;align-items:center;justify-content:space-between}
+.audio-slider strong{color:#e7c18b;font-size:10px;font-variant-numeric:tabular-nums;font-weight:500}
+.audio-slider input{width:100%;height:14px;margin:0;accent-color:#d5a05a;cursor:pointer}
+.audio-slider input:disabled{cursor:default;opacity:.42}
+@keyframes audio-panel-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:430px){.audio-panel{position:fixed;top:calc(env(safe-area-inset-top) + 60px);right:12px}}
+@media(prefers-reduced-motion:reduce){.audio-panel{animation:none}}

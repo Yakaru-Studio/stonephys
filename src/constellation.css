@@ -1,0 +1,121 @@
+.constellation-screen{position:fixed;inset:0;width:100vw;height:100dvh;z-index:10;overflow:hidden;overscroll-behavior:none;isolation:isolate;color:#e8edf4;background:#070c13;font-family:system-ui,sans-serif}
+.constellation-screen{animation:constellation-enter .58s cubic-bezier(.2,.72,.24,1) both}
+.constellation-screen.is-leaving{animation:constellation-exit .34s cubic-bezier(.55,.05,.8,.35) both}
+.map-screen.map-transition-out{pointer-events:none;animation:map-transition-out .34s cubic-bezier(.55,.05,.8,.35) both}
+.map-screen.home-transition-in{animation:home-transition-in .5s cubic-bezier(.18,.72,.24,1) both}
+.neuron.opening{z-index:4;animation:drift 8s ease-in-out infinite,neuron-launch .34s ease-in both}
+.neuron.opening .aura{animation:launch-aura .34s ease-out both}
+.constellation-sky,.constellation-map{position:absolute;inset:0;width:100%;height:100%}
+.constellation-sky{z-index:0}
+.constellation-map{z-index:1;overflow:visible;pointer-events:none}
+.constellation-sky ellipse{filter:blur(28px)}
+.sky-star{fill:#dce7f4;opacity:.24}
+.sky-star-bright{fill:#e6c392;opacity:.46;filter:drop-shadow(0 0 3px rgba(228,176,106,.58))}
+.constellation-header{position:absolute;z-index:3;top:0;left:0;right:0;min-height:94px;padding:calc(env(safe-area-inset-top) + 13px) clamp(14px,4vw,32px) 12px;display:grid;grid-template-columns:42px 1fr auto;align-items:start;gap:10px;background:linear-gradient(180deg,rgba(5,9,15,.78),rgba(5,9,15,.08));pointer-events:none}
+.constellation-back{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(194,209,225,.1);border-radius:50%;color:#c8d3df;background:rgba(13,21,32,.35);cursor:pointer;pointer-events:auto;transition:background .2s,color .2s,border-color .2s}
+.constellation-back:hover{color:#fff;background:rgba(53,70,90,.42);border-color:rgba(194,209,225,.25)}
+.constellation-heading{text-align:center;justify-self:center;margin-top:0}
+.constellation-heading p{margin:0 0 3px;color:rgba(188,202,218,.56);font-size:9px;letter-spacing:.22em}
+.constellation-heading h1{margin:0;color:#e6edf5;font-size:16px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.constellation-heading span{display:block;margin-top:2px;color:rgba(184,197,213,.58);font-size:10px;letter-spacing:.025em}
+.constellation-count{padding-top:7px;color:rgba(190,205,220,.5);font-variant-numeric:tabular-nums;font-size:11px;letter-spacing:.08em}
+.constellation-count strong{color:#e5b56b;font-size:13px;font-weight:500}
+.map-header>.audio-control-root{justify-self:end;align-self:center}
+.constellation-header-tools{display:flex;align-items:flex-start;gap:8px;pointer-events:auto}
+.constellation-lines{pointer-events:none}
+.constellation-connection .connection-glow{fill:none;stroke:#f6b957;stroke-width:10;stroke-linecap:round;opacity:.06;filter:blur(5px)}
+.connection-line{fill:none;stroke:#dca452;stroke-width:1.15;stroke-linecap:round;stroke-dasharray:.014 .018;opacity:.62;animation:connection-draw 1.05s cubic-bezier(.18,.7,.2,1) both}
+.connection-pulse{fill:#fff2d0;filter:drop-shadow(0 0 5px #ffbc56);opacity:0;animation:pulse-appear 1.1s ease-out both}
+.constellation-watermark{opacity:0;pointer-events:none;animation:watermark-reveal 1.8s ease-out forwards}
+.watermark-icon-time{filter:drop-shadow(0 0 5px rgba(247,186,92,.22))}
+.watermark-icon-outline{fill:none;stroke:rgba(255,219,159,.82);stroke-width:.52;stroke-linecap:round;stroke-linejoin:round}
+.watermark-icon-fill{fill:rgba(238,170,73,.3);stroke:none}
+.watermark-body{fill:none;stroke:rgba(255,213,145,.72);stroke-width:3.2;stroke-linejoin:round}
+.watermark-detail{fill:none;stroke:rgba(255,222,170,.82);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.watermark-sand{fill:none;stroke:rgba(255,215,151,.82);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.watermark-stream{fill:none;stroke:rgba(255,220,161,.86);stroke-width:3.8;stroke-linecap:round}
+.constellation-star{pointer-events:auto;cursor:pointer;outline:none;transition:opacity .25s}
+.star-hit-area{fill:transparent;stroke:none;pointer-events:all}
+.star-halo{fill:#df9d42;opacity:0;filter:blur(9px);transition:opacity .3s,r .3s}
+.star-orbit{fill:rgba(10,18,28,.34);stroke:rgba(199,215,231,.17);stroke-width:1;transition:stroke .25s,fill .25s}
+.star-rays{fill:none;stroke:#d9e4f0;stroke-width:.8;stroke-linecap:round;opacity:.38;transition:stroke .25s,opacity .25s}
+.star-diamond{fill:rgba(174,196,218,.24);stroke:rgba(211,226,241,.5);stroke-width:1;transition:fill .25s,stroke .25s}
+.star-core{fill:#d7e7f7;opacity:.7;transition:fill .25s,opacity .25s}
+.star-active .star-halo{opacity:.62}
+.star-active .star-orbit{stroke:rgba(255,195,105,.58);fill:rgba(50,36,22,.3)}
+.star-active .star-rays{stroke:#ffc864;opacity:.96}
+.star-active .star-diamond{fill:rgba(246,181,80,.7);stroke:#ffe1a0}
+.star-active .star-core{fill:#fff2cc;opacity:1;filter:drop-shadow(0 0 6px #ffd17a)}
+.star-active{animation:star-breathe 3.2s ease-in-out infinite}
+.star-completed .star-halo{fill:#dfbf7e;opacity:.4;filter:blur(9px)}
+.star-completed .star-orbit{fill:rgba(63,49,31,.34);stroke:rgba(231,203,155,.76);stroke-width:1.35}
+.star-completed .star-rays{stroke:#ead7b0;opacity:.84}
+.star-completed .star-diamond{fill:rgba(224,193,137,.56);stroke:#f0dfba;stroke-width:1.35}
+.star-completed .star-core{fill:#fff6df;opacity:1;filter:drop-shadow(0 0 6px rgba(239,213,164,.82))}
+.star-completion-sigil{pointer-events:none;filter:drop-shadow(0 0 4px rgba(218,187,126,.36))}
+.sigil-ring,.sigil-glyph{fill:none;stroke:rgba(239,218,174,.95);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.sigil-glyph{stroke:#fff0cc;stroke-width:1.45}
+.sigil-center{fill:#fff0c5;stroke:rgba(112,79,38,.86);stroke-width:.65}
+.star-locked{cursor:pointer;opacity:.52}
+.star-locked .star-halo{fill:#a4bad3;opacity:.025;filter:blur(8px)}
+.star-locked .star-orbit{fill:rgba(119,143,170,.11);stroke:rgba(172,194,217,.18)}
+.star-locked .star-rays{opacity:.4;stroke:#a9bfd8}
+.star-locked .star-diamond{fill:rgba(158,180,204,.17);stroke:rgba(175,196,220,.32)}
+.star-locked .star-core{fill:#b6c9df;opacity:.68}
+.star-lock{fill:none;stroke:#bfcee0;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.9;pointer-events:none}
+.star-locked:hover .star-orbit,.star-locked:focus-visible .star-orbit{stroke:rgba(218,232,247,.42);fill:rgba(137,162,190,.2)}
+.star-locked:hover .star-core,.star-locked:focus-visible .star-core{opacity:.95}
+.constellation-star:focus-visible .star-orbit{stroke:#fff1d0;stroke-width:2}
+.constellation-footer{position:absolute;z-index:3;bottom:calc(env(safe-area-inset-bottom) + 18px);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;width:min(84vw,330px);color:rgba(195,207,220,.48);font-size:10px;letter-spacing:.05em;text-align:center;text-shadow:0 1px 8px #050910;pointer-events:none}
+.constellation-progress{display:flex;gap:5px;width:100%;height:2px}
+.constellation-progress span{flex:1;border-radius:2px;background:rgba(152,172,194,.19)}
+.constellation-progress span.current{background:rgba(239,185,100,.68);box-shadow:0 0 8px rgba(239,185,100,.4)}
+.constellation-progress span.filled{background:#e9ad51;box-shadow:0 0 7px rgba(239,185,100,.3)}
+.stage-backdrop{position:absolute;z-index:5;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:18px 14px calc(env(safe-area-inset-bottom) + 18px);background:rgba(2,6,11,.52);backdrop-filter:blur(5px);animation:veil-in .2s ease both}
+.stage-panel{position:relative;width:min(100%,470px);padding:26px 24px 22px;border:1px solid rgba(191,207,225,.16);border-radius:18px;background:linear-gradient(145deg,rgba(20,31,45,.97),rgba(9,15,23,.98));box-shadow:0 22px 70px rgba(0,0,0,.48);animation:panel-in .28s cubic-bezier(.2,.75,.25,1) both}
+.stage-close{position:absolute;top:15px;right:15px;width:32px;height:32px;display:grid;place-items:center;border:1px solid rgba(189,205,222,.12);border-radius:50%;color:#aebdce;background:transparent;cursor:pointer}
+.stage-eyebrow{margin:0 38px 10px 0;color:#d4a45c;font-size:9px;font-weight:600;letter-spacing:.18em}
+.stage-panel h2{margin:0;color:#edf2f7;font-size:22px;font-weight:500;letter-spacing:.015em}
+.stage-description{max-width:48ch;margin:10px 0 20px;color:#aebdcb;font-size:14px;line-height:1.6}
+.stage-complete{width:100%;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border:1px solid rgba(237,181,91,.34);border-radius:10px;color:#ffe0a8;background:linear-gradient(100deg,rgba(139,90,36,.44),rgba(67,48,30,.42));font:500 13px system-ui,sans-serif;letter-spacing:.025em;cursor:pointer;transition:border-color .2s,background .2s}
+.stage-complete:hover{border-color:rgba(255,204,117,.7);background:linear-gradient(100deg,rgba(163,105,43,.55),rgba(76,54,33,.5))}
+.stage-complete span{font-size:17px}
+.stage-completed{display:flex;align-items:center;gap:8px;color:#f4ce8c;font-size:13px}
+@keyframes connection-draw{from{stroke-dashoffset:1;opacity:.14}to{stroke-dashoffset:0;opacity:.62}}
+@keyframes pulse-appear{0%{opacity:0}15%{opacity:1}78%{opacity:.82}100%{opacity:0}}
+@keyframes watermark-reveal{from{opacity:0}to{opacity:.9}}
+@keyframes constellation-enter{from{opacity:0;transform:scale(1.035);filter:blur(5px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+@keyframes constellation-exit{from{opacity:1;transform:scale(1);filter:blur(0)}to{opacity:0;transform:scale(.975);filter:blur(5px)}}
+@keyframes map-transition-out{from{opacity:1;transform:scale(1);filter:blur(0)}to{opacity:0;transform:scale(1.035);filter:blur(5px)}}
+@keyframes home-transition-in{from{opacity:0;transform:scale(1.025);filter:blur(5px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+@keyframes neuron-launch{0%,100%{scale:1}55%{scale:1.13}}
+@keyframes launch-aura{0%{opacity:.16;r:98}50%{opacity:.62;r:126}100%{opacity:.3;r:110}}
+@keyframes star-breathe{0%,100%{opacity:.88}50%{opacity:1}}
+@keyframes veil-in{from{opacity:0}to{opacity:1}}
+@keyframes panel-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:800px){.constellation-header{min-height:108px;padding-top:calc(env(safe-area-inset-top) + 18px)}.constellation-heading p{font-size:10px}.constellation-heading h1{font-size:18px}.constellation-footer{bottom:calc(env(safe-area-inset-bottom) + 26px)}}
+
+/* On small portrait phones, preserve the full star path inside the safe area. */
+@media(max-width:700px) and (orientation:portrait){
+  .constellation-header{min-height:calc(82px + env(safe-area-inset-top));padding-left:10px;padding-right:10px;grid-template-columns:36px minmax(0,1fr) auto;gap:6px}
+  .constellation-back{width:36px;height:36px}
+  .constellation-heading h1{font-size:14px}
+  .constellation-heading span{font-size:9px}
+  .constellation-count{font-size:10px}
+  .constellation-count strong{font-size:12px}
+  .constellation-header-tools{gap:4px}
+  .constellation-footer{width:min(86vw,320px);bottom:calc(env(safe-area-inset-bottom) + 14px);font-size:9px}
+}
+
+/* Wide web layout: a square star field and a dedicated progress rail. */
+@media(min-width:1000px) and (orientation:landscape){
+  .constellation-header{min-height:112px;padding-left:clamp(32px,4vw,72px);padding-right:clamp(32px,4vw,72px)}
+  .constellation-heading{justify-self:start;text-align:left;margin-left:clamp(20px,3vw,48px)}
+  .constellation-map{inset:auto;width:min(86vw,94dvh);height:min(86vw,94dvh);left:40%;top:50%;transform:translate(-50%,-50%)}
+  .constellation-footer{left:auto;right:clamp(36px,6vw,110px);top:50%;bottom:auto;transform:translateY(-50%);width:clamp(220px,21vw,310px);align-items:flex-start;gap:16px;padding:20px 0 20px 22px;border-left:1px solid rgba(183,201,220,.14);font-size:11px;text-align:left;letter-spacing:.07em}
+  .constellation-footer::before{content:'PROGRESSO DA JORNADA';color:rgba(195,207,220,.5);font-size:9px;letter-spacing:.2em}
+  .constellation-progress{height:3px;gap:6px}
+  .stage-backdrop{align-items:center;justify-content:flex-end;padding:32px clamp(32px,6vw,100px);background:linear-gradient(90deg,rgba(2,6,11,.02) 30%,rgba(2,6,11,.62) 100%)}
+  .stage-panel{width:min(440px,34vw);padding:30px 28px 26px}
+}
+@media(prefers-reduced-motion:reduce){.constellation-screen *, .constellation-screen *::before,.constellation-screen *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}

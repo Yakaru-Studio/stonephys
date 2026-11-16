@@ -2,12 +2,79 @@ import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Neuron from './Neuron'
 import { initialModules, stageForProgress } from './data'
+import ConstellationPage from './ConstellationPage'
+import { constellations } from './constellations'
+import AudioControls from './audio/AudioControls'
+import { audioManager } from './audio/AudioManager'
 
 export default function App() {
   const [pulse, setPulse] = useState<Record<string, number>>({})
   const [progress, setProgress] = useState<Record<string, number>>({ time: 0 })
-  return <main className="map-screen" aria-label="Universo de módulos científicos">
-    <header className="map-header"><button className="back-button" onClick={()=>window.history.back()} aria-label="Voltar"><ArrowLeft size={18}/></button><h1>Módulos</h1><span className="header-balance" aria-hidden="true"/></header>
+  const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
+  const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
+  const [homeTransition, setHomeTransition] = useState(false)
+  const [stageProgress, setStageProgress] = useState<Record<string, { unlocked: string[]; completed: string[] }>>({
+    time: { unlocked: ['sky'], completed: [] },
+    distance: { unlocked: ['body'], completed: [] },
+    velocity: { unlocked: ['motion'], completed: [] },
+  })
+
+  const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
+  if (selectedModule && constellations[selectedModule.id]) {
+    return <ConstellationPage
+      moduleId={selectedModule.id}
+      unlockedStarIds={stageProgress[selectedModule.id]?.unlocked ?? [constellations[selectedModule.id].stars[0].id]}
+      completedStarIds={stageProgress[selectedModule.id]?.completed ?? []}
+      onBack={() => {
+        setHomeTransition(true)
+        setSelectedModuleId(null)
+      }}
+      onUnlockStar={(starId) => {
+        const config = constellations[selectedModule.id]
+        const moduleProgress = stageProgress[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
+        if (moduleProgress.unlocked.includes(starId) || moduleProgress.completed.includes(starId)) return
+        const before = new Set([...moduleProgress.unlocked, ...moduleProgress.completed])
+        const after = new Set([...before, starId])
+        audioManager.play('starUnlock')
+        if (config.edges.some((edge) => (edge.from === starId || edge.to === starId) && after.has(edge.from) && after.has(edge.to) && !(before.has(edge.from) && before.has(edge.to)))) {
+          audioManager.play('connection')
+        }
+        setStageProgress((current) => {
+          const currentProgress = current[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
+          if (currentProgress.unlocked.includes(starId) || currentProgress.completed.includes(starId)) return current
+          return { ...current, [selectedModule.id]: { ...currentProgress, unlocked: [...currentProgress.unlocked, starId] } }
+        })
+      }}
+      onCompleteStar={(starId) => {
+        const config = constellations[selectedModule.id]
+        const moduleProgress = stageProgress[selectedModule.id] ?? { unlocked: [config.stars[0].id], completed: [] }
+        if (moduleProgress.completed.includes(starId)) return
+        const starIndex = config.stars.findIndex((star) => star.id === starId)
+        const nextStar = config.stars[starIndex + 1]
+        const completed = [...moduleProgress.completed, starId]
+        const unlocked = nextStar && !moduleProgress.unlocked.includes(nextStar.id)
+          ? [...moduleProgress.unlocked, nextStar.id]
+          : moduleProgress.unlocked
+        const before = new Set([...moduleProgress.unlocked, ...moduleProgress.completed])
+        const after = new Set([...unlocked, ...completed])
+        if (completed.length === config.stars.length) audioManager.play('moduleComplete')
+        else if (nextStar && !moduleProgress.unlocked.includes(nextStar.id)) audioManager.play('starUnlock')
+        if (config.edges.some((edge) => after.has(edge.from) && after.has(edge.to) && !(before.has(edge.from) && before.has(edge.to)))) {
+          audioManager.play('connection')
+        }
+        setStageProgress((current) => ({ ...current, [selectedModule.id]: { unlocked, completed } }))
+      }}
+    />
+  }
+
+  return <main
+    className={`map-screen ${transitioningModuleId ? 'map-transition-out' : ''} ${homeTransition ? 'home-transition-in' : ''}`}
+    aria-label="Universo de módulos científicos"
+    onAnimationEnd={(event) => {
+      if (event.target === event.currentTarget && homeTransition) setHomeTransition(false)
+    }}
+  >
+    <header className="map-header"><button className="back-button" onClick={()=>window.history.back()} aria-label="Voltar"><ArrowLeft size={18}/></button><h1>Módulos</h1><AudioControls/></header>
     <svg className="cosmos" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <radialGradient id="space"><stop stopColor="#111a28"/><stop offset=".58" stopColor="#0a111b"/><stop offset="1" stopColor="#050910"/></radialGradient>
@@ -32,9 +99,17 @@ export default function App() {
     {initialModules.filter(module=>module.status!=='undiscovered').map(source=>{
       const value=progress[source.id]??source.progress
       const module={...source,progress:value,stage:stageForProgress(value)}
-      return <Neuron key={module.id} module={module} pulse={pulse[module.id]??0} onSelect={()=>{
+      return <Neuron key={module.id} module={module} pulse={pulse[module.id]??0} opening={transitioningModuleId===module.id} onSelect={()=>{
+        if (transitioningModuleId) return
+        audioManager.play('neuronSelect')
         setPulse(current=>({...current,[module.id]:(current[module.id]??0)+1}))
         setProgress(current=>({...current,[module.id]:Math.min(100,(current[module.id]??source.progress)+25)}))
+        setTransitioningModuleId(module.id)
+        window.setTimeout(() => {
+          audioManager.play('navigation')
+          setSelectedModuleId(module.id)
+          setTransitioningModuleId(null)
+        }, 300)
       }}/>
     })}
   </main>

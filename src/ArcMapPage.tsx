@@ -71,7 +71,6 @@ function routeGeometry(from: ArcAct, to: ArcAct, kind: ArcConnection['kind']) {
     { t: .63, side: -1, width: 34, startShift: -24, endShift: 5, bend: 26, wave: 10, phase: 1.9 },
     { t: .74, side: 1, width: 29, startShift: 6, endShift: -19, bend: -15, wave: 8, phase: .5 },
     { t: .85, side: -1, width: 38, startShift: 17, endShift: -6, bend: 22, wave: 11, phase: 2.7 },
-    { t: .94, side: 1, width: 33, startShift: -14, endShift: 20, bend: -27, wave: 7, phase: 1.1 },
   ]
   crossings.forEach((crossing, index) => {
     const thorns: string[] = []
@@ -85,7 +84,7 @@ function routeGeometry(from: ArcAct, to: ArcAct, kind: ArcConnection['kind']) {
     const branch = taperedRoot(start, controlA, controlB, end, 8.4 + (index % 2) * .8, .3, crossing.wave, crossing.phase, 1.5 + (index % 3) * .28)
     ;[.23, .51, .8].forEach((spineT, spineIndex) => addSpine(branch.samples[Math.round(spineT * (branch.samples.length - 1))], index + spineIndex + 1, thorns, thornFacets, .9))
 
-    const twigCount = index % 3 === 0 ? 2 : index % 2 === 0 ? 1 : 0
+    const twigCount = index % 3 === 0 ? 1 : index % 2 === 0 ? 1 : 0
     const twigGeometries: Array<{ path: string; facetPath: string; thornD: string; thornFacetD: string; start: ThornPoint; angle: number }> = []
     Array.from({ length: twigCount }, (_, twigIndex) => {
       const twigThorns: string[] = []
@@ -493,7 +492,6 @@ function ActMedallion({ act, isCurrent, onSelect }: { act: ArcAct; isCurrent: bo
       <path className="medallion-inner-line" d={medallionPolygon(54)}/>
       <MedallionSymbol symbol={act.symbol}/>
     </svg>
-    {isCurrent && <img className="act-current-flame" src={currentFireArtwork} alt="Ato atual" draggable={false}/>}
     {crownState !== 'hidden' && <ThornCrown state={crownState === 'rooted' ? 'rooted' : crownState === 'submerging' ? 'submerging' : 'emerging'}/>}
     {locked && <span className="act-medallion-lock-shadow"><span className="act-lock-glyph" aria-hidden="true"><svg viewBox="0 0 32 38"><path className="act-lock-shackle" d="M8 17V10a8 8 0 0 1 16 0v7"/><rect className="act-lock-body" x="5" y="15" width="22" height="19" rx="3"/><circle className="act-lock-keyhole" cx="16" cy="23" r="2.5"/><path className="act-lock-stem" d="M16 25.5v4"/></svg></span></span>}
     {act.status === 'completed' && <span className="act-medallion-complete-seal" aria-label="Concluído"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path d="m11 20 6 6 12-13"/></svg></span>}
@@ -528,12 +526,13 @@ function ArcRouteArt({ connection, from, to }: { connection: ArcConnection; from
   </g>
 }
 
-function Parchment({ act, closing, onClose, onStart, onComplete }: {
+function Parchment({ act, closing, onClose, onStart, onComplete, starting }: {
   act: ArcAct
   closing: boolean
   onClose: () => void
   onStart: () => void
   onComplete: () => void
+  starting: boolean
 }) {
   const completed = act.status === 'completed'
   return <div className={`arc-parchment-backdrop ${closing ? 'is-closing' : 'is-opening'}`} onClick={onClose}>
@@ -564,7 +563,7 @@ function Parchment({ act, closing, onClose, onStart, onComplete }: {
         <div className="parchment-divider" aria-hidden="true"><span/><b>✦</b><span/></div>
         <p className="parchment-description">{act.description}</p>
         <div className="parchment-actions">
-        <button className="parchment-start" onClick={onStart}>
+        <button className="parchment-start" onClick={onStart} disabled={starting}>
           <svg viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
           <span>{completed ? 'REVER ATO' : 'INICIAR ATO'}</span>
           <svg className="laurel-end" viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
@@ -592,6 +591,9 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   const [selectedActId, setSelectedActId] = useState<string | null>(null)
   const [closingParchment, setClosingParchment] = useState(false)
   const closeTimer = useRef<number | null>(null)
+  const startTimer = useRef<number | null>(null)
+  const [flameActId, setFlameActId] = useState<string | null>(null)
+  const [startingAct, setStartingAct] = useState(false)
   useEffect(() => {
     const updateViewport = () => setViewport({ width: window.innerWidth, height: window.innerHeight })
     window.addEventListener('resize', updateViewport)
@@ -635,11 +637,13 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   }), [arc.acts, completedActIds, viewport])
   const actsById = new Map(acts.map((act) => [act.id, act]))
   const currentActId = acts.find((act) => act.status === 'available')?.id ?? null
+  const flameTarget = actsById.get(flameActId ?? currentActId ?? '')
   const selectedAct = selectedActId ? actsById.get(selectedActId) ?? null : null
   const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   useEffect(() => () => {
     if (closeTimer.current !== null) window.clearTimeout(closeTimer.current)
+    if (startTimer.current !== null) window.clearTimeout(startTimer.current)
   }, [])
 
   useEffect(() => {
@@ -670,15 +674,24 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   const openAct = (act: ArcAct) => {
     if (act.status === 'locked') return
     audioManager.play('starSelect')
+    setStartingAct(false)
     setClosingParchment(false)
     setSelectedActId(act.id)
   }
 
   const startAct = () => {
-    if (!selectedAct) return
+    if (!selectedAct || startingAct) return
     audioManager.play('navigation')
-    onStartAct(selectedAct)
+    const actToStart = selectedAct
+    setFlameActId(actToStart.id)
+    setStartingAct(true)
     closeParchment()
+    const begin = () => onStartAct(actToStart)
+    if (reducedMotion) {
+      begin()
+      return
+    }
+    startTimer.current = window.setTimeout(begin, 850)
   }
 
   const completeAct = () => {
@@ -696,6 +709,14 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
           <defs>
             <filter id="arc-paint-soft"><feGaussianBlur stdDeviation="2.4"/></filter>
             <filter id="arc-route-lamp"><feGaussianBlur stdDeviation="5"/></filter>
+            <filter id="arc-flame-ripple" x="-35%" y="-25%" width="170%" height="150%" colorInterpolationFilters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".025 .045" numOctaves="2" seed="8" result="flame-noise">
+                <animate attributeName="baseFrequency" values=".025 .045;.045 .025;.018 .05;.035 .032;.025 .045" dur="2.8s" repeatCount="indefinite"/>
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="flame-noise" scale="5" xChannelSelector="R" yChannelSelector="G">
+                <animate attributeName="scale" values="4;9;5;10;4" dur="2.15s" repeatCount="indefinite"/>
+              </feDisplacementMap>
+            </filter>
           </defs>
           {arc.connections.map((connection) => {
             const from = actsById.get(connection.from)
@@ -705,7 +726,8 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
           })}
           </svg>
           <div className="arc-map-nodes">
-            {acts.map((act) => <ActMedallion key={act.id} act={act} isCurrent={act.id === currentActId} onSelect={() => openAct(act)}/>)}
+            {acts.map((act) => <ActMedallion key={act.id} act={act} isCurrent={act.id === (flameActId ?? currentActId)} onSelect={() => openAct(act)}/>)}
+            {flameTarget && <img className="act-current-flame arc-moving-flame" src={currentFireArtwork} alt="Ato atual" draggable={false} style={{ left: `${flameTarget.position.x}%`, top: `${flameTarget.position.y}%` }}/>}
           </div>
         </div>
         <header className="arc-map-header">
@@ -718,6 +740,6 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
         </header>
       </section>
     </div>
-    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct}/ >}
+    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct} starting={startingAct}/ >}
   </main>
 }

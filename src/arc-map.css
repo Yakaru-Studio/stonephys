@@ -180,12 +180,13 @@
 .act-lock-glyph .act-lock-stem{fill:none;stroke:#4a341d;stroke-width:2;stroke-linecap:round}
 .act-medallion-complete-seal{position:absolute;z-index:3;right:-1%;bottom:3%;width:34%;aspect-ratio:1;display:grid;place-items:center;border:2px solid #c79a60;border-radius:50%;background:radial-gradient(circle at 35% 28%,#76583a,#38291e 76%);box-shadow:0 3px 6px rgba(13,9,6,.65)}
 .act-medallion-complete-seal svg{width:72%;height:72%;fill:none;stroke:#e0b36f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.act-current-flame{position:absolute;z-index:4;top:47%;left:50%;width:38%;height:auto;object-fit:contain;transform:translate(-50%,-50%);transform-origin:50% 92%;overflow:visible;opacity:1;filter:drop-shadow(0 0 5px rgba(255,142,33,.74)) drop-shadow(0 0 12px rgba(255,178,54,.42));animation:flame-dance 1.35s ease-in-out infinite,flame-glow-breathe 1.6s ease-in-out infinite alternate;pointer-events:none}
+.act-current-flame{position:absolute;z-index:4;top:47%;left:50%;width:38%;height:auto;object-fit:contain;transform:translate(-50%,-50%);translate:0 -5px;transform-origin:50% 92%;overflow:visible;opacity:1;filter:url(#arc-flame-ripple) drop-shadow(0 0 5px rgba(255,142,33,.74)) drop-shadow(0 0 12px rgba(255,178,54,.42));pointer-events:none}
+.arc-moving-flame{top:0;left:0;width:clamp(38px,8vw,64px);transition:left .85s cubic-bezier(.2,.75,.25,1),top .85s cubic-bezier(.2,.75,.25,1)}
 .act-current-flame-silhouette{filter:drop-shadow(0 0 4px rgba(255,142,33,.62))}
 .act-current-flame-core{mix-blend-mode:screen;opacity:.68;filter:drop-shadow(0 0 2px rgba(255,229,140,.78))}
 .current-module-flame{opacity:.96;filter:drop-shadow(0 0 3px rgba(255,172,55,.9)) drop-shadow(0 0 8px rgba(255,120,25,.56));pointer-events:none}
 @keyframes flame-glow-breathe{from{filter:drop-shadow(0 0 4px rgba(255,142,33,.66)) drop-shadow(0 0 10px rgba(255,178,54,.34))}to{filter:drop-shadow(0 0 7px rgba(255,169,43,.86)) drop-shadow(0 0 15px rgba(255,194,72,.52))}}
-@media(prefers-reduced-motion:reduce){.arc-route-glow,.arc-route-lit .arc-route-flourish,.act-current-flame,.arc-bramble,.act-thorn-crown{animation:none}.arc-bramble-crossing,.arc-bramble-crossing-twig{animation:none!important;transform:none!important;opacity:1!important;filter:none!important}}
+@media(prefers-reduced-motion:reduce){.arc-route-glow,.arc-route-lit .arc-route-flourish,.act-current-flame,.arc-bramble,.act-thorn-crown{animation:none}.act-current-flame{filter:drop-shadow(0 0 5px rgba(255,142,33,.74)) drop-shadow(0 0 12px rgba(255,178,54,.42))}.arc-moving-flame{transition:none}.arc-bramble-crossing,.arc-bramble-crossing-twig{animation:none!important;transform:none!important;opacity:1!important;filter:none!important}}
 
 .arc-parchment-backdrop{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:flex-end;padding:34px clamp(24px,4vw,62px);background:linear-gradient(90deg,rgba(18,14,10,.24),rgba(18,14,10,.74));backdrop-filter:blur(2px);animation:parchment-veil-in .3s ease both}
 .arc-parchment-backdrop.is-closing{animation:parchment-veil-out .38s ease both}

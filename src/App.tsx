@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Neuron from './Neuron'
 import { initialModules, stageForProgress } from './data'
@@ -9,12 +9,15 @@ import { audioManager } from './audio/AudioManager'
 import ArcMapPage from './ArcMapPage'
 import { learningArcs } from './arcActs'
 
+const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
+
 export default function App() {
   const [pulse, setPulse] = useState<Record<string, number>>({})
   const [progress, setProgress] = useState<Record<string, number>>({ time: 0 })
   const [currentModuleId, setCurrentModuleId] = useState(() => initialModules.find((module) => module.status === 'unlocked')?.id ?? initialModules[0].id)
   const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
   const [selectedArc, setSelectedArc] = useState<{ moduleId: string; starId: string } | null>(null)
+  const [harrisonSceneOpen, setHarrisonSceneOpen] = useState(false)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
   const [homeTransition, setHomeTransition] = useState(false)
   const [stageProgress, setStageProgress] = useState<Record<string, { unlocked: string[]; completed: string[] }>>({
@@ -85,7 +88,7 @@ export default function App() {
           }))
         }}
       />
-      {selectedArc && <ArcMapPage
+      {selectedArc && !harrisonSceneOpen && <ArcMapPage
         key={`${selectedArc.moduleId}-${selectedArc.starId}`}
         moduleId={selectedArc.moduleId}
         completedActIds={completedActs[selectedArc.moduleId] ?? []}
@@ -96,15 +99,24 @@ export default function App() {
         })}
         onBack={() => {
           audioManager.play('navigation')
+          setHarrisonSceneOpen(false)
           setSelectedArc(null)
         }}
         onStartAct={(act) => {
           const arc = learningArcs[selectedArc.moduleId]
+          if (selectedArc.moduleId === 'time' && act.id === 'counting-marks') setHarrisonSceneOpen(true)
           window.dispatchEvent(new CustomEvent('stonephys:start-act', {
-            detail: { moduleId: selectedArc.moduleId, arcId: arc.id, actId: act.id, intent: act.status === 'completed' ? 'review' : 'start' },
+            detail: {
+              moduleId: selectedArc.moduleId,
+              arcId: arc.id,
+              actId: act.id,
+              intent: act.status === 'completed' ? 'review' : 'start',
+              sceneId: selectedArc.moduleId === 'time' && act.id === 'counting-marks' ? 'harrison-workshop-1760' : undefined,
+            },
           }))
         }}
       />}
+      {selectedArc && harrisonSceneOpen && <Suspense fallback={<div className="historical-scene-loading">Preparando a oficina…</div>}><HarrisonWorkshopExperience onExit={() => setHarrisonSceneOpen(false)}/></Suspense>}
     </>
   }
 

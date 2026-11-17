@@ -80,6 +80,9 @@
 .star-locked:hover .star-core,.star-locked:focus-visible .star-core{opacity:.95}
 .constellation-star:focus-visible .star-orbit{stroke:#fff1d0;stroke-width:2}
 .constellation-footer{position:absolute;z-index:3;bottom:calc(env(safe-area-inset-bottom) + 18px);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;width:min(84vw,330px);color:rgba(195,207,220,.48);font-size:10px;letter-spacing:.05em;text-align:center;text-shadow:0 1px 8px #050910;pointer-events:none}
+.constellation-complete-all{min-height:32px;padding:0 13px;border:1px solid rgba(237,181,91,.38);border-radius:999px;color:#f2d39d;background:rgba(18,25,34,.78);font:500 10px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;pointer-events:auto;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.constellation-complete-all:hover:not(:disabled){border-color:rgba(255,204,117,.76);color:#fff0d0;background:rgba(70,52,30,.82)}
+.constellation-complete-all:disabled{color:rgba(205,192,164,.46);border-color:rgba(205,192,164,.16);cursor:default}
 .constellation-progress{display:flex;gap:5px;width:100%;height:2px}
 .constellation-progress span{flex:1;border-radius:2px;background:rgba(152,172,194,.19)}
 .constellation-progress span.current{background:rgba(239,185,100,.68);box-shadow:0 0 8px rgba(239,185,100,.4)}

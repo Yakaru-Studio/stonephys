@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { ArrowLeft, X } from 'lucide-react'
 import { audioManager } from './audio/AudioManager'
 import { learningArcs, type ArcAct, type ArcConnection, type ActSymbol } from './arcActs'
+import ActSiteArt from './ActSiteArt'
 import './arc-map.css'
 
 const ancientStoneTexture = new URL('./assets/arcs/ancient-stone-floor.png', import.meta.url).href
@@ -13,7 +14,7 @@ const greekRuinWallArtwork = new URL('./assets/arcs/greek-ruin-wall.png', import
 const greekRuinCapitalArtwork = new URL('./assets/arcs/greek-ruin-capital.png', import.meta.url).href
 const templeWeedsArtwork = new URL('./assets/arcs/temple-weeds-lowpoly.png', import.meta.url).href
 const templeStoneFragmentsArtwork = new URL('./assets/arcs/temple-stone-fragments.png', import.meta.url).href
-const currentFlameArtwork = new URL('./assets/arcs/current-fire-fluid.png', import.meta.url).href
+const currentFireArtwork = new URL('./assets/arcs/current-fire-fluid.png', import.meta.url).href
 
 function pointFor(act: ArcAct) {
   return { x: act.position.x * 10, y: act.position.y * 16 }
@@ -25,10 +26,19 @@ function routeGeometry(from: ArcAct, to: ArcAct, kind: ArcConnection['kind']) {
   const dx = b.x - a.x
   const dy = b.y - a.y
   const bend = kind === 'optional' ? 64 : -42
-  const p1 = { x: a.x + dx * .34 + bend, y: a.y + dy * .29 }
-  const p2 = { x: a.x + dx * .69 - bend, y: a.y + dy * .72 }
-  const d = `M${a.x} ${a.y} C${p1.x} ${p1.y} ${p2.x} ${p2.y} ${b.x} ${b.y}`
-  const trunk = taperedRoot(a, p1, p2, b, 16, 11, kind === 'optional' ? 10 : 7, (from.id.length + to.id.length) * .17, 1.55)
+  const length = Math.hypot(dx, dy) || 1
+  const normal = { x: -dy / length, y: dx / length }
+  const middle = { x: (a.x + b.x) * .5 + normal.x * bend, y: (a.y + b.y) * .5 + normal.y * bend }
+  const firstHandle = { x: a.x + dx * .18, y: a.y + dy * .18 }
+  const incomingMiddle = { x: middle.x - dx * .12, y: middle.y - dy * .12 }
+  const outgoingMiddle = { x: middle.x + dx * .12, y: middle.y + dy * .12 }
+  const finalHandle = { x: b.x - dx * .18, y: b.y - dy * .18 }
+  const d = `M${a.x} ${a.y} C${firstHandle.x} ${firstHandle.y} ${incomingMiddle.x} ${incomingMiddle.y} ${middle.x} ${middle.y} C${outgoingMiddle.x} ${outgoingMiddle.y} ${finalHandle.x} ${finalHandle.y} ${b.x} ${b.y}`
+  const routeWave = kind === 'optional' ? 10 : 7
+  const routePhase = (from.id.length + to.id.length) * .17
+  const firstRootSegment = taperedRoot(a, firstHandle, incomingMiddle, middle, 16, 11.5, routeWave, routePhase, .8)
+  const secondRootSegment = taperedRoot(middle, outgoingMiddle, finalHandle, b, 11.5, 7, routeWave, routePhase + .8, .8)
+  const trunk = { samples: [...firstRootSegment.samples.slice(0, -1), ...secondRootSegment.samples] }
   const crossingRoots: Array<{
     path: string
     facetPath: string
@@ -115,7 +125,7 @@ function routeGeometry(from: ArcAct, to: ArcAct, kind: ArcConnection['kind']) {
 }
 
 function Terrain() {
-  return <svg className="arc-terrain" viewBox="0 0 1000 1600" preserveAspectRatio="none" aria-hidden="true">
+  return <svg className="arc-terrain" viewBox="0 0 1000 1600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <defs>
       <linearGradient id="arc-stone-ground" x2=".8" y2="1"><stop stopColor="#77736d"/><stop offset=".48" stopColor="#625f5a"/><stop offset="1" stopColor="#494743"/></linearGradient>
       <pattern id="arc-stone-phototexture" width="420" height="420" patternUnits="userSpaceOnUse">
@@ -167,65 +177,6 @@ function MedallionSymbol({ symbol }: { symbol: ActSymbol }) {
   if (symbol === 'tally') return <g className="medallion-symbol tally-symbol"><path d="m58 62 18 61m7-68 18 61m7-68 18 61M47 112l84-32"/><path d="M52 129h76"/></g>
   if (symbol === 'bone') return <g className="medallion-symbol bone-symbol"><path className="bone-base" d="M45 77 54 67 65 67 74 76 106 76 115 67 126 67 136 77 136 86 127 95 136 104 126 113 115 113 106 104 74 104 65 113 54 113 45 104 45 95 54 86z"/><path className="bone-facet" d="M72 80h36l-7 20H79z"/></g>
   return <g className="medallion-lock"><path d="M75 88V76a15 15 0 0 1 30 0v12"/><rect x="66" y="86" width="48" height="37" rx="5"/><circle cx="90" cy="103" r="4"/><path d="M90 106v8"/></g>
-}
-
-function CurrentFlame() {
-  const contourRef = useRef<SVGPathElement>(null)
-  const silhouetteRef = useRef<SVGPathElement>(null)
-  const coreRef = useRef<SVGPathElement>(null)
-
-  useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (reducedMotion.matches) return
-
-    const point = (x: number, y: number) => `${x.toFixed(1)} ${y.toFixed(1)}`
-    const wave = (time: number, rate: number, phase: number, amplitude: number) => Math.sin(time * rate + phase) * amplitude
-    const outerPath = (time: number) => `M90 216
-      C${point(79 + wave(time, 1.8, .1, 9), 202)} ${point(59 + wave(time, 2.3, 1.1, 12), 190)} ${point(50 + wave(time, 2.7, .6, 9), 168)}
-      C${point(43 + wave(time, 2.1, 2.2, 9), 148)} ${point(53 + wave(time, 3.1, .3, 11), 132)} ${point(60 + wave(time, 2.4, 1.8, 9), 115)}
-      C${point(68 + wave(time, 2.6, .5, 12), 98)} ${point(58 + wave(time, 3.3, 1.5, 9), 82)} ${point(66 + wave(time, 2, 2.6, 9), 65)}
-      C${point(74 + wave(time, 2.8, .2, 10), 47)} ${point(87 + wave(time, 3.2, 1, 8), 36)} ${point(87 + wave(time, 2.5, 2, 8), 16)}
-      C${point(103 + wave(time, 2.7, .4, 9), 25)} ${point(112 + wave(time, 2.2, 1.6, 12), 45)} ${point(118 + wave(time, 3, .9, 10), 64)}
-      C${point(127 + wave(time, 2.4, 2.4, 11), 82)} ${point(134 + wave(time, 3.1, .1, 10), 102)} ${point(128 + wave(time, 2.2, 1.3, 9), 123)}
-      C${point(122 + wave(time, 2.9, .7, 11), 143)} ${point(137 + wave(time, 2.1, 2.1, 9), 157)} ${point(130 + wave(time, 3.2, .5, 8), 175)}
-      C${point(124 + wave(time, 2.5, 1.7, 10), 195)} ${point(106 + wave(time, 2.8, .3, 9), 204)} 90 216 Z`
-    const corePath = (time: number) => `M90 207
-      C${point(80 + wave(time, 2.2, .5, 6), 190)} ${point(65 + wave(time, 2.8, 1.2, 8), 177)} ${point(62 + wave(time, 2.4, .1, 6), 159)}
-      C${point(58 + wave(time, 3, 1.6, 7), 143)} ${point(68 + wave(time, 2.6, .7, 8), 127)} ${point(74 + wave(time, 2.1, 2.2, 6), 111)}
-      C${point(81 + wave(time, 2.7, .4, 8), 94)} ${point(75 + wave(time, 3.3, 1.4, 6), 80)} ${point(83 + wave(time, 2.5, 2.3, 7), 65)}
-      C${point(88 + wave(time, 2.2, .8, 6), 51)} ${point(94 + wave(time, 3, .2, 6), 46)} ${point(96 + wave(time, 2.4, 1.7, 6), 34)}
-      C${point(105 + wave(time, 2.8, .5, 7), 51)} ${point(104 + wave(time, 2.3, 1.9, 6), 68)} ${point(112 + wave(time, 2.7, .9, 7), 85)}
-      C${point(120 + wave(time, 3.1, 1.5, 8), 103)} ${point(117 + wave(time, 2.4, .3, 6), 120)} ${point(111 + wave(time, 2.9, 2.1, 7), 139)}
-      C${point(105 + wave(time, 2.2, .7, 8), 158)} ${point(108 + wave(time, 3, 1.3, 6), 182)} 90 207 Z`
-
-    let frame = 0
-    let lastUpdate = 0
-    const animateFlame = (now: number) => {
-      if (now - lastUpdate >= 40) {
-        const time = now / 1000
-        const contour = outerPath(time)
-        contourRef.current?.setAttribute('d', contour)
-        silhouetteRef.current?.setAttribute('d', contour)
-        coreRef.current?.setAttribute('d', corePath(time))
-        lastUpdate = now
-      }
-      frame = window.requestAnimationFrame(animateFlame)
-    }
-
-    frame = window.requestAnimationFrame(animateFlame)
-    return () => window.cancelAnimationFrame(frame)
-  }, [])
-
-  return <svg className="act-current-flame" viewBox="0 0 180 240" aria-hidden="true">
-    <defs>
-      <clipPath id="current-flame-shape"><path ref={contourRef} d="M90 216 C79 202 59 190 50 168 C43 148 53 132 60 115 C68 98 58 82 66 65 C74 47 87 36 87 16 C103 25 112 45 118 64 C127 82 134 102 128 123 C122 143 137 157 130 175 C124 195 106 204 90 216 Z"/></clipPath>
-      <linearGradient id="current-flame-body-gradient" x1="35%" y1="100%" x2="70%" y2="0%"><stop offset="0" stopColor="#ffd553"/><stop offset=".28" stopColor="#ff9f26"/><stop offset=".68" stopColor="#ff7018"/><stop offset="1" stopColor="#ffba43"/></linearGradient>
-      <linearGradient id="current-flame-core-gradient" x1="50%" y1="100%" x2="50%" y2="0%"><stop offset="0" stopColor="#fff6ba" stopOpacity=".72"/><stop offset=".45" stopColor="#ffdc75" stopOpacity=".55"/><stop offset="1" stopColor="#ff9f27" stopOpacity=".12"/></linearGradient>
-    </defs>
-    <path ref={silhouetteRef} className="act-current-flame-silhouette" d="M90 216 C79 202 59 190 50 168 C43 148 53 132 60 115 C68 98 58 82 66 65 C74 47 87 36 87 16 C103 25 112 45 118 64 C127 82 134 102 128 123 C122 143 137 157 130 175 C124 195 106 204 90 216 Z" fill="url(#current-flame-body-gradient)"/>
-    <image href={currentFlameArtwork} x="2.5" y="9.5" width="180" height="240" preserveAspectRatio="xMidYMid meet" clipPath="url(#current-flame-shape)"/>
-    <path ref={coreRef} className="act-current-flame-core" d="M90 207 C80 190 65 177 62 159 C58 143 68 127 74 111 C81 94 75 80 83 65 C88 51 94 46 96 34 C105 51 104 68 112 85 C120 103 117 120 111 139 C105 158 108 182 90 207 Z" fill="url(#current-flame-core-gradient)"/>
-  </svg>
 }
 
 type ThornPoint = { x: number; y: number }
@@ -486,10 +437,10 @@ function medallionSideFacet(index: number, radius: number, lowerRadius: number, 
   return `M${point(index)} L${point(index + 1)} L${point(index + 1, true)} L${point(index, true)} Z`
 }
 
-function ActMedallion({ act, onSelect }: { act: ArcAct; onSelect: () => void }) {
+function ActMedallion({ act, isCurrent, onSelect }: { act: ArcAct; isCurrent: boolean; onSelect: () => void }) {
   const locked = act.status === 'locked'
   const [crownState, setCrownState] = useState<'emerging' | 'rooted' | 'submerging' | 'hidden'>(locked ? 'emerging' : 'hidden')
-  const statusLabel = act.status === 'current' ? 'ato atual' : act.status === 'completed' ? 'ato concluído' : locked ? 'ato bloqueado' : 'ato disponível'
+  const statusLabel = act.status === 'completed' ? 'ato completo' : locked ? 'ato bloqueado' : 'ato disponível'
   const keyPattern = `meander-${act.id}`
   const keyMask = `meander-mask-${act.id}`
 
@@ -504,13 +455,14 @@ function ActMedallion({ act, onSelect }: { act: ArcAct; onSelect: () => void }) 
     const sinkTimer = window.setTimeout(() => setCrownState('hidden'), 950)
     return () => window.clearTimeout(sinkTimer)
   }, [locked])
-  return <button
-    className={`act-medallion act-medallion-${act.status} act-medallion-symbol-${act.symbol} ${act.kind === 'optional' ? 'act-medallion-optional' : ''}`}
-    style={{ left: `${act.position.x}%`, top: `${act.position.y}%` }}
-    onClick={onSelect}
-    disabled={locked}
-    aria-label={`${statusLabel}: Ato ${String(act.number).padStart(2, '0')}, ${act.title}`}
-  >
+  return <div className="arc-medallion-node" style={{ left: `${act.position.x}%`, top: `${act.position.y}%` }}>
+    <ActSiteArt environment={act.siteEnvironment}/>
+    <button
+      className={`act-medallion act-medallion-${act.status} act-medallion-symbol-${act.symbol} ${isCurrent ? 'act-medallion-current' : ''} ${act.kind === 'optional' ? 'act-medallion-optional' : ''}`}
+      onClick={onSelect}
+      disabled={locked}
+      aria-label={`${statusLabel}: Ato ${String(act.number).padStart(2, '0')}, ${act.title}`}
+    >
     <svg className="act-medallion-art" viewBox="0 0 180 180" aria-hidden="true">
       <defs>
         <radialGradient id={`stone-${act.id}`} cx="35%" cy="24%"><stop stopColor="#d0c7b2"/><stop offset=".46" stopColor="#a69b83"/><stop offset="1" stopColor="#716b5c"/></radialGradient>
@@ -541,11 +493,12 @@ function ActMedallion({ act, onSelect }: { act: ArcAct; onSelect: () => void }) 
       <path className="medallion-inner-line" d={medallionPolygon(54)}/>
       <MedallionSymbol symbol={act.symbol}/>
     </svg>
+    {isCurrent && <img className="act-current-flame" src={currentFireArtwork} alt="Ato atual" draggable={false}/>}
     {crownState !== 'hidden' && <ThornCrown state={crownState === 'rooted' ? 'rooted' : crownState === 'submerging' ? 'submerging' : 'emerging'}/>}
-    {act.status === 'current' && <CurrentFlame/>}
-    {locked && <span className="act-medallion-lock-shadow"><span className="act-lock-glyph" aria-hidden="true"><svg viewBox="0 0 32 38"><path d="M8 16V10a8 8 0 0 1 16 0v6M5 16h22v18H5z"/><circle cx="16" cy="24" r="2"/><path d="M16 26v4"/></svg></span></span>}
+    {locked && <span className="act-medallion-lock-shadow"><span className="act-lock-glyph" aria-hidden="true"><svg viewBox="0 0 32 38"><path className="act-lock-shackle" d="M8 17V10a8 8 0 0 1 16 0v7"/><rect className="act-lock-body" x="5" y="15" width="22" height="19" rx="3"/><circle className="act-lock-keyhole" cx="16" cy="23" r="2.5"/><path className="act-lock-stem" d="M16 25.5v4"/></svg></span></span>}
     {act.status === 'completed' && <span className="act-medallion-complete-seal" aria-label="Concluído"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path d="m11 20 6 6 12-13"/></svg></span>}
-  </button>
+    </button>
+  </div>
 }
 
 function ArcRouteArt({ connection, from, to }: { connection: ArcConnection; from: ArcAct; to: ArcAct }) {
@@ -564,7 +517,7 @@ function ArcRouteArt({ connection, from, to }: { connection: ArcConnection; from
     return () => window.clearTimeout(timer)
   }, [isBlocked])
 
-  const isLit = (from.status === 'completed' || from.status === 'current') && (to.status === 'completed' || to.status === 'current') && (from.status === 'completed' || to.status === 'completed')
+  const isLit = from.status === 'completed' && to.status !== 'locked'
   return <g className={`arc-route ${connection.kind === 'optional' ? 'arc-route-optional' : ''} ${isBlocked ? 'arc-route-blocked' : ''} ${isLit ? 'arc-route-lit' : ''}`}>
     <path className="arc-route-underpaint" d={geometry.d}/>
     {isLit && <path className="arc-route-glow" d={geometry.d}/>}
@@ -575,11 +528,12 @@ function ArcRouteArt({ connection, from, to }: { connection: ArcConnection; from
   </g>
 }
 
-function Parchment({ act, closing, onClose, onStart }: {
+function Parchment({ act, closing, onClose, onStart, onComplete }: {
   act: ArcAct
   closing: boolean
   onClose: () => void
   onStart: () => void
+  onComplete: () => void
 }) {
   const completed = act.status === 'completed'
   return <div className={`arc-parchment-backdrop ${closing ? 'is-closing' : 'is-opening'}`} onClick={onClose}>
@@ -587,7 +541,20 @@ function Parchment({ act, closing, onClose, onStart }: {
       <div className="parchment-roller parchment-roller-top"><span/><span/><span/></div>
       <button className="parchment-close" onClick={onClose} aria-label="Fechar pergaminho"><X size={20}/></button>
       <article className="parchment-paper">
-        <div className="parchment-paper-grain" aria-hidden="true"/>
+        <div className="parchment-paper-grain" aria-hidden="true">
+          <svg className="parchment-fiber-texture" viewBox="0 0 300 500" preserveAspectRatio="none">
+            <filter id="parchment-fiber-noise"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="17" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .34"/></feComponentTransfer></filter>
+            <rect width="100%" height="100%" filter="url(#parchment-fiber-noise)"/>
+          </svg>
+          <svg className="parchment-scuffs" viewBox="0 0 300 500" preserveAspectRatio="none">
+            <g fill="none" stroke="#704724" strokeLinecap="round">
+              <path d="m24 63 13-5 8 2 7-4m-12 7 4 5m4-10 7-5m-31 9-6 4m219 19 9-4 7 1 9-5m-17 7 6 4m-3-8 7-6" strokeWidth="1.2"/>
+              <path d="m35 392 11-4 8 1m-10 3-5 5m219-31-9 5-8-1-8 4m15-5 4 6m-5-9-6-5m-166 72 8-3 7 2m-11 0-3 4" strokeWidth=".9"/>
+              <path d="m78 119 7 2 4 6m134 204-5 4-2 7m-176-89 5-2 4-5m166-169-3 5 2 4" strokeWidth=".65"/>
+            </g>
+            <g fill="#80552e" opacity=".42"><ellipse cx="33" cy="70" rx="9" ry="3" transform="rotate(-18 33 70)"/><ellipse cx="265" cy="91" rx="12" ry="3.5" transform="rotate(-24 265 91)"/><ellipse cx="48" cy="405" rx="11" ry="4" transform="rotate(-15 48 405)"/><ellipse cx="258" cy="376" rx="13" ry="4" transform="rotate(-24 258 376)"/></g>
+          </svg>
+        </div>
         <div className="parchment-ornament parchment-ornament-top" aria-hidden="true"/>
         <p className="parchment-act-number">Ato {String(act.number).padStart(2, '0')}</p>
         <h2 id="act-parchment-title">{act.title}</h2>
@@ -596,11 +563,16 @@ function Parchment({ act, closing, onClose, onStart }: {
         </figure>
         <div className="parchment-divider" aria-hidden="true"><span/><b>✦</b><span/></div>
         <p className="parchment-description">{act.description}</p>
+        <div className="parchment-actions">
         <button className="parchment-start" onClick={onStart}>
           <svg viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
           <span>{completed ? 'REVER ATO' : 'INICIAR ATO'}</span>
           <svg className="laurel-end" viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
         </button>
+        <button className={`parchment-start parchment-complete ${completed ? 'is-complete' : ''}`} onClick={onComplete} disabled={completed}>
+          <span>{completed ? 'ATO CONCLUÍDO' : 'CONCLUIR ATO'}</span>
+        </button>
+        </div>
         <div className="parchment-ornament parchment-ornament-bottom" aria-hidden="true"/>
       </article>
       <div className="parchment-roller parchment-roller-bottom"><span/><span/><span/></div>
@@ -608,21 +580,61 @@ function Parchment({ act, closing, onClose, onStart }: {
   </div>
 }
 
-export default function ArcMapPage({ moduleId, onBack, onStartAct }: {
+export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartAct, onCompleteAct }: {
   moduleId: string
+  completedActIds: string[]
   onBack: () => void
   onStartAct: (act: ArcAct) => void
+  onCompleteAct: (actId: string) => void
 }) {
   const arc = learningArcs[moduleId]
-  const [currentActId, setCurrentActId] = useState(() => arc.acts.find((act) => act.status === 'current')?.id ?? '')
+  const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }))
   const [selectedActId, setSelectedActId] = useState<string | null>(null)
   const [closingParchment, setClosingParchment] = useState(false)
   const closeTimer = useRef<number | null>(null)
-  const acts = useMemo(() => arc.acts.map((act) => ({
-    ...act,
-    status: act.id === currentActId ? 'current' as const : act.status === 'current' ? 'available' as const : act.status,
-  })), [arc.acts, currentActId])
+  useEffect(() => {
+    const updateViewport = () => setViewport({ width: window.innerWidth, height: window.innerHeight })
+    window.addEventListener('resize', updateViewport)
+    window.addEventListener('orientationchange', updateViewport)
+    return () => {
+      window.removeEventListener('resize', updateViewport)
+      window.removeEventListener('orientationchange', updateViewport)
+    }
+  }, [])
+  const acts = useMemo(() => arc.acts.map((act) => {
+    const completed = completedActIds.includes(act.id)
+    const available = !completed && act.prerequisites.every((prerequisite) => completedActIds.includes(prerequisite))
+    let position = act.position
+    if (viewport.width <= 700 && viewport.height >= viewport.width) {
+      const portraitPositions: Record<string, { x: number; y: number }> = viewport.height < 600 ? {
+        'counting-marks': { x: 50, y: 82 }, 'age-of-sun': { x: 29, y: 65 },
+        'wayfinder': { x: 71, y: 61 }, 'first-observation': { x: 29, y: 45 },
+        'shadow-measure': { x: 71, y: 42 }, 'last-seal': { x: 50, y: 26 },
+      } : {
+        'counting-marks': { x: 50, y: 81 }, 'age-of-sun': { x: 29, y: 62 },
+        'wayfinder': { x: 71, y: 57 }, 'first-observation': { x: 29, y: 39 },
+        'shadow-measure': { x: 71, y: 34 }, 'last-seal': { x: 50, y: 18 },
+      }
+      position = portraitPositions[act.id] ?? act.position
+    } else if (viewport.width > 1000) {
+      const desktopPositions: Record<string, { x: number; y: number }> = {
+        'counting-marks': { x: 50, y: 84 }, 'age-of-sun': { x: 27, y: 64 },
+        'wayfinder': { x: 74, y: 61 }, 'first-observation': { x: 19, y: 42 },
+        'shadow-measure': { x: 81, y: 39 }, 'last-seal': { x: 51, y: 18 },
+      }
+      position = desktopPositions[act.id] ?? act.position
+    } else if (viewport.width <= 1000) {
+      const compactPositions: Record<string, { x: number; y: number }> = {
+        'counting-marks': { x: 50, y: 80 }, 'age-of-sun': { x: 27, y: 62 },
+        'wayfinder': { x: 73, y: 60 }, 'first-observation': { x: 20, y: 43 },
+        'shadow-measure': { x: 80, y: 41 }, 'last-seal': { x: 50, y: 28 },
+      }
+      position = compactPositions[act.id] ?? act.position
+    }
+    return { ...act, position, status: completed ? 'completed' as const : available ? 'available' as const : 'locked' as const }
+  }), [arc.acts, completedActIds, viewport])
   const actsById = new Map(acts.map((act) => [act.id, act]))
+  const currentActId = acts.find((act) => act.status === 'available')?.id ?? null
   const selectedAct = selectedActId ? actsById.get(selectedActId) ?? null : null
   const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -664,10 +676,15 @@ export default function ArcMapPage({ moduleId, onBack, onStartAct }: {
 
   const startAct = () => {
     if (!selectedAct) return
-    if (selectedAct.status !== 'completed') setCurrentActId(selectedAct.id)
     audioManager.play('navigation')
     onStartAct(selectedAct)
     closeParchment()
+  }
+
+  const completeAct = () => {
+    if (!selectedAct || selectedAct.status !== 'available') return
+    audioManager.play('starUnlock')
+    onCompleteAct(selectedAct.id)
   }
 
   return <main className="arc-map-screen" aria-label={`Mapa do arco ${arc.title}`}>
@@ -688,7 +705,7 @@ export default function ArcMapPage({ moduleId, onBack, onStartAct }: {
           })}
           </svg>
           <div className="arc-map-nodes">
-            {acts.map((act) => <ActMedallion key={act.id} act={act} onSelect={() => openAct(act)}/>)}
+            {acts.map((act) => <ActMedallion key={act.id} act={act} isCurrent={act.id === currentActId} onSelect={() => openAct(act)}/>)}
           </div>
         </div>
         <header className="arc-map-header">
@@ -701,6 +718,6 @@ export default function ArcMapPage({ moduleId, onBack, onStartAct }: {
         </header>
       </section>
     </div>
-    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct}/ >}
+    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct}/ >}
   </main>
 }

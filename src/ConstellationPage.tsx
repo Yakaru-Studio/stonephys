@@ -138,13 +138,14 @@ function ConstellationMap({ config, unlockedStarIds, completedStarIds, compactLa
   </svg>
 }
 
-export default function ConstellationPage({ moduleId, unlockedStarIds, completedStarIds, onBack, onUnlockStar, onCompleteStar, onOpenArc }: {
+export default function ConstellationPage({ moduleId, unlockedStarIds, completedStarIds, onBack, onUnlockStar, onCompleteStar, onCompleteAll, onOpenArc }: {
   moduleId: string
   unlockedStarIds: string[]
   completedStarIds: string[]
   onBack: () => void
   onUnlockStar: (starId: string) => void
   onCompleteStar: (starId: string) => void
+  onCompleteAll: () => void
   onOpenArc?: (star: ConstellationStar) => void
 }) {
   const config = constellations[moduleId]
@@ -241,6 +242,9 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
       <div className="constellation-progress" aria-label={`${completedStarIds.length} de ${config.stars.length} etapas concluídas`}>
         {config.stars.map((star) => <span key={star.id} className={completedStarIds.includes(star.id) ? 'filled' : unlockedStarIds.includes(star.id) ? 'current' : ''} />)}
       </div>
+      <button className="constellation-complete-all" type="button" onClick={onCompleteAll} disabled={isFinished}>
+        {isFinished ? 'Tudo concluído' : 'Concluir tudo · teste'}
+      </button>
     </div>
 
     {selectedStar && <div className="stage-backdrop" onClick={() => setSelectedStar(null)}>

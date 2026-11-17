@@ -12,6 +12,7 @@ import { learningArcs } from './arcActs'
 export default function App() {
   const [pulse, setPulse] = useState<Record<string, number>>({})
   const [progress, setProgress] = useState<Record<string, number>>({ time: 0 })
+  const [currentModuleId, setCurrentModuleId] = useState(() => initialModules.find((module) => module.status === 'unlocked')?.id ?? initialModules[0].id)
   const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
   const [selectedArc, setSelectedArc] = useState<{ moduleId: string; starId: string } | null>(null)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
@@ -21,6 +22,7 @@ export default function App() {
     distance: { unlocked: ['body'], completed: [] },
     velocity: { unlocked: ['motion'], completed: [] },
   })
+  const [completedActs, setCompletedActs] = useState<Record<string, string[]>>({})
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
@@ -73,10 +75,25 @@ export default function App() {
           }
           setStageProgress((current) => ({ ...current, [selectedModule.id]: { unlocked, completed } }))
         }}
+        onCompleteAll={() => {
+          const config = constellations[selectedModule.id]
+          const allStarIds = config.stars.map((star) => star.id)
+          audioManager.play('moduleComplete')
+          setStageProgress((current) => ({
+            ...current,
+            [selectedModule.id]: { unlocked: allStarIds, completed: allStarIds },
+          }))
+        }}
       />
       {selectedArc && <ArcMapPage
         key={`${selectedArc.moduleId}-${selectedArc.starId}`}
         moduleId={selectedArc.moduleId}
+        completedActIds={completedActs[selectedArc.moduleId] ?? []}
+        onCompleteAct={(actId) => setCompletedActs((current) => {
+          const existing = current[selectedArc.moduleId] ?? []
+          if (existing.includes(actId)) return current
+          return { ...current, [selectedArc.moduleId]: [...existing, actId] }
+        })}
         onBack={() => {
           audioManager.play('navigation')
           setSelectedArc(null)
@@ -123,10 +140,11 @@ export default function App() {
     {initialModules.filter(module=>module.status!=='undiscovered').map(source=>{
       const value=progress[source.id]??source.progress
       const module={...source,progress:value,stage:stageForProgress(value)}
-      return <Neuron key={module.id} module={module} pulse={pulse[module.id]??0} opening={transitioningModuleId===module.id} onSelect={()=>{
+      return <Neuron key={module.id} module={module} pulse={pulse[module.id]??0} opening={transitioningModuleId===module.id} isCurrent={currentModuleId===module.id} onSelect={()=>{
         if (transitioningModuleId) return
         audioManager.play('neuronSelect')
         setPulse(current=>({...current,[module.id]:(current[module.id]??0)+1}))
+        if(value<100)setCurrentModuleId(module.id)
         setProgress(current=>({...current,[module.id]:Math.min(100,(current[module.id]??source.progress)+25)}))
         setTransitioningModuleId(module.id)
         window.setTimeout(() => {

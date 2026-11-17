@@ -3,12 +3,11 @@ import type { CSSProperties } from 'react'
 const h4CaseDial = new URL('../../assets/scenes/time/harrison-workshop/h4-case-dial.png', import.meta.url).href
 const h4Cushion = new URL('../../assets/scenes/time/harrison-workshop/h4-cushion.png', import.meta.url).href
 
-export default function H4Watch({ time, style }: { time: number; style?: CSSProperties }) {
-  const rewindStart = 22
-  const rewindTime = Math.max(0, time - rewindStart)
-  const rewindSeconds = rewindTime + Math.min(rewindTime, 8) ** 2 * .72
+export default function H4Watch({ time, reverseProgress = 0, style }: { time: number; reverseProgress?: number; style?: CSSProperties }) {
   const initialSeconds = 10 * 3600 + 10 * 60 + 30
-  const simulatedSeconds = time <= rewindStart ? initialSeconds + time : initialSeconds + rewindStart - rewindSeconds * 5.2
+  const forwardSeconds = Math.floor(time)
+  const reverseSeconds = reverseProgress * reverseProgress * reverseProgress * 1800
+  const simulatedSeconds = initialSeconds + forwardSeconds - reverseSeconds
   const seconds = simulatedSeconds * 6
   const minutes = simulatedSeconds * .1
   const hours = simulatedSeconds / 120

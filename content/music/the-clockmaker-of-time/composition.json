@@ -1,0 +1,51 @@
+{
+  "id": "the-clockmaker-of-time",
+  "name": {
+    "pt-BR": "O Relojoeiro do Tempo",
+    "en": "The Clockmaker of Time"
+  },
+  "description": {
+    "pt-BR": "Acompanhamento íntimo e discreto para a oficina de John Harrison.",
+    "en": "Intimate, discreet underscore for John Harrison's workshop."
+  },
+  "application": [
+    "harrison-workshop-1760"
+  ],
+  "targetDurationSeconds": 165,
+  "targetBpm": "55–60",
+  "defaultVolume": 0.2,
+  "loop": {
+    "enabled": false,
+    "startSeconds": 0,
+    "endSeconds": null,
+    "crossfadeMs": 1800
+  },
+  "ducking": {
+    "enabled": true,
+    "musicLevelDuringNarration": 0.5,
+    "attackMs": 350,
+    "releaseMs": 450
+  },
+  "status": "awaiting-review",
+  "previewVersionId": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0",
+  "previewCropStartSeconds": 0,
+  "previewCropEndSeconds": 157.91,
+  "previewVolume": 1,
+  "previewLoop": {
+    "enabled": false,
+    "startSeconds": 0,
+    "endSeconds": 157.91,
+    "crossfadeMs": 1800
+  },
+  "approvedVersionId": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0",
+  "approvedAssetUrl": "/audio/music/approved/the-clockmaker-of-time.mp3",
+  "approvedCropStartSeconds": 0,
+  "approvedCropEndSeconds": 157.91,
+  "approvedVolume": 1,
+  "approvedLoop": {
+    "enabled": false,
+    "startSeconds": 0,
+    "endSeconds": 157.91,
+    "crossfadeMs": 1800
+  }
+}

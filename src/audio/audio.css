@@ -12,6 +12,7 @@
 .audio-switch svg{color:#d8ab6b}
 .audio-switch input{width:16px;height:16px;accent-color:#d39a4d;cursor:pointer}
 .audio-volumes{display:grid;gap:8px;padding:10px 0 12px;border-top:1px solid rgba(184,202,221,.1);border-bottom:1px solid rgba(184,202,221,.1)}
+.audio-language{display:grid;grid-template-columns:1fr 1.3fr;align-items:center;gap:10px;padding-top:11px;color:#adbaca;font-size:11px}.audio-language select{min-width:0;padding:7px 9px;border:1px solid rgba(184,202,221,.18);border-radius:7px;color:#e0e8ef;background:#111923;font:inherit}
 .audio-slider{display:grid;gap:5px;color:#adbaca;font-size:10px}
 .audio-slider span{display:flex;align-items:center;justify-content:space-between}
 .audio-slider strong{color:#e7c18b;font-size:10px;font-variant-numeric:tabular-nums;font-weight:500}
@@ -20,3 +21,4 @@
 @keyframes audio-panel-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:430px){.audio-panel{position:fixed;top:calc(env(safe-area-inset-top) + 60px);right:12px}}
 @media(prefers-reduced-motion:reduce){.audio-panel{animation:none}}
+.audio-studio-links{display:grid;gap:6px;margin-top:12px;padding-top:11px;border-top:1px solid rgba(184,202,221,.1)}.audio-studio-links>span{color:#d7a65f;font-size:9px;letter-spacing:.08em;text-transform:uppercase}.audio-studio-links a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 8px;padding:8px 9px;border:1px solid rgba(184,202,221,.13);border-radius:7px;color:#e7d8bc;background:#ffffff08;font-size:11px;text-decoration:none}.audio-studio-links a:hover{border-color:rgba(232,184,111,.42);background:#ffffff12}.audio-studio-links a small{grid-column:2;grid-row:1;color:#aebac7;font-size:9px}

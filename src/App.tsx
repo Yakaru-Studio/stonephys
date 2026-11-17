@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Neuron from './Neuron'
 import { initialModules, stageForProgress } from './data'
@@ -8,10 +8,15 @@ import AudioControls from './audio/AudioControls'
 import { audioManager } from './audio/AudioManager'
 import ArcMapPage from './ArcMapPage'
 import { learningArcs } from './arcActs'
+import { localizeModule, useLocale } from './i18n'
 
 const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
+const VoiceStudio = lazy(() => import('./narration/VoiceStudio'))
+const MusicStudio = lazy(() => import('./music/MusicStudio'))
+const packagedMusic = import.meta.glob('../content/music/*/composition.json', { eager: true, import: 'default' }) as Record<string, Record<string, any>>
 
 export default function App() {
+  const { locale, t } = useLocale()
   const [pulse, setPulse] = useState<Record<string, number>>({})
   const [progress, setProgress] = useState<Record<string, number>>({ time: 0 })
   const [currentModuleId, setCurrentModuleId] = useState(() => initialModules.find((module) => module.status === 'unlocked')?.id ?? initialModules[0].id)
@@ -26,6 +31,45 @@ export default function App() {
     velocity: { unlocked: ['motion'], completed: [] },
   })
   const [completedActs, setCompletedActs] = useState<Record<string, string[]>>({})
+  const [music, setMusic] = useState<any[]>([])
+  const [audioUnlocked, setAudioUnlocked] = useState(false)
+
+  useEffect(() => {
+    if (!import.meta.env.DEV) return
+    const loadMusic = () => { void fetch('/__voice-studio/api/music/status').then((response) => response.ok ? response.json() : null).then((result) => { if (result?.compositions) setMusic(result.compositions) }).catch(() => {}) }
+    loadMusic()
+    window.addEventListener('stonephys:music-preview-changed', loadMusic)
+    return () => window.removeEventListener('stonephys:music-preview-changed', loadMusic)
+  }, [])
+
+  useEffect(() => {
+    const targetId = harrisonSceneOpen
+      ? 'the-clockmaker-of-time'
+      : selectedArc ? 'paths-of-discovery' : selectedModuleId || audioUnlocked ? 'eternity-of-knowledge' : null
+    if (!targetId) { audioManager.fadeMusicOut(900); return }
+    const composition = music.find((item) => item.id === targetId)
+    const packaged = Object.entries(packagedMusic).find(([file]) => file.includes(`/${targetId}/composition.json`))?.[1]
+    const source = import.meta.env.DEV ? composition?.previewUrl : packaged?.approvedAssetUrl
+    const settings = composition || packaged
+    const loopSettings = import.meta.env.DEV ? composition?.previewLoop || composition?.loop : packaged?.approvedLoop || packaged?.loop
+    const cropStartSeconds = import.meta.env.DEV ? composition?.previewCropStartSeconds ?? 0 : packaged?.approvedCropStartSeconds ?? 0
+    const cropEndSeconds = import.meta.env.DEV ? composition?.previewCropEndSeconds ?? null : packaged?.approvedCropEndSeconds ?? null
+    const volume = import.meta.env.DEV ? composition?.previewVolume ?? 1 : packaged?.approvedVolume ?? 1
+    audioManager.setNarrationMusicLevel(settings?.ducking?.musicLevelDuringNarration ?? .42)
+    if (!source) { audioManager.fadeMusicOut(900); return }
+    // Loop behavior is configured in Music Studio; tracks default to looping.
+    void audioManager.playMusicAsset(source, { loop: loopSettings?.enabled ?? true, fadeMs: loopSettings?.crossfadeMs ?? 1800, loopCrossfadeMs: loopSettings?.crossfadeMs ?? 1800, trackGain: settings?.defaultVolume ?? .2, volume, cropStartSeconds, cropEndSeconds }).catch(() => {})
+  }, [music, selectedModuleId, selectedArc, harrisonSceneOpen, audioUnlocked])
+
+  useEffect(() => {
+    document.documentElement.lang = locale
+    document.title = `${t('app.brand')} — ${t('app.title')}`
+  }, [locale, t])
+
+  if (import.meta.env.DEV && window.location.pathname === '/__voice-studio') {
+    return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de voz…</div>}><VoiceStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
+  }
+  if (import.meta.env.DEV && window.location.pathname === '/__audio-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de música…</div>}><MusicStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
@@ -116,18 +160,19 @@ export default function App() {
           }))
         }}
       />}
-      {selectedArc && harrisonSceneOpen && <Suspense fallback={<div className="historical-scene-loading">Preparando a oficina…</div>}><HarrisonWorkshopExperience onExit={() => setHarrisonSceneOpen(false)}/></Suspense>}
+      {selectedArc && harrisonSceneOpen && <Suspense fallback={<div className="historical-scene-loading">{t('scene.loading')}</div>}><HarrisonWorkshopExperience onExit={() => setHarrisonSceneOpen(false)}/></Suspense>}
     </>
   }
 
   return <main
     className={`map-screen ${transitioningModuleId ? 'map-transition-out' : ''} ${homeTransition ? 'home-transition-in' : ''}`}
-    aria-label="Universo de módulos científicos"
+    aria-label={t('app.universe')}
+    onPointerDown={() => setAudioUnlocked(true)}
     onAnimationEnd={(event) => {
       if (event.target === event.currentTarget && homeTransition) setHomeTransition(false)
     }}
   >
-    <header className="map-header"><button className="back-button" onClick={()=>window.history.back()} aria-label="Voltar"><ArrowLeft size={18}/></button><h1>Módulos</h1><AudioControls/></header>
+    <header className="map-header"><button className="back-button" onClick={()=>window.history.back()} aria-label={locale === 'en' ? 'Back' : 'Voltar'}><ArrowLeft size={18}/></button><h1>{t('app.modules')}</h1><AudioControls/></header>
     <svg className="cosmos" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <radialGradient id="space"><stop stopColor="#111a28"/><stop offset=".58" stopColor="#0a111b"/><stop offset="1" stopColor="#050910"/></radialGradient>
@@ -151,9 +196,10 @@ export default function App() {
     </svg>
     {initialModules.filter(module=>module.status!=='undiscovered').map(source=>{
       const value=progress[source.id]??source.progress
-      const module={...source,progress:value,stage:stageForProgress(value)}
-      return <Neuron key={module.id} module={module} pulse={pulse[module.id]??0} opening={transitioningModuleId===module.id} isCurrent={currentModuleId===module.id} onSelect={()=>{
+      const module={...localizeModule(locale, source),progress:value,stage:stageForProgress(value)}
+      return <Neuron key={module.id} module={module} locale={locale} pulse={pulse[module.id]??0} opening={transitioningModuleId===module.id} isCurrent={currentModuleId===module.id} onSelect={()=>{
         if (transitioningModuleId) return
+        setAudioUnlocked(true)
         audioManager.play('neuronSelect')
         setPulse(current=>({...current,[module.id]:(current[module.id]??0)+1}))
         if(value<100)setCurrentModuleId(module.id)

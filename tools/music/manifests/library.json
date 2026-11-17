@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-17T21:01:48.622Z",
+  "requests": [
+    {
+      "requestId": "ba05fa40-b2e6-459f-946d-0290c66ae181",
+      "compositionId": "eternity-of-knowledge",
+      "versionId": "6e96a676-666b-4a83-8361-dc98a7e63c7f",
+      "model": "lyria-3.5",
+      "at": "2026-11-17T18:31:55.664Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "3276445dc36ac4d0ef325173f04b31a82355a37b0846d1344079653777f8775c",
+      "interactionId": "v1_ChduSjM4YXZtTEJiM213YlVQdXR1VDhBOBIXbkozOGF2bUxCYjNtd2JVUHV0dVQ4QTg"
+    },
+    {
+      "requestId": "1a35cbc3-4f74-4d6a-a0c7-10b1d6428825",
+      "compositionId": "paths-of-discovery",
+      "versionId": "ef98a21f-ecb9-4335-aa24-8d5e28fba245",
+      "model": "lyria-3.5",
+      "at": "2026-11-17T18:33:15.609Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "193dfac7273ff48552482f7d90ed7ab0167bf0b65ec86fa8dd888dd8308050ae",
+      "interactionId": "v1_Chc2NTM4YXFYcU9wSFZpTE1QaXNtYnlBSRIXNjUzOGFxWHFPcEhWaUxNUGlzbWJ5QUk"
+    },
+    {
+      "requestId": "32426080-0691-4110-a4ac-e411cbdc55b2",
+      "compositionId": "the-clockmaker-of-time",
+      "versionId": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0",
+      "model": "lyria-3.5",
+      "at": "2026-11-17T18:34:14.948Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "35d1aabe27059ecd799969ecd59a48a3a4c12f07fea2ce18a3dffd67551ea3b8",
+      "interactionId": "v1_ChdLSjc4YXBQb0Q5MjdpTE1QaWNHTzBBNBIXS0o3OGFwUG9EOTI3aUxNUGljR08wQTQ"
+    }
+  ],
+  "compositions": {
+    "eternity-of-knowledge": {
+      "versions": [
+        {
+          "id": "6e96a676-666b-4a83-8361-dc98a7e63c7f",
+          "requestId": "ba05fa40-b2e6-459f-946d-0290c66ae181",
+          "model": "lyria-3.5",
+          "prompt": "An original instrumental cinematic ambient soundtrack for a philosophical science exploration video game. Evoking the vastness of the cosmos, the passage of millennia, the mystery of existence, and humanity's timeless pursuit of knowledge. Calm, contemplative, cosmic, ancient, ethereal and quietly epic. Use warm sustained orchestral strings, deep atmospheric textures, delicate sparse piano notes, subtle celestial harmonics and distant resonant tones. Slow tempo, approximately 55–60 BPM. Spacious arrangement, gradual harmonic evolution and restrained emotional development. Create profound wonder, discovery and cosmic scale without becoming dramatic or overwhelming. The composition should feel timeless, connecting the ancient origins of human knowledge with the immensity of the universe. Develop a distinctive, emotionally memorable musical identity without relying on a repetitive or intrusive melody. No vocals, no lyrics, no heavy percussion, no dramatic trailer crescendos, no aggressive electronic sounds, no sudden transitions. Designed for extended listening and seamless looping in an interactive game. Maintain a consistent atmosphere throughout, with a soft ending harmonically compatible with the beginning. Create a complete instrumental composition of approximately four minutes.",
+          "promptHash": "3276445dc36ac4d0ef325173f04b31a82355a37b0846d1344079653777f8775c",
+          "createdAt": "2026-11-17T18:31:55.664Z",
+          "status": "pending-review",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "eternity-of-knowledge-6e96a676-666b-4a83-8361-dc98a7e63c7f.mp3",
+          "durationMs": 180114,
+          "bytes": 4330459,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": true,
+            "startSeconds": 0,
+            "endSeconds": 180.114,
+            "crossfadeMs": 3000
+          },
+          "generatedAt": "2026-11-17T18:32:25.803Z",
+          "interactionId": "v1_ChduSjM4YXZtTEJiM213YlVQdXR1VDhBOBIXbkozOGF2bUxCYjNtd2JVUHV0dVQ4QTg",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 4330459,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 180.114,
+          "volume": 1
+        }
+      ],
+      "previewVersionId": "6e96a676-666b-4a83-8361-dc98a7e63c7f",
+      "approvedVersionId": null
+    },
+    "paths-of-discovery": {
+      "versions": [
+        {
+          "id": "ef98a21f-ecb9-4335-aa24-8d5e28fba245",
+          "requestId": "1a35cbc3-4f74-4d6a-a0c7-10b1d6428825",
+          "model": "lyria-3.5",
+          "prompt": "An original instrumental historical adventure soundtrack for a video game about humanity's journey through scientific discovery. Evoking ancient ruins, forgotten knowledge, mysterious pathways, archaeological exploration and the excitement of embarking on a new adventure. Inspired by medieval fantasy exploration music, with an elegant, warm and timeless atmosphere. Use acoustic lute, delicate wooden flutes, harp, expressive chamber strings, gentle pizzicato patterns and light organic percussion. Moderate tempo, approximately 90–95 BPM. Create a memorable but understated melodic theme that conveys curiosity, movement, exploration and optimism. The music should feel adventurous and slightly mysterious, as if the player were exploring an ancient sanctuary containing the secrets of human knowledge. Maintain sophistication and emotional warmth. Develop the musical theme through subtle instrumental variations, maintaining a pleasant sense of movement without becoming repetitive or tiring. No vocals, no lyrics, no battle drums, no epic combat music, no tavern atmosphere, no aggressive orchestral crescendos. Designed for repeated listening and seamless looping. Use smooth musical transitions and a natural ending compatible with the opening. Create a complete instrumental composition of approximately three and a half minutes.",
+          "promptHash": "193dfac7273ff48552482f7d90ed7ab0167bf0b65ec86fa8dd888dd8308050ae",
+          "createdAt": "2026-11-17T18:33:15.609Z",
+          "status": "pending-review",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "paths-of-discovery-ef98a21f-ecb9-4335-aa24-8d5e28fba245.mp3",
+          "durationMs": 161724,
+          "bytes": 3889095,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": true,
+            "startSeconds": 0,
+            "endSeconds": null,
+            "crossfadeMs": 2500
+          },
+          "generatedAt": "2026-11-17T18:33:42.898Z",
+          "interactionId": "v1_Chc2NTM4YXFYcU9wSFZpTE1QaXNtYnlBSRIXNjUzOGFxWHFPcEhWaUxNUGlzbWJ5QUk",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 3889095,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          }
+        }
+      ],
+      "previewVersionId": "ef98a21f-ecb9-4335-aa24-8d5e28fba245",
+      "approvedVersionId": null
+    },
+    "the-clockmaker-of-time": {
+      "versions": [
+        {
+          "id": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0",
+          "requestId": "32426080-0691-4110-a4ac-e411cbdc55b2",
+          "model": "lyria-3.5",
+          "prompt": "An original, extremely subtle instrumental underscore for a cinematic historical video game scene set inside John Harrison's clockmaker workshop in London, England, in 1760. Evoking the intellectual spirit of eighteenth-century Britain, scientific curiosity, mechanical invention, craftsmanship, patience and the quiet pursuit of precision. Inspired by late Baroque and early Classical chamber music heard in eighteenth-century Britain; do not imitate any existing composition. Calm, serene, intimate, dignified and contemplative. Use very soft cello, sustained viola, delicate violin harmonies and occasional sparse harpsichord notes. Slow tempo, approximately 55–60 BPM. The arrangement must remain minimal, spacious and unobtrusive, almost like a gentle musical presence in the background. An elderly male narrator will speak over this music. Leave ample acoustic and emotional space for his voice. Convey subtle warmth, quiet ingenuity and the atmosphere of an inventor's workshop. Use sparse musical phrases, restrained harmonic movement and soft sustained textures, allowing moments of near silence. Avoid prominent melodies, busy harpsichord passages, virtuosic runs, rhythmic complexity, dramatic crescendos or strong musical accents. No vocals, no lyrics, no narration, no percussion, no modern electronic instruments, no clock ticking, no mechanical sound effects and no environmental noises. The music should remain gentle and emotionally restrained throughout, with a subtle sense of mystery and anticipation. Create a complete instrumental underscore of approximately two minutes and forty-five seconds.",
+          "promptHash": "35d1aabe27059ecd799969ecd59a48a3a4c12f07fea2ce18a3dffd67551ea3b8",
+          "createdAt": "2026-11-17T18:34:14.948Z",
+          "status": "approved",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "the-clockmaker-of-time-59a52e57-cd9f-4fa8-8b25-3716cfb034e0.mp3",
+          "durationMs": 157910,
+          "bytes": 3797562,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": 157.91,
+            "crossfadeMs": 1800
+          },
+          "generatedAt": "2026-11-17T18:34:49.686Z",
+          "interactionId": "v1_ChdLSjc4YXBQb0Q5MjdpTE1QaWNHTzBBNBIXS0o3OGFwUG9EOTI3aUxNUGljR08wQTQ",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 3797562,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 157.91,
+          "volume": 1,
+          "approvedAt": "2026-11-17T20:56:45.847Z"
+        }
+      ],
+      "previewVersionId": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0",
+      "approvedVersionId": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "characterId": "john-harrison",
+  "profileVersion": 3,
+  "displayName": "John Harrison (SharpStone Phys)",
+  "description": "Homem de aproximadamente 67 anos, experiente, humilde, meticuloso, curioso e reflexivo. A fala é íntima, calorosa e serena.",
+  "voiceDescription": "Homem de aproximadamente 67 anos, voz bem grave e um pouco rouca,  relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo.",
+  "voiceId": "voice_747i4h0c16gw",
+  "model": "gemini-3.8-flash-tts",
+  "language": "pt-BR",
+  "status": "approved",
+  "approval": "2026-11-17T17:04:11.1722164Z",
+  "interpretationApproved": false,
+  "approvedInterpretationId": null,
+  "referenceSampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_747i4h0c16gw-e0dc3a86.wav",
+  "approvedDirection": null,
+  "interpretationApproval": null
+}

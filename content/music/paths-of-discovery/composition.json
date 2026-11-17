@@ -1,0 +1,27 @@
+{
+  "id": "paths-of-discovery",
+  "name": {
+    "pt-BR": "Os Caminhos da Descoberta",
+    "en": "Paths of Discovery"
+  },
+  "description": {
+    "pt-BR": "Tema de aventura histórica para o mapa dos atos.",
+    "en": "Historical adventure theme for the acts map."
+  },
+  "application": [
+    "acts-map",
+    "act-navigation",
+    "scroll-opening-and-closing"
+  ],
+  "targetDurationSeconds": 210,
+  "targetBpm": "90–95",
+  "defaultVolume": 0.3,
+  "loop": {
+    "enabled": true,
+    "startSeconds": 0,
+    "endSeconds": null,
+    "crossfadeMs": 2500
+  },
+  "status": "awaiting-review",
+  "previewVersionId": "ef98a21f-ecb9-4335-aa24-8d5e28fba245"
+}

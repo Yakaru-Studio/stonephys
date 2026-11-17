@@ -4,6 +4,8 @@ import { constellations, type ConstellationConfig, type ConstellationStar } from
 import './constellation.css'
 import AudioControls from './audio/AudioControls'
 import { audioManager } from './audio/AudioManager'
+import { localizeConstellation, useLocale } from './i18n'
+import type { AppLocale } from './i18n'
 
 const backgroundStars = [
   [73, 83], [164, 146], [265, 93], [352, 202], [426, 119], [553, 78], [642, 169], [827, 115],
@@ -37,9 +39,10 @@ function SunMoonMark() {
   </g>
 }
 
-function StarButton({ star, state, onSelect, onUnlock }: {
+function StarButton({ star, state, onSelect, onUnlock, locale }: {
   star: ConstellationStar
   state: string
+  locale: AppLocale
   onSelect: () => void
   onUnlock: () => void
 }) {
@@ -49,7 +52,7 @@ function StarButton({ star, state, onSelect, onUnlock }: {
     className={`constellation-star star-${state} ${star.emblem ? 'star-has-emblem' : ''}`}
     transform={`translate(${star.x} ${star.y})`}
     role="button"
-    aria-label={`${star.title}${isLocked ? ', bloqueada, clique para desbloquear' : state === 'completed' ? ', concluída' : ', desbloqueada'}`}
+    aria-label={`${star.title}${locale === 'en' ? isLocked ? ', locked, click to unlock' : state === 'completed' ? ', completed' : ', unlocked' : isLocked ? ', bloqueada, clique para desbloquear' : state === 'completed' ? ', concluída' : ', desbloqueada'}`}
     aria-disabled={false}
     tabIndex={0}
     onClick={activate}
@@ -85,13 +88,14 @@ function StarButton({ star, state, onSelect, onUnlock }: {
 
 type CompactLayout = 'portrait' | 'landscape' | null
 
-function ConstellationMap({ config, unlockedStarIds, completedStarIds, compactLayout, onSelectStar, onUnlockStar }: {
+function ConstellationMap({ config, unlockedStarIds, completedStarIds, compactLayout, onSelectStar, onUnlockStar, locale }: {
   config: ConstellationConfig
   unlockedStarIds: string[]
   completedStarIds: string[]
   compactLayout: CompactLayout
   onSelectStar: (star: ConstellationStar) => void
   onUnlockStar: (star: ConstellationStar) => void
+  locale: AppLocale
 }) {
   const renderedStars = compactLayout === 'portrait'
     ? config.stars.map((star) => ({ ...star, x: 500 + (star.x - 500) * 0.6 }))
@@ -101,7 +105,7 @@ function ConstellationMap({ config, unlockedStarIds, completedStarIds, compactLa
   const starById = new Map(renderedStars.map((star) => [star.id, star]))
   const revealedStars = new Set([...unlockedStarIds, ...completedStarIds])
   const isComplete = config.stars.every((star) => completedStarIds.includes(star.id))
-  return <svg className="constellation-map" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-label={`Constelação de ${config.name}`}>
+  return <svg className="constellation-map" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-label={locale === 'en' ? `Constellation of ${config.name}` : `Constelação de ${config.name}`}>
     <g className="constellation-lines" aria-hidden="true">
       {isComplete && <g className="constellation-watermark">
         {config.moduleId === 'time' ? <g className="watermark-icon-time" transform="translate(500 500) scale(10 8)">
@@ -134,6 +138,7 @@ function ConstellationMap({ config, unlockedStarIds, completedStarIds, compactLa
       state={getStarState(star.id, unlockedStarIds, completedStarIds)}
       onSelect={() => onSelectStar(star)}
       onUnlock={() => onUnlockStar(star)}
+      locale={locale}
     />)}
   </svg>
 }
@@ -148,7 +153,8 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
   onCompleteAll: () => void
   onOpenArc?: (star: ConstellationStar) => void
 }) {
-  const config = constellations[moduleId]
+  const { locale, t } = useLocale()
+  const config = localizeConstellation(locale, constellations[moduleId])
   const [selectedStar, setSelectedStar] = useState<ConstellationStar | null>(null)
   const [isLeaving, setIsLeaving] = useState(false)
   const [compactLayout, setCompactLayout] = useState<CompactLayout>(() => {
@@ -199,7 +205,7 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
 
   return <main
     className={`constellation-screen ${isLeaving ? 'is-leaving' : ''}`}
-    aria-label={`Constelação do módulo ${config.name}`}
+    aria-label={locale === 'en' ? `${config.name} module constellation` : `Constelação do módulo ${config.name}`}
     onAnimationEnd={(event) => {
       if (event.target === event.currentTarget && isLeaving) onBack()
     }}
@@ -218,48 +224,48 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
     </svg>
 
     <header className="constellation-header">
-      <button className="constellation-back" onClick={handleBack} disabled={isLeaving} aria-label="Voltar aos módulos"><ArrowLeft size={19} /></button>
+      <button className="constellation-back" onClick={handleBack} disabled={isLeaving} aria-label={t('constellation.back')}><ArrowLeft size={19} /></button>
       <div className="constellation-heading">
-        <p>CONSTELAÇÃO</p>
+        <p>{locale === 'en' ? 'CONSTELLATION' : 'CONSTELAÇÃO'}</p>
         <h1>{config.name}</h1>
         <span>{config.eyebrow}</span>
       </div>
       <div className="constellation-header-tools">
-        <div className="constellation-count" aria-label={`${completedStarIds.length} de ${config.stars.length} etapas concluídas`}>
+        <div className="constellation-count" aria-label={locale === 'en' ? `${completedStarIds.length} of ${config.stars.length} stages completed` : `${completedStarIds.length} de ${config.stars.length} etapas concluídas`}>
           <strong>{completedStarIds.length.toString().padStart(2, '0')}</strong><span> / {config.stars.length.toString().padStart(2, '0')}</span>
         </div>
         <AudioControls />
       </div>
     </header>
 
-    <ConstellationMap config={config} unlockedStarIds={unlockedStarIds} completedStarIds={completedStarIds} compactLayout={compactLayout} onSelectStar={(star) => {
+    <ConstellationMap config={config} unlockedStarIds={unlockedStarIds} completedStarIds={completedStarIds} compactLayout={compactLayout} locale={locale} onSelectStar={(star) => {
       audioManager.play('starSelect')
       setSelectedStar(star)
     }} onUnlockStar={(star) => onUnlockStar(star.id)} />
 
     <div className="constellation-footer" aria-live="polite">
-      {isFinished ? 'Constelação completa' : `${lockedCount} estrelas ainda aguardam descoberta`}
-      <div className="constellation-progress" aria-label={`${completedStarIds.length} de ${config.stars.length} etapas concluídas`}>
+      {isFinished ? (locale === 'en' ? 'Constellation complete' : 'Constelação completa') : (locale === 'en' ? `${lockedCount} stars await discovery` : `${lockedCount} estrelas ainda aguardam descoberta`)}
+      <div className="constellation-progress" aria-label={locale === 'en' ? `${completedStarIds.length} of ${config.stars.length} stages completed` : `${completedStarIds.length} de ${config.stars.length} etapas concluídas`}>
         {config.stars.map((star) => <span key={star.id} className={completedStarIds.includes(star.id) ? 'filled' : unlockedStarIds.includes(star.id) ? 'current' : ''} />)}
       </div>
       <button className="constellation-complete-all" type="button" onClick={onCompleteAll} disabled={isFinished}>
-        {isFinished ? 'Tudo concluído' : 'Concluir tudo · teste'}
+        {isFinished ? (locale === 'en' ? 'Everything complete' : 'Tudo concluído') : locale === 'en' ? 'Complete all · test' : 'Concluir tudo · teste'}
       </button>
     </div>
 
     {selectedStar && <div className="stage-backdrop" onClick={() => setSelectedStar(null)}>
       <section className="stage-panel" role="dialog" aria-modal="true" aria-labelledby="stage-title" onClick={(event) => event.stopPropagation()}>
-        <button className="stage-close" onClick={() => setSelectedStar(null)} aria-label="Fechar etapa"><X size={18} /></button>
-        <p className="stage-eyebrow">{selectedIsCompleted ? 'ETAPA CONCLUÍDA' : isFinished ? 'CONSTELAÇÃO COMPLETA' : `ETAPA ${String(selectedIndex + 1).padStart(2, '0')}`}</p>
-        {selectedStar.emblem === 'sun-moon' && <div className="stage-emblem-frame" aria-label="Emblema do Sol e da Lua">
+        <button className="stage-close" onClick={() => setSelectedStar(null)} aria-label={locale === 'en' ? 'Close stage' : 'Fechar etapa'}><X size={18} /></button>
+        <p className="stage-eyebrow">{selectedIsCompleted ? (locale === 'en' ? 'STAGE COMPLETED' : 'ETAPA CONCLUÍDA') : isFinished ? (locale === 'en' ? 'CONSTELLATION COMPLETE' : 'CONSTELAÇÃO COMPLETA') : `${locale === 'en' ? 'STAGE' : 'ETAPA'} ${String(selectedIndex + 1).padStart(2, '0')}`}</p>
+        {selectedStar.emblem === 'sun-moon' && <div className="stage-emblem-frame" aria-label={locale === 'en' ? 'Sun and Moon emblem' : 'Emblema do Sol e da Lua'}>
           <svg viewBox="-24 -24 48 48" aria-hidden="true"><circle className="stage-emblem-orbit" r="22"/><SunMoonMark /></svg>
         </div>}
         <h2 id="stage-title">{selectedStar.title}</h2>
         <p className="stage-description">{selectedStar.description}</p>
-        {onOpenArc && <button className="stage-open-arc" onClick={() => onOpenArc(selectedStar)}>Explorar arco <span aria-hidden="true">✧</span></button>}
+        {onOpenArc && <button className="stage-open-arc" onClick={() => onOpenArc(selectedStar)}>{locale === 'en' ? 'Explore arc' : 'Explorar arco'} <span aria-hidden="true">✧</span></button>}
         {selectedIsCompleted || isFinished
-          ? <div className="stage-completed"><Check size={16} /> Descoberta registrada</div>
-          : <button className="stage-complete" onClick={completeStage}>Concluir etapa <span aria-hidden="true">↗</span></button>}
+          ? <div className="stage-completed"><Check size={16} /> {locale === 'en' ? 'Discovery recorded' : 'Descoberta registrada'}</div>
+          : <button className="stage-complete" onClick={completeStage}>{locale === 'en' ? 'Complete stage' : 'Concluir etapa'} <span aria-hidden="true">↗</span></button>}
       </section>
     </div>}
   </main>

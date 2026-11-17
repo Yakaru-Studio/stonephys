@@ -1,0 +1,507 @@
+Port 5173 is in use, trying another one...
+Port 5174 is in use, trying another one...
+
+  VITE v8.3.8  ready in 322 ms
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: http://100.64.0.1:5175/    Conexão Local
+  ➜  Network: http://192.168.0.86:5175/  Wi-Fi
+08:49:15 [vite] (client) hmr update /src/NeuronScene.tsx
+09:01:35 [vite] (client) hmr update /src/App.tsx
+09:01:41 [vite] (client) hmr update /src/App.tsx
+09:02:36 [vite] (client) hmr update /src/App.tsx
+09:06:39 [vite] (client) hmr update /src/App.tsx
+09:07:39 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:07:39 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:07:58 [vite] (client) hmr update /src/constellation.css
+09:07:58 [vite] (client) hmr update /src/constellation.css
+09:08:18 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:10:02 [vite] (client) hmr update /src/constellation.css
+09:12:44 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:12:54 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:15:14 [vite] (client) hmr update /src/constellation.css
+09:15:14 [vite] (client) hmr update /src/constellation.css
+09:19:32 [vite] (client) hmr update /src/constellation.css
+09:22:07 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:22:14 [vite] (client) hmr update /src/constellation.css
+09:23:42 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:23:50 [vite] (client) hmr update /src/constellation.css
+09:26:57 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:27:06 [vite] (client) hmr update /src/constellation.css
+09:27:24 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:29:19 [vite] (client) hmr update /src/App.tsx
+09:29:27 [vite] (client) hmr update /src/Neuron.tsx
+09:29:39 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:30:03 [vite] (client) hmr update /src/constellation.css
+09:35:54 [vite] (client) hmr update /src/App.tsx
+09:35:59 [vite] (client) hmr update /src/App.tsx
+09:36:38 [vite] (client) hmr update /src/App.tsx
+09:36:58 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:37:02 [vite] (client) hmr update /src/App.tsx
+09:37:10 [vite] (client) hmr update /src/constellation.css
+09:43:21 [vite] (client) hmr update /src/style-overrides.css
+09:43:39 [vite] (client) hmr update /src/constellation.css
+09:46:11 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:50:04 [vite] (client) hmr update /src/audio/AudioControls.tsx
+09:50:18 [vite] (client) hmr update /src/audio/audio.css
+09:50:31 [vite] (client) hmr update /src/style-overrides.css
+09:50:39 [vite] (client) hmr update /src/constellation.css
+09:50:44 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:54:13 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:54:32 [vite] (client) hmr update /src/style-overrides.css
+09:54:48 [vite] (client) hmr update /src/style-overrides.css
+09:56:08 [vite] (client) hmr update /src/style-overrides.css
+09:56:15 [vite] (client) hmr update /src/constellation.css
+09:56:15 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:57:52 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:59:31 [vite] (client) hmr update /src/ConstellationPage.tsx
+10:02:05 [vite] (client) hmr update /src/ConstellationPage.tsx
+10:02:19 [vite] (client) hmr update /src/constellation.css
+10:03:59 [vite] (client) hmr update /src/ConstellationPage.tsx
+10:04:12 [vite] (client) hmr update /src/constellation.css
+10:06:19 [vite] (client) hmr update /src/constellation.css
+16:06:24 [vite] (client) hmr update /src/ConstellationPage.tsx
+16:07:08 [vite] (client) hmr update /src/App.tsx
+16:08:17 [vite] (client) hmr update /src/App.tsx, /src/ArcMapPage.tsx
+16:09:47 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:10:19 [vite] (client) hmr update /src/arc-map.css
+16:10:46 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:10:46 [vite] (client) hmr update /src/App.tsx
+16:20:07 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx
+16:21:38 [vite] (client) hmr update /src/ConstellationPage.tsx
+16:21:39 [vite] (client) hmr update /src/App.tsx, /src/ArcMapPage.tsx
+16:21:39 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:21:39 [vite] (client) hmr update /src/constellation.css
+16:21:40 [vite] (client) hmr update /src/arc-map.css
+16:25:19 [vite] (client) hmr update /src/ConstellationPage.tsx
+16:25:19 [vite] (client) hmr update /src/constellation.css
+16:25:31 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:25:31 [vite] (client) hmr update /src/arc-map.css
+16:27:46 [vite] (client) hmr update /src/ConstellationPage.tsx
+16:27:46 [vite] (client) hmr update /src/constellation.css
+16:27:47 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:33:05 [vite] (client) hmr update /src/NeuronScene.tsx
+16:34:49 [vite] (client) hmr update /src/ConstellationPage.tsx
+16:34:49 [vite] (client) hmr update /src/ConstellationPage.tsx
+16:35:08 [vite] (client) hmr update /src/ConstellationPage.tsx
+16:35:11 [vite] (client) hmr update /src/constellation.css
+16:35:18 [vite] (client) hmr update /src/style.css
+16:36:02 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:36:03 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:36:03 [vite] (client) hmr update /src/arc-map.css
+16:36:11 [vite] (client) hmr update /src/style.css
+16:37:46 [vite] (client) hmr update /src/constellation.css
+16:40:20 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:40:21 [vite] (client) hmr update /src/arc-map.css
+16:45:00 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:45:00 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:45:17 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:50:20 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:51:07 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:51:07 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:52:08 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:52:08 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:52:49 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:52:50 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:56:05 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:56:05 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:56:42 [vite] (client) hmr update /src/arc-map.css
+16:56:43 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:56:58 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:59:33 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:59:33 [vite] (client) hmr update /src/arc-map.css
+17:12:19 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:12:36 [vite] (client) hmr update /src/arc-map.css
+17:13:08 [vite] (client) page reload src/assets/arcs/greek-ruins-low-poly-clean.png
+17:13:08 [vite] (client) page reload src/assets/arcs/greek-ruins-low-poly.png
+17:20:15 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:20:16 [vite] (client) hmr update /src/arc-map.css
+17:20:48 [vite] (client) hmr update /src/ConstellationPage.tsx
+17:20:49 [vite] (client) hmr update /src/constellation.css
+17:21:15 [vite] (client) page reload src/assets/arcs/greek-ruins-final.png
+17:25:21 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:26:11 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:26:11 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:26:37 [vite] (client) hmr update /src/arc-map.css
+17:26:54 [vite] (client) hmr update /src/arc-map.css
+17:30:37 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:32:35 [vite] (client) hmr update /src/App.tsx, /src/ArcMapPage.tsx
+17:33:03 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:33:26 [vite] (client) hmr update /src/arc-map.css
+17:33:41 [vite] (client) hmr update /src/arc-map.css
+17:35:52 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:36:11 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:39:09 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:39:22 [vite] (client) hmr update /src/arc-map.css
+17:41:18 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:41:26 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:41:37 [vite] (client) hmr update /src/arc-map.css
+17:43:59 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:44:19 [vite] (client) hmr update /src/arc-map.css
+17:47:11 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:47:36 [vite] (client) hmr update /src/arc-map.css
+17:49:14 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:49:26 [vite] (client) hmr update /src/arc-map.css
+17:53:13 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:53:22 [vite] (client) hmr update /src/arc-map.css
+17:55:02 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:55:09 [vite] (client) hmr update /src/arc-map.css
+17:58:08 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:58:15 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:58:37 [vite] (client) hmr update /src/arc-map.css
+18:03:52 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:04:06 [vite] (client) hmr update /src/arc-map.css
+18:10:28 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:11:04 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:11:19 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:12:06 [vite] (client) hmr update /src/arc-map.css
+18:13:32 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:13:54 [vite] (client) hmr update /src/arc-map.css
+18:47:59 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:48:14 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:49:01 [vite] (client) hmr update /src/arc-map.css
+18:53:47 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:54:28 [vite] (client) hmr update /src/arc-map.css
+18:54:39 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:55:30 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:55:39 [vite] (client) hmr update /src/arc-map.css
+19:28:10 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:28:27 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:28:51 [vite] (client) hmr update /src/arc-map.css
+19:29:04 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:29:09 [vite] (client) hmr update /src/arc-map.css
+19:38:22 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:39:48 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:40:28 [vite] (client) hmr update /src/arc-map.css
+19:41:26 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:41:34 [vite] (client) hmr update /src/arc-map.css
+19:45:38 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:46:45 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:47:18 [vite] (client) hmr update /src/arc-map.css
+19:50:15 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:50:29 [vite] (client) hmr update /src/arc-map.css
+19:56:34 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:56:41 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:56:51 [vite] (client) hmr update /src/arc-map.css
+20:01:20 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:01:57 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:02:07 [vite] (client) hmr update /src/arc-map.css
+20:03:01 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:03:06 [vite] (client) hmr update /src/arc-map.css
+20:05:13 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:05:20 [vite] (client) hmr update /src/arc-map.css
+20:07:00 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:07:57 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:10:33 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:10:54 [vite] (client) hmr update /src/arc-map.css
+20:12:49 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:13:51 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:14:02 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:16:18 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:16:29 [vite] (client) hmr update /src/arc-map.css
+20:18:36 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:18:43 [vite] (client) hmr update /src/arc-map.css
+20:20:07 [vite] (client) hmr update /src/arc-map.css
+20:21:55 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:22:05 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:22:36 [vite] (client) hmr update /src/arc-map.css
+20:22:59 [vite] (client) hmr update /src/arc-map.css
+20:23:56 [vite] (client) hmr update /src/arc-map.css
+20:25:21 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:28:19 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:28:42 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:29:06 [vite] (client) hmr update /src/arc-map.css
+20:31:56 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:32:38 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:32:44 [vite] (client) hmr update /src/arc-map.css
+20:57:26 [vite] (client) hmr update /src/App.tsx, /src/ArcMapPage.tsx
+20:57:46 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:58:10 [vite] (client) hmr update /src/App.tsx
+20:59:07 [vite] (client) hmr update /src/ArcMapPage.tsx
+20:59:42 [vite] (client) hmr update /src/arc-map.css
+20:59:51 [vite] (client) hmr update /src/arc-map.css
+21:00:24 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:00:33 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:02:16 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:05:37 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:05:58 [vite] (client) hmr update /src/arc-map.css
+21:12:24 [vite] (client) hmr update /src/arc-map.css
+21:12:34 [vite] (client) hmr update /src/ConstellationPage.tsx
+21:12:41 [vite] (client) hmr update /src/App.tsx
+21:12:50 [vite] (client) hmr update /src/constellation.css
+21:19:44 [vite] (client) hmr update /src/Neuron.tsx
+21:19:58 [vite] (client) hmr update /src/App.tsx
+21:20:14 [vite] (client) hmr update /src/arc-map.css
+21:21:02 [vite] (client) hmr update /src/Neuron.tsx
+21:24:15 [vite] (client) hmr update /src/App.tsx, /src/ArcMapPage.tsx
+21:24:29 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:25:05 [vite] (client) hmr update /src/arc-map.css
+21:31:01 [vite] (client) hmr update /src/arc-map.css
+21:34:28 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:35:03 [vite] (client) hmr update /src/arc-map.css
+21:35:32 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:35:36 [vite] (client) hmr update /src/arc-map.css
+21:39:09 [vite] (client) hmr update /src/App.tsx, /src/ArcMapPage.tsx
+21:40:14 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:40:32 [vite] (client) hmr update /src/arc-map.css
+21:43:10 [vite] (client) hmr update /src/ActSiteArt.tsx
+21:43:48 [vite] (client) hmr update /src/ActSiteArt.tsx
+21:44:28 [vite] (client) hmr update /src/arc-map.css
+21:44:53 [vite] (client) hmr update /src/ActSiteArt.tsx
+21:45:50 [vite] (client) hmr update /src/ActSiteArt.tsx
+21:45:56 [vite] (client) hmr update /src/arc-map.css
+21:47:44 [vite] (client) hmr update /src/ActSiteArt.tsx
+21:47:52 [vite] (client) hmr update /src/arc-map.css
+21:50:40 [vite] (client) hmr update /src/arc-map.css
+21:52:44 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:53:21 [vite] (client) hmr update /src/arc-map.css
+21:53:37 [vite] (client) hmr update /src/ActSiteArt.tsx
+21:55:02 [vite] (client) hmr update /src/ActSiteArt.tsx
+21:58:59 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:58:59 [vite] (client) hmr update /src/ArcMapPage.tsx
+21:59:13 [vite] (client) hmr update /src/ArcMapPage.tsx
+22:02:05 [vite] (client) hmr update /src/arc-map.css
+22:03:33 [vite] (client) hmr update /src/ArcMapPage.tsx
+22:03:53 [vite] (client) hmr update /src/arc-map.css
+09:32:34 [vite] (client) hmr update /src/ArcMapPage.tsx
+09:33:04 [vite] (client) hmr update /src/ArcMapPage.tsx
+09:33:19 [vite] (client) hmr update /src/arc-map.css
+09:33:32 [vite] (client) hmr update /src/ArcMapPage.tsx
+09:34:56 [vite] (client) hmr update /src/ArcMapPage.tsx
+09:35:19 [vite] (client) hmr update /src/arc-map.css
+10:35:32 [vite] (client) hmr update /src/App.tsx
+10:36:14 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+10:36:15 [vite] (client) hmr update /src/scenes/historical-scene.css
+10:37:41 [vite] (client) hmr update /src/App.tsx
+10:37:41 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+10:39:32 [vite] (client) hmr update /src/App.tsx
+10:39:33 [vite] (client) hmr update /src/scenes/historical-scene.css
+10:40:56 [vite] (client) hmr update /src/scenes/historical-scene.css
+10:57:50 [vite] (client) hmr update /src/ArcMapPage.tsx
+11:02:51 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:02:52 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:03:28 [vite] (client) hmr update /src/scenes/historical-scene.css
+11:07:20 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:10:11 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:16:22 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:16:23 [vite] (client) hmr update /src/scenes/historical-scene.css
+11:17:37 [vite] (client) hmr update /src/scenes/time/HarrisonWorkshopExperience.tsx
+11:23:16 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:28:40 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:28:40 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:28:41 [vite] (client) hmr update /src/scenes/historical-scene.css
+11:29:02 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+11:51:12 [vite] (client) hmr update /src/scenes/time/HarrisonWorkshopExperience.tsx
+11:51:49 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx
+11:51:50 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx
+11:51:58 [vite] (client) hmr update /src/audio/AudioControls.tsx
+11:51:58 [vite] (client) hmr update /src/audio/AudioControls.tsx
+11:53:02 [vite] vite.config.ts changed, restarting server...
+11:53:03 [vite] (client) Re-optimizing dependencies because vite config has changed
+11:53:03 [vite] server restarted.
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: http://100.64.0.1:5175/    Conexão Local
+  ➜  Network: http://100.80.128.1:5175/  Conexão Local 2
+  ➜  Network: http://192.168.0.86:5175/  Wi-Fi
+11:53:05 [vite] (client) [optimizer] bundling dependencies...
+11:57:10 [vite] vite.config.ts changed, restarting server...
+11:57:10 [vite] server restarted.
+11:58:18 [vite] (client) hmr update /src/App.tsx
+12:02:12 [vite] vite.config.ts changed, restarting server...
+12:02:34 [vite] vite.config.ts changed, restarting server...
+12:02:34 [vite] server restarted.
+12:03:45 [vite] vite.config.ts changed, restarting server...
+12:03:46 [vite] server restarted.
+12:07:51 [vite] vite.config.ts changed, restarting server...
+12:07:52 [vite] server restarted.
+12:08:14 [vite] vite.config.ts changed, restarting server...
+12:08:14 [vite] server restarted.
+12:08:29 [vite] vite.config.ts changed, restarting server...
+12:08:30 [vite] server restarted.
+12:09:10 [vite] vite.config.ts changed, restarting server...
+12:09:10 [vite] vite.config.ts changed, restarting server...
+12:09:10 [vite] server restarted.
+12:09:10 [vite] server restarted.
+12:11:55 [vite] (client) page reload src/main.tsx
+12:11:56 [vite] (client) page reload index.html
+12:12:25 [vite] (client) hmr update /src/audio/AudioControls.tsx
+12:12:38 [vite] (client) hmr update /src/audio/audio.css
+12:13:33 [vite] (client) hmr update /src/App.tsx
+12:14:10 [vite] (client) hmr update /src/i18n.tsx
+12:14:10 [vite] (client) hmr invalidate /src/i18n.tsx Could not Fast Refresh (export "localizeArc" added)
+12:14:10 [vite] (client) page reload src/i18n.tsx
+12:14:58 [vite] (client) hmr update /src/ConstellationPage.tsx
+12:16:08 [vite] (client) hmr update /src/ArcMapPage.tsx
+12:18:22 [vite] (client) hmr update /src/App.tsx
+12:23:31 [vite] vite.config.ts changed, restarting server...
+12:23:32 [vite] server restarted.
+12:23:59 [vite] vite.config.ts changed, restarting server...
+12:23:59 [vite] server restarted.
+12:26:00 [vite] vite.config.ts changed, restarting server...
+12:26:00 [vite] server restarted.
+12:27:22 [vite] (client) hmr update /src/ConstellationPage.tsx
+12:27:36 [vite] (client) hmr update /src/ArcMapPage.tsx
+12:27:36 [vite] (client) hmr update /src/ArcMapPage.tsx
+12:31:33 [vite] vite.config.ts changed, restarting server...
+12:31:33 [vite] server restarted.
+12:32:00 [vite] (client) hmr update /src/Neuron.tsx
+12:32:01 [vite] (client) hmr update /src/App.tsx
+12:32:11 [vite] (client) hmr update /src/i18n.tsx
+12:32:11 [vite] (client) hmr invalidate /src/i18n.tsx Could not Fast Refresh ("localizeArc" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:32:11 [vite] (client) page reload src/i18n.tsx
+12:32:26 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx
+12:33:36 [vite] src/narration/productionGates.mjs changed, restarting server...
+12:33:36 [vite] server restarted.
+12:33:37 [vite] vite.config.ts changed, restarting server...
+12:33:38 [vite] server restarted.
+12:36:06 [vite] vite.config.ts changed, restarting server...
+12:36:06 [vite] server restarted.
+12:37:20 [vite] vite.config.ts changed, restarting server...
+12:37:20 [vite] server restarted.
+12:40:38 [vite] .env changed, restarting server...
+12:40:38 [vite] server restarted.
+12:41:00 [vite] .env changed, restarting server...
+12:41:00 [vite] server restarted.
+12:41:01 [vite] .env changed, restarting server...
+12:41:01 [vite] server restarted.
+12:50:41 [vite] .env.local changed, restarting server...
+12:50:41 [vite] .env changed, restarting server...
+12:50:41 [vite] server restarted.
+12:50:41 [vite] server restarted.
+12:57:59 [vite] vite.config.ts changed, restarting server...
+12:57:59 [vite] server restarted.
+12:58:48 [vite] vite.config.ts changed, restarting server...
+12:58:48 [vite] server restarted.
+13:05:05 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:05:57 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:10:38 [vite] src/narration/productionGates.mjs changed, restarting server...
+13:10:38 [vite] server restarted.
+13:11:09 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:12:06 [vite] src/narration/productionGates.mjs changed, restarting server...
+13:12:07 [vite] server restarted.
+13:13:46 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:23:11 [vite] src/narration/productionGates.mjs changed, restarting server...
+13:23:11 [vite] server restarted.
+13:23:46 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:24:16 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:25:44 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:26:48 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:28:05 [vite] src/narration/productionGates.mjs changed, restarting server...
+13:28:06 [vite] server restarted.
+13:28:07 [vite] vite.config.ts changed, restarting server...
+13:28:08 [vite] server restarted.
+13:56:46 [vite] src/narration/productionGates.mjs changed, restarting server...
+13:56:46 [vite] server restarted.
+13:57:11 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:58:20 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:59:42 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+13:59:47 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:00:31 [vite] vite.config.ts changed, restarting server...
+14:00:32 [vite] server restarted.
+14:01:59 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:02:07 [vite] src/narration/productionGates.mjs changed, restarting server...
+14:02:07 [vite] server restarted.
+14:04:39 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:12:23 [vite] vite.config.ts changed, restarting server...
+14:12:23 [vite] server restarted.
+14:13:05 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:13:05 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:13:33 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:14:16 [vite] (client) hmr update /src/narration/voice-studio.css
+14:15:48 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:16:12 [vite] vite.config.ts changed, restarting server...
+14:16:12 [vite] server restarted.
+14:22:07 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:22:40 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+14:38:54 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+14:38:54 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+14:39:04 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+14:39:18 [vite] (client) hmr update /src/narration/VoiceStudio.tsx, /src/scenes/time/HarrisonWorkshopExperience.tsx
+14:40:59 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+14:42:18 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+14:42:58 [vite] (client) hmr update /src/scenes/historical-scene.css
+14:44:23 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+14:47:16 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+14:50:56 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+14:51:02 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+14:51:33 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+14:52:12 [vite] (client) hmr update /src/scenes/historical-scene.css
+14:54:11 [vite] (client) hmr update /src/scenes/historical-scene.css
+14:55:12 [vite] (client) hmr update /src/scenes/historical-scene.css
+14:56:55 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+14:57:29 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+14:58:05 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+14:58:28 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+14:59:29 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+15:00:51 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+15:00:57 [vite] (client) hmr update /src/scenes/time/H4Watch.tsx
+15:01:19 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+15:05:25 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+15:08:47 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+15:09:02 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+15:20:15 [vite] vite.config.ts changed, restarting server...
+15:20:15 [vite] server restarted.
+15:20:53 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/ArcMapPage.tsx
+15:23:12 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+15:23:12 [vite] server restarted.
+15:25:52 [vite] (client) hmr update /src/App.tsx
+15:27:47 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+15:27:47 [vite] server restarted.
+15:28:02 [vite] (client) hmr update /src/App.tsx
+15:36:18 [vite] (client) hmr update /src/audio/AudioControls.tsx
+15:36:19 [vite] (client) hmr update /src/music/MusicStudio.tsx
+15:36:30 [vite] (client) hmr update /src/audio/audio.css
+15:36:30 [vite] (client) hmr update /src/music/music-studio.css
+15:38:14 [vite] (client) hmr update /src/music/MusicStudio.tsx
+15:38:14 [vite] (client) hmr update /src/music/MusicStudio.tsx
+15:39:29 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+15:39:29 [vite] server restarted.
+16:00:49 [vite] (client) hmr update /src/App.tsx
+16:01:42 [vite] (client) hmr update /src/App.tsx
+16:01:57 [vite] (client) hmr update /src/App.tsx
+16:05:15 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:05:24 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:05:44 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+16:05:45 [vite] server restarted.
+16:07:42 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+16:07:43 [vite] server restarted.
+16:10:25 [vite] (client) hmr update /src/App.tsx
+16:11:36 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx
+16:11:37 [vite] (client) hmr update /src/music/MusicStudio.tsx
+16:12:46 [vite] (client) hmr update /src/App.tsx
+16:12:57 [vite] (client) hmr update /src/App.tsx
+16:13:03 [vite] (client) hmr update /src/App.tsx
+16:13:15 [vite] (client) hmr update /src/App.tsx
+16:13:30 [vite] (client) hmr update /src/App.tsx
+16:16:27 [vite] (client) hmr update /src/App.tsx
+16:16:41 [vite] (client) hmr update /src/App.tsx
+16:17:29 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:17:30 [vite] (client) hmr update /src/App.tsx
+16:17:31 [vite] (client) hmr update /src/App.tsx
+16:18:54 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:19:08 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:19:09 [vite] (client) hmr update /src/App.tsx
+16:21:50 [vite] (client) hmr update /src/audio/AudioControls.tsx, /src/App.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:27:10 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:27:41 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+16:27:49 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+16:27:58 [vite] (client) hmr update /src/App.tsx
+17:15:23 [vite] (client) hmr update /src/App.tsx
+17:19:21 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+17:19:22 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+17:34:21 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+17:37:05 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+17:37:06 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+17:39:29 [vite] (client) hmr update /src/scenes/HistoricalScenePlayer.tsx
+17:48:49 [vite] (client) hmr update /src/App.tsx
+17:51:45 [vite] (client) hmr update /src/App.tsx
+17:51:46 [vite] (client) hmr update /src/music/MusicStudio.tsx
+17:56:36 [vite] (client) hmr update /src/App.tsx
+17:56:45 [vite] (client) hmr update /src/App.tsx
+17:56:47 [vite] (client) hmr update /src/App.tsx
+18:01:27 [vite] (client) hmr update /src/App.tsx
+18:01:28 [vite] (client) hmr update /src/App.tsx
+18:01:47 [vite] (client) hmr update /src/App.tsx
+18:01:48 [vite] (client) hmr update /src/App.tsx
+18:01:48 [vite] (client) hmr update /src/App.tsx

@@ -3,15 +3,18 @@ export type AudioSettings = {
   masterVolume: number
   effectsVolume: number
   musicVolume: number
+  voiceVolume: number
 }
 
 export const AUDIO_SETTINGS_KEY = 'stone-phys.audio-settings.v1'
+const previousDefaultVoiceVolume = 0.82
 
 export const defaultAudioSettings: AudioSettings = {
   enabled: true,
   masterVolume: 0.72,
   effectsVolume: 0.58,
   musicVolume: 0.28,
+  voiceVolume: 0.74,
 }
 
 const clampVolume = (value: unknown, fallback: number) =>
@@ -28,6 +31,7 @@ export function loadAudioSettings(): AudioSettings {
       masterVolume: clampVolume(parsed.masterVolume, defaultAudioSettings.masterVolume),
       effectsVolume: clampVolume(parsed.effectsVolume, defaultAudioSettings.effectsVolume),
       musicVolume: clampVolume(parsed.musicVolume, defaultAudioSettings.musicVolume),
+      voiceVolume: clampVolume(parsed.voiceVolume === previousDefaultVoiceVolume ? defaultAudioSettings.voiceVolume : parsed.voiceVolume, defaultAudioSettings.voiceVolume),
     }
   } catch {
     return defaultAudioSettings

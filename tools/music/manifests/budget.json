@@ -1,0 +1,7 @@
+{
+  "model": "lyria-3.5",
+  "modelPriceUsd": 0.08,
+  "sessionLimitUsd": 1.50,
+  "authorizedInitialCompositions": 3,
+  "notes": "Hard session cap of US$ 1.50 validated by server. Each generation requires an explicit confirmation. No automatic retries."
+}

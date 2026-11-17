@@ -1,0 +1,401 @@
+{
+  "sceneId": "harrison-workshop-1760",
+  "characterId": "john-harrison",
+  "language": "pt-BR",
+  "audioUrl": "/audio/narration/pt-BR/time/harrison-intro/harrison-intro-2026-11-17-932587.wav",
+  "durationMs": 33160,
+  "status": "approved",
+  "approvedAt": "2026-11-17T17:28:50.429Z",
+  "segments": [
+    {
+      "id": "harrison-caption-1",
+      "text": "Tempo... Estamos atravessando-o agora…",
+      "startMs": 200,
+      "endMs": 3200,
+      "wordTimings": [
+        {
+          "text": "Tempo.",
+          "startMs": 200,
+          "endMs": 500
+        },
+        {
+          "text": "Estamos",
+          "startMs": 1600,
+          "endMs": 2000
+        },
+        {
+          "text": "agora.",
+          "startMs": 2800,
+          "endMs": 3300
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-2",
+      "text": "E nesse exato momento,",
+      "startMs": 4200,
+      "endMs": 5400,
+      "wordTimings": [
+        {
+          "text": "exato",
+          "startMs": 4500,
+          "endMs": 4800
+        },
+        {
+          "text": "momento",
+          "startMs": 4800,
+          "endMs": 5400
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-3",
+      "text": "estou eu falando contigo,",
+      "startMs": 5500,
+      "endMs": 6900,
+      "wordTimings": [
+        {
+          "text": "estou",
+          "startMs": 5500,
+          "endMs": 5900
+        },
+        {
+          "text": "eu",
+          "startMs": 5900,
+          "endMs": 6100
+        },
+        {
+          "text": "falando",
+          "startMs": 6100,
+          "endMs": 6500
+        },
+        {
+          "text": "contigo.",
+          "startMs": 6500,
+          "endMs": 6900
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-4",
+      "text": "e minhas ideias,",
+      "startMs": 7800,
+      "endMs": 9100,
+      "wordTimings": [
+        {
+          "text": "E",
+          "startMs": 7800,
+          "endMs": 7900
+        },
+        {
+          "text": "minhas",
+          "startMs": 7900,
+          "endMs": 8200
+        },
+        {
+          "text": "ideias,",
+          "startMs": 8200,
+          "endMs": 9100
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-5",
+      "text": "criadas há séculos,",
+      "startMs": 9200,
+      "endMs": 10400,
+      "wordTimings": [
+        {
+          "text": "criadas",
+          "startMs": 9200,
+          "endMs": 9600
+        },
+        {
+          "text": "há",
+          "startMs": 9600,
+          "endMs": 9700
+        },
+        {
+          "text": "séculos,",
+          "startMs": 9700,
+          "endMs": 10400
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-6",
+      "text": "chegaram até ti…",
+      "startMs": 10900,
+      "endMs": 11900,
+      "wordTimings": [
+        {
+          "text": "chegaram",
+          "startMs": 10900,
+          "endMs": 11400
+        },
+        {
+          "text": "até",
+          "startMs": 11400,
+          "endMs": 11600
+        },
+        {
+          "text": "ti.",
+          "startMs": 11600,
+          "endMs": 11900
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-7",
+      "text": "Mas houve um tempo",
+      "startMs": 12800,
+      "endMs": 14700,
+      "wordTimings": [
+        {
+          "text": "Mas",
+          "startMs": 12800,
+          "endMs": 13200
+        },
+        {
+          "text": "houve",
+          "startMs": 13900,
+          "endMs": 14100
+        },
+        {
+          "text": "um",
+          "startMs": 14100,
+          "endMs": 14200
+        },
+        {
+          "text": "tempo",
+          "startMs": 14200,
+          "endMs": 14700
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-8",
+      "text": "em que o tempo não tinha nome…",
+      "startMs": 15300,
+      "endMs": 17700,
+      "wordTimings": [
+        {
+          "text": "em",
+          "startMs": 15300,
+          "endMs": 15400
+        },
+        {
+          "text": "que",
+          "startMs": 15400,
+          "endMs": 15600
+        },
+        {
+          "text": "o",
+          "startMs": 15600,
+          "endMs": 15800
+        },
+        {
+          "text": "tempo",
+          "startMs": 15800,
+          "endMs": 16400
+        },
+        {
+          "text": "não",
+          "startMs": 16800,
+          "endMs": 17000
+        },
+        {
+          "text": "tinha",
+          "startMs": 17000,
+          "endMs": 17300
+        },
+        {
+          "text": "nome.",
+          "startMs": 17300,
+          "endMs": 17700
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-9",
+      "text": "E vamos, juntos,",
+      "startMs": 18600,
+      "endMs": 20000,
+      "wordTimings": [
+        {
+          "text": "E",
+          "startMs": 18600,
+          "endMs": 18700
+        },
+        {
+          "text": "vamos",
+          "startMs": 18700,
+          "endMs": 19200
+        },
+        {
+          "text": "juntos",
+          "startMs": 19400,
+          "endMs": 20000
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-10",
+      "text": "descobrir como ele foi percebido,",
+      "startMs": 20600,
+      "endMs": 22700,
+      "wordTimings": [
+        {
+          "text": "descobrir",
+          "startMs": 20600,
+          "endMs": 21100
+        },
+        {
+          "text": "como",
+          "startMs": 21100,
+          "endMs": 21500
+        },
+        {
+          "text": "ele",
+          "startMs": 21500,
+          "endMs": 21700
+        },
+        {
+          "text": "foi",
+          "startMs": 21700,
+          "endMs": 21900
+        },
+        {
+          "text": "percebido,",
+          "startMs": 21900,
+          "endMs": 22700
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-11",
+      "text": "definido e mensurado.",
+      "startMs": 23200,
+      "endMs": 24400,
+      "wordTimings": [
+        {
+          "text": "definido",
+          "startMs": 23200,
+          "endMs": 24100
+        },
+        {
+          "text": "e",
+          "startMs": 24300,
+          "endMs": 24400
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-12",
+      "text": "Vamos viajar no tempo então.",
+      "startMs": 26000,
+      "endMs": 27500,
+      "wordTimings": [
+        {
+          "text": "Vamos",
+          "startMs": 26100,
+          "endMs": 26300
+        },
+        {
+          "text": "viajar",
+          "startMs": 26300,
+          "endMs": 26700
+        },
+        {
+          "text": "no",
+          "startMs": 26700,
+          "endMs": 26900
+        },
+        {
+          "text": "tempo,",
+          "startMs": 26900,
+          "endMs": 27300
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-13",
+      "text": "Mas, dessa vez,",
+      "startMs": 28000,
+      "endMs": 29100,
+      "wordTimings": [
+        {
+          "text": "então.",
+          "startMs": 27300,
+          "endMs": 27700
+        },
+        {
+          "text": "Mas",
+          "startMs": 28400,
+          "endMs": 28600
+        },
+        {
+          "text": "dessa",
+          "startMs": 28600,
+          "endMs": 28800
+        },
+        {
+          "text": "vez",
+          "startMs": 28800,
+          "endMs": 29100
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-14",
+      "text": "não ao futuro...",
+      "startMs": 29700,
+      "endMs": 30500,
+      "wordTimings": [
+        {
+          "text": "não",
+          "startMs": 29700,
+          "endMs": 29900
+        },
+        {
+          "text": "ao",
+          "startMs": 29900,
+          "endMs": 30000
+        },
+        {
+          "text": "futuro,",
+          "startMs": 30000,
+          "endMs": 30500
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-15",
+      "text": "e sim ao passado…",
+      "startMs": 31200,
+      "endMs": 32800,
+      "wordTimings": [
+        {
+          "text": "e",
+          "startMs": 31200,
+          "endMs": 31300
+        },
+        {
+          "text": "sim",
+          "startMs": 31300,
+          "endMs": 31600
+        },
+        {
+          "text": "ao",
+          "startMs": 32100,
+          "endMs": 32200
+        },
+        {
+          "text": "passado.",
+          "startMs": 32200,
+          "endMs": 32800
+        }
+      ]
+    }
+  ]
+}

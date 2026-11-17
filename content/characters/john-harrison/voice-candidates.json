@@ -1,0 +1,302 @@
+{
+  "characterId": "john-harrison",
+  "candidates": [
+    {
+      "id": "e0dc3a86-9ea7-42fb-859e-ec0524c5d428",
+      "voiceId": "voice_747i4h0c16gw",
+      "displayName": "John Harrison (Stone Phys)",
+      "type": "prompted",
+      "language": "pt-BR",
+      "voiceDescription": "Homem de aproximadamente 67 anos, voz bem grave e um pouco rouca,  relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo.",
+      "status": "approved",
+      "createdAt": "2026-11-17T16:49:28.852Z",
+      "sampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_747i4h0c16gw-e0dc3a86.wav",
+      "samples": [
+        {
+          "id": "4492a302-9cd5-4621-b5c7-ebfa4b8926ea",
+          "kind": "audition",
+          "fileName": "harrison-audition-2026-11-17T17-06-33-831Z-be018c04.wav",
+          "url": "/__voice-studio/api/candidate-file/harrison-audition-2026-11-17T17-06-33-831Z-be018c04.wav",
+          "voiceId": "voice_747i4h0c16gw",
+          "direction": "Leia a amostra em português brasileiro a 75–85 palavras por minuto, com uma pausa contemplativa natural depois de “Tempo...”. Preserve dicção clara, timbre e identidade vocal sem atuação exagerada.",
+          "createdAt": "2026-11-17T17:06:33.866Z",
+          "cached": false,
+          "durationEstimateMs": 10250
+        }
+      ],
+      "approvedAt": "2026-11-17T17:04:21.3127618Z"
+    }
+  ],
+  "interpretations": [],
+  "updatedAt": "2026-11-17T17:06:33.866Z",
+  "archivedCandidates": [
+    null,
+    {
+      "id": "d679affa-1eb2-4e02-a580-a854f89495d4",
+      "voiceId": "pt-br-storyteller-10",
+      "displayName": "Storyteller 10",
+      "type": "prebuilt",
+      "language": "pt-BR",
+      "voiceDescription": "56-year-old Nature Documentary Narrator from Brazil. Speaks Brazilian Portuguese. Voice is engaging and empathic.",
+      "status": "audition-pending",
+      "sampleUrl": null,
+      "createdAt": "2026-11-17T15:53:17.277Z",
+      "samples": [
+        {
+          "id": "078bb153-ab17-4755-beb1-46a8fe5eecdd",
+          "kind": "audition",
+          "fileName": "harrison-audition-2026-11-17T15-59-47-456Z-8f7626ab.wav",
+          "url": "/__voice-studio/api/candidate-file/harrison-audition-2026-11-17T15-59-47-456Z-8f7626ab.wav",
+          "voiceId": "pt-br-storyteller-10",
+          "direction": "Leia a amostra em português brasileiro a 75–85 palavras por minuto, com uma pausa contemplativa natural depois de “Tempo...”. Preserve dicção clara, timbre e identidade vocal sem atuação exagerada.",
+          "createdAt": "2026-11-17T15:59:47.468Z",
+          "cached": false,
+          "durationEstimateMs": 12000
+        }
+      ]
+    },
+    {
+      "id": "b8db598b-37e5-48e4-95da-93adc71a807e",
+      "voiceId": "pt-br-training-10",
+      "displayName": "Training Voiceover 10",
+      "type": "prebuilt",
+      "language": "pt-BR",
+      "voiceDescription": "24-year-old Instructional Video Host from Brazil. Speaks Brazilian Portuguese. Voice is comforting someone who is stressed.",
+      "status": "audition-pending",
+      "sampleUrl": null,
+      "createdAt": "2026-11-17T16:01:52.388Z",
+      "samples": [
+        {
+          "id": "390730af-1050-45eb-ab3e-06344342ceac",
+          "kind": "audition",
+          "fileName": "harrison-audition-2026-11-17T16-02-17-641Z-906ab360.wav",
+          "url": "/__voice-studio/api/candidate-file/harrison-audition-2026-11-17T16-02-17-641Z-906ab360.wav",
+          "voiceId": "pt-br-training-10",
+          "direction": "Leia a amostra em português brasileiro a 75–85 palavras por minuto, com uma pausa contemplativa natural depois de “Tempo...”. Preserve dicção clara, timbre e identidade vocal sem atuação exagerada.",
+          "createdAt": "2026-11-17T16:02:17.678Z",
+          "cached": false,
+          "durationEstimateMs": 12000
+        }
+      ]
+    },
+    {
+      "id": "80b315d3-4fab-4921-9f4f-f8b1da6cc50b",
+      "voiceId": "voice_rsejb8btios6",
+      "displayName": "John Harrison (Stone Phys)",
+      "type": "prompted",
+      "language": "pt-BR",
+      "voiceDescription": "Homem de aproximadamente 67 anos, relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo. Sem exagero de idade, baixo artificial, atuação teatral ou melodrama.",
+      "status": "audition-pending",
+      "createdAt": "2026-11-17T16:15:52.315Z",
+      "sampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_rsejb8btios6-80b315d3.wav",
+      "samples": []
+    },
+    {
+      "id": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "voiceId": "voice_gn3wdbbmdain",
+      "displayName": "John Harrison (Stone Phys)",
+      "type": "prompted",
+      "language": "pt-BR",
+      "voiceDescription": "Homem de aproximadamente 67 anos, relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo. Sem exagero de idade, baixo artificial, atuação teatral ou melodrama.",
+      "status": "approved",
+      "createdAt": "2026-11-17T16:31:55.478Z",
+      "sampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_gn3wdbbmdain-1b008f5f.wav",
+      "samples": [
+        {
+          "id": "8acaa4ac-b632-4c10-a385-6e4fe4f52cb0",
+          "kind": "audition",
+          "fileName": "harrison-audition-2026-11-17T16-33-24-482Z-721b6489.wav",
+          "url": "/__voice-studio/api/candidate-file/harrison-audition-2026-11-17T16-33-24-482Z-721b6489.wav",
+          "voiceId": "voice_gn3wdbbmdain",
+          "direction": "Leia a amostra em português brasileiro a 75–85 palavras por minuto, com uma pausa contemplativa natural depois de “Tempo...”. Preserve dicção clara, timbre e identidade vocal sem atuação exagerada.",
+          "createdAt": "2026-11-17T16:33:24.513Z",
+          "cached": false,
+          "durationEstimateMs": 10250
+        }
+      ],
+      "approvedAt": "2026-11-17T16:33:40.079Z"
+    },
+    {
+      "id": "4a587c6e-65f9-463b-bdea-c1d20f6dcefa",
+      "voiceId": "voice_5vpx7ni20koy",
+      "displayName": "John Harrison (Stone Phys)",
+      "type": "prompted",
+      "language": "pt-BR",
+      "voiceDescription": "Homem de aproximadamente 67 anos, relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo. ",
+      "status": "audition-pending",
+      "createdAt": "2026-11-17T16:40:18.188Z",
+      "sampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_5vpx7ni20koy-4a587c6e.wav",
+      "samples": []
+    },
+    {
+      "id": "c4aa6528-0f6e-4b52-b138-9ca1a3164c7f",
+      "voiceId": "voice_2wr67t7ebyxi",
+      "displayName": "John Harrison (Stone Phys)",
+      "type": "prompted",
+      "language": "pt-BR",
+      "voiceDescription": "Homem de aproximadamente 67 anos, relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo. A idade precisa ser nitida na voz de um homem mais velho",
+      "status": "audition-pending",
+      "createdAt": "2026-11-17T16:41:33.783Z",
+      "sampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_2wr67t7ebyxi-c4aa6528.wav",
+      "samples": []
+    },
+    {
+      "id": "49e1752b-e6ea-4d42-9bed-22f1f67f3fb3",
+      "voiceId": "voice_5yztihuw10ef",
+      "displayName": "John Harrison (Stone Phys)",
+      "type": "prompted",
+      "language": "pt-BR",
+      "voiceDescription": "Homem de aproximadamente 67 anos, relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo. A idade precisa ser nitida na voz de um homem mais velho. A voz tem que ser mais grave e menos nasal",
+      "status": "audition-pending",
+      "createdAt": "2026-11-17T16:45:15.948Z",
+      "sampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_5yztihuw10ef-49e1752b.wav",
+      "samples": []
+    },
+    {
+      "id": "5fc3bec4-e438-4013-aa8e-b3ba028f853e",
+      "voiceId": "voice_md4msgw19gib",
+      "displayName": "John Harrison (Stone Phys)",
+      "type": "prompted",
+      "language": "pt-BR",
+      "voiceDescription": "Homem de aproximadamente 67 anos, voz grave e um pouco rouca,  relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo. A idade precisa ser nitida na voz de um homem mais velho. A voz tem que ser mais grave e menos nasal",
+      "status": "audition-pending",
+      "createdAt": "2026-11-17T16:48:26.93Z",
+      "sampleUrl": "/__voice-studio/api/candidate-file/voice-design-voice_md4msgw19gib-5fc3bec4.wav",
+      "samples": []
+    }
+  ],
+  "archivedInterpretations": [
+    null,
+    {
+      "id": "6f7becb9-0111-47ec-acdb-acaf97b9c6eb",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-36-36-336Z-9d91af74.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-36-36-336Z-9d91af74.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Comece com pausa dramática depois de \"tempo\"...\nFale contido e contemplativo, com uma sensação sutil de mistério e profundidade.",
+      "createdAt": "2026-11-17T16:36:36.377Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "304bb510-852a-4e01-ae85-ebd5515e7391",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-37-36-201Z-b7847c28.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-37-36-201Z-b7847c28.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Fale naturalmente como se tivesse introduzindo algo",
+      "createdAt": "2026-11-17T16:37:36.239Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "b7e7473f-7467-4ad6-aa50-35cc3b8178af",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-38-26-843Z-685b2df4.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-38-26-843Z-685b2df4.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Fale naturalmente como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro",
+      "createdAt": "2026-11-17T16:38:26.874Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "approved",
+      "approvedAt": "2026-11-17T16:38:48.198Z"
+    },
+    {
+      "id": "7dc289a2-f6e8-4b6d-87f5-b10e9bfaae53",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-42-34-967Z-05862bfe.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-42-34-967Z-05862bfe.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Fale de forma como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro",
+      "createdAt": "2026-11-17T16:42:35.001Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "7fc26d4b-dc25-4f60-9797-b1e8f45fb4f1",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-43-04-762Z-ee2462d1.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-43-04-762Z-ee2462d1.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Comece um pouco mais dramático com Tempo e fale de forma como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro",
+      "createdAt": "2026-11-17T16:43:04.795Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "223307cd-2424-4b3c-812d-5de953a12441",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-44-10-576Z-0e8449a2.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-44-10-576Z-0e8449a2.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Comece um pouco mais dramático com a palavra tempo no começo mas depois seja um pouco mais natural no resto e fale de forma como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro.",
+      "createdAt": "2026-11-17T16:44:10.615Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "0d4ae906-292c-44d4-9d0a-494e50164f0e",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-46-15-749Z-7ee3d44a.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-46-15-749Z-7ee3d44a.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Comece um pouco mais dramático com a palavra tempo  e fale de forma como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro.",
+      "createdAt": "2026-11-17T16:46:15.784Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "414ac752-8d3f-4db6-90c4-f75fc97ab5e4",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-46-48-267Z-94acc4f5.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-46-48-267Z-94acc4f5.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Comece um pouco mais dramático com a palavra tempo como um homem mais velho e fale de forma como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro.",
+      "createdAt": "2026-11-17T16:46:48.308Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "64ba7115-55ca-46b9-b6b3-0ebc8de17ab0",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-47-18-681Z-ef169e68.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-47-18-681Z-ef169e68.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Fale de forma como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro.",
+      "createdAt": "2026-11-17T16:47:18.722Z",
+      "cached": false,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    },
+    {
+      "id": "2a4ed030-11f8-4f68-8867-5c5e58b60c65",
+      "kind": "interpretation",
+      "fileName": "harrison-interpretation-2026-11-17T16-50-37-121Z-2252cb1c.wav",
+      "url": "/__voice-studio/api/candidate-file/harrison-interpretation-2026-11-17T16-50-37-121Z-2252cb1c.wav",
+      "voiceId": "voice_gn3wdbbmdain",
+      "direction": "Fale de forma como se tivesse introduzindo algo de forma calma e serena levemente misteriosa, como alguém mais velho e sábio e conselheiro.",
+      "createdAt": "2026-11-17T16:50:37.164Z",
+      "cached": true,
+      "durationEstimateMs": 17000,
+      "candidateId": "1b008f5f-5df2-48e7-b94d-cb2c0ede69d9",
+      "status": "pending-review"
+    }
+  ]
+}

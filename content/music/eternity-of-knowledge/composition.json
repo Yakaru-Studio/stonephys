@@ -1,0 +1,36 @@
+{
+  "id": "eternity-of-knowledge",
+  "name": {
+    "pt-BR": "A Eternidade do Conhecimento",
+    "en": "Eternity of Knowledge"
+  },
+  "description": {
+    "pt-BR": "Assinatura musical contemplativa para o universo de conhecimento.",
+    "en": "Contemplative musical signature for the universe of knowledge."
+  },
+  "application": [
+    "neuron-universe",
+    "module-constellation",
+    "cosmic-transitions"
+  ],
+  "targetDurationSeconds": 240,
+  "targetBpm": "55–60",
+  "defaultVolume": 0.26,
+  "loop": {
+    "enabled": true,
+    "startSeconds": 0,
+    "endSeconds": null,
+    "crossfadeMs": 3000
+  },
+  "status": "awaiting-review",
+  "previewVersionId": "6e96a676-666b-4a83-8361-dc98a7e63c7f",
+  "previewCropStartSeconds": 0,
+  "previewCropEndSeconds": 180.114,
+  "previewVolume": 1,
+  "previewLoop": {
+    "enabled": true,
+    "startSeconds": 0,
+    "endSeconds": 180.114,
+    "crossfadeMs": 3000
+  }
+}

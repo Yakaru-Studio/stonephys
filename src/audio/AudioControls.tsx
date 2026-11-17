@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Volume2, VolumeX, X } from 'lucide-react'
+import { Music2, Volume2, VolumeX, X } from 'lucide-react'
 import { audioManager } from './AudioManager'
 import { loadAudioSettings, saveAudioSettings, type AudioSettings } from './audioSettings'
+import { useLocale } from '../i18n'
 import './audio.css'
 
 function VolumeControl({ label, value, disabled, onChange }: {
@@ -19,6 +20,7 @@ function VolumeControl({ label, value, disabled, onChange }: {
 export default function AudioControls() {
   const [settings, setSettings] = useState<AudioSettings>(loadAudioSettings)
   const [open, setOpen] = useState(false)
+  const { locale, setLocale, t } = useLocale()
 
   useEffect(() => {
     audioManager.setSettings(settings)
@@ -42,23 +44,30 @@ export default function AudioControls() {
   }
 
   return <div className="audio-control-root">
-    <button className="audio-toggle" onClick={() => setOpen((value) => !value)} aria-label={open ? 'Fechar áudio' : 'Configurações de áudio'} aria-expanded={open}>
+    <button className="audio-toggle" onClick={() => setOpen((value) => !value)} aria-label={open ? t('audio.close') : t('audio.open')} aria-expanded={open}>
       {settings.enabled ? <Volume2 size={17} /> : <VolumeX size={17} />}
     </button>
-    {open && <section className="audio-panel" aria-label="Configurações de áudio">
+    {open && <section className="audio-panel" aria-label={t('audio.title')}>
       <header className="audio-panel-header">
-        <div><span>STONE PHYS</span><h2>Áudio</h2></div>
-        <button className="audio-close" onClick={() => setOpen(false)} aria-label="Fechar configurações de áudio"><X size={17} /></button>
+        <div><span>SHARPSTONE PHYS</span><h2>{t('audio.title')}</h2></div>
+        <button className="audio-close" onClick={() => setOpen(false)} aria-label={t('audio.close')}><X size={17} /></button>
       </header>
       <label className="audio-switch">
-        <span><Volume2 size={15} /> Efeitos sonoros</span>
+        <span><Volume2 size={15} /> {t('audio.effects')}</span>
         <input type="checkbox" checked={settings.enabled} onChange={(event) => updateSettings({ enabled: event.currentTarget.checked })} />
       </label>
       <div className="audio-volumes">
-        <VolumeControl label="Volume geral" value={settings.masterVolume} disabled={!settings.enabled} onChange={(masterVolume) => updateSettings({ masterVolume })} />
-        <VolumeControl label="Efeitos" value={settings.effectsVolume} disabled={!settings.enabled} onChange={(effectsVolume) => updateSettings({ effectsVolume })} />
-        <VolumeControl label="Música ambiente" value={settings.musicVolume} disabled={!settings.enabled} onChange={(musicVolume) => updateSettings({ musicVolume })} />
+        <VolumeControl label={t('audio.master')} value={settings.masterVolume} disabled={!settings.enabled} onChange={(masterVolume) => updateSettings({ masterVolume })} />
+        <VolumeControl label={t('audio.effects')} value={settings.effectsVolume} disabled={!settings.enabled} onChange={(effectsVolume) => updateSettings({ effectsVolume })} />
+        <VolumeControl label={t('audio.music')} value={settings.musicVolume} disabled={!settings.enabled} onChange={(musicVolume) => updateSettings({ musicVolume })} />
+        <VolumeControl label={t('audio.voice')} value={settings.voiceVolume} disabled={!settings.enabled} onChange={(voiceVolume) => updateSettings({ voiceVolume })} />
       </div>
+      <label className="audio-language"><span>{t('audio.language')}</span><select value={locale} onChange={(event) => setLocale(event.currentTarget.value as 'pt-BR' | 'en')}><option value="pt-BR">{t('audio.portuguese')}</option><option value="en">{t('audio.english')}</option></select></label>
+      {import.meta.env.DEV && <nav className="audio-studio-links" aria-label={locale === 'en' ? 'Audio studios' : 'Estúdios de áudio'}>
+        <span>{locale === 'en' ? 'Audio studios' : 'Estúdios de áudio'}</span>
+        <a href="/__voice-studio">Voice Studio <small>{locale === 'en' ? 'Narration' : 'Narração'}</small></a>
+        <a href="/__audio-studio"><Music2 size={14}/> Music Studio <small>{locale === 'en' ? 'Original soundtracks' : 'Trilhas originais'}</small></a>
+      </nav>}
     </section>}
   </div>
 }

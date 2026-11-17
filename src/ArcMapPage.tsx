@@ -4,6 +4,7 @@ import { audioManager } from './audio/AudioManager'
 import { learningArcs, type ArcAct, type ArcConnection, type ActSymbol } from './arcActs'
 import ActSiteArt from './ActSiteArt'
 import './arc-map.css'
+import { localizeArc, useLocale, type AppLocale } from './i18n'
 
 const ancientStoneTexture = new URL('./assets/arcs/ancient-stone-floor.png', import.meta.url).href
 const ancientMedallionStoneTexture = new URL('./assets/arcs/ancient-medallion-limestone-weathered.png', import.meta.url).href
@@ -436,10 +437,10 @@ function medallionSideFacet(index: number, radius: number, lowerRadius: number, 
   return `M${point(index)} L${point(index + 1)} L${point(index + 1, true)} L${point(index, true)} Z`
 }
 
-function ActMedallion({ act, isCurrent, onSelect }: { act: ArcAct; isCurrent: boolean; onSelect: () => void }) {
+function ActMedallion({ act, isCurrent, onSelect, locale }: { act: ArcAct; isCurrent: boolean; onSelect: () => void; locale: AppLocale }) {
   const locked = act.status === 'locked'
   const [crownState, setCrownState] = useState<'emerging' | 'rooted' | 'submerging' | 'hidden'>(locked ? 'emerging' : 'hidden')
-  const statusLabel = act.status === 'completed' ? 'ato completo' : locked ? 'ato bloqueado' : 'ato disponível'
+  const statusLabel = locale === 'en' ? act.status === 'completed' ? 'act completed' : locked ? 'act locked' : 'act available' : act.status === 'completed' ? 'ato completo' : locked ? 'ato bloqueado' : 'ato disponível'
   const keyPattern = `meander-${act.id}`
   const keyMask = `meander-mask-${act.id}`
 
@@ -526,19 +527,20 @@ function ArcRouteArt({ connection, from, to }: { connection: ArcConnection; from
   </g>
 }
 
-function Parchment({ act, closing, onClose, onStart, onComplete, starting }: {
+function Parchment({ act, closing, onClose, onStart, onComplete, starting, locale }: {
   act: ArcAct
   closing: boolean
   onClose: () => void
   onStart: () => void
   onComplete: () => void
   starting: boolean
+  locale: AppLocale
 }) {
   const completed = act.status === 'completed'
   return <div className={`arc-parchment-backdrop ${closing ? 'is-closing' : 'is-opening'}`} onClick={onClose}>
     <section className="arc-parchment" role="dialog" aria-modal="true" aria-labelledby="act-parchment-title" onClick={(event) => event.stopPropagation()}>
       <div className="parchment-roller parchment-roller-top"><span/><span/><span/></div>
-      <button className="parchment-close" onClick={onClose} aria-label="Fechar pergaminho"><X size={20}/></button>
+      <button className="parchment-close" onClick={onClose} aria-label={locale === 'en' ? 'Close scroll' : 'Fechar pergaminho'}><X size={20}/></button>
       <article className="parchment-paper">
         <div className="parchment-paper-grain" aria-hidden="true">
           <svg className="parchment-fiber-texture" viewBox="0 0 300 500" preserveAspectRatio="none">
@@ -555,21 +557,21 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting }: {
           </svg>
         </div>
         <div className="parchment-ornament parchment-ornament-top" aria-hidden="true"/>
-        <p className="parchment-act-number">Ato {String(act.number).padStart(2, '0')}</p>
+        <p className="parchment-act-number">{locale === 'en' ? 'Act' : 'Ato'} {String(act.number).padStart(2, '0')}</p>
         <h2 id="act-parchment-title">{act.title}</h2>
         <figure className="parchment-illustration">
-          <img src={act.illustration} alt={`Ilustração de ${act.title}`} />
+          <img src={act.illustration} alt={`${locale === 'en' ? 'Illustration of' : 'Ilustração de'} ${act.title}`} />
         </figure>
         <div className="parchment-divider" aria-hidden="true"><span/><b>✦</b><span/></div>
         <p className="parchment-description">{act.description}</p>
         <div className="parchment-actions">
         <button className="parchment-start" onClick={onStart} disabled={starting}>
           <svg viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
-          <span>{completed ? 'REVER ATO' : 'INICIAR ATO'}</span>
+          <span>{completed ? (locale === 'en' ? 'REVIEW ACT' : 'REVER ATO') : (locale === 'en' ? 'START ACT' : 'INICIAR ATO')}</span>
           <svg className="laurel-end" viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
         </button>
         <button className={`parchment-start parchment-complete ${completed ? 'is-complete' : ''}`} onClick={onComplete} disabled={completed}>
-          <span>{completed ? 'ATO CONCLUÍDO' : 'CONCLUIR ATO'}</span>
+          <span>{completed ? (locale === 'en' ? 'ACT COMPLETED' : 'ATO CONCLUÍDO') : (locale === 'en' ? 'COMPLETE ACT' : 'CONCLUIR ATO')}</span>
         </button>
         </div>
         <div className="parchment-ornament parchment-ornament-bottom" aria-hidden="true"/>
@@ -586,7 +588,8 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   onStartAct: (act: ArcAct) => void
   onCompleteAct: (actId: string) => void
 }) {
-  const arc = learningArcs[moduleId]
+  const { locale } = useLocale()
+  const arc = localizeArc(locale, learningArcs[moduleId])
   const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }))
   const [selectedActId, setSelectedActId] = useState<string | null>(null)
   const [closingParchment, setClosingParchment] = useState(false)
@@ -700,7 +703,7 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
     onCompleteAct(selectedAct.id)
   }
 
-  return <main className="arc-map-screen" aria-label={`Mapa do arco ${arc.title}`}>
+  return <main className="arc-map-screen" aria-label={locale === 'en' ? `Arc map: ${arc.title}` : `Mapa do arco ${arc.title}`}>
     <div className="arc-map-scroll">
       <section className="arc-map-scene">
         <div className="arc-world-plane">
@@ -726,12 +729,12 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
           })}
           </svg>
           <div className="arc-map-nodes">
-            {acts.map((act) => <ActMedallion key={act.id} act={act} isCurrent={act.id === (flameActId ?? currentActId)} onSelect={() => openAct(act)}/>)}
-            {flameTarget && <img className="act-current-flame arc-moving-flame" src={currentFireArtwork} alt="Ato atual" draggable={false} style={{ left: `${flameTarget.position.x}%`, top: `${flameTarget.position.y}%` }}/>}
+            {acts.map((act) => <ActMedallion key={act.id} act={act} locale={locale} isCurrent={act.id === (flameActId ?? currentActId)} onSelect={() => openAct(act)}/>)}
+            {flameTarget && <img className="act-current-flame arc-moving-flame" src={currentFireArtwork} alt={locale === 'en' ? 'Current act' : 'Ato atual'} draggable={false} style={{ left: `${flameTarget.position.x}%`, top: `${flameTarget.position.y}%` }}/>}
           </div>
         </div>
         <header className="arc-map-header">
-          <button className="arc-map-back" onClick={onBack} aria-label="Voltar à constelação"><ArrowLeft size={22}/></button>
+          <button className="arc-map-back" onClick={onBack} aria-label={locale === 'en' ? 'Back to constellation' : 'Voltar à constelação'}><ArrowLeft size={22}/></button>
           <div className="arc-map-title-block">
             <span className="arc-map-module-name">{arc.moduleName}</span>
             <h1>{arc.title}</h1>
@@ -740,6 +743,6 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
         </header>
       </section>
     </div>
-    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct} starting={startingAct}/ >}
+    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct} starting={startingAct} locale={locale}/ >}
   </main>
 }

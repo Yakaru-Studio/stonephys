@@ -2,5 +2,17 @@ node_modules/
 dist/
 .vite/
 *.tsbuildinfo
+.env*
+!.env.example
+tools/narration/.env*
+!tools/narration/.env.example
+tools/narration/.cache/
+tools/narration/data/staging/
+tools/narration/data/cache/
+tools/narration/data/candidates/
+tools/narration/data/usage.json
+tools/narration/data/full-narrations.json
+tools/music/generations/
+public/audio/narration/staging/
 .DS_Store
 Thumbs.db

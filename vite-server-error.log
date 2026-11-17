@@ -1,0 +1,1110 @@
+08:46:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:46:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:46:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:46:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:46:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:46:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:46:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:46:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:46:40 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:46:40 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:46:40 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:46:40 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:26 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:49:26 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:49:26 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:26 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:49:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:49:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:49:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:58:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:58:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+08:58:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+08:58:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:01:35 [vite] Internal server error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 3)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+09:01:35 [vite] Internal server error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 3)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+09:01:35 [vite] (client) Pre-transform error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+09:01:35 [vite] (client) Pre-transform error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+09:01:35 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+09:01:35 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+09:01:41 [vite] Internal server error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 3)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+09:01:41 [vite] Internal server error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 3)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+09:01:41 [vite] (client) Pre-transform error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+09:01:41 [vite] (client) Pre-transform error: Failed to resolve import "./constellation.css" from "src/ConstellationPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx:4:7
+  2  |  import { ArrowLeft, Check, X } from "lucide-react";
+  3  |  import { constellations } from "./constellations";
+  4  |  import "./constellation.css";
+     |          ^
+  5  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/ConstellationPage.tsx";
+  6  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+09:01:41 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+09:01:41 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+09:02:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:02:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:02:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:02:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:02:46 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:02:46 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:02:46 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:02:46 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:05:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:05:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:05:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:05:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:06:40 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:06:40 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:06:40 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:06:40 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:08:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:08:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:08:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:08:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:08:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:08:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:08:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:08:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:10:06 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:10:06 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:10:06 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:10:06 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:15:29 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:15:29 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:15:29 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:15:29 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:15:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:15:58 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:15:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:15:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:16:02 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:16:02 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:16:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:16:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:16:10 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:16:10 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:16:10 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:16:10 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:19:50 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:19:50 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:19:50 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:19:50 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:19:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:19:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:19:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:19:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:27:44 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:27:44 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:27:44 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:27:44 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:27:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:27:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:27:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:27:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:29:19 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:29:19 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:29:19 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:29:19 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:30:06 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:30:06 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:30:06 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:30:06 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:30:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:30:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:30:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:30:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:31:04 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:31:04 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:31:04 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:31:04 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:33:22 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:33:22 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:33:22 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:33:22 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:33:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:33:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:33:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:33:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:38:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:38:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:38:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:38:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:39:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:39:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:39:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:39:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:39:49 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:39:49 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:39:49 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:39:49 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:39:51 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:39:51 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:39:51 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:39:51 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:42:00 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:42:00 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:42:00 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:42:00 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:46:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:46:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:46:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:46:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:46:32 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:46:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:46:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:46:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:46:49 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:46:49 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:46:49 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:46:49 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:47:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:47:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:47:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:47:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:51:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:51:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:51:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:51:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:01:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:01:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:01:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:01:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:01:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:01:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:01:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:01:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:03:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:03:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:03:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:03:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:08 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:08 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:08 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:08 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:05:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:05:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:11:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:11:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:11:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:11:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:24:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:24:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:24:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:24:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:39:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:39:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:39:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:39:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:42:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:42:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:42:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:42:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:42:43 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:42:44 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:42:44 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:42:44 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:52:41 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:52:41 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:52:41 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:52:41 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:52:54 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:52:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:52:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:52:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:22:59 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:23:00 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:23:00 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:23:00 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:43:04 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:43:04 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:43:04 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:43:04 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:54:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:54:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:54:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:54:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:54:45 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:54:45 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:54:45 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:54:45 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:55:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:55:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:55:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:55:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:55:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:55:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:55:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:55:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:07:08 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:07:08 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:07:08 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:07:08 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:07:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:07:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:07:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:07:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:07:41 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:07:41 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:07:41 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:07:41 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:15:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:15:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:15:01 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:15:01 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:22:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:22:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:22:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:22:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:22:20 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:22:20 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:22:20 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:22:20 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:23 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:23 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:23 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:23 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:26:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:26:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:26:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:26:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:38:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:38:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:38:10 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:38:10 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:46:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:46:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:46:01 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:46:01 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:53:15 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:53:15 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:53:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:53:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:57:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:57:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:57:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:57:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:02:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:02:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:02:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:02:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:05:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:05:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:05:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:05:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:05:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:05:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:05:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:05:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:10:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:10:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:10:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:10:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:10:28 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:10:28 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:10:28 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:10:28 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:13:08 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:13:08 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:13:08 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:13:08 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:16:53 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:16:53 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:16:53 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:16:53 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:21:15 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:21:15 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:21:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:21:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:26:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:26:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:26:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:26:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:31:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:31:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:31:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:31:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:34:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:34:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:34:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:34:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:35:54 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:35:54 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:35:54 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:35:54 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:36:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:36:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:36:01 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:36:01 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:36:43 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:36:43 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:36:43 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:36:43 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:39:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:39:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:39:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:39:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:41:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:41:58 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:41:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:41:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:42:43 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:42:43 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:42:43 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:42:43 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:44:58 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:44:58 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:44:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:44:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:48:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:48:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:48:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:48:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:50:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:50:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:50:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:50:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:50:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:50:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:50:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:50:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:56:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:56:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:56:31 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:56:31 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:43:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:43:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:43:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:43:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:50:56 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:50:56 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:50:56 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:50:56 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:33:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:33:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:33:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:33:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:38:22 [vite] (client) [Unhandled error] ReferenceError: endRadiusFor is not defined
+ > src/ArcMapPage.tsx:193:39
+    191 |      const endTangent = { x: -Math.sin(endAngle), y: Math.cos(endAngle) }
+    192 |      const controlA = { x: thornPointAt(angle, 58).x + tangent.x * (index % 2 ? 7 : -7), y: thornPointAt(angle, 58).y ...
+    193 |      const controlB = { x: thornPointAt(endAngle, endRadiusFor(index) + 20).x - endTangent.x * (index % 2 ? 5 : -5), y...
+        |                                         ^
+    194 |      const main = taperedRoot(start, controlA, controlB, end, 2.25, .1)
+    195 |      const branchStartSample = main.samples[7]
+ > ThornCrown src/ArcMapPage.tsx:185:22
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+
+19:38:22 [vite] (client) [console.warn] An error occurred in the <ThornCrown> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+19:38:23 [vite] (client) [Unhandled error] ReferenceError: endRadiusFor is not defined
+ > src/ArcMapPage.tsx:193:39
+    191 |      const endTangent = { x: -Math.sin(endAngle), y: Math.cos(endAngle) }
+    192 |      const controlA = { x: thornPointAt(angle, 58).x + tangent.x * (index % 2 ? 7 : -7), y: thornPointAt(angle, 58).y ...
+    193 |      const controlB = { x: thornPointAt(endAngle, endRadiusFor(index) + 20).x - endTangent.x * (index % 2 ? 5 : -5), y...
+        |                                         ^
+    194 |      const main = taperedRoot(start, controlA, controlB, end, 2.25, .1)
+    195 |      const branchStartSample = main.samples[7]
+ > ThornCrown src/ArcMapPage.tsx:185:22
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+
+19:38:23 [vite] (client) [console.warn] An error occurred in the <ThornCrown> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+19:39:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:39:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:39:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:39:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:43:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:43:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:43:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:43:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:54:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:54:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:54:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:54:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:57:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:57:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:57:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:57:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:59:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:59:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+19:59:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+19:59:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:03:59 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:03:59 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:03:59 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:03:59 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:08:32 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:08:32 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:08:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:08:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:16:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:16:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:16:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:16:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:19:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:19:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:19:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:19:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:20:46 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:20:46 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:20:46 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:20:46 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:21:55 [vite] (client) [Unhandled error] ReferenceError: Laurel is not defined
+ > ArcMapPage src/ArcMapPage.tsx:596:48
+    594 |            <div className="arc-map-title-block">
+    595 |              <p>{arc.moduleName}</p>
+    596 |              <div className="arc-map-title-row"><Laurel/><h1>{arc.title}</h1><Laurel mirror/></div>
+        |                                                  ^
+    597 |            </div>
+    598 |            <span className="arc-header-rule" aria-hidden="true"/>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:34
+
+20:21:55 [vite] (client) [console.warn] An error occurred in the <ArcMapPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+20:21:56 [vite] (client) [Unhandled error] ReferenceError: Laurel is not defined
+ > ArcMapPage src/ArcMapPage.tsx:596:48
+    594 |            <div className="arc-map-title-block">
+    595 |              <p>{arc.moduleName}</p>
+    596 |              <div className="arc-map-title-row"><Laurel/><h1>{arc.title}</h1><Laurel mirror/></div>
+        |                                                  ^
+    597 |            </div>
+    598 |            <span className="arc-header-rule" aria-hidden="true"/>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:34
+
+20:21:56 [vite] (client) [console.warn] An error occurred in the <ArcMapPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+20:22:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:22:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:22:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:22:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:25:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:25:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:25:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:25:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:25:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:25:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:25:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:25:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:29:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:29:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:29:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:29:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:31:57 [vite] (client) [Unhandled error] ReferenceError: EdgeThornBranches is not defined
+ > Terrain src/ArcMapPage.tsx:153:5
+    151 |      <image className="arc-ruin-stones-art" href={greekRuinCapitalArtwork} x="-24" y="1435" width="198" height="132" p...
+    152 |      <image className="arc-ruin-stones-art" href={greekRuinWallArtwork} x="820" y="1482" width="185" height="123" pres...
+    153 |      <EdgeThornBranches/>
+        |       ^
+    154 |    </svg>
+    155 |  }
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:34
+
+20:31:57 [vite] (client) [console.warn] An error occurred in the <Terrain> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+20:32:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:32:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:32:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:32:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:33:22 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:33:22 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:33:22 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:33:22 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:57:46 [vite] (client) [Unhandled error] TypeError: Cannot read properties of undefined (reading 'includes')
+ > src/ArcMapPage.tsx:622:38
+    620 |    const closeTimer = useRef<number | null>(null)
+    621 |    const acts = useMemo(() => arc.acts.map((act) => {
+    622 |      const completed = completedActIds.includes(act.id)
+        |                                        ^
+    623 |      const available = !completed && act.prerequisites.every((prerequisite) => completedActIds.includes(prerequisite))
+    624 |      return { ...act, status: completed ? 'completed' as const : available ? 'available' as const : 'locked' as const }
+ > src/ArcMapPage.tsx:621:38
+ > mountMemo node_modules/react-dom/cjs/react-dom-client.development.js:9161:22
+ > Object.useMemo node_modules/react-dom/cjs/react-dom-client.development.js:28886:17
+ > exports.useMemo node_modules/react/cjs/react.development.js:1297:33
+ > ArcMapPage src/ArcMapPage.tsx:621:15
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+
+20:57:46 [vite] (client) [console.warn] An error occurred in the <ArcMapPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+20:58:10 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:58:10 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+20:58:10 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+20:58:10 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+21:19:58 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+21:19:58 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+21:19:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+21:19:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+21:43:10 [vite] (client) [console.error] [vite] Failed to reload /src/ActSiteArt.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+22:36:26 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+22:36:27 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+22:36:27 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+22:36:27 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+23:08:41 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+23:08:41 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+23:08:41 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+23:08:41 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:21:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:21:32 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:21:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:21:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:33:56 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:33:56 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:33:56 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:33:56 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:40:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:40:58 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:40:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:40:58 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:26:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:26:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:26:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:26:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:36:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:36:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:36:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:36:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:55:41 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:55:42 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:55:42 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:55:42 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:58:17 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:58:17 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:58:17 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:58:17 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:02:51 [vite] (client) [console.error] [vite] Failed to reload /src/scenes/time/H4Watch.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+11:30:28 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:30:28 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:30:29 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:30:29 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:53:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:53:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:53:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:53:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:56:51 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:56:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:56:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:56:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:57:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:57:14 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:57:14 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:57:14 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:57:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:57:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:57:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:57:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+failed to load config from C:\Users\3d\OneDrive\Documentos\dev\stonephys\vite.config.ts
+12:02:12 [vite] Build failed with 1 error:
+
+[31m[PARSE_ERROR] [0mIdentifier `data` has already been declared
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vite.config.ts:117:19 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m117 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249m [0mdata[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mw[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249mr[0m[38;5;249me[0m[38;5;249ma[0m[38;5;249md[0m[38;5;249mF[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249m([0m[38;5;249ma[0m[38;5;249mu[0m[38;5;249md[0m[38;5;249mi[0m[38;5;249mo[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mh[0m[38;5;249m)[0m
+ [38;5;240m    │[0m                   ──┬─  
+ [38;5;240m    │[0m                     ╰─── `data` has already been declared here
+ [38;5;246m118 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249m [0mdata[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mw[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249mr[0m[38;5;249me[0m[38;5;249ma[0m[38;5;249md[0m[38;5;249mF[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249m([0m[38;5;249ma[0m[38;5;249mu[0m[38;5;249md[0m[38;5;249mi[0m[38;5;249mo[0m[38;5;249mP[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mh[0m[38;5;249m)[0m
+ [38;5;240m    │[0m                   ──┬─  
+ [38;5;240m    │[0m                     ╰─── It can not be redeclared here
+[38;5;246m─────╯[0m
+
+12:02:12 [vite] server restart failed
+12:02:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:02:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:02:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:02:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:03:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:03:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:03:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:03:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:07:54 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:07:54 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:07:54 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:07:54 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:08:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:08:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:08:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:08:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:08:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:08:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:08:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:08:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:09:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:09:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:09:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:09:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:11:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:11:56 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:11:56 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:11:56 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:11:56 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:11:56 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:11:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:11:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:13:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:13:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:13:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:13:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:14:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:14:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:14:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:14:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:23:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:23:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:23:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:23:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:24:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:24:02 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:24:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:24:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:26:02 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:26:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:26:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:26:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:31:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:31:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:31:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:31:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:32:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:32:12 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:32:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:32:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:46:42 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:46:42 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+12:46:42 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:46:42 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+12:59:48 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'duration')
+ > src/narration/VoiceStudio.tsx:235:308
+    233 |        </section>
+    234 |        <section className="voice-studio-card voice-studio-production"><h2>Etapa 4 · Narração completa</h2>{hasInterpre...
+    235 |  ... ? { ...current, durationMs: Math.round(event.currentTarget.duration * 1000) } : current)}/><p className="voice-st...
+        |                                                                 ^
+    236 |        <section className="voice-studio-card voice-studio-subtitles"><div className="voice-studio-section-title"><div>...
+    237 |          {transcript && <details><summary>Transcrição reconhecida · revisar divergências</summary><p>{transcript}</p><...
+ > basicStateReducer node_modules/react-dom/cjs/react-dom-client.development.js:8317:44
+ > updateReducerImpl node_modules/react-dom/cjs/react-dom-client.development.js:8427:14
+ > updateReducer node_modules/react-dom/cjs/react-dom-client.development.js:8350:13
+ > Object.useState node_modules/react-dom/cjs/react-dom-client.development.js:29181:17
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > VoiceStudio src/narration/VoiceStudio.tsx:64:42
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+
+12:59:48 [vite] (client) [console.warn] An error occurred in the <VoiceStudio> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+13:02:18 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'duration')
+ > src/narration/VoiceStudio.tsx:235:308
+    233 |        </section>
+    234 |        <section className="voice-studio-card voice-studio-production"><h2>Etapa 4 · Narração completa</h2>{hasInterpre...
+    235 |  ... ? { ...current, durationMs: Math.round(event.currentTarget.duration * 1000) } : current)}/><p className="voice-st...
+        |                                                                 ^
+    236 |        <section className="voice-studio-card voice-studio-subtitles"><div className="voice-studio-section-title"><div>...
+    237 |          {transcript && <details><summary>Transcrição reconhecida · revisar divergências</summary><p>{transcript}</p><...
+ > basicStateReducer node_modules/react-dom/cjs/react-dom-client.development.js:8317:44
+ > updateReducerImpl node_modules/react-dom/cjs/react-dom-client.development.js:8427:14
+ > updateReducer node_modules/react-dom/cjs/react-dom-client.development.js:8350:13
+ > Object.useState node_modules/react-dom/cjs/react-dom-client.development.js:29181:17
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > VoiceStudio src/narration/VoiceStudio.tsx:64:42
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+
+13:02:18 [vite] (client) [console.warn] An error occurred in the <VoiceStudio> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+13:05:05 [vite] Internal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mUnexpected token. Did you mean `{'}'}` or `&rbrace;`?
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/narration/VoiceStudio.tsx:240:14 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m240 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249m>[0m[38;5;249m}[0m
+ [38;5;240m    │[0m              │ 
+ [38;5;240m    │[0m              ╰─ 
+[38;5;246m─────╯[0m
+
+  Plugin: vite:oxc
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/narration/VoiceStudio.tsx
+      at transformWithOxc (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7673:19)
+      at TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7747:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:51)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+      at async viteTransformMiddleware (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20332:20)
+13:05:05 [vite] (client) [console.error] [vite] Failed to reload /src/narration/VoiceStudio.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:57:11 [vite] (client) [Unhandled error] ReferenceError: hasInterpretationApproval is not defined
+ > VoiceStudio src/narration/VoiceStudio.tsx:250:106
+    248 |          )}
+    249 |        </section>
+    250 |  ...ice-studio-production"><h2>Fluxo 3 · Narração completa</h2>{hasInterpretationApproval ? <><p>Identidade e interpre...
+        |                                                                 ^
+    251 |        <section className="voice-studio-card voice-studio-review"><h2>Etapa 5 · Revisão técnica e artística</h2>{curre...
+    252 |        <section className="voice-studio-card voice-studio-subtitles"><div className="voice-studio-section-title"><div>...
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12147:34
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:34
+
+13:57:11 [vite] (client) [console.warn] An error occurred in the <VoiceStudio> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+13:58:20 [vite] Internal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mUnexpected token. Did you mean `{'}'}` or `&rbrace;`?
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/narration/VoiceStudio.tsx:236:10 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m236 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m)[0m[38;5;249m}[0m
+ [38;5;240m    │[0m          │ 
+ [38;5;240m    │[0m          ╰─ 
+[38;5;246m─────╯[0m
+
+  Plugin: vite:oxc
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/narration/VoiceStudio.tsx
+      at transformWithOxc (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7673:19)
+      at TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7747:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:51)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+      at async viteTransformMiddleware (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20332:20)
+13:58:20 [vite] (client) [console.error] [vite] Failed to reload /src/narration/VoiceStudio.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:59:42 [vite] Internal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mUnexpected token. Did you mean `{'}'}` or `&rbrace;`?
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/narration/VoiceStudio.tsx:235:10 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m235 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m)[0m[38;5;249m}[0m
+ [38;5;240m    │[0m          │ 
+ [38;5;240m    │[0m          ╰─ 
+[38;5;246m─────╯[0m
+
+  Plugin: vite:oxc
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/narration/VoiceStudio.tsx
+      at transformWithOxc (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7673:19)
+      at TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7747:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:51)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+      at async viteTransformMiddleware (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20332:20)
+13:59:42 [vite] (client) [console.error] [vite] Failed to reload /src/narration/VoiceStudio.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+14:30:44 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:30:44 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:30:45 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:30:45 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:40:59 [vite] (client) [console.error] [vite] Failed to reload /src/scenes/HistoricalScenePlayer.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+14:42:18 [vite] Internal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mUnexpected token
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/scenes/HistoricalScenePlayer.tsx:185:271 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m185 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m<[0m[38;5;249md[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249m [0m[38;5;249mc[0m[38;5;249ml[0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249ms[0m[38;5;249mN[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249m=[0m[38;5;249m"[0m[38;5;249mh[0m[38;5;249mi[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mc[0m[38;5;249ma[0m[38;5;249ml[0m[38;5;249m-[0m[38;5;249ms[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249me[0m[38;5;249m-[0m[38;5;249md[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249m"[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249ma[0m[38;5;249m-[0m[38;5;249mh[0m[38;5;249mi[0m[38;5;249md[0m[38;5;249md[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249m=[0m[38;5;249m"[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249m"[0m[38;5;249m>[0m[38;5;249m{[0m[38;5;249mA[0m[38;5;249mr[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249my[0m[38;5;249m.[0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m([0m[38;5;249m{[0m[38;5;249m [0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mg[0m[38;5;249mt[0m[38;5;249mh[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m2[0m[38;5;249m0[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249m([0m[38;5;249m_[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mi[0m[38;5;249m)[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249m<[0m[38;5;249mi[0m[38;5;249m [0m[38;5;249mk[0m[38;5;249me[0m[38;5;249my[0m[38;5;249m=[0m[38;5;249m{[0m[38;5;249mi[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249my[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249m=[0m[38;5;249m{[0m[38;5;249m{[0m[38;5;249m [0m[38;5;249m'[0m[38;5;249m-[0m[38;5;249m-[0m[38;5;249md[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249m-[0m[38;5;249mi[0m[38;5;249m'[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249mi[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mf[0m[38;5;249mt[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m`[0m[38;5;249m$[0m[38;5;249m{[0m[38;5;249m([0m[38;5;249mi[0m[38;5;249m [0m[38;5;249m*[0m[38;5;249m [0m[38;5;249m3[0m[38;5;249m7[0m[38;5;249m)[0m[38;5;249m [0m[38;5;249m%[0m[38;5;249m [0m[38;5;249m1[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m}[0m[38;5;249m%[0m[38;5;249m`[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mt[0m[38;5;249mo[0m[38;5;249mp[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m`[0m[38;5;249m$[0m[38;5;249m{[0m[38;5;249m([0m[38;5;249mi[0m[38;5;249m [0m[38;5;249m*[0m[38;5;249m [0m[38;5;249m5[0m[38;5;249m3[0m[38;5;249m)[0m[38;5;249m [0m[38;5;249m%[0m[38;5;249m [0m[38;5;249m1[0m[38;5;249m0[0m[38;5;249m0[0m[38;5;249m}[0m[38;5;249m%[0m[38;5;249m`[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249mn[0m[38;5;249mi[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mD[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m`[0m[38;5;249m$[0m[38;5;249m{[0m[38;5;249m9[0m[38;5;249m [0m[38;5;249m+[0m[38;5;249m [0m[38;5;249mi[0m[38;5;249m [0m[38;5;249m%[0m[38;5;249m [0m[38;5;249m7[0m[38;5;249m}[0m[38;5;249ms[0m[38;5;249m`[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249ma[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249mC[0m[38;5;249mS[0m[38;5;249mS[0m[38;5;249mP[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mp[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249me[0m[38;5;249ms[0m[38;5;249m [0m[38;5;249m&[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249m'[0m[38;5;249m-[0m[38;5;249m-[0m[38;5;249md[0m[38;5;249mu[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249m-[0m[38;5;249mi[0m[38;5;249m'[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249mn[0m[38;5;249mu[0m[38;5;249mm[0m[38;5;249mb[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249m}[0m[38;5;249m/[0m>[38;5;249m)[0m[38;5;249m}[0m[38;5;249m<[0m[38;5;249m/[0m[38;5;249md[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249m>[0m
+ [38;5;240m    │[0m                                                                                                                                                                                                                                                                               ┬  
+ [38;5;240m    │[0m                                                                                                                                                                                                                                                                               ╰── 
+[38;5;246m─────╯[0m
+
+  Plugin: vite:oxc
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/scenes/HistoricalScenePlayer.tsx
+      at transformWithOxc (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7673:19)
+      at TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:7747:26)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:51)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+      at async viteTransformMiddleware (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20332:20)
+14:42:18 [vite] (client) [console.error] [vite] Failed to reload /src/scenes/HistoricalScenePlayer.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+15:06:29 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:06:29 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:06:29 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:06:29 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:07:26 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:07:26 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:07:26 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:07:26 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:11:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:11:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:11:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:11:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:20:18 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:20:18 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:20:18 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:20:18 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:23:14 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:23:14 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:23:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:23:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:25:53 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:25:53 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:25:53 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:25:53 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:27:49 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:27:49 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:27:49 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:27:49 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:37:04 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:37:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:37:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:37:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:39:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:39:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+15:39:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+15:39:34 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:02:02 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:02:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:02:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:02:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:02:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:02:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:02:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:02:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:14:21 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:14:21 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:14:21 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:14:21 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:14:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:14:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:14:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:14:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:16:27 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:16:28 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:16:28 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:16:28 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:17:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:17:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:17:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:17:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:17:51 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:17:51 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:17:51 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:17:51 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:20:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:20:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:20:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:20:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:23:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:23:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:23:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:23:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:24:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:24:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:24:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:24:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:02 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:02 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+16:25:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+16:25:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:23 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:23 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:23 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:23 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:44 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:45 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:15:45 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:15:45 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:38:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:38:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:38:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:38:12 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:40:26 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:40:26 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:40:27 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:40:27 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:50:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:50:09 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:50:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:50:09 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:56:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:56:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+17:56:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+17:56:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:00:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:00:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:00:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:00:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:01:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:01:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:01:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:01:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:03:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:03:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+18:03:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+18:03:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.

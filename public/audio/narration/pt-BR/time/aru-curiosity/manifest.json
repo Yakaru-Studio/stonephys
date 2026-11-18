@@ -1,0 +1,256 @@
+{
+  "sceneId": "border-cave-42000-bce",
+  "characterId": "john-harrison",
+  "language": "pt-BR",
+  "audioUrl": "/audio/narration/pt-BR/time/aru-curiosity/aru-curiosity-2026-11-18-717f67.wav",
+  "durationMs": 25840,
+  "status": "approved",
+  "approvedAt": "2026-11-18T19:08:12.179Z",
+  "segments": [
+    {
+      "id": "harrison-caption-1",
+      "text": "E isso começou a despertar uma certa...",
+      "startMs": 400,
+      "endMs": 4000,
+      "wordTimings": [
+        {
+          "text": "Isso",
+          "startMs": 400,
+          "endMs": 1000
+        },
+        {
+          "text": "começou",
+          "startMs": 1600,
+          "endMs": 2100
+        },
+        {
+          "text": "a",
+          "startMs": 2100,
+          "endMs": 2100
+        },
+        {
+          "text": "despertar",
+          "startMs": 2100,
+          "endMs": 3200
+        },
+        {
+          "text": "uma",
+          "startMs": 3200,
+          "endMs": 3500
+        },
+        {
+          "text": "certa",
+          "startMs": 3500,
+          "endMs": 4000
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-2",
+      "text": "curiosidade.",
+      "startMs": 4800,
+      "endMs": 5700,
+      "wordTimings": [
+        {
+          "text": "curiosidade.",
+          "startMs": 4800,
+          "endMs": 5700
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-2-padrao",
+      "text": "Havia um padrão a ser descoberto.",
+      "startMs": 7500,
+      "endMs": 10500,
+      "wordTimings": [
+        {
+          "text": "Havia",
+          "startMs": 7500,
+          "endMs": 7800
+        },
+        {
+          "text": "um",
+          "startMs": 8500,
+          "endMs": 8600
+        },
+        {
+          "text": "padrão",
+          "startMs": 8600,
+          "endMs": 9200
+        },
+        {
+          "text": "a",
+          "startMs": 9500,
+          "endMs": 9600
+        },
+        {
+          "text": "ser",
+          "startMs": 9600,
+          "endMs": 9800
+        },
+        {
+          "text": "descoberto.",
+          "startMs": 9800,
+          "endMs": 10500
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-3",
+      "text": "Um simples osso de babuíno...",
+      "startMs": 11700,
+      "endMs": 13900,
+      "wordTimings": [
+        {
+          "text": "Um",
+          "startMs": 11700,
+          "endMs": 12000
+        },
+        {
+          "text": "simples",
+          "startMs": 12000,
+          "endMs": 12800
+        },
+        {
+          "text": "osso",
+          "startMs": 12800,
+          "endMs": 13200
+        },
+        {
+          "text": "de",
+          "startMs": 13200,
+          "endMs": 13300
+        },
+        {
+          "text": "babuíno",
+          "startMs": 13300,
+          "endMs": 13900
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-4",
+      "text": "E uma pedra lascada...",
+      "startMs": 14900,
+      "endMs": 16600,
+      "wordTimings": [
+        {
+          "text": "e",
+          "startMs": 14900,
+          "endMs": 15000
+        },
+        {
+          "text": "uma",
+          "startMs": 15000,
+          "endMs": 15400
+        },
+        {
+          "text": "pedra",
+          "startMs": 15800,
+          "endMs": 16100
+        },
+        {
+          "text": "lascada.",
+          "startMs": 16100,
+          "endMs": 16600
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-5",
+      "text": "E se fizéssemos algumas marcas neste osso?",
+      "startMs": 18100,
+      "endMs": 20800,
+      "wordTimings": [
+        {
+          "text": "E",
+          "startMs": 18100,
+          "endMs": 18100
+        },
+        {
+          "text": "se",
+          "startMs": 18100,
+          "endMs": 18200
+        },
+        {
+          "text": "fizéssemos",
+          "startMs": 18200,
+          "endMs": 18900
+        },
+        {
+          "text": "algumas",
+          "startMs": 18900,
+          "endMs": 19400
+        },
+        {
+          "text": "marcas",
+          "startMs": 19400,
+          "endMs": 20000
+        },
+        {
+          "text": "neste",
+          "startMs": 20000,
+          "endMs": 20400
+        },
+        {
+          "text": "osso?",
+          "startMs": 20400,
+          "endMs": 20800
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-6",
+      "text": "Poderíamos, quem sabe, compreender ",
+      "startMs": 21800,
+      "endMs": 23640,
+      "wordTimings": [
+        {
+          "text": "Poderíamos,",
+          "startMs": 21800,
+          "endMs": 22300
+        },
+        {
+          "text": "quem",
+          "startMs": 22300,
+          "endMs": 22500
+        },
+        {
+          "text": "sabe,",
+          "startMs": 22500,
+          "endMs": 22900
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-7",
+      "text": "esse curioso padrão...",
+      "startMs": 23700,
+      "endMs": 25400,
+      "wordTimings": [
+        {
+          "text": "compreender",
+          "startMs": 22900,
+          "endMs": 23700
+        },
+        {
+          "text": "esse",
+          "startMs": 23700,
+          "endMs": 24200
+        },
+        {
+          "text": "curioso",
+          "startMs": 24400,
+          "endMs": 25000
+        },
+        {
+          "text": "padrão.",
+          "startMs": 25000,
+          "endMs": 25400
+        }
+      ]
+    }
+  ],
+  "webVtt": "/audio/narration/pt-BR/time/aru-curiosity/aru-curiosity-2026-11-18-717f67.vtt"
+}

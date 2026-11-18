@@ -2,9 +2,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { loadEnv } from 'vite'
-import { mkdir, readFile, writeFile, copyFile, readdir } from 'node:fs/promises'
+import { mkdir, readFile, writeFile, copyFile, readdir, rename, unlink } from 'node:fs/promises'
 import { createHash, randomUUID } from 'node:crypto'
 import path from 'node:path'
+import { ARU_CURIOSITY_AUDIO_DIR, ARU_CURIOSITY_SPEECH_ID, BORDER_CAVE_ARRIVAL_AUDIO_DIR, BORDER_CAVE_ARRIVAL_SPEECH_ID, BORDER_CAVE_TITLE_AUDIO_DIR, BORDER_CAVE_TITLE_SPEECH_ID, HARRISON_INTRO_SPEECH_ID, harrisonNarration } from './src/narration/harrisonScript.ts'
 import { validateAudioApproval, validateNarrationStage } from './src/narration/productionGates.mjs'
 import { createMusicStudioMiddleware } from './tools/music/musicStudioApi.mjs'
 import { createSoundEffectsMiddleware } from './tools/sound-effects/soundEffectsApi.mjs'
@@ -17,6 +18,38 @@ const candidatePath = path.join(root, 'content', 'characters', 'john-harrison', 
 const safeName = (value: string) => value.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 100)
 const readJson = async (file: string) => JSON.parse(await readFile(file, 'utf8'))
 const writeJson = async (file: string, value: unknown) => writeFile(file, JSON.stringify(value, null, 2) + '\n')
+const historyPath = path.join(studioDir, 'full-narrations.json')
+const introSpeech = { id: HARRISON_INTRO_SPEECH_ID, title: 'Introdução · Viagem no tempo', text: harrisonNarration }
+const readNarrationHistory = async () => {
+  const history = await readJson(historyPath).catch((error) => {
+    if (error.code !== 'ENOENT') throw error
+    return { versions: [] }
+  })
+  return {
+    ...history,
+    speeches: history.speeches ?? [introSpeech],
+    versions: (history.versions ?? []).map((version) => ({ ...version, speechId: version.speechId ?? introSpeech.id })),
+  }
+}
+
+let historyWrite = Promise.resolve()
+function updateNarrationHistory(update) {
+  const pending = historyWrite.then(async () => {
+    const history = await readNarrationHistory()
+    const result = update(history)
+    const temporaryPath = historyPath + '.' + randomUUID() + '.tmp'
+    try {
+      await writeJson(temporaryPath, history)
+      await rename(temporaryPath, historyPath)
+    } finally {
+      await unlink(temporaryPath).catch(() => {})
+    }
+    return result
+  })
+  historyWrite = pending.catch(() => {})
+  return pending
+}
+
 const toWebVtt = (segments: Array<{ startMs: number; endMs: number; text: string }>) => {
   const stamp = (milliseconds: number) => {
     const ms = Math.max(0, Math.round(milliseconds))
@@ -56,7 +89,8 @@ function voiceStudio() {
         }
         const body = await new Promise<any>((resolve, reject) => {
           let raw = ''
-          req.on('data', (chunk: Buffer) => { raw += chunk; if (raw.length > 24_000_000) reject(new Error('Arquivo acima do limite de 24 MB.')) })
+          req.setEncoding('utf8')
+          req.on('data', (chunk: string) => { raw += chunk; if (raw.length > 24_000_000) reject(new Error('Arquivo acima do limite de 24 MB.')) })
           req.on('end', () => { try { resolve(raw ? JSON.parse(raw) : {}) } catch { reject(new Error('JSON inválido.')) } })
           req.on('error', reject)
         }).catch((error: Error) => ({ __error: error.message }))
@@ -65,7 +99,41 @@ function voiceStudio() {
         try {
           await mkdir(studioDir, { recursive: true })
           if (route === '/status' && req.method === 'GET') {
-            send(200, { apiConfigured: Boolean(apiKey), profile: await readJson(profilePath).catch(() => null), candidates: await readJson(candidatePath).catch(() => ({ candidates: [], interpretations: [] })), fullNarrations: (await readJson(path.join(studioDir, 'full-narrations.json')).catch(() => ({ versions: [] }))).versions || [], usage: await readJson(path.join(studioDir, 'usage.json')).catch(() => ({ requests: [] })) }); return
+            const history = await readNarrationHistory()
+            send(200, { speeches: history.speeches, apiConfigured: Boolean(apiKey), profile: await readJson(profilePath).catch(() => null), candidates: await readJson(candidatePath).catch(() => ({ candidates: [], interpretations: [] })), fullNarrations: history.versions, usage: await readJson(path.join(studioDir, 'usage.json')).catch(() => ({ requests: [] })) }); return
+          }
+          if (route === '/subtitle-draft' && req.method === 'POST') {
+            const { id, draft } = body
+            if (typeof id !== 'string' || !Array.isArray(draft?.segments)) {
+              send(400, { error: 'Rascunho de legenda inválido.' }); return
+            }
+            if (!(await readNarrationHistory()).versions.some((version) => version.id === id)) {
+              send(404, { error: 'Versão de áudio não encontrada.' }); return
+            }
+            await updateNarrationHistory((history) => {
+              const version = history.versions.find((item) => item.id === id)
+              version.subtitleDraft = draft
+            })
+            send(200, { saved: true }); return
+          }
+          if (route === '/speeches' && req.method === 'POST') {
+            const text = typeof body.text === 'string' ? body.text : ''
+            const title = typeof body.title === 'string' ? body.title.trim() : ''
+            if (!text.trim() || text.length > 12000 || title.length > 100) {
+              send(400, { error: 'Informe um texto de até 12.000 caracteres e um título de até 100 caracteres.' }); return
+            }
+            if (body.id && !(await readNarrationHistory()).speeches.some((speech) => speech.id === body.id)) {
+              send(404, { error: 'Fala não encontrada.' }); return
+            }
+            const speech = await updateNarrationHistory((history) => {
+              const existing = history.speeches.find((item) => item.id === body.id)
+              const speech = { id: existing?.id ?? randomUUID(), title: title || text.trim().replace(/\s+/g, ' ').slice(0, 60), text }
+              history.speeches = existing
+                ? history.speeches.map((item) => item.id === speech.id ? speech : item)
+                : [...history.speeches, speech]
+              return speech
+            })
+            send(200, { speech }); return
           }
           const candidateFileMatch = route.match(/^\/candidate-file\/([a-zA-Z0-9._-]+)$/)
           if (candidateFileMatch && req.method === 'GET') {
@@ -152,6 +220,10 @@ function voiceStudio() {
             const profile = await readJson(profilePath)
             const candidateStore = await readJson(candidatePath)
             const kind = String(body.kind || 'audition')
+            const speechId = body.speechId ?? introSpeech.id
+            if (kind === 'full' && !(await readNarrationHistory()).speeches.some((speech) => speech.id === speechId)) {
+              send(404, { error: 'Fala não encontrada.' }); return
+            }
             const stageError = validateNarrationStage({ profile, kind, text, voiceId: body.voiceId })
             if (stageError) { send(409, { error: stageError }); return }
             const selectedCandidate = candidateStore.candidates.find((entry: any) => entry.voiceId === body.voiceId)
@@ -186,10 +258,8 @@ function voiceStudio() {
             if (kind === 'full') {
               const stage = path.join(root, 'public', 'audio', 'narration', 'staging')
               await mkdir(stage, { recursive: true }); await writeFile(path.join(stage, id), audio)
-              const version = { id, url: `/__voice-studio/api/candidate-file/${id}`, stageUrl: `/audio/narration/staging/${id}`, kind, mimeType: 'audio/wav', bytes: audio.length, text, direction: String(body.direction || ''), voiceId: body.voiceId, model: body.model || 'gemini-3.8-flash-tts', createdAt: new Date().toISOString(), cached, source: 'generated' }
-              const historyPath = path.join(studioDir, 'full-narrations.json')
-              const history = await readJson(historyPath).catch(() => ({ versions: [] }))
-              history.versions = [version, ...(history.versions || [])]; await writeJson(historyPath, history)
+              const version = { id, speechId, url: `/__voice-studio/api/candidate-file/${id}`, stageUrl: `/audio/narration/staging/${id}`, kind, mimeType: 'audio/wav', bytes: audio.length, text, direction: String(body.direction || ''), voiceId: body.voiceId, model: body.model || 'gemini-3.8-flash-tts', createdAt: new Date().toISOString(), cached, source: 'generated' }
+              await updateNarrationHistory((history) => { history.versions.unshift(version) })
               send(200, version); return
             }
             const fileName = `${id}`
@@ -208,6 +278,10 @@ function voiceStudio() {
             send(200, { id: sample.id, url: sample.url, candidateId: selectedCandidate.id, kind, cached, mimeType: 'audio/wav', bytes: audio.length }); return
           }
           if (route === '/import' && req.method === 'POST') {
+            const speechId = body.speechId ?? introSpeech.id
+            if (!(await readNarrationHistory()).speeches.some((speech) => speech.id === speechId)) {
+              send(404, { error: 'Fala não encontrada.' }); return
+            }
             const name = safeName(String(body.name || 'narration-audio'))
             const type = String(body.mimeType || 'application/octet-stream')
             if (!type.startsWith('audio/') || !body.base64) { send(400, { error: 'Envie um arquivo de áudio válido.' }); return }
@@ -217,10 +291,8 @@ function voiceStudio() {
             const id = `harrison-local-${Date.now()}-${randomUUID().slice(0, 6)}${ext}`
             const stage = path.join(root, 'public', 'audio', 'narration', 'staging')
             await mkdir(stage, { recursive: true }); await writeFile(path.join(stage, id), bytes)
-            const version = { id, url: `/__voice-studio/api/candidate-file/${id}`, stageUrl: `/audio/narration/staging/${id}`, kind: 'full', mimeType: type, bytes: bytes.length, text: String(body.text || ''), direction: String(body.direction || ''), voiceId: (await readJson(profilePath).catch(() => ({}))).voiceId || null, createdAt: new Date().toISOString(), cached: false, source: 'imported', originalName: name }
-            const historyPath = path.join(studioDir, 'full-narrations.json')
-            const history = await readJson(historyPath).catch(() => ({ versions: [] }))
-            history.versions = [version, ...(history.versions || [])]; await writeJson(historyPath, history)
+            const version = { id, speechId, url: `/__voice-studio/api/candidate-file/${id}`, stageUrl: `/audio/narration/staging/${id}`, kind: 'full', mimeType: type, bytes: bytes.length, text: String(body.text || ''), direction: String(body.direction || ''), voiceId: (await readJson(profilePath).catch(() => ({}))).voiceId || null, createdAt: new Date().toISOString(), cached: false, source: 'imported', originalName: name }
+            await updateNarrationHistory((history) => { history.versions.unshift(version) })
             send(200, version); return
           }
           if (route === '/gemini/transcribe' && req.method === 'POST') {
@@ -254,15 +326,38 @@ function voiceStudio() {
             const approvalError = validateAudioApproval({ profile, durationMs: body.durationMs, segments: body.segments })
             if (approvalError) { send(409, { error: approvalError }); return }
             const id = safeName(String(body.id || ''))
+            const version = (await readNarrationHistory()).versions.find((item) => item.id === id)
+            const speechId = version?.speechId ?? introSpeech.id
+            const isBorderCaveTitle = speechId === BORDER_CAVE_TITLE_SPEECH_ID
+            const isBorderCaveArrival = speechId === BORDER_CAVE_ARRIVAL_SPEECH_ID
+            const isAruCuriosity = speechId === ARU_CURIOSITY_SPEECH_ID
+            const isBorderCave = isBorderCaveTitle || isBorderCaveArrival || isAruCuriosity
+            if (!isBorderCave && speechId !== introSpeech.id) {
+              send(409, { error: 'Esta fala ainda não está vinculada a uma cena.' }); return
+            }
+            const sceneId = isBorderCave ? 'border-cave-42000-bce' : 'harrison-workshop-1760'
+            const assetDir = isAruCuriosity ? ARU_CURIOSITY_AUDIO_DIR : isBorderCaveArrival ? BORDER_CAVE_ARRIVAL_AUDIO_DIR : isBorderCaveTitle ? BORDER_CAVE_TITLE_AUDIO_DIR : '/audio/narration/pt-BR/time/harrison-intro'
+            const filePrefix = isAruCuriosity ? 'aru-curiosity' : isBorderCaveArrival ? 'border-cave-arrival' : isBorderCaveTitle ? 'border-cave-title' : 'harrison-intro'
             const stagedPath = path.join(root, 'public', 'audio', 'narration', 'staging', id)
             const extension = path.extname(id) || '.wav'
-            const approvedName = `harrison-intro-${new Date().toISOString().slice(0, 10)}-${randomUUID().slice(0, 6)}${extension}`
-            const output = path.join(root, 'public', 'audio', 'narration', 'pt-BR', 'time', 'harrison-intro')
+            const approvedName = `${filePrefix}-${new Date().toISOString().slice(0, 10)}-${randomUUID().slice(0, 6)}${extension}`
+            const output = path.join(root, 'public', assetDir)
             await mkdir(output, { recursive: true }); await copyFile(stagedPath, path.join(output, approvedName))
-            const manifest = { sceneId: 'harrison-workshop-1760', characterId: 'john-harrison', language: 'pt-BR', audioUrl: `/audio/narration/pt-BR/time/harrison-intro/${approvedName}`, durationMs: Math.round(Number(body.durationMs)), status: 'approved', approvedAt: new Date().toISOString(), segments: body.segments || [] }
-            await writeFile(path.join(output, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
+            const manifest = { sceneId, characterId: 'john-harrison', language: 'pt-BR', audioUrl: `${assetDir}/${approvedName}`, durationMs: Math.round(Number(body.durationMs)), status: 'approved', approvedAt: new Date().toISOString(), segments: body.segments || [] }
             const vttName = `${path.basename(approvedName, extension)}.vtt`
             await writeFile(path.join(output, vttName), toWebVtt(manifest.segments))
+            const manifestPath = path.join(output, 'manifest.json')
+            if (isBorderCave) {
+              const temporaryPath = manifestPath + '.' + randomUUID() + '.tmp'
+              try {
+                await writeJson(temporaryPath, { ...manifest, webVtt: `${assetDir}/${vttName}` })
+                await rename(temporaryPath, manifestPath)
+              } finally {
+                await unlink(temporaryPath).catch(() => {})
+              }
+              send(200, { manifest }); return
+            }
+            await writeJson(manifestPath, manifest)
             const recordPath = path.join(root, 'content/narrations/time/harrison-intro/narration-manifest.json')
             const record = JSON.parse(await readFile(recordPath, 'utf8'))
             record.status = 'approved'; record.audioAssetId = approvedName; record.durationMs = manifest.durationMs

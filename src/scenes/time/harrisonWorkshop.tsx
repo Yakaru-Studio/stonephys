@@ -3,7 +3,8 @@ import type { HistoricalScene } from '../sceneTypes'
 
 const workshopBackground = new URL('../../assets/scenes/time/harrison-workshop/workshop-background-no-cushion.png', import.meta.url).href
 
-export const harrisonNarration = 'Tempo... Estamos atravessando-o agora…\n\nNesse exato momento, estou eu falando contigo, e minhas ideias, criadas há séculos, chegaram até ti…\n\nMas houve um tempo em que o tempo não tinha nome…\n\nE vamos, juntos, descobrir como ele foi percebido, definido e medido.\n\nVamos viajar no tempo, então. Mas, dessa vez, não ao futuro... e sim ao passado…'
+import { harrisonNarration } from '../../narration/harrisonScript'
+export { harrisonNarration } from '../../narration/harrisonScript'
 
 export const harrisonWorkshop: HistoricalScene = {
   id: 'harrison-workshop-1760',

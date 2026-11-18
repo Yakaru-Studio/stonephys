@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react'
 import { ArrowLeft, AudioLines, Check, Download, FileAudio, LockKeyhole, Play, RefreshCw, Sparkles, Upload } from 'lucide-react'
-import { harrisonNarration } from '../scenes/time/harrisonWorkshop'
+import { ARU_CURIOSITY_SPEECH_ID, BORDER_CAVE_ARRIVAL_SPEECH_ID, BORDER_CAVE_TITLE_SPEECH_ID, HARRISON_INTRO_SPEECH_ID } from './harrisonScript'
 import { alignTranscriptToScript, toWebVtt, validateSubtitleSegments, type TimedSegment, type TimedWord } from './subtitleAlignment.mjs'
 import './voice-studio.css'
 
@@ -12,7 +12,9 @@ const identityAuditionDirection = 'Leia a amostra em português brasileiro a 75�
 type CandidateSample = { id: string; kind: string; url: string; voiceId: string; direction: string; createdAt: string }
 type VoiceCandidate = { id: string; voiceId: string; displayName: string; type: string; language: string; voiceDescription: string; status: string; sampleUrl: string | null; samples: CandidateSample[] }
 type PreviewAudio = { id: string; url: string; mimeType: string; bytes: number; kind: 'audition' | 'interpretation' | 'full' | 'local'; durationMs?: number; cached?: boolean; generatedText?: string; generatedDirection?: string }
-type FullNarrationVersion = PreviewAudio & { kind: 'full'; text: string; direction: string; voiceId: string | null; createdAt: string; source: 'generated' | 'imported' | 'legacy'; originalName?: string }
+type Speech = { id: string; title: string; text: string }
+type SubtitleDraft = { segments: TimedSegment[]; transcript: string; match: number | null; needsReview: boolean }
+type FullNarrationVersion = PreviewAudio & { speechId: string; subtitleDraft?: SubtitleDraft; kind: 'full'; text: string; direction: string; voiceId: string | null; createdAt: string; source: 'generated' | 'imported' | 'legacy'; originalName?: string }
 const voiceDescription = 'Homem de aproximadamente 67 anos, voz bem grave e um pouco rouca, relojoeiro inglês experiente, voz madura e calorosa, falando português brasileiro neutro. Íntimo, humilde, meticuloso, curioso e reflexivo.'
 
 function parseSubtitleFile(content: string, fileName: string): TimedSegment[] {
@@ -46,6 +48,9 @@ function estimateTtsUsd(text: string, durationSeconds = estimateSpeechSeconds(te
 export default function VoiceStudio({ onClose }: { onClose: () => void }) {
   const [profile, setProfile] = useState<any>(null)
   const [candidates, setCandidates] = useState<VoiceCandidate[]>([])
+  const [speeches, setSpeeches] = useState<Speech[]>([])
+  const [selectedSpeechId, setSelectedSpeechId] = useState(HARRISON_INTRO_SPEECH_ID)
+  const [speechDraft, setSpeechDraft] = useState({ title: '', text: '' })
   const [fullVersions, setFullVersions] = useState<FullNarrationVersion[]>([])
   const [usageRequests, setUsageRequests] = useState<Array<{ estimatedUsd?: number | null; externalRequestMade?: boolean }>>([])
   const [apiConfigured, setApiConfigured] = useState(false)
@@ -53,9 +58,10 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
   const [selectedCandidateId, setSelectedCandidateId] = useState('')
   const [auditionTextValue, setAuditionTextValue] = useState(HARRISON_AUDITION_TEXT)
   const [auditionAdjustments, setAuditionAdjustments] = useState('')
-  const [fullText, setFullText] = useState(harrisonNarration)
   const [fullDirection, setFullDirection] = useState(defaultDirection)
   const [currentAudio, setCurrentAudio] = useState<PreviewAudio | null>(null)
+  const [previewTimeMs, setPreviewTimeMs] = useState(0)
+  const [previewPlaying, setPreviewPlaying] = useState(false)
   const [segments, setSegments] = useState<TimedSegment[]>([])
   const [transcript, setTranscript] = useState('')
   const [match, setMatch] = useState<number | null>(null)
@@ -66,19 +72,73 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
   const fileInput = useRef<HTMLInputElement>(null)
   const subtitleInput = useRef<HTMLInputElement>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const previewEndMs = useRef<number | null>(null)
+  const subtitleWrites = useRef(Promise.resolve())
   const selectedCandidate = candidates.find((item) => item.id === selectedCandidateId) ?? null
+  const selectedSpeech = speeches.find((speech) => speech.id === selectedSpeechId)
+  const canIntegrateSpeech = selectedSpeechId === HARRISON_INTRO_SPEECH_ID || selectedSpeechId === BORDER_CAVE_TITLE_SPEECH_ID || selectedSpeechId === BORDER_CAVE_ARRIVAL_SPEECH_ID || selectedSpeechId === ARU_CURIOSITY_SPEECH_ID
+  const fullText = selectedSpeech?.text ?? ''
+  const speechVersions = fullVersions.filter((version) => version.speechId === selectedSpeechId)
+  const hasUnsavedSpeech = !selectedSpeech || speechDraft.text !== fullText || speechDraft.title !== selectedSpeech.title
   const auditionTextChanged = auditionTextValue !== HARRISON_AUDITION_TEXT
   const hasIdentityApproval = profile?.status === 'approved' && Boolean(profile?.voiceId)
   const subtitleErrors = useMemo(() => currentAudio?.kind === 'full' ? validateSubtitleSegments(segments, currentAudio.durationMs ?? Infinity) : [], [currentAudio, segments])
 
+  const firstCue = segments[0]
+  const lastCue = segments[segments.length - 1]
+  const audioDurationMs = currentAudio?.durationMs
+  const activeCue = segments.find((cue) => cue.startMs <= previewTimeMs && previewTimeMs < cue.endMs)
+  const formatTime = (ms: number) => (ms / 1000).toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + ' s'
+
+  useEffect(() => {
+    if (!previewPlaying) return
+    let frame = 0
+    const sync = () => {
+      const audio = audioRef.current
+      if (!audio || audio.paused) return
+      const timeMs = audio.currentTime * 1000
+      const endMs = previewEndMs.current
+      if (endMs !== null && timeMs >= endMs) {
+        previewEndMs.current = null
+        audio.pause()
+        audio.currentTime = endMs / 1000
+        setPreviewTimeMs(endMs)
+        return
+      }
+      setPreviewTimeMs(timeMs)
+      frame = requestAnimationFrame(sync)
+    }
+    frame = requestAnimationFrame(sync)
+    return () => cancelAnimationFrame(frame)
+  }, [previewPlaying, currentAudio?.id])
+
+  const playFrom = (startMs: number, endMs: number | null = null) => {
+    const audio = audioRef.current
+    if (!audio || !Number.isFinite(startMs)) return
+    if (endMs !== null && (!Number.isFinite(endMs) || endMs <= startMs || startMs < 0)) return
+    previewEndMs.current = endMs
+    audio.currentTime = Math.max(0, startMs) / 1000
+    setPreviewTimeMs(audio.currentTime * 1000)
+    void audio.play().catch(() => setStatus('Não foi possível reproduzir o áudio selecionado.'))
+  }
+
   const refreshLocal = async () => {
-    const result = await fetch(`${API}/status`).then((response) => response.json())
+    await subtitleWrites.current
+    const response = await fetch(`${API}/status`)
+    if (!response.ok) throw new Error('Não foi possível carregar as falas.')
+    const result = await response.json()
+    setSpeeches(result.speeches)
     setProfile(result.profile); setApiConfigured(result.apiConfigured); setUsageRequests(result.usage?.requests || [])
     setCandidates(result.candidates?.candidates || []); setFullVersions(result.fullNarrations || [])
     setSelectedCandidateId((current) => current || result.candidates?.candidates?.[0]?.id || '')
+    return result.speeches as Speech[]
   }
   useEffect(() => {
-    refreshLocal().then(() => setStatus('Voz selecionada carregada. Nenhuma chamada à API é feita automaticamente.'))
+    refreshLocal().then((loadedSpeeches) => {
+      const intro = loadedSpeeches.find((speech) => speech.id === HARRISON_INTRO_SPEECH_ID)
+      if (intro) setSpeechDraft({ title: intro.title, text: intro.text })
+      setStatus('Falas de John Harrison carregadas.')
+    })
       .catch(() => setStatus('Não foi possível conectar ao servidor local do Voice Studio.'))
     return () => { if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = '' } }
   }, [])
@@ -87,6 +147,40 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
     const result = await response.json().catch(() => ({}))
     if (!response.ok) throw new Error(result.error || `Erro ${response.status}`)
     return result
+  }
+  const saveSubtitleDraft = (id: string, draft: SubtitleDraft) => {
+    setFullVersions((items) => items.map((item) => item.id === id ? { ...item, subtitleDraft: draft } : item))
+    const pending = subtitleWrites.current.then(() => api('/subtitle-draft', { id, draft })).then(() => {})
+    subtitleWrites.current = pending.catch(() => {})
+    return pending
+  }
+
+  const openSpeech = (speech?: Speech) => {
+    setSelectedSpeechId(speech?.id ?? '')
+    setSpeechDraft({ title: speech?.title ?? '', text: speech?.text ?? '' })
+    setFullDirection(speech?.id === HARRISON_INTRO_SPEECH_ID ? defaultDirection : '')
+    setCurrentAudio(null)
+    setSegments([])
+    setTranscript('')
+    setMatch(null)
+    setNeedsReview(false)
+    setValidation([])
+  }
+  const saveSpeech = async () => {
+    setBusy(true)
+    try {
+      const { speech } = await api('/speeches', { id: selectedSpeechId || undefined, ...speechDraft })
+      setSpeeches((items) => selectedSpeechId
+        ? items.map((item) => item.id === speech.id ? speech : item)
+        : [...items, speech])
+      setSelectedSpeechId(speech.id)
+      setSpeechDraft({ title: speech.title, text: speech.text })
+      setStatus(`Fala salva: ${speech.title}.`)
+    } catch (error) { setStatus((error as Error).message) } finally { setBusy(false) }
+  }
+  const changeSpeech = (speech?: Speech) => {
+    if (hasUnsavedSpeech && (speechDraft.title || speechDraft.text) && !window.confirm('Descartar as alterações ainda não salvas nesta fala?')) return
+    openSpeech(speech)
   }
   const paidAction = (action: string, text: string, model = 'gemini-3.8-flash-tts', durationEstimate = estimateSpeechSeconds(text)) => {
     const estimate = estimateTtsUsd(text, durationEstimate)
@@ -111,7 +205,7 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
     return createVoice(`${baseDescription}\n\nAjustes solicitados para uma nova identidade vocal: ${voiceAdjustments.trim()}`)
   }
   const synthesize = async (kind: 'audition' | 'full', directionOverride?: string, textOverride?: string) => {
-    const voiceId = kind === 'full' ? profile.voiceId : selectedCandidate?.voiceId
+    const voiceId = kind === 'full' ? profile?.voiceId : selectedCandidate?.voiceId
     if (!voiceId) { setStatus('Selecione um candidato de voz primeiro.'); return }
     if (kind === 'full' && !hasIdentityApproval) { setStatus('Aprove a identidade vocal antes de gerar a narração completa.'); return }
     const text = kind === 'full' ? fullText : textOverride ?? auditionTextValue
@@ -120,7 +214,7 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
     setBusy(true); setStatus(kind === 'full' ? 'Gerando a versão completa em rascunho. O arquivo aprovado anterior será preservado.' : 'Gerando e salvando esta amostra para comparação futura…')
     try {
       const generatedDirection = kind === 'audition' ? directionOverride || identityAuditionDirection : fullDirection
-      const result = await api('/gemini/synthesize', { kind, text, direction: generatedDirection, durationEstimate: expectedDuration, voiceId, profileVersion: profile?.profileVersion, model: 'gemini-3.8-flash-tts', language: 'pt-BR', authorization: COST_CONFIRMATION })
+      const result = await api('/gemini/synthesize', { kind, speechId: kind === 'full' ? selectedSpeechId : undefined, text, direction: generatedDirection, durationEstimate: expectedDuration, voiceId, profileVersion: profile?.profileVersion, model: 'gemini-3.8-flash-tts', language: 'pt-BR', authorization: COST_CONFIRMATION })
       setCurrentAudio({ id: result.id, url: result.url, mimeType: result.mimeType, bytes: result.bytes, kind, cached: result.cached, generatedText: text, generatedDirection })
       setSegments([]); setTranscript(''); setMatch(null); setNeedsReview(false); setValidation([])
       await refreshLocal()
@@ -136,14 +230,15 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
     } catch (error) { setStatus((error as Error).message) }
   }
   const importAudio = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.currentTarget.files?.[0]; if (!file) return
+    const input = event.currentTarget
+    const file = input.files?.[0]; if (!file) return
     if (!hasIdentityApproval) { setStatus('Aprove a identidade vocal antes de integrar uma narração completa.'); event.currentTarget.value = ''; return }
     setBusy(true); setStatus('Importando arquivo para a área local de rascunhos…')
     try {
       const base64 = await new Promise<string>((resolve, reject) => { const reader = new FileReader(); reader.onerror = () => reject(new Error('Falha ao ler o arquivo.')); reader.onload = () => resolve(String(reader.result).split(',')[1]); reader.readAsDataURL(file) })
-      const result = await api('/import', { name: file.name, mimeType: file.type || 'audio/wav', base64, text: fullText, direction: fullDirection }); setCurrentAudio({ ...result, kind: 'full', generatedText: fullText, generatedDirection: fullDirection }); setSegments([]); setMatch(null); setNeedsReview(false); setValidation([]); await refreshLocal()
+      const result = await api('/import', { speechId: selectedSpeechId, name: file.name, mimeType: file.type || 'audio/wav', base64, text: fullText, direction: fullDirection }); setCurrentAudio({ ...result, kind: 'full', generatedText: fullText, generatedDirection: fullDirection }); setSegments([]); setTranscript(''); setMatch(null); setNeedsReview(false); setValidation([]); await refreshLocal()
       setStatus(`Importado ${file.name}. Faça a validação técnica e sincronize as legendas antes da aprovação.`)
-    } catch (error) { setStatus((error as Error).message) } finally { setBusy(false); event.currentTarget.value = '' }
+    } catch (error) { setStatus((error as Error).message) } finally { setBusy(false); input.value = '' }
   }
   const validateAudio = async () => {
     if (!currentAudio) return
@@ -171,37 +266,86 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
       setTranscript(result.transcript)
       const aligned = alignTranscriptToScript(transcriptScript, result.words as TimedWord[])
       setMatch(aligned.similarity); setNeedsReview(aligned.requiresReview); setSegments(aligned.segments)
+      await saveSubtitleDraft(currentAudio.id, {
+        segments: aligned.segments,
+        transcript: result.transcript,
+        match: aligned.similarity,
+        needsReview: aligned.requiresReview,
+      })
       setStatus(aligned.requiresReview ? 'Há divergência entre a fala e o roteiro. O alinhamento foi interrompido para revisão humana.' : `Alinhamento textual ${(aligned.similarity * 100).toFixed(0)}%. Revise cada legenda e seus tempos antes da aprovação.`)
     } catch (error) { setStatus((error as Error).message) } finally { setBusy(false) }
   }
   const importSubtitles = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.currentTarget.files?.[0]; if (!file) return
+    const input = event.currentTarget
+    const file = input.files?.[0]; if (!file) return
     try { setSegments(parseSubtitleFile(await file.text(), file.name)); setNeedsReview(false); setMatch(null); setStatus('Legendas importadas. Revise texto, intervalos e sincronização.') }
     catch (error) { setStatus(`Não foi possível importar as legendas: ${(error as Error).message}`) }
-    finally { event.currentTarget.value = '' }
+    finally { input.value = '' }
   }
   const approveAudio = async () => {
-    if (!currentAudio || currentAudio.kind !== 'full' || needsReview || subtitleErrors.length || !segments.length || !hasIdentityApproval) return
+    if (!canIntegrateSpeech || !currentAudio || currentAudio.kind !== 'full' || needsReview || subtitleErrors.length || !segments.length || !hasIdentityApproval) return
     if (!currentAudio.durationMs || !Number.isFinite(currentAudio.durationMs)) { setStatus('Aguarde o carregamento da duração do áudio antes de aprovar.'); return }
     setBusy(true)
     try {
+      await subtitleWrites.current
       const result = await api('/approve', { id: currentAudio.id, durationMs: currentAudio.durationMs, segments })
       setStatus(`Versão aprovada e gravada em ${result.manifest.audioUrl}. Reinicie a cena para reproduzi-la.`)
     } catch (error) { setStatus((error as Error).message) } finally { setBusy(false) }
   }
   const selectFullVersion = (version: FullNarrationVersion) => {
     setCurrentAudio({ id: version.id, url: version.url, mimeType: version.mimeType, bytes: version.bytes, kind: 'full', durationMs: version.durationMs, cached: version.cached, generatedText: version.text, generatedDirection: version.direction })
-    setSegments([]); setTranscript(''); setMatch(null); setNeedsReview(false); setValidation([])
+    const draft = version.subtitleDraft
+    setSegments(draft?.segments ?? [])
+    setTranscript(draft?.transcript ?? '')
+    setMatch(draft?.match ?? null)
+    setNeedsReview(draft?.needsReview ?? false)
+    setValidation([])
     setStatus(`Versão de ${new Date(version.createdAt).toLocaleString()} carregada para comparação e revisão.`)
   }
-  const updateCue = (index: number, field: keyof TimedSegment, value: string) => setSegments((current) => current.map((cue, cueIndex) => cueIndex === index ? { ...cue, [field]: field === 'text' ? value : Number(value) } : cue))
+  const persistCueEdits = (updatedSegments = segments, manual = false) => {
+    if (currentAudio?.kind !== 'full') return
+    const savedSegments = fullVersions.find((version) => version.id === currentAudio.id)?.subtitleDraft?.segments
+    if (!manual && savedSegments === updatedSegments) return
+    if (manual) setBusy(true)
+    void saveSubtitleDraft(currentAudio.id, { segments: updatedSegments, transcript, match, needsReview })
+      .then(() => setStatus('Alterações da legenda salvas nesta versão de áudio.'))
+      .catch(() => setStatus('Não foi possível salvar a legenda. Tente novamente em Salvar legenda.'))
+      .finally(() => { if (manual) setBusy(false) })
+  }
+  const updateCue = (index: number, field: keyof TimedSegment, value: string, save = false) => {
+    const updated = segments.map((cue, cueIndex) => cueIndex === index ? { ...cue, [field]: field === 'text' ? value : Number(value) } : cue)
+    setSegments(updated)
+    if (save) persistCueEdits(updated)
+  }
   const exportVtt = () => {
-    const blob = new Blob([toWebVtt(segments)], { type: 'text/vtt;charset=utf-8' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = 'harrison-intro.pt-BR.vtt'; link.click(); URL.revokeObjectURL(url)
+    const blob = new Blob([toWebVtt(segments)], { type: 'text/vtt;charset=utf-8' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `${selectedSpeechId}.pt-BR.vtt`; link.click(); URL.revokeObjectURL(url)
   }
   const exportJson = () => {
-    const content = { sceneId: 'harrison-workshop-1760', characterId: 'john-harrison', language: 'pt-BR', audioAssetId: currentAudio?.id ?? null, durationMs: currentAudio?.durationMs ?? null, status: 'pending-review', segments }
-    const blob = new Blob([JSON.stringify(content, null, 2)], { type: 'application/json;charset=utf-8' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = 'harrison-intro.pt-BR.json'; link.click(); URL.revokeObjectURL(url)
+    const content = { speechId: selectedSpeechId, sceneId: selectedSpeechId === HARRISON_INTRO_SPEECH_ID ? 'harrison-workshop-1760' : undefined, characterId: 'john-harrison', language: 'pt-BR', audioAssetId: currentAudio?.id ?? null, durationMs: currentAudio?.durationMs ?? null, status: 'pending-review', segments }
+    const blob = new Blob([JSON.stringify(content, null, 2)], { type: 'application/json;charset=utf-8' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `${selectedSpeechId}.pt-BR.json`; link.click(); URL.revokeObjectURL(url)
   }
+
+  const reviewPlayer = currentAudio && <audio
+    key={currentAudio.id}
+    ref={audioRef}
+    controls
+    src={currentAudio.url}
+    onLoadStart={() => { previewEndMs.current = null; setPreviewTimeMs(0); setPreviewPlaying(false) }}
+    onLoadedMetadata={(event) => {
+      const durationMs = Math.round(event.currentTarget.duration * 1000)
+      if (Number.isFinite(durationMs)) {
+        setCurrentAudio((current) => current?.id === currentAudio.id ? { ...current, durationMs } : current)
+      }
+    }}
+    onPlaying={() => setPreviewPlaying(true)}
+    onPause={() => setPreviewPlaying(false)}
+    onEnded={(event) => {
+      previewEndMs.current = null
+      setPreviewPlaying(false)
+      setPreviewTimeMs(Math.round(event.currentTarget.duration * 1000))
+    }}
+    onSeeked={(event) => setPreviewTimeMs(event.currentTarget.currentTime * 1000)}
+  />
 
   return <main className="voice-studio">
     <header className="voice-studio-header"><button onClick={onClose} aria-label="Fechar estúdio"><ArrowLeft size={18}/></button><div><span>SHARPSTONE PHYS · FERRAMENTA LOCAL DE DESENVOLVIMENTO</span><h1>Voice Studio <i>John Harrison</i></h1></div><a className="voice-studio-audio-link" href="/__audio-studio">Music Studio</a><AudioLines size={22}/></header>
@@ -223,15 +367,89 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
             </div>
         </>
       </section>}
-      <section className="voice-studio-card voice-studio-production"><h2>Narração completa</h2>{hasIdentityApproval ? <><p>Identidade vocal aprovada. Revise o roteiro e a direção de leitura antes de gerar cada versão; todas ficam salvas para comparação.</p><label>Texto completo que John vai ler<textarea className="voice-studio-script" value={fullText} onChange={(event) => setFullText(event.target.value)} maxLength={12000} rows={10}/></label><label>Ajustes de voz para a narração completa<textarea value={fullDirection} onChange={(event) => setFullDirection(event.target.value)} rows={4}/></label><div className="voice-studio-actions"><button disabled={!apiConfigured || busy || !fullText.trim()} onClick={() => synthesize('full')}><Sparkles size={15}/> Gerar nova versão completa</button><button disabled={busy} onClick={() => fileInput.current?.click()}><Upload size={15}/> Importar versão completa</button><input ref={fileInput} hidden type="file" accept="audio/*,.wav,.mp3,.m4a,.ogg" onChange={importAudio}/></div><div className="voice-full-version-history"><h3>Histórico de versões · {fullVersions.length}</h3>{fullVersions.length ? fullVersions.map((version, index) => <article className={`voice-full-version ${currentAudio?.id === version.id ? 'is-current' : ''}`} key={version.id}><header><strong>Versão {fullVersions.length - index}{version.source === 'imported' ? ' · importada' : version.source === 'legacy' ? ' · anterior, sem metadados' : version.cached ? ' · reutilizada do cache' : ''}</strong><small>{new Date(version.createdAt).toLocaleString()}</small></header><audio controls preload="metadata" src={version.url} onLoadedMetadata={(event) => { const durationMs = Math.round(event.currentTarget.duration * 1000); setFullVersions((items) => items.map((item) => item.id === version.id ? { ...item, durationMs } : item)); setCurrentAudio((current) => current?.id === version.id ? { ...current, durationMs } : current) }}/><details><summary>Texto e direção desta versão</summary><p><strong>Texto:</strong> {version.text || (version.source === 'legacy' ? 'Não registrado: esta versão é anterior ao histórico.' : 'Não registrado para esta versão importada.')}</p><p><strong>Direção:</strong> {version.direction || 'Sem direção registrada.'}</p></details><button onClick={() => selectFullVersion(version)}>{currentAudio?.id === version.id ? 'Versão selecionada para revisão' : 'Carregar para comparar e revisar'}</button></article>) : <p className="voice-studio-muted">As versões geradas a partir de agora serão guardadas aqui.</p>}</div></> : <p className="voice-studio-lock"><LockKeyhole size={17}/> Bloqueado. Aprove primeiro a identidade vocal após ouvir uma amostra curta.</p>}</section>
-      <section className="voice-studio-card voice-studio-review"><h2>Revisão técnica e artística</h2>{currentAudio ? <><audio ref={audioRef} controls src={currentAudio.url} onLoadedMetadata={(event) => { const durationMs = Math.round(event.currentTarget.duration * 1000); setCurrentAudio((current) => current ? { ...current, durationMs } : current) }}/><p className="voice-studio-file"><FileAudio size={15}/>{currentAudio.id} · {(currentAudio.bytes / 1024).toFixed(0)} KB · {currentAudio.kind}</p><div className="voice-studio-actions"><button onClick={validateAudio}><RefreshCw size={15}/> Validar arquivo</button>{currentAudio.kind === 'full' && <button disabled={!apiConfigured || busy} onClick={transcribe}><AudioLines size={15}/> Transcrever / alinhar</button>}<button onClick={() => { if (audioRef.current) audioRef.current.currentTime = 0; audioRef.current?.play() }}><Play size={15}/> Ouvir novamente</button></div>{validation.map((item) => <p className="voice-studio-check" key={item}>{item}</p>)}</> : <p className="voice-studio-muted">Gere ou selecione um áudio para revisar.</p>}</section>
+      <section className="voice-studio-card voice-studio-production">
+        <h2>Falas de John Harrison</h2>
+        <label>Fala selecionada
+          <select value={selectedSpeechId} disabled={busy || !speeches.length} onChange={(event) => changeSpeech(speeches.find((speech) => speech.id === event.target.value))}>
+            {!selectedSpeech && <option value="">Nova fala</option>}
+            {speeches.map((speech) => <option key={speech.id} value={speech.id}>
+              {speech.title} · {fullVersions.filter((version) => version.speechId === speech.id).length} áudio(s)
+            </option>)}
+          </select>
+        </label>
+        <div className="voice-studio-actions">
+          <button disabled={busy || !selectedSpeech} onClick={() => changeSpeech()}>Nova fala</button>
+        </div>
+        {speeches.length > 0 && <>
+          <label>Título da fala (opcional)
+            <input value={speechDraft.title} disabled={busy} maxLength={100} onChange={(event) => setSpeechDraft({ ...speechDraft, title: event.target.value })}/>
+          </label>
+          <label>Texto que John vai ler
+            <textarea className="voice-studio-script" value={speechDraft.text} disabled={busy} maxLength={12000} rows={8} onChange={(event) => setSpeechDraft({ ...speechDraft, text: event.target.value })}/>
+          </label>
+          <div className="voice-studio-actions">
+            <button disabled={busy || !hasUnsavedSpeech || !speechDraft.text.trim()} onClick={saveSpeech}><Check size={15}/> Salvar fala</button>
+          </div>
+          {selectedSpeech && hasIdentityApproval && <>
+            <label>Direção de leitura
+              <textarea value={fullDirection} disabled={busy} onChange={(event) => setFullDirection(event.target.value)} rows={4}/>
+            </label>
+            <div className="voice-studio-actions">
+              <button disabled={!apiConfigured || busy || hasUnsavedSpeech} onClick={() => synthesize('full')}><Sparkles size={15}/> Gerar nova versão</button>
+              <button disabled={busy || hasUnsavedSpeech} onClick={() => fileInput.current?.click()}><Upload size={15}/> Importar versão</button>
+              <input ref={fileInput} hidden type="file" accept="audio/*,.wav,.mp3,.m4a,.ogg" onChange={importAudio}/>
+            </div>
+            {hasUnsavedSpeech && <small>Salve a fala para gerar ou importar uma versão com o texto atualizado.</small>}
+          </>}
+          {selectedSpeech && !hasIdentityApproval && <p className="voice-studio-lock"><LockKeyhole size={17}/> Aprove a identidade vocal para gerar versões desta fala.</p>}
+          {selectedSpeech && <div className="voice-full-version-history" key={selectedSpeechId}>
+            <h3>Histórico de versões · {speechVersions.length}</h3>
+            {speechVersions.length ? speechVersions.map((version, index) => (
+              <article className={`voice-full-version ${currentAudio?.id === version.id ? 'is-current' : ''}`} key={version.id}>
+                <header>
+                  <strong>Versão {speechVersions.length - index}{version.source === 'imported' ? ' · importada' : version.source === 'legacy' ? ' · anterior, sem metadados' : version.cached ? ' · reutilizada do cache' : ''}</strong>
+                  <small>{new Date(version.createdAt).toLocaleString()}</small>
+                </header>
+                <audio controls preload="metadata" src={version.url} onLoadedMetadata={(event) => {
+                  const durationMs = Math.round(event.currentTarget.duration * 1000)
+                  setFullVersions((items) => items.map((item) => item.id === version.id ? { ...item, durationMs } : item))
+                  setCurrentAudio((current) => current?.id === version.id ? { ...current, durationMs } : current)
+                }}/>
+                <details>
+                  <summary>Texto e direção desta versão</summary>
+                  <p><strong>Texto:</strong> {version.text || 'Texto original não registrado.'}</p>
+                  <p><strong>Direção:</strong> {version.direction || 'Sem direção registrada.'}</p>
+                </details>
+                <button disabled={busy} onClick={() => selectFullVersion(version)}>{currentAudio?.id === version.id ? 'Versão selecionada para revisão' : 'Carregar para comparar e revisar'}</button>
+              </article>
+            )) : <p className="voice-studio-muted">Esta fala ainda não tem versões de áudio.</p>}
+          </div>}
+        </>}
+      </section>
+      <section className="voice-studio-card voice-studio-review"><h2>Revisão técnica e artística</h2>{currentAudio ? <>{currentAudio.kind !== 'full' && reviewPlayer}<p className="voice-studio-file"><FileAudio size={15}/>{currentAudio.id} · {(currentAudio.bytes / 1024).toFixed(0)} KB · {currentAudio.kind}</p><div className="voice-studio-actions"><button onClick={validateAudio}><RefreshCw size={15}/> Validar arquivo</button>{currentAudio.kind === 'full' && <button disabled={!apiConfigured || busy} onClick={transcribe}><AudioLines size={15}/> Transcrever / alinhar</button>}<button onClick={() => playFrom(0)}><Play size={15}/> Ouvir novamente</button></div>{validation.map((item) => <p className="voice-studio-check" key={item}>{item}</p>)}</> : <p className="voice-studio-muted">Gere ou selecione um áudio para revisar.</p>}</section>
       <section className="voice-studio-card voice-studio-subtitles"><div className="voice-studio-section-title"><div><h2>Legendas · pt-BR</h2><p>{match === null ? 'Transcrição e timestamps são obtidos do áudio completo, não estimados pelo roteiro.' : `Correspondência com o roteiro: ${(match * 100).toFixed(0)}%`}</p></div><div className="voice-studio-actions"><button disabled={!segments.length} onClick={exportJson}><Download size={15}/> JSON</button><button disabled={!segments.length} onClick={exportVtt}><Download size={15}/> VTT</button></div></div>
+        {currentAudio?.kind === 'full' && <>
+          {reviewPlayer}
+          {firstCue && lastCue && <div className="voice-studio-caption-preview">
+            <p>Prévia da legenda · {formatTime(previewTimeMs)}{audioDurationMs ? ` / ${formatTime(audioDurationMs)}` : ''}</p>
+            <div className="voice-studio-caption-text">{activeCue?.text || 'Sem legenda neste ponto'}</div>
+            {audioDurationMs !== undefined && <p>Primeira legenda começa em {formatTime(firstCue.startMs)}. Última legenda termina em {formatTime(lastCue.endMs)}. O áudio termina em {formatTime(audioDurationMs)}.</p>}
+            <div className="voice-studio-actions">
+              <button onClick={() => playFrom(0)}><Play size={15}/> Reproduzir do início ao fim</button>
+              <button onClick={() => playFrom(Math.min(lastCue.endMs, audioDurationMs ?? lastCue.endMs) - 3000)}><Play size={15}/> Conferir o fim</button>
+              {audioDurationMs !== undefined && audioDurationMs > lastCue.endMs && <button disabled={busy} onClick={() => updateCue(segments.length - 1, 'endMs', String(audioDurationMs), true)}>Estender última legenda até o fim do áudio</button>}
+            </div>
+          </div>}
+        </>}
         {transcript && <details><summary>Transcrição reconhecida · revisar divergências</summary><p>{transcript}</p></details>}
-        <div className="voice-studio-actions"><button disabled={currentAudio?.kind !== 'full'} onClick={() => subtitleInput.current?.click()}><Upload size={15}/> Importar SRT / VTT / JSON</button><input ref={subtitleInput} hidden type="file" accept=".srt,.vtt,.json,text/vtt" onChange={importSubtitles}/></div>
+        <div className="voice-studio-actions"><button disabled={busy || currentAudio?.kind !== 'full'} onClick={() => subtitleInput.current?.click()}><Upload size={15}/> Importar SRT / VTT / JSON</button><input ref={subtitleInput} hidden type="file" accept=".srt,.vtt,.json,text/vtt" onChange={importSubtitles}/></div>
         {needsReview && <p className="voice-studio-warning">A fala diverge do roteiro. Nenhum timestamp foi forçado; revise o áudio/transcrição antes de continuar.</p>}
-        {segments.map((cue, index) => <div className="voice-studio-cue" key={cue.id}><textarea aria-label={`Texto da legenda ${index + 1}`} value={cue.text} onChange={(event) => updateCue(index, 'text', event.target.value)} rows={2}/><label>Início ms<input type="number" min="0" value={cue.startMs} onChange={(event) => updateCue(index, 'startMs', event.target.value)}/></label><label>Fim ms<input type="number" min="0" value={cue.endMs} onChange={(event) => updateCue(index, 'endMs', event.target.value)}/></label><button onClick={() => audioRef.current && (audioRef.current.currentTime = cue.startMs / 1000, audioRef.current.play())} aria-label={`Ouvir a partir da legenda ${index + 1}`}><Play size={14}/></button></div>)}
+        {segments.map((cue, index) => <div className="voice-studio-cue" key={cue.id}><textarea aria-label={`Texto da legenda ${index + 1}`} value={cue.text} disabled={busy} onBlur={() => persistCueEdits()} onChange={(event) => updateCue(index, 'text', event.target.value)} rows={2}/><label>Início ms<input type="number" min="0" value={cue.startMs} disabled={busy} onBlur={() => persistCueEdits()} onChange={(event) => updateCue(index, 'startMs', event.target.value)}/></label><label>Fim ms<input type="number" min="0" value={cue.endMs} disabled={busy} onBlur={() => persistCueEdits()} onChange={(event) => updateCue(index, 'endMs', event.target.value)}/></label><button onClick={() => playFrom(cue.startMs, cue.endMs)} aria-label={`Ouvir somente o trecho da legenda ${index + 1}`}><Play size={14}/></button></div>)}
+        {currentAudio?.kind === 'full' && segments.length > 0 && <div className="voice-studio-actions">
+          <button disabled={busy} onClick={() => persistCueEdits(segments, true)}><Check size={15}/> Salvar legenda</button>
+        </div>}
         {subtitleErrors.map((error) => <p className="voice-studio-warning" key={error}>{error}</p>)}
-        {currentAudio?.kind === 'full' && <button className="voice-studio-approve" disabled={busy || !hasIdentityApproval || !currentAudio.durationMs || needsReview || !segments.length || subtitleErrors.length > 0} onClick={approveAudio}><Check size={16}/> Aprovar narração e integrar à cena</button>}
+        {canIntegrateSpeech && currentAudio?.kind === 'full' && <button className="voice-studio-approve" disabled={busy || !hasIdentityApproval || !currentAudio.durationMs || needsReview || !segments.length || subtitleErrors.length > 0} onClick={approveAudio}><Check size={16}/> {selectedSpeechId === BORDER_CAVE_TITLE_SPEECH_ID ? 'Aprovar áudio e legenda do letreiro' : 'Aprovar narração e integrar à cena'}</button>}
       </section>
       <aside className="voice-studio-status" role="status">{busy && <span className="voice-studio-spinner"/>}{status}<small>Registro local: {usageRequests.filter((request) => request.externalRequestMade).length} chamadas · estimativa acumulada US$ {usageRequests.reduce((sum, request) => sum + (request.estimatedUsd || 0), 0).toFixed(5)}. Voice Design sem tarifa separada publicada.</small></aside>
     </div>

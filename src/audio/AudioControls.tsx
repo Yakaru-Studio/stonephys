@@ -28,6 +28,20 @@ export default function AudioControls() {
   }, [settings])
 
   useEffect(() => {
+    const syncSettings = (event: Event) => {
+      const detail = (event as CustomEvent<AudioSettings>).detail
+      setSettings(detail ?? loadAudioSettings())
+    }
+    const syncFromStorage = () => setSettings(loadAudioSettings())
+    window.addEventListener('stonephys:audio-settings-changed', syncSettings)
+    window.addEventListener('storage', syncFromStorage)
+    return () => {
+      window.removeEventListener('stonephys:audio-settings-changed', syncSettings)
+      window.removeEventListener('storage', syncFromStorage)
+    }
+  }, [])
+
+  useEffect(() => {
     if (!open) return
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setOpen(false)
@@ -41,6 +55,7 @@ export default function AudioControls() {
     setSettings(next)
     audioManager.setSettings(next)
     saveAudioSettings(next)
+    window.dispatchEvent(new CustomEvent<AudioSettings>('stonephys:audio-settings-changed', { detail: next }))
   }
 
   return <div className="audio-control-root">
@@ -56,12 +71,15 @@ export default function AudioControls() {
         <span><Volume2 size={15} /> {t('audio.effects')}</span>
         <input type="checkbox" checked={settings.enabled} onChange={(event) => updateSettings({ enabled: event.currentTarget.checked })} />
       </label>
+      <label className="audio-switch audio-music-switch">
+        <span><Music2 size={15} /> {t('audio.musicToggle')}</span>
+        <input type="checkbox" checked={settings.musicEnabled} onChange={(event) => updateSettings({ musicEnabled: event.currentTarget.checked })} />
+      </label>
       <div className="audio-volumes">
         <VolumeControl label={t('audio.master')} value={settings.masterVolume} disabled={!settings.enabled} onChange={(masterVolume) => updateSettings({ masterVolume })} />
         <VolumeControl label={t('audio.effects')} value={settings.effectsVolume} disabled={!settings.enabled} onChange={(effectsVolume) => updateSettings({ effectsVolume })} />
-        <VolumeControl label={locale === 'en' ? 'Sound effects' : 'Efeitos sonoros'} value={settings.soundEffectsVolume} disabled={!settings.enabled} onChange={(soundEffectsVolume) => updateSettings({ soundEffectsVolume })} />
         <VolumeControl label={locale === 'en' ? 'Ambience' : 'Ambiência'} value={settings.ambienceVolume} disabled={!settings.enabled} onChange={(ambienceVolume) => updateSettings({ ambienceVolume })} />
-        <VolumeControl label={t('audio.music')} value={settings.musicVolume} disabled={!settings.enabled} onChange={(musicVolume) => updateSettings({ musicVolume })} />
+        <VolumeControl label={t('audio.music')} value={settings.musicVolume} disabled={!settings.enabled || !settings.musicEnabled} onChange={(musicVolume) => updateSettings({ musicVolume })} />
         <VolumeControl label={t('audio.voice')} value={settings.voiceVolume} disabled={!settings.enabled} onChange={(voiceVolume) => updateSettings({ voiceVolume })} />
       </div>
       <label className="audio-language"><span>{t('audio.language')}</span><select value={locale} onChange={(event) => setLocale(event.currentTarget.value as 'pt-BR' | 'en')}><option value="pt-BR">{t('audio.portuguese')}</option><option value="en">{t('audio.english')}</option></select></label>

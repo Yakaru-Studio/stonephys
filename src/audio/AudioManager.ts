@@ -8,6 +8,8 @@ export type SoundEffect =
   | 'starUnlock'
   | 'connection'
   | 'moduleComplete'
+  | 'equipmentSuccess'
+  | 'equipmentError'
   | 'navigation'
   | 'sceneTransition'
   | 'blackoutWhoosh'
@@ -59,6 +61,15 @@ const soundPatterns: Record<SoundEffect, SoundPattern> = {
     { frequency: 587.33, start: .25, duration: 1.25, gain: .04 },
     { frequency: 783.99, start: .4, duration: 1.35, gain: .038 },
     { frequency: 987.77, start: .55, duration: 1.45, gain: .026 },
+  ] },
+  equipmentSuccess: { volume: .72, tones: [
+    { frequency: 523.25, start: 0, duration: .2, gain: .055, type: 'sine' },
+    { frequency: 783.99, start: .1, duration: .27, gain: .052, type: 'sine' },
+    { frequency: 1046.5, start: .21, duration: .42, gain: .038, type: 'triangle' },
+  ] },
+  equipmentError: { volume: .62, tones: [
+    { frequency: 246.94, start: 0, duration: .18, gain: .042, type: 'triangle' },
+    { frequency: 196, start: .1, duration: .24, gain: .035, type: 'sine' },
   ] },
   navigation: { volume: .58, tones: [
     { frequency: 330, endFrequency: 495, start: 0, duration: .22, gain: .04 },
@@ -113,15 +124,18 @@ class AudioManager {
     const now = this.context.currentTime
     this.masterGain.gain.setTargetAtTime(settings.enabled ? settings.masterVolume : 0, now, .025)
     this.effectsGain.gain.setTargetAtTime(settings.effectsVolume, now, .025)
-    this.soundEffectsGain.gain.setTargetAtTime(settings.soundEffectsVolume, now, .025)
+    this.soundEffectsGain.gain.setTargetAtTime(settings.effectsVolume, now, .025)
     this.ambienceGain.gain.setTargetAtTime(settings.ambienceVolume, now, .04)
-    this.musicGain.gain.setTargetAtTime(this.narrationElement && !this.narrationElement.paused ? settings.musicVolume * this.narrationMusicLevel : settings.musicVolume, now, .04)
+    const musicVolume = this.getConfiguredMusicVolume()
+    this.musicGain.gain.setTargetAtTime(this.narrationElement && !this.narrationElement.paused ? musicVolume * this.narrationMusicLevel : musicVolume, now, .04)
     this.voiceGain.gain.setTargetAtTime(settings.voiceVolume, now, .04)
   }
 
-  async playNarration(source: string) {
+  async playNarration(source: string, signal?: AbortSignal, startAtSeconds = 0) {
+    signal?.throwIfAborted()
     const context = this.getContext()
     if (context.state === 'suspended') await context.resume()
+    signal?.throwIfAborted()
     if (!this.narrationElement) {
       this.narrationElement = new Audio()
       this.narrationElement.preload = 'auto'
@@ -129,11 +143,32 @@ class AudioManager {
       this.narrationSource.connect(this.voiceGain!)
     }
     if (this.narrationElement.src !== new URL(source, window.location.href).href) this.narrationElement.src = source
-    this.musicGain?.gain.setTargetAtTime(this.settings.musicVolume * this.narrationMusicLevel, context.currentTime, .35)
+    if (startAtSeconds > 0) {
+      const element = this.narrationElement
+      if (element.readyState < HTMLMediaElement.HAVE_METADATA) {
+        await new Promise<void>((resolve, reject) => {
+          const cleanup = () => {
+            element.removeEventListener('loadedmetadata', onMetadata)
+            element.removeEventListener('error', onError)
+            signal?.removeEventListener('abort', onAbort)
+          }
+          const onMetadata = () => { cleanup(); resolve() }
+          const onError = () => { cleanup(); reject(new Error('Não foi possível carregar os metadados da narração.')) }
+          const onAbort = () => { cleanup(); reject(new DOMException('Narração cancelada.', 'AbortError')) }
+          element.addEventListener('loadedmetadata', onMetadata, { once: true })
+          element.addEventListener('error', onError, { once: true })
+          signal?.addEventListener('abort', onAbort, { once: true })
+          if (signal?.aborted) onAbort()
+        })
+        signal?.throwIfAborted()
+      }
+      this.narrationElement.currentTime = Math.min(startAtSeconds, Math.max(0, this.narrationElement.duration - .05))
+    }
+    this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume() * this.narrationMusicLevel, context.currentTime, .35)
     try {
       await this.narrationElement.play()
     } catch (error) {
-      this.musicGain?.gain.setTargetAtTime(this.settings.musicVolume, context.currentTime, .25)
+      this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume(), context.currentTime, .25)
       throw error
     }
     return this.narrationElement
@@ -142,20 +177,20 @@ class AudioManager {
   setNarrationMusicLevel(value: number) {
     this.narrationMusicLevel = Math.max(.1, Math.min(.75, value))
     if (this.context && this.narrationElement && !this.narrationElement.paused) {
-      this.musicGain?.gain.setTargetAtTime(this.settings.musicVolume * this.narrationMusicLevel, this.context.currentTime, .35)
+      this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume() * this.narrationMusicLevel, this.context.currentTime, .35)
     }
   }
 
   pauseNarration() {
     this.narrationElement?.pause()
-    if (this.context) this.musicGain?.gain.setTargetAtTime(this.settings.musicVolume, this.context.currentTime, .35)
+    if (this.context) this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume(), this.context.currentTime, .35)
   }
   async resumeNarration() {
     if (!this.narrationElement) return
-    if (this.context) this.musicGain?.gain.setTargetAtTime(this.settings.musicVolume * this.narrationMusicLevel, this.context.currentTime, .35)
+    if (this.context) this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume() * this.narrationMusicLevel, this.context.currentTime, .35)
     try { await this.narrationElement.play() }
     catch (error) {
-      if (this.context) this.musicGain?.gain.setTargetAtTime(this.settings.musicVolume, this.context.currentTime, .25)
+      if (this.context) this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume(), this.context.currentTime, .25)
       throw error
     }
   }
@@ -168,7 +203,7 @@ class AudioManager {
       this.narrationElement.removeAttribute('src')
       this.narrationElement.load()
     }
-    if (this.context) this.musicGain?.gain.setTargetAtTime(this.settings.musicVolume, this.context.currentTime, .3)
+    if (this.context) this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume(), this.context.currentTime, .3)
   }
 
   startClockTicks(intervalMs = 1000) {
@@ -347,7 +382,7 @@ class AudioManager {
   }
 
   async playSoundEffectById(effectId: string, options: { volume?: number; pan?: number; group?: string } = {}) {
-    if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.soundEffectsVolume <= 0) return
+    if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.effectsVolume <= 0) return
     const asset = this.soundEffectCatalog[effectId]
     if (!asset?.url || !this.soundEffectsGain) return
     const group = options.group || effectId
@@ -424,10 +459,11 @@ class AudioManager {
     source.stop(now + duration + .02)
   }
 
-  async playMusicAsset(source: string, options: { loop?: boolean; fadeMs?: number; loopCrossfadeMs?: number; trackGain?: number; volume?: number; cropStartSeconds?: number; cropEndSeconds?: number | null } = {}) {
-    if (!this.settings.enabled || this.settings.musicVolume <= 0) return
+  async playMusicAsset(source: string, options: { loop?: boolean; fadeMs?: number; loopCrossfadeMs?: number; trackGain?: number; volume?: number; cropStartSeconds?: number; cropEndSeconds?: number | null; signal?: AbortSignal } = {}) {
+    if (options.signal?.aborted || !this.settings.enabled || this.settings.musicVolume <= 0) return
     const context = this.getContext()
     if (context.state === 'suspended') await context.resume()
+    if (options.signal?.aborted) return
     this.ensureMusicDecks(context)
     const absoluteSource = new URL(source, window.location.href).href
     const fadeMs = Math.max(0, Math.min(10000, options.fadeMs ?? 1400))
@@ -453,8 +489,14 @@ class AudioManager {
     this.configureMusicDeck(next, options)
     next.element.load()
     try { await next.element.play() }
-    catch (error) { next.element.removeAttribute('src'); next.element.load(); throw error }
+    catch (error) {
+      if (options.signal?.aborted) return
+      next.element.removeAttribute('src')
+      next.element.load()
+      throw error
+    }
 
+    if (options.signal?.aborted) return
     this.activeMusicDeck = nextIndex
     this.currentMusicUrl = absoluteSource
     this.musicLoop = options.loop ?? true
@@ -657,7 +699,7 @@ class AudioManager {
 
     master.gain.value = this.settings.enabled ? this.settings.masterVolume : 0
     effects.gain.value = this.settings.effectsVolume
-    soundEffects.gain.value = this.settings.soundEffectsVolume
+    soundEffects.gain.value = this.settings.effectsVolume
     ambience.gain.value = this.settings.ambienceVolume
     music.gain.value = this.settings.musicVolume
     voice.gain.value = this.settings.voiceVolume
@@ -693,6 +735,10 @@ class AudioManager {
     this.voiceGain = voice
     this.reverbInput = reverbInput
     return context
+  }
+
+  private getConfiguredMusicVolume() {
+    return this.settings.musicEnabled ? this.settings.musicVolume : 0
   }
 }
 

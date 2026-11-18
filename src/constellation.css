@@ -83,6 +83,9 @@
 .constellation-complete-all{min-height:32px;padding:0 13px;border:1px solid rgba(237,181,91,.38);border-radius:999px;color:#f2d39d;background:rgba(18,25,34,.78);font:500 10px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;pointer-events:auto;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
 .constellation-complete-all:hover:not(:disabled){border-color:rgba(255,204,117,.76);color:#fff0d0;background:rgba(70,52,30,.82)}
 .constellation-complete-all:disabled{color:rgba(205,192,164,.46);border-color:rgba(205,192,164,.16);cursor:default}
+.constellation-footer-actions{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;pointer-events:auto}
+.constellation-test-workshop{min-height:32px;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:0 11px;border:1px solid rgba(160,190,219,.24);border-radius:999px;color:#c5d4e3;background:rgba(13,22,34,.82);font:500 10px system-ui,sans-serif;letter-spacing:.035em;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.constellation-test-workshop:hover{border-color:rgba(190,215,239,.5);color:#fff;background:rgba(35,51,70,.9)}
 .constellation-progress{display:flex;gap:5px;width:100%;height:2px}
 .constellation-progress span{flex:1;border-radius:2px;background:rgba(152,172,194,.19)}
 .constellation-progress span.current{background:rgba(239,185,100,.68);box-shadow:0 0 8px rgba(239,185,100,.4)}

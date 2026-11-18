@@ -30,7 +30,7 @@ function ParchmentEmblem({ symbol, position }: { symbol: ArcAct['symbol']; posit
   </span>
 }
 
-function Parchment({ act, closing, onClose, onStart, onComplete, starting, locale }: {
+function Parchment({ act, closing, onClose, onStart, onComplete, starting, locale, devScene, onDevSceneChange }: {
   act: ArcAct
   closing: boolean
   onClose: () => void
@@ -38,6 +38,8 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
   onComplete: () => void
   starting: boolean
   locale: AppLocale
+  devScene: DevSceneTarget
+  onDevSceneChange: (scene: DevSceneTarget) => void
 }) {
   const completed = act.status === 'completed'
   return <div className={`arc-parchment-backdrop ${closing ? 'is-closing' : 'is-opening'}`} onClick={onClose}>
@@ -55,6 +57,13 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
         <div className="parchment-divider" aria-hidden="true"><span/><b>✦</b><span/></div>
         <p className="parchment-description">{act.description}</p>
         <div className={`parchment-state ${completed ? 'is-completed' : ''}`}>{completed ? (locale === 'en' ? 'Completed' : 'Concluído') : (locale === 'en' ? 'Available' : 'Disponível')}</div>
+        {import.meta.env.DEV && <label className="parchment-dev-scene-control">
+          <span>{locale === 'en' ? 'Start directly in scene' : 'Iniciar diretamente na cena'}</span>
+          <select value={devScene} onChange={(event) => onDevSceneChange(event.currentTarget.value as DevSceneTarget)}>
+            <option value="border-cave-cycle">{locale === 'en' ? 'Scene 1 · Sun and Moon' : 'Cena 1 · Sol e Lua'}</option>
+            <option value="lebombo-discovery">{locale === 'en' ? 'Scene 2 · Lebombo discovery' : 'Cena 2 · Descoberta do Lebombo'}</option>
+          </select>
+        </label>}
         <div className="parchment-actions">
         <button className="parchment-start" onClick={onStart} disabled={starting}>
           <svg viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
@@ -69,6 +78,8 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
     </section>
   </div>
 }
+
+export type DevSceneTarget = 'border-cave-cycle' | 'lebombo-discovery'
 
 function LibraryScroll({ act, current, onSelect }: { act: ArcAct; current: boolean; onSelect: () => void }) {
   const sealArtwork = act.status === 'locked' ? lockSealArtwork : act.status === 'completed' ? completedSealArtwork : act.symbol === 'bone' ? boneSealArtwork : null
@@ -122,7 +133,7 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   moduleId: string
   completedActIds: string[]
   onBack: () => void
-  onStartAct: (act: ArcAct) => void
+  onStartAct: (act: ArcAct, devScene?: DevSceneTarget) => void
   onCompleteAct: (actId: string) => void
 }) {
   const { locale } = useLocale()
@@ -133,6 +144,7 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   const startTimer = useRef<number | null>(null)
   const [flameActId, setFlameActId] = useState<string | null>(null)
   const [startingAct, setStartingAct] = useState(false)
+  const [devScene, setDevScene] = useState<DevSceneTarget>('border-cave-cycle')
   const acts = useMemo(() => arc.acts.map((act) => {
     const completed = completedActIds.includes(act.id)
     const available = !completed && act.prerequisites.every((prerequisite) => completedActIds.includes(prerequisite))
@@ -183,7 +195,7 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
     setFlameActId(actToStart.id)
     setStartingAct(true)
     closeParchment()
-    const begin = () => onStartAct(actToStart)
+    const begin = () => onStartAct(actToStart, import.meta.env.DEV ? devScene : undefined)
     if (reducedMotion) {
       begin()
       return
@@ -201,11 +213,11 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   return <main className="arc-map-screen knowledge-library-screen" aria-label={locale === 'en' ? `Knowledge Library: ${arc.title}` : `Biblioteca do Conhecimento: ${arc.title}`}>
     <div className="library-background" aria-hidden="true" style={{ backgroundImage: `url("${libraryBackgroundArtwork}")` }}/>
     <header className="arc-map-header library-header">
-      <button className="arc-map-back" onClick={() => selectedAct ? closeParchment() : onBack()} aria-label={locale === 'en' ? 'Back to constellation' : 'Voltar à constelação'}><ArrowLeft size={22}/></button>
+      <button className="arc-map-back" onClick={() => { if (!selectedAct) onBack() }} disabled={Boolean(selectedAct)} aria-label={locale === 'en' ? 'Back to constellation' : 'Voltar à constelação'}><ArrowLeft size={22}/></button>
       <div className="library-heading"><p>{locale === 'en' ? 'Arc:' : 'Arco:'} {arc.title}</p></div>
       <AudioControls/>
     </header>
     <LibraryShelf arc={arc} acts={acts} currentActId={flameActId ?? currentActId} onSelect={openAct} locale={locale}/>
-    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct} starting={startingAct} locale={locale}/ >}
+    {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct} starting={startingAct} locale={locale} devScene={devScene} onDevSceneChange={setDevScene}/ >}
   </main>
 }

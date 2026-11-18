@@ -6,7 +6,7 @@ import path from 'node:path'
 const MODEL = 'lyria-3.5'
 const PRICE = 0.08
 const MAX_BUDGET = 1.50
-const IDS = ['eternity-of-knowledge', 'paths-of-discovery', 'the-clockmaker-of-time', 'the-sanctuary-of-wisdom']
+const IDS = ['eternity-of-knowledge', 'paths-of-discovery', 'the-clockmaker-of-time', 'the-sanctuary-of-wisdom', 'dawn-of-humanity']
 const APPROVAL = 'I understand this may consume quota or be billed'
 const safeName = (value) => String(value).replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 100)
 const readJson = async (file) => JSON.parse(await readFile(file, 'utf8'))
@@ -164,10 +164,11 @@ export function createMusicStudioMiddleware({ root, getApiKey }) {
         const sessionLimit = Math.min(MAX_BUDGET, Number((await readJson(p.budgetFile).catch(() => ({}))).sessionLimitUsd || MAX_BUDGET))
         if (spent + PRICE > sessionLimit + 1e-8) { send(res, 409, { error: `Limite de sessão atingido: US$ ${spent.toFixed(2)} de US$ ${sessionLimit.toFixed(2)} reservado.` }); return }
 
+        const definition = await readJson(path.join(p.content, compositionId, 'composition.json'))
         inFlight.add(requestId)
         const now = new Date().toISOString()
         const versionId = randomUUID()
-        const version = { id: versionId, requestId, model: MODEL, prompt, promptHash, createdAt: now, status: 'pending', source: 'generated', estimatedUsd: PRICE, externalRequestMade: true, fileName: null, durationMs: null, bytes: null, approval: 'pending', notes: '', loop: { enabled: true, startSeconds: 0, endSeconds: null, crossfadeMs: 2500 } }
+        const version = { id: versionId, requestId, model: MODEL, prompt, promptHash, createdAt: now, status: 'pending', source: 'generated', estimatedUsd: PRICE, externalRequestMade: true, fileName: null, durationMs: null, bytes: null, approval: 'pending', notes: '', loop: definition.loop }
         const requestRecord = { requestId, compositionId, versionId, model: MODEL, at: now, estimatedUsd: PRICE, externalRequestMade: true, status: 'pending', promptHash }
         library.requests.push(requestRecord)
         library.compositions[compositionId].versions.unshift(version)
@@ -196,7 +197,7 @@ export function createMusicStudioMiddleware({ root, getApiKey }) {
           const fresh = await readLibrary(root)
           const savedVersion = fresh.compositions[compositionId].versions.find((item) => item.id === versionId)
           const savedRequest = fresh.requests.find((entry) => entry.requestId === requestId)
-          Object.assign(savedVersion, { status: 'pending-review', fileName, bytes: audio.length, generatedAt: new Date().toISOString(), interactionId: result.id || null, validation: { fileExists: true, sizeBytes: audio.length, ...probe, ...peak } })
+          Object.assign(savedVersion, { status: 'pending-review', fileName, bytes: audio.length, durationMs: probe.durationMs ?? null, generatedAt: new Date().toISOString(), interactionId: result.id || null, validation: { fileExists: true, sizeBytes: audio.length, ...probe, ...peak } })
           Object.assign(savedRequest, { status: 'completed', interactionId: result.id || null })
           await saveLibrary(root, fresh)
           send(res, 200, { cached: false, version: savedVersion, interactionId: result.id || null }); return

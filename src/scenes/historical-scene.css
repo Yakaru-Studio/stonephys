@@ -68,9 +68,6 @@
 .baboon-a{left:29%;bottom:13%}
 .zebra-graze-a{left:41%;bottom:4.5%}.zebra-graze-b{left:43.6%;bottom:4.3%;width:2.4%}.zebra-graze-c{left:46.1%;bottom:4.7%;width:2.3%}
 .antelope-a{left:64%;bottom:4.8%}.antelope-b{left:72%;bottom:4.5%}
-.border-cave-birds{position:absolute;z-index:3;inset:0;overflow:hidden;pointer-events:none}
-.border-cave-birds svg{position:absolute;left:-5%;width:clamp(16px,2vw,28px);height:auto;overflow:visible;animation:bird-fly 34s linear infinite}
-.border-cave-birds path{fill:none;stroke:rgba(20,23,45,.88);stroke-width:2.2;stroke-linecap:round;transform-box:fill-box;transform-origin:center;animation:bird-flap .8s ease-in-out infinite alternate}
 .border-cave-shade{position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,9,25,.18),transparent 24%,transparent 66%,rgba(14,13,20,.12)),radial-gradient(ellipse at center,transparent 38%,rgba(8,10,20,.18) 100%)}
 .border-cave-header{background:linear-gradient(180deg,rgba(7,10,24,.46),transparent);pointer-events:none}
 .border-cave-header .historical-scene-icon-button{pointer-events:auto}
@@ -93,8 +90,6 @@
 @keyframes antelope-look-cycle{0%{opacity:0;background-position:0% 0%}49.99%{opacity:0;background-position:0% 0%}50%{opacity:1;background-position:0% 0%}50.7813%{opacity:1;background-position:14.2857% 0%}51.5625%{opacity:1;background-position:28.5714% 0%}52.3438%{opacity:1;background-position:42.8571% 0%}53.125%{opacity:1;background-position:57.1429% 0%}53.9063%{opacity:1;background-position:71.4286% 0%}54.6875%{opacity:1;background-position:85.7143% 0%}55.4688%{opacity:1;background-position:100% 0%}56.25%{opacity:1;background-position:0% 100%}57.0313%{opacity:1;background-position:14.2857% 100%}57.8125%{opacity:1;background-position:28.5714% 100%}58.5938%{opacity:1;background-position:42.8571% 100%}59.375%{opacity:1;background-position:57.1429% 100%}60.1563%{opacity:1;background-position:71.4286% 100%}60.9375%{opacity:1;background-position:85.7143% 100%}61.7188%{opacity:1;background-position:100% 100%}62.5%{opacity:0;background-position:0% 0%}100%{opacity:0;background-position:0% 0%}}
 @keyframes antelope-base-cycle{0%,19.99%{opacity:.95}20%,32.5%{opacity:0}32.51%,49.99%{opacity:.95}50%,62.5%{opacity:0}62.51%,100%{opacity:.95}}
 @keyframes quadruped-graze{0%,24%,100%{transform:rotate(0deg) translateY(0)}42%{transform:rotate(1.8deg) translateY(2px)}58%{transform:rotate(-1deg) translateY(1px)}}
-@keyframes bird-fly{0%{transform:translateX(-6vw) translateY(0)}45%{transform:translateX(50vw) translateY(-1.5vh)}100%{transform:translateX(112vw) translateY(.5vh)}}
-@keyframes bird-flap{from{scale:1 .6}to{scale:1 1.15}}
 .antelope-b{scale:-1 1}
 .border-cave-arrival.is-portrait .border-cave-animal-baboon{width:4.4%}
 .border-cave-arrival.is-portrait .baboon-a{left:25%;bottom:14%}
@@ -108,7 +103,7 @@
 .border-cave-arrival.is-portrait .zebra-graze-c{left:48%;bottom:4.2%;width:5.6%}
 .border-cave-arrival.is-portrait .antelope-a{left:64%;bottom:4.8%}
 .border-cave-arrival.is-portrait .antelope-b{left:76%;bottom:4.5%}
-@media(prefers-reduced-motion:reduce){.border-cave-animal,.border-cave-sprite,.border-cave-birds svg,.border-cave-birds path{animation:none}}
+@media(prefers-reduced-motion:reduce){.border-cave-animal,.border-cave-sprite{animation:none}}
 
 /* Wildlife frame atlases are imported as individual, fixed-canvas PNGs.
    The shared canvas keeps feet anchored while frames change and prevents
@@ -124,18 +119,14 @@
 .antelope-a{left:63%;bottom:20%;transform:translate(-23.15%,11.46%);}
 .antelope-b{left:77%;bottom:20%;scale:1 1;transform:translate(-76.85%,11.46%) scaleX(-1);}
 .antelope-c{left:89%;bottom:20%;transform:translate(-23.15%,11.46%);}
-.border-cave-birds svg{left:42%;opacity:0;animation:bird-fly 34s linear infinite;}
-.border-cave-birds path{stroke-width:1.7;}
-@keyframes bird-fly{
-  0%,6%{opacity:0;transform:translateX(0) translateY(0)}
-  9%{opacity:1}
-  48%{opacity:1;transform:translateX(25vw) translateY(-1.5vh)}
-  96%{opacity:1;transform:translateX(54vw) translateY(.5vh)}
-  100%{opacity:0;transform:translateX(58vw) translateY(.5vh)}
-}
 .border-cave-sun-halo{transform:translate(-50%,-50%) scale(var(--sun-scale,1));}
 .border-cave-sun-halo::before{opacity:var(--sun-aura-level,1);transition:opacity 1s linear;}
 .border-cave-sun-halo i{background:radial-gradient(circle,rgba(255,228,137,1) 0%,rgba(255,196,68,.96) 44%,rgba(249,150,38,.65) 70%,rgba(255,128,31,.08) 88%,transparent 100%);filter:saturate(var(--sun-yellow,1)) blur(2.4px);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--sun-visible,100%),transparent calc(var(--sun-visible,100%) + 1.5%));mask-image:linear-gradient(to bottom,#000 0%,#000 var(--sun-visible,100%),transparent calc(var(--sun-visible,100%) + 1.5%));}
+.border-cave-moonlight{position:absolute;z-index:1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 74% 31%,rgba(178,199,239,.2),rgba(136,163,214,.08) 23%,transparent 48%);mix-blend-mode:screen;transition:opacity 1.8s ease}
+.border-cave-moon{position:absolute;z-index:3;aspect-ratio:1;transform:translate(-50%,-50%);overflow:hidden;border-radius:50%;filter:brightness(1.12) drop-shadow(0 0 12px rgba(219,227,244,.3)) drop-shadow(0 0 24px rgba(169,190,232,.18));pointer-events:none;will-change:left,top,opacity;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--moon-visible,100%),transparent calc(var(--moon-visible,100%) + 1.5%));mask-image:linear-gradient(to bottom,#000 0%,#000 var(--moon-visible,100%),transparent calc(var(--moon-visible,100%) + 1.5%))}
+.border-cave-moon img{position:absolute;left:50%;top:50%;display:block;width:148%;height:148%;max-width:none;object-fit:contain;transform:translate(-50%,-50%)}
+.border-cave-moon-shadow{position:absolute;top:0;left:calc(50% + var(--moon-phase,0%));width:100%;height:100%;transform:translateX(-50%);border-radius:50%;background:rgba(12,18,36,.9);opacity:var(--moon-shadow-opacity,0);transition:left 4.5s ease,opacity .8s ease;mix-blend-mode:multiply}
+.border-cave-lunar-blackout{position:absolute;z-index:30;inset:0;background:#03040a;pointer-events:none;will-change:opacity}
 @media(min-width:701px){
   .border-cave-animal-baboon{width:1%;}
   .border-cave-animal-zebra{width:1.8%;}
@@ -154,9 +145,10 @@
   .border-cave-arrival.is-portrait .antelope-a{left:61.5%;bottom:20%;}
   .border-cave-arrival.is-portrait .antelope-b{left:74.6%;bottom:20%;}
   .border-cave-arrival.is-portrait .antelope-c{left:87.7%;bottom:20%;}
-  .border-cave-birds svg{left:58%;}
 }
-@media(prefers-reduced-motion:reduce){.border-cave-animal-baboon,.border-cave-birds svg,.border-cave-birds path{animation:none}}
+@media(prefers-reduced-motion:reduce){.border-cave-animal-baboon{animation:none}}
 /* One shared, safe-area-aware audio control placement for every playable scene. */
 .historical-scene-audio-control{position:absolute;z-index:20;top:calc(env(safe-area-inset-top) + 12px);right:clamp(14px,3vw,42px);pointer-events:auto}
 .historical-scene-audio-control .audio-toggle{background:rgba(11,18,27,.68);border-color:rgba(232,184,111,.34);color:#f0d7a9}
+
+.border-cave-arrival .border-cave-narration-caption{z-index:31}

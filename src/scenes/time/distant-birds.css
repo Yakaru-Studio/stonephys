@@ -1,0 +1,17 @@
+.distant-bird-flock{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.distant-bird-flock-border-cave{z-index:2}
+.distant-bird-flock-lebombo{z-index:3}
+.distant-bird{position:absolute;left:var(--bird-x);top:var(--bird-y);width:var(--bird-size);height:auto;overflow:visible;color:#171a28;opacity:.82;filter:drop-shadow(0 1px 1.5px rgba(7,10,20,.38));animation:distant-bird-glide var(--bird-duration) linear infinite;animation-delay:var(--bird-delay)}
+.distant-bird-flock-lebombo .distant-bird{color:#201a19;opacity:.74;filter:drop-shadow(0 1px 1.2px rgba(23,13,12,.32))}
+.distant-bird-wings{fill:currentColor;transform-origin:36px 22px;animation:distant-bird-wingbeat var(--wing-duration) ease-in-out infinite alternate;animation-delay:var(--wing-delay)}
+.distant-bird-wing{fill:currentColor;stroke:currentColor;stroke-width:.55;stroke-linejoin:round}
+.distant-bird-wing-left{transform-box:fill-box;transform-origin:100% 90%;animation:distant-bird-wing-left var(--wing-duration) ease-in-out infinite alternate;animation-delay:var(--wing-delay)}
+.distant-bird-wing-right{transform-box:fill-box;transform-origin:0% 90%;animation:distant-bird-wing-right var(--wing-duration) ease-in-out infinite alternate;animation-delay:var(--wing-delay)}
+.distant-bird-body,.distant-bird-tail,.distant-bird-head,.distant-bird-beak{fill:currentColor}
+.distant-bird-body{stroke:currentColor;stroke-width:.45;stroke-linejoin:round}
+.distant-bird-beak{opacity:.92}
+@keyframes distant-bird-wing-left{from{transform:rotate(-12deg) scaleY(.76)}to{transform:rotate(8deg) scaleY(1.08)}}
+@keyframes distant-bird-wing-right{from{transform:rotate(12deg) scaleY(.76)}to{transform:rotate(-8deg) scaleY(1.08)}}
+@keyframes distant-bird-wingbeat{from{transform:translateY(1px)}to{transform:translateY(-1px)}}
+@keyframes distant-bird-glide{0%{translate:-1vw 0;opacity:.45}12%{opacity:.82}52%{translate:6vw -1.3vh;opacity:.84}100%{translate:13vw .5vh;opacity:.42}}
+@media(prefers-reduced-motion:reduce){.distant-bird,.distant-bird-wings,.distant-bird-wing-left,.distant-bird-wing-right{animation:none}}

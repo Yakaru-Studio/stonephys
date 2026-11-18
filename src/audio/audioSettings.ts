@@ -1,8 +1,8 @@
 export type AudioSettings = {
   enabled: boolean
+  musicEnabled: boolean
   masterVolume: number
   effectsVolume: number
-  soundEffectsVolume: number
   ambienceVolume: number
   musicVolume: number
   voiceVolume: number
@@ -13,9 +13,9 @@ const previousDefaultVoiceVolume = 0.82
 
 export const defaultAudioSettings: AudioSettings = {
   enabled: true,
+  musicEnabled: true,
   masterVolume: 0.72,
   effectsVolume: 0.58,
-  soundEffectsVolume: 0.58,
   ambienceVolume: 0.24,
   musicVolume: 0.28,
   voiceVolume: 0.74,
@@ -32,9 +32,9 @@ export function loadAudioSettings(): AudioSettings {
     const parsed = JSON.parse(stored) as Partial<AudioSettings>
     return {
       enabled: typeof parsed.enabled === 'boolean' ? parsed.enabled : defaultAudioSettings.enabled,
+      musicEnabled: typeof parsed.musicEnabled === 'boolean' ? parsed.musicEnabled : defaultAudioSettings.musicEnabled,
       masterVolume: clampVolume(parsed.masterVolume, defaultAudioSettings.masterVolume),
       effectsVolume: clampVolume(parsed.effectsVolume, defaultAudioSettings.effectsVolume),
-      soundEffectsVolume: clampVolume(parsed.soundEffectsVolume, defaultAudioSettings.soundEffectsVolume),
       ambienceVolume: clampVolume(parsed.ambienceVolume, defaultAudioSettings.ambienceVolume),
       musicVolume: clampVolume(parsed.musicVolume, defaultAudioSettings.musicVolume),
       voiceVolume: clampVolume(parsed.voiceVolume === previousDefaultVoiceVolume ? defaultAudioSettings.voiceVolume : parsed.voiceVolume, defaultAudioSettings.voiceVolume),

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowLeft, Check, X } from 'lucide-react'
+import { ArrowLeft, Check, Play, X } from 'lucide-react'
 import { constellations, type ConstellationConfig, type ConstellationStar } from './constellations'
 import './constellation.css'
 import AudioControls from './audio/AudioControls'
@@ -143,15 +143,16 @@ function ConstellationMap({ config, unlockedStarIds, completedStarIds, compactLa
   </svg>
 }
 
-export default function ConstellationPage({ moduleId, unlockedStarIds, completedStarIds, onBack, onUnlockStar, onCompleteStar, onCompleteAll, onOpenArc }: {
+export default function ConstellationPage({ moduleId, unlockedStarIds, completedStarIds, onBack, onUnlockStar, onCompleteStar, onCompleteAll, onOpenArc, onTestWorkshopIntro }: {
   moduleId: string
   unlockedStarIds: string[]
   completedStarIds: string[]
   onBack: () => void
   onUnlockStar: (starId: string) => void
   onCompleteStar: (starId: string) => void
-  onCompleteAll: () => void
+  onCompleteAll?: () => void
   onOpenArc?: (star: ConstellationStar) => void
+  onTestWorkshopIntro?: () => void
 }) {
   const { locale, t } = useLocale()
   const config = localizeConstellation(locale, constellations[moduleId])
@@ -246,9 +247,12 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
       <div className="constellation-progress" aria-label={locale === 'en' ? `${completedStarIds.length} of ${config.stars.length} stages completed` : `${completedStarIds.length} de ${config.stars.length} etapas concluídas`}>
         {config.stars.map((star) => <span key={star.id} className={completedStarIds.includes(star.id) ? 'filled' : unlockedStarIds.includes(star.id) ? 'current' : ''} />)}
       </div>
-      <button className="constellation-complete-all" type="button" onClick={onCompleteAll} disabled={isFinished}>
-        {isFinished ? (locale === 'en' ? 'Everything complete' : 'Tudo concluído') : locale === 'en' ? 'Complete all · test' : 'Concluir tudo · teste'}
-      </button>
+      {(onCompleteAll || onTestWorkshopIntro) && <div className="constellation-footer-actions">
+        {onCompleteAll && <button className="constellation-complete-all" type="button" onClick={onCompleteAll} disabled={isFinished}>
+          {isFinished ? (locale === 'en' ? 'Everything complete' : 'Tudo concluído') : locale === 'en' ? 'Complete all · test' : 'Concluir tudo · teste'}
+        </button>}
+        {onTestWorkshopIntro && <button className="constellation-test-workshop" type="button" onClick={onTestWorkshopIntro}><Play size={13} fill="currentColor"/>{locale === 'en' ? 'Test workshop intro' : 'Testar intro da oficina'}</button>}
+      </div>}
     </div>
 
     {selectedStar && <div className="stage-backdrop" onClick={() => setSelectedStar(null)}>

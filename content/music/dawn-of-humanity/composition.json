@@ -1,0 +1,54 @@
+{
+  "id": "dawn-of-humanity",
+  "name": {
+    "pt-BR": "O Despertar da Humanidade",
+    "en": "Dawn of Humanity"
+  },
+  "description": {
+    "pt-BR": "Amanhecer em Border Cave, há 42 mil anos. Cena 2 de O Osso de Lebombo, no arco Os Deuses da Luz e da Escuridão do módulo Tempo. Interpretação cinematográfica inspirada nas tradições musicais do sul da África.",
+    "en": "Dawn at Border Cave 42,000 years ago. Scene 2 of The Lebombo Bone in the Time module. A cinematic interpretation inspired by Southern African musical traditions."
+  },
+  "application": [
+    "border-cave-arrival"
+  ],
+  "targetDurationSeconds": 180,
+  "targetBpm": "65–80",
+  "defaultVolume": 0.20,
+  "introVolume": {
+    "gain": 0.38,
+    "durationSeconds": 7,
+    "fadeMs": 900
+  },
+  "loop": {
+    "enabled": false,
+    "startSeconds": 0,
+    "endSeconds": null,
+    "crossfadeMs": 1800
+  },
+  "ducking": {
+    "enabled": true,
+    "musicLevelDuringNarration": 0.42
+  },
+  "status": "awaiting-review",
+  "approvedVersionId": "a321f9e7-780d-429b-8c65-15a5fc0615bd",
+  "approvedAssetUrl": "/audio/music/approved/dawn-of-humanity.mp3",
+  "approvedCropStartSeconds": 0,
+  "approvedCropEndSeconds": 178.426,
+  "approvedVolume": 1,
+  "approvedLoop": {
+    "enabled": false,
+    "startSeconds": 0,
+    "endSeconds": 178.573,
+    "crossfadeMs": 1800
+  },
+  "previewVersionId": "a321f9e7-780d-429b-8c65-15a5fc0615bd",
+  "previewCropStartSeconds": 0,
+  "previewCropEndSeconds": 178.426,
+  "previewVolume": 1,
+  "previewLoop": {
+    "enabled": false,
+    "startSeconds": 0,
+    "endSeconds": 178.573,
+    "crossfadeMs": 1800
+  }
+}

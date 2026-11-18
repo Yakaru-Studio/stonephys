@@ -1,0 +1,413 @@
+{
+  "sceneId": "border-cave-42000-bce",
+  "characterId": "john-harrison",
+  "language": "pt-BR",
+  "audioUrl": "/audio/narration/pt-BR/time/border-cave-arrival/border-cave-arrival-2026-11-18-10bdd5.wav",
+  "durationMs": 37200,
+  "status": "approved",
+  "approvedAt": "2026-11-18T14:29:39.961Z",
+  "segments": [
+    {
+      "id": "harrison-caption-1",
+      "text": "O céu sempre foi nosso guia...",
+      "startMs": 300,
+      "endMs": 2800,
+      "wordTimings": [
+        {
+          "text": "O",
+          "startMs": 300,
+          "endMs": 400
+        },
+        {
+          "text": "céu",
+          "startMs": 400,
+          "endMs": 1000
+        },
+        {
+          "text": "sempre",
+          "startMs": 1200,
+          "endMs": 1800
+        },
+        {
+          "text": "foi",
+          "startMs": 1800,
+          "endMs": 2100
+        },
+        {
+          "text": "nosso",
+          "startMs": 2100,
+          "endMs": 2400
+        },
+        {
+          "text": "guia.",
+          "startMs": 2400,
+          "endMs": 2800
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-2",
+      "text": "A luz e a escuridão se sucediam,",
+      "startMs": 3800,
+      "endMs": 6800,
+      "wordTimings": [
+        {
+          "text": "A",
+          "startMs": 3800,
+          "endMs": 3800
+        },
+        {
+          "text": "luz",
+          "startMs": 3800,
+          "endMs": 4600
+        },
+        {
+          "text": "e",
+          "startMs": 4600,
+          "endMs": 4700
+        },
+        {
+          "text": "a",
+          "startMs": 4700,
+          "endMs": 4700
+        },
+        {
+          "text": "escuridão",
+          "startMs": 4700,
+          "endMs": 5400
+        },
+        {
+          "text": "se",
+          "startMs": 5800,
+          "endMs": 5900
+        },
+        {
+          "text": "sucediam,",
+          "startMs": 5900,
+          "endMs": 6800
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-3",
+      "text": "trazendo consigo seus imponentes astros.",
+      "startMs": 7500,
+      "endMs": 10500,
+      "wordTimings": [
+        {
+          "text": "trazendo",
+          "startMs": 7500,
+          "endMs": 7800
+        },
+        {
+          "text": "consigo",
+          "startMs": 7800,
+          "endMs": 8600
+        },
+        {
+          "text": "seus",
+          "startMs": 8700,
+          "endMs": 9000
+        },
+        {
+          "text": "imponentes",
+          "startMs": 9000,
+          "endMs": 9900
+        },
+        {
+          "text": "astros.",
+          "startMs": 9900,
+          "endMs": 10500
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-4",
+      "text": "Seriam eles deuses?",
+      "startMs": 11500,
+      "endMs": 13000,
+      "wordTimings": [
+        {
+          "text": "Seriam",
+          "startMs": 11500,
+          "endMs": 11800
+        },
+        {
+          "text": "eles",
+          "startMs": 11800,
+          "endMs": 12200
+        },
+        {
+          "text": "deuses,",
+          "startMs": 12200,
+          "endMs": 13000
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-5",
+      "text": "Seres que atravessavam os céus e desapareciam...",
+      "startMs": 13600,
+      "endMs": 17500,
+      "wordTimings": [
+        {
+          "text": "seres",
+          "startMs": 13600,
+          "endMs": 13900
+        },
+        {
+          "text": "que",
+          "startMs": 13900,
+          "endMs": 14200
+        },
+        {
+          "text": "atravessavam",
+          "startMs": 14400,
+          "endMs": 15300
+        },
+        {
+          "text": "os",
+          "startMs": 15300,
+          "endMs": 15500
+        },
+        {
+          "text": "céus",
+          "startMs": 15500,
+          "endMs": 16300
+        },
+        {
+          "text": "e",
+          "startMs": 16400,
+          "endMs": 16500
+        },
+        {
+          "text": "desapareciam",
+          "startMs": 16500,
+          "endMs": 17500
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-6",
+      "text": "apenas para retornar,",
+      "startMs": 18200,
+      "endMs": 19400,
+      "wordTimings": [
+        {
+          "text": "apenas",
+          "startMs": 18200,
+          "endMs": 18500
+        },
+        {
+          "text": "para",
+          "startMs": 18500,
+          "endMs": 18700
+        },
+        {
+          "text": "retornar",
+          "startMs": 18700,
+          "endMs": 19400
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-7",
+      "text": "de novo e de novo...",
+      "startMs": 20000,
+      "endMs": 21700,
+      "wordTimings": [
+        {
+          "text": "de",
+          "startMs": 20000,
+          "endMs": 20100
+        },
+        {
+          "text": "novo",
+          "startMs": 20100,
+          "endMs": 20600
+        },
+        {
+          "text": "e",
+          "startMs": 21000,
+          "endMs": 21100
+        },
+        {
+          "text": "de",
+          "startMs": 21100,
+          "endMs": 21300
+        },
+        {
+          "text": "novo.",
+          "startMs": 21300,
+          "endMs": 21700
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-8",
+      "text": "Os padrões se repetiam...",
+      "startMs": 22800,
+      "endMs": 24500,
+      "wordTimings": [
+        {
+          "text": "Os",
+          "startMs": 22800,
+          "endMs": 23000
+        },
+        {
+          "text": "padrões",
+          "startMs": 23000,
+          "endMs": 23600
+        },
+        {
+          "text": "se",
+          "startMs": 23600,
+          "endMs": 23800
+        },
+        {
+          "text": "repetiam,",
+          "startMs": 23800,
+          "endMs": 24500
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-9",
+      "text": "Mas havia algo curioso no grande astro da noite... ",
+      "startMs": 25300,
+      "endMs": 29100,
+      "wordTimings": [
+        {
+          "text": "mas",
+          "startMs": 25300,
+          "endMs": 25400
+        },
+        {
+          "text": "havia",
+          "startMs": 25800,
+          "endMs": 26100
+        },
+        {
+          "text": "algo",
+          "startMs": 26100,
+          "endMs": 26500
+        },
+        {
+          "text": "curioso",
+          "startMs": 26500,
+          "endMs": 27400
+        },
+        {
+          "text": "no",
+          "startMs": 27500,
+          "endMs": 27700
+        },
+        {
+          "text": "grande",
+          "startMs": 27700,
+          "endMs": 28200
+        },
+        {
+          "text": "astro",
+          "startMs": 28200,
+          "endMs": 28600
+        },
+        {
+          "text": "da",
+          "startMs": 28600,
+          "endMs": 28700
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-10",
+      "text": "Embora também retornasse aos céus,",
+      "startMs": 29500,
+      "endMs": 32500,
+      "wordTimings": [
+        {
+          "text": "noite.",
+          "startMs": 28700,
+          "endMs": 29100
+        },
+        {
+          "text": "Embora",
+          "startMs": 30000,
+          "endMs": 30400
+        },
+        {
+          "text": "também",
+          "startMs": 30400,
+          "endMs": 31100
+        },
+        {
+          "text": "retornasse",
+          "startMs": 31100,
+          "endMs": 31800
+        },
+        {
+          "text": "aos",
+          "startMs": 31800,
+          "endMs": 32000
+        },
+        {
+          "text": "céus,",
+          "startMs": 32000,
+          "endMs": 32500
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-11",
+      "text": "sua forma aparente",
+      "startMs": 33000,
+      "endMs": 34400,
+      "wordTimings": [
+        {
+          "text": "sua",
+          "startMs": 33000,
+          "endMs": 33200
+        },
+        {
+          "text": "forma",
+          "startMs": 33200,
+          "endMs": 33700
+        },
+        {
+          "text": "aparente",
+          "startMs": 33700,
+          "endMs": 34400
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-12",
+      "text": "jamais permanecia a mesma.",
+      "startMs": 34900,
+      "endMs": 36800,
+      "wordTimings": [
+        {
+          "text": "jamais",
+          "startMs": 34900,
+          "endMs": 35500
+        },
+        {
+          "text": "permanecia",
+          "startMs": 35500,
+          "endMs": 36300
+        },
+        {
+          "text": "a",
+          "startMs": 36300,
+          "endMs": 36300
+        },
+        {
+          "text": "mesma.",
+          "startMs": 36300,
+          "endMs": 36800
+        }
+      ]
+    }
+  ],
+  "webVtt": "/audio/narration/pt-BR/time/border-cave-arrival/border-cave-arrival-2026-11-18-10bdd5.vtt"
+}

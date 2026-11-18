@@ -6,10 +6,11 @@ import ConstellationPage from './ConstellationPage'
 import { constellations } from './constellations'
 import AudioControls from './audio/AudioControls'
 import { audioManager } from './audio/AudioManager'
-import ArcMapPage from './ArcMapPage'
+import ArcMapPage, { type DevSceneTarget } from './ArcMapPage'
 import { learningArcs } from './arcActs'
 import { localizeModule, useLocale } from './i18n'
 import BorderCaveArrival from './scenes/time/BorderCaveArrival'
+import LebomboDiscoveryScene from './scenes/time/LebomboDiscoveryScene'
 
 const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
 const VoiceStudio = lazy(() => import('./narration/VoiceStudio'))
@@ -31,6 +32,7 @@ export default function App() {
   const [selectedArc, setSelectedArc] = useState<{ moduleId: string; starId: string } | null>(null)
   const [harrisonSceneOpen, setHarrisonSceneOpen] = useState(false)
   const [borderCaveSceneOpen, setBorderCaveSceneOpen] = useState(false)
+  const [devSceneOverride, setDevSceneOverride] = useState<DevSceneTarget | null>(null)
   const [workshopIntroSeen, setWorkshopIntroSeen] = useState(hasSeenWorkshopIntro)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
   const [homeTransition, setHomeTransition] = useState(false)
@@ -75,12 +77,12 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    if (borderCaveSceneOpen || (import.meta.env.DEV && window.location.pathname === '/__border-cave-preview')) return
     const wisdomSanctuaryApproved = import.meta.env.DEV
       ? music.some((item) => item.id === 'the-sanctuary-of-wisdom' && item.approvedVersionId)
       : Object.entries(packagedMusic).some(([file, item]) => file.includes('/the-sanctuary-of-wisdom/composition.json') && item.approvedAssetUrl)
     const targetId = harrisonSceneOpen
       ? 'the-clockmaker-of-time'
-      : borderCaveSceneOpen ? null
       : selectedArc ? wisdomSanctuaryApproved ? 'the-sanctuary-of-wisdom' : 'paths-of-discovery' : selectedModuleId || audioUnlocked ? 'eternity-of-knowledge' : null
     if (!targetId) { audioManager.fadeMusicOut(900); return }
     const composition = music.find((item) => item.id === targetId)
@@ -108,6 +110,9 @@ export default function App() {
   if (import.meta.env.DEV && window.location.pathname === '/__audio-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de música…</div>}><MusicStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   if (import.meta.env.DEV && window.location.pathname === '/__sound-effects-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de efeitos…</div>}><SoundEffectsStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   if (import.meta.env.DEV && window.location.pathname === '/__border-cave-preview') return <BorderCaveArrival locale={locale} onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
+  if (import.meta.env.DEV && window.location.pathname === '/__lebombo-discovery-preview') return <LebomboDiscoveryScene onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
+  if (import.meta.env.DEV && devSceneOverride === 'border-cave-cycle') return <BorderCaveArrival locale={locale} onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
+  if (import.meta.env.DEV && devSceneOverride === 'lebombo-discovery') return <LebomboDiscoveryScene onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
@@ -165,7 +170,7 @@ export default function App() {
           }
           setStageProgress((current) => ({ ...current, [selectedModule.id]: { unlocked, completed } }))
         }}
-        onCompleteAll={() => {
+        onCompleteAll={import.meta.env.DEV ? () => {
           const config = constellations[selectedModule.id]
           const allStarIds = config.stars.map((star) => star.id)
           audioManager.play('moduleComplete')
@@ -173,7 +178,8 @@ export default function App() {
             ...current,
             [selectedModule.id]: { unlocked: allStarIds, completed: allStarIds },
           }))
-        }}
+        } : undefined}
+        onTestWorkshopIntro={import.meta.env.DEV && selectedModule.id === 'time' ? () => setHarrisonSceneOpen(true) : undefined}
       />
       {selectedArc && !harrisonSceneOpen && <ArcMapPage
         key={`${selectedArc.moduleId}-${selectedArc.starId}`}
@@ -190,7 +196,13 @@ export default function App() {
           setBorderCaveSceneOpen(false)
           setSelectedArc(null)
         }}
-        onStartAct={(act) => {
+        onStartAct={(act, devScene) => {
+          if (import.meta.env.DEV && devScene) {
+            audioManager.fadeMusicOut(500)
+            setBorderCaveSceneOpen(true)
+            setDevSceneOverride(devScene)
+            return
+          }
           const arc = learningArcs[selectedArc.moduleId]
           if (selectedArc.moduleId === 'time' && act.id === 'counting-marks') setBorderCaveSceneOpen(true)
           window.dispatchEvent(new CustomEvent('stonephys:start-act', {
@@ -204,7 +216,7 @@ export default function App() {
           }))
         }}
       />}
-      {selectedArc && harrisonSceneOpen && <Suspense fallback={<div className="historical-scene-loading">{t('scene.loading')}</div>}><HarrisonWorkshopExperience onExit={() => setHarrisonSceneOpen(false)}/></Suspense>}
+      {harrisonSceneOpen && <Suspense fallback={<div className="historical-scene-loading">{t('scene.loading')}</div>}><HarrisonWorkshopExperience onExit={() => setHarrisonSceneOpen(false)}/></Suspense>}
       {selectedArc && borderCaveSceneOpen && !harrisonSceneOpen && <BorderCaveArrival locale={locale} onExit={() => setBorderCaveSceneOpen(false)}/>}
     </>
   }

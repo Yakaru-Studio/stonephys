@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17T22:41:43.768Z",
+  "updatedAt": "2026-11-18T13:03:01.281Z",
   "requests": [
     {
       "requestId": "ba05fa40-b2e6-459f-946d-0290c66ae181",
@@ -49,6 +49,78 @@
       "status": "completed",
       "promptHash": "f93d7a2bbfe741d73da608d0565e323f0a99f4917f0c8f697cb9f12f53df18ca",
       "interactionId": "v1_ChdyOWI4YXNua000WEV4ZElQMmN2ZTRRaxIXcjliOGFzbmtNNFhFeGRJUDJjdmU0UWs"
+    },
+    {
+      "requestId": "37c67412-1aa4-4fea-b3bd-4a089a270443",
+      "compositionId": "dawn-of-humanity",
+      "versionId": "d4e5c5e0-96cd-4977-a940-6d92f3199c8d",
+      "model": "lyria-3.5",
+      "at": "2026-11-18T12:21:10.916Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "e4872b711c55077807a7062d0a34c3fa0996af87abda938b05f05ac728bb5661",
+      "interactionId": "v1_ChdOcGo5YW9MNU5NLUV5dE1QMi1yMDZRRRIXTnBqOWFvTDVOTS1FeXRNUDItcjA2UUU"
+    },
+    {
+      "requestId": "a154f284-b825-4d67-a5cc-715cc5d35888",
+      "compositionId": "dawn-of-humanity",
+      "versionId": "39f837b6-0a4d-4896-a7c0-e21370599e25",
+      "model": "lyria-3.5",
+      "at": "2026-11-18T12:29:54.320Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "4e07c43be2ab7f624f64789f67b0a6b2e019e65ab5dec2ffac73791e9e553a36",
+      "interactionId": "v1_ChdRcHI5YXVXQ09hbjcwX2dQbE1YbzJBWRIXUXByOWF1V0NPYW43MF9nUGxNWG8yQVk"
+    },
+    {
+      "requestId": "35cb743c-9c2a-4345-b1fc-7982cde7cbcd",
+      "compositionId": "dawn-of-humanity",
+      "versionId": "3fdd8d7d-acd4-455d-8ec4-b5e5054c121a",
+      "model": "lyria-3.5",
+      "at": "2026-11-18T12:37:55.146Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+      "interactionId": "v1_ChdJNXo5YXUzVEROU2NxdHNQakl5T2lRaxIXSTV6OWF1M1RETlNjcXRzUGpJeU9pUWs"
+    },
+    {
+      "requestId": "67f42476-95da-4563-9d0e-169dc41f421d",
+      "compositionId": "dawn-of-humanity",
+      "versionId": "a321f9e7-780d-429b-8c65-15a5fc0615bd",
+      "model": "lyria-3.5",
+      "at": "2026-11-18T12:44:15.900Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+      "interactionId": "v1_ChdvSjM5YXZ5TkhPcWhvX1VQeHFtdGtBVRIXb0ozOWF2eU5IT3Fob19VUHhxbXRrQVU"
+    },
+    {
+      "requestId": "82400d48-62bb-4c60-b773-823f8c86031c",
+      "compositionId": "dawn-of-humanity",
+      "versionId": "0af97b29-7340-4856-9033-ff2ddbefdd9e",
+      "model": "lyria-3.5",
+      "at": "2026-11-18T12:48:10.011Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+      "interactionId": "v1_ChdpcDc5YXJfVkpKeUgxc2dQaE56bXdRVRIXaXA3OWFyX1ZKSnlIMXNnUGhOem13UVU"
+    },
+    {
+      "requestId": "55903865-1d8a-4ad9-bd6b-052d5c870a90",
+      "compositionId": "dawn-of-humanity",
+      "versionId": "e103a12f-44f8-401b-98cd-b072ddc130a4",
+      "model": "lyria-3.5",
+      "at": "2026-11-18T12:50:29.723Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+      "interactionId": "v1_ChdGWl85YW9ucEs5bUQxc2dQOGZqUG9RURIXRlpfOWFvbnBLOW1EMXNnUDhmalBvUVE"
     }
   ],
   "compositions": {
@@ -218,6 +290,331 @@
       ],
       "previewVersionId": "cbf72547-8d1f-4067-afaa-5623c96d65bd",
       "approvedVersionId": "cbf72547-8d1f-4067-afaa-5623c96d65bd"
+    },
+    "dawn-of-humanity": {
+      "versions": [
+        {
+          "id": "e8a751eb-04a6-40c4-ab50-0b1ab9ea6c1f",
+          "model": "imported-local-file",
+          "prompt": "",
+          "promptHash": null,
+          "createdAt": "2026-11-18T12:58:25.851Z",
+          "status": "pending-review",
+          "source": "imported",
+          "originalName": "dawn-of-humanity-v4-v5-entrada-11s.mp3",
+          "estimatedUsd": 0,
+          "externalRequestMade": false,
+          "fileName": "dawn-of-humanity-e8a751eb-04a6-40c4-ab50-0b1ab9ea6c1f.mp3",
+          "durationMs": 182376,
+          "bytes": 5838097,
+          "approval": "pending",
+          "notes": "Montagem local. Abertura da versão 4 com transição para a percussão da versão 5 perto de 0:11. Sobreposição suave de 1,25 s entre 0:10,65 e 0:11,90.",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": 0,
+            "crossfadeMs": 1800
+          },
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 5838097,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 182.376,
+          "volume": 1
+        },
+        {
+          "id": "159e50cc-2f5b-43bb-8177-27a0df64c15e",
+          "model": "imported-local-file",
+          "prompt": "",
+          "promptHash": null,
+          "createdAt": "2026-11-18T12:57:20.860Z",
+          "status": "pending-review",
+          "source": "imported",
+          "originalName": "dawn-of-humanity-v4-v5-intro-estendida.mp3",
+          "estimatedUsd": 0,
+          "externalRequestMade": false,
+          "fileName": "dawn-of-humanity-159e50cc-2f5b-43bb-8177-27a0df64c15e.mp3",
+          "durationMs": 178426,
+          "bytes": 5711873,
+          "approval": "pending",
+          "notes": "Montagem local com a abertura da versão 4 até cerca de 0:08. Transição de 1,25 s a partir de 0:06,70 para a percussão da versão 5. Revisão da emenda da versão 7.",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": 0,
+            "crossfadeMs": 1800
+          },
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 5711873,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 178.426,
+          "volume": 1
+        },
+        {
+          "id": "a4c53bbe-95ec-4af3-95d6-141f497e585e",
+          "model": "imported-local-file",
+          "prompt": "",
+          "promptHash": null,
+          "createdAt": "2026-11-18T12:54:36.449Z",
+          "status": "pending-review",
+          "source": "imported",
+          "originalName": "dawn-of-humanity-v4-v5.mp3",
+          "estimatedUsd": 0,
+          "externalRequestMade": false,
+          "fileName": "dawn-of-humanity-a4c53bbe-95ec-4af3-95d6-141f497e585e.mp3",
+          "durationMs": 177836,
+          "bytes": 5692647,
+          "approval": "pending",
+          "notes": "Montagem local. Abertura da versão 4 até 0:06,45 e base da versão 5 a partir de 0:06,60, com transição de 0,30 s e percussão entrando por volta de 0:06. Edição dos MP3 existentes sem nova geração.",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": 0,
+            "crossfadeMs": 1800
+          },
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 5692647,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 177.836,
+          "volume": 1
+        },
+        {
+          "id": "e103a12f-44f8-401b-98cd-b072ddc130a4",
+          "requestId": "55903865-1d8a-4ad9-bd6b-052d5c870a90",
+          "model": "lyria-3.5",
+          "prompt": "Create one complete, original cinematic composition titled Dawn of Humanity for a sunrise at Border Cave, 42,000 years ago. Evoke the vast Southern African savanna and the raw force of human voices carrying across open land. Draw on Southern African musical aesthetics through rhythmic call and response, overlapping acoustic percussion patterns, and communal vocal rhythm. The sound should feel earthy, physical, fierce and ancestral. Treat the scene as a cinematic interpretation.\n\n[0:00] Begin at the very first beat with a single exposed, open-throated shout that stretches into a sustained call. Use a strong chest-register lead with a rough edge, audible breath, and an emphatic attack. Use original non-lexical syllables. Leave exposed space around the call so it seems to travel across the landscape. This opening call happens once, with no reprise or fade-in.\n\n[0:06–0:24] Answer from a distance with a small group of grounded, low and mid-register voices. Use clipped responses, chest-voice unisons, breathy grunts, and staggered phrases locked to the beat. The singers should sound like people answering one another in the open air. Build a heavy, organic pulse with low skin drums, syncopated hand drumming, wooden strikes and dry seed rattles. Keep the hand-played timing and the impact of each strike audible.\n\n[0:25–0:30] As the sun breaks over the ridge, hit a brief, fierce peak: forceful drum accents, a sharp collective vocal response on a new phrase, and low string attacks that reinforce the pulse. Aim for the exhilaration of daybreak, with physical impact and rhythmic urgency. Keep the drums acoustic and human in scale.\n\n[After the peak] Carry the momentum into an unfolding daylight passage. Vary the drum patterns and leave room between the vocal phrases. Bring in a breathy wooden flute and warm low strings in the background. Gradually thin the voices and drums, then resolve on a quiet acoustic tail with space for narration and the next scene. Give the piece an original melodic and rhythmic identity. Aim for about three minutes at 65–80 BPM, with a complete arc and a resolved ending if the model returns a shorter track.\n\nAvoid church choir, hymnal harmony, angelic singing, airy high soprano layers, polished choral pads, symphonic washes, and cathedral reverb. Also avoid electronic instruments, pop structures, trailer booms, battle scoring, and recognizable lyrics or melodies. Use original musical material throughout. Keep the recording music-only. Birds, animals, wind, and other environmental sounds are handled by the game.",
+          "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+          "createdAt": "2026-11-18T12:50:29.723Z",
+          "status": "pending-review",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "dawn-of-humanity-e103a12f-44f8-401b-98cd-b072ddc130a4.mp3",
+          "durationMs": 157466,
+          "bytes": 3786904,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": null,
+            "crossfadeMs": 1800
+          },
+          "generatedAt": "2026-11-18T12:51:13.310Z",
+          "interactionId": "v1_ChdGWl85YW9ucEs5bUQxc2dQOGZqUG9RURIXRlpfOWFvbnBLOW1EMXNnUDhmalBvUVE",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 3786904,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 157.466,
+          "volume": 1
+        },
+        {
+          "id": "0af97b29-7340-4856-9033-ff2ddbefdd9e",
+          "requestId": "82400d48-62bb-4c60-b773-823f8c86031c",
+          "model": "lyria-3.5",
+          "prompt": "Create one complete, original cinematic composition titled Dawn of Humanity for a sunrise at Border Cave, 42,000 years ago. Evoke the vast Southern African savanna and the raw force of human voices carrying across open land. Draw on Southern African musical aesthetics through rhythmic call and response, overlapping acoustic percussion patterns, and communal vocal rhythm. The sound should feel earthy, physical, fierce and ancestral. Treat the scene as a cinematic interpretation.\n\n[0:00] Begin at the very first beat with a single exposed, open-throated shout that stretches into a sustained call. Use a strong chest-register lead with a rough edge, audible breath, and an emphatic attack. Use original non-lexical syllables. Leave exposed space around the call so it seems to travel across the landscape. This opening call happens once, with no reprise or fade-in.\n\n[0:06–0:24] Answer from a distance with a small group of grounded, low and mid-register voices. Use clipped responses, chest-voice unisons, breathy grunts, and staggered phrases locked to the beat. The singers should sound like people answering one another in the open air. Build a heavy, organic pulse with low skin drums, syncopated hand drumming, wooden strikes and dry seed rattles. Keep the hand-played timing and the impact of each strike audible.\n\n[0:25–0:30] As the sun breaks over the ridge, hit a brief, fierce peak: forceful drum accents, a sharp collective vocal response on a new phrase, and low string attacks that reinforce the pulse. Aim for the exhilaration of daybreak, with physical impact and rhythmic urgency. Keep the drums acoustic and human in scale.\n\n[After the peak] Carry the momentum into an unfolding daylight passage. Vary the drum patterns and leave room between the vocal phrases. Bring in a breathy wooden flute and warm low strings in the background. Gradually thin the voices and drums, then resolve on a quiet acoustic tail with space for narration and the next scene. Give the piece an original melodic and rhythmic identity. Aim for about three minutes at 65–80 BPM, with a complete arc and a resolved ending if the model returns a shorter track.\n\nAvoid church choir, hymnal harmony, angelic singing, airy high soprano layers, polished choral pads, symphonic washes, and cathedral reverb. Also avoid electronic instruments, pop structures, trailer booms, battle scoring, and recognizable lyrics or melodies. Use original musical material throughout. Keep the recording music-only. Birds, animals, wind, and other environmental sounds are handled by the game.",
+          "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+          "createdAt": "2026-11-18T12:48:10.011Z",
+          "status": "pending-review",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "dawn-of-humanity-0af97b29-7340-4856-9033-ff2ddbefdd9e.mp3",
+          "durationMs": 178286,
+          "bytes": 4286574,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": null,
+            "crossfadeMs": 1800
+          },
+          "generatedAt": "2026-11-18T12:48:56.448Z",
+          "interactionId": "v1_ChdpcDc5YXJfVkpKeUgxc2dQaE56bXdRVRIXaXA3OWFyX1ZKSnlIMXNnUGhOem13UVU",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 4286574,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 178.286,
+          "volume": 1
+        },
+        {
+          "id": "a321f9e7-780d-429b-8c65-15a5fc0615bd",
+          "requestId": "67f42476-95da-4563-9d0e-169dc41f421d",
+          "model": "lyria-3.5",
+          "prompt": "Create one complete, original cinematic composition titled Dawn of Humanity for a sunrise at Border Cave, 42,000 years ago. Evoke the vast Southern African savanna and the raw force of human voices carrying across open land. Draw on Southern African musical aesthetics through rhythmic call and response, overlapping acoustic percussion patterns, and communal vocal rhythm. The sound should feel earthy, physical, fierce and ancestral. Treat the scene as a cinematic interpretation.\n\n[0:00] Begin at the very first beat with a single exposed, open-throated shout that stretches into a sustained call. Use a strong chest-register lead with a rough edge, audible breath, and an emphatic attack. Use original non-lexical syllables. Leave exposed space around the call so it seems to travel across the landscape. This opening call happens once, with no reprise or fade-in.\n\n[0:06–0:24] Answer from a distance with a small group of grounded, low and mid-register voices. Use clipped responses, chest-voice unisons, breathy grunts, and staggered phrases locked to the beat. The singers should sound like people answering one another in the open air. Build a heavy, organic pulse with low skin drums, syncopated hand drumming, wooden strikes and dry seed rattles. Keep the hand-played timing and the impact of each strike audible.\n\n[0:25–0:30] As the sun breaks over the ridge, hit a brief, fierce peak: forceful drum accents, a sharp collective vocal response on a new phrase, and low string attacks that reinforce the pulse. Aim for the exhilaration of daybreak, with physical impact and rhythmic urgency. Keep the drums acoustic and human in scale.\n\n[After the peak] Carry the momentum into an unfolding daylight passage. Vary the drum patterns and leave room between the vocal phrases. Bring in a breathy wooden flute and warm low strings in the background. Gradually thin the voices and drums, then resolve on a quiet acoustic tail with space for narration and the next scene. Give the piece an original melodic and rhythmic identity. Aim for about three minutes at 65–80 BPM, with a complete arc and a resolved ending if the model returns a shorter track.\n\nAvoid church choir, hymnal harmony, angelic singing, airy high soprano layers, polished choral pads, symphonic washes, and cathedral reverb. Also avoid electronic instruments, pop structures, trailer booms, battle scoring, and recognizable lyrics or melodies. Use original musical material throughout. Keep the recording music-only. Birds, animals, wind, and other environmental sounds are handled by the game.",
+          "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+          "createdAt": "2026-11-18T12:44:15.900Z",
+          "status": "approved",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "dawn-of-humanity-a321f9e7-780d-429b-8c65-15a5fc0615bd.mp3",
+          "durationMs": 178573,
+          "bytes": 4293470,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": 178.573,
+            "crossfadeMs": 1800
+          },
+          "generatedAt": "2026-11-18T12:44:58.451Z",
+          "interactionId": "v1_ChdvSjM5YXZ5TkhPcWhvX1VQeHFtdGtBVRIXb0ozOWF2eU5IT3Fob19VUHhxbXRrQVU",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 4293470,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 178.426,
+          "volume": 1,
+          "approvedAt": "2026-11-18T12:53:55.844Z"
+        },
+        {
+          "id": "3fdd8d7d-acd4-455d-8ec4-b5e5054c121a",
+          "requestId": "35cb743c-9c2a-4345-b1fc-7982cde7cbcd",
+          "model": "lyria-3.5",
+          "prompt": "Create one complete, original cinematic composition titled Dawn of Humanity for a sunrise at Border Cave, 42,000 years ago. Evoke the vast Southern African savanna and the raw force of human voices carrying across open land. Draw on Southern African musical aesthetics through rhythmic call and response, overlapping acoustic percussion patterns, and communal vocal rhythm. The sound should feel earthy, physical, fierce and ancestral. Treat the scene as a cinematic interpretation.\n\n[0:00] Begin at the very first beat with a single exposed, open-throated shout that stretches into a sustained call. Use a strong chest-register lead with a rough edge, audible breath, and an emphatic attack. Use original non-lexical syllables. Leave exposed space around the call so it seems to travel across the landscape. This opening call happens once, with no reprise or fade-in.\n\n[0:06–0:24] Answer from a distance with a small group of grounded, low and mid-register voices. Use clipped responses, chest-voice unisons, breathy grunts, and staggered phrases locked to the beat. The singers should sound like people answering one another in the open air. Build a heavy, organic pulse with low skin drums, syncopated hand drumming, wooden strikes and dry seed rattles. Keep the hand-played timing and the impact of each strike audible.\n\n[0:25–0:30] As the sun breaks over the ridge, hit a brief, fierce peak: forceful drum accents, a sharp collective vocal response on a new phrase, and low string attacks that reinforce the pulse. Aim for the exhilaration of daybreak, with physical impact and rhythmic urgency. Keep the drums acoustic and human in scale.\n\n[After the peak] Carry the momentum into an unfolding daylight passage. Vary the drum patterns and leave room between the vocal phrases. Bring in a breathy wooden flute and warm low strings in the background. Gradually thin the voices and drums, then resolve on a quiet acoustic tail with space for narration and the next scene. Give the piece an original melodic and rhythmic identity. Aim for about three minutes at 65–80 BPM, with a complete arc and a resolved ending if the model returns a shorter track.\n\nAvoid church choir, hymnal harmony, angelic singing, airy high soprano layers, polished choral pads, symphonic washes, and cathedral reverb. Also avoid electronic instruments, pop structures, trailer booms, battle scoring, and recognizable lyrics or melodies. Use original musical material throughout. Keep the recording music-only. Birds, animals, wind, and other environmental sounds are handled by the game.",
+          "promptHash": "0cb73349cb7aaa330b2775f96adb64408ce35f367316f07ffff5dcb7a671b469",
+          "createdAt": "2026-11-18T12:37:55.146Z",
+          "status": "pending-review",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "dawn-of-humanity-3fdd8d7d-acd4-455d-8ec4-b5e5054c121a.mp3",
+          "durationMs": 150230,
+          "bytes": 3613242,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": null,
+            "crossfadeMs": 1800
+          },
+          "generatedAt": "2026-11-18T12:38:57.266Z",
+          "interactionId": "v1_ChdJNXo5YXUzVEROU2NxdHNQakl5T2lRaxIXSTV6OWF1M1RETlNjcXRzUGpJeU9pUWs",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 3613242,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 150.23,
+          "volume": 1
+        },
+        {
+          "id": "39f837b6-0a4d-4896-a7c0-e21370599e25",
+          "requestId": "a154f284-b825-4d67-a5cc-715cc5d35888",
+          "model": "lyria-3.5",
+          "prompt": "Create one complete, original cinematic orchestral composition, Dawn of Humanity, inspired by traditional Southern African musical aesthetics. The scene is a contemplative sunrise at Border Cave 42,000 years ago, looking across a vast ancient Southern African landscape. Aim for 3 minutes if supported, within 3–5 minutes if possible. If the model supports a shorter duration, preserve the complete arc and a resolved ending. Slow to moderate tempo, 65–80 BPM. Use a through-composed form, natural acoustic instrumentation, organic rhythms, and original memorable melodic and harmonic material.\n\nStart in darkness with a powerful, solitary, open-throated Southern African-inspired vocal invocation immediately at the opening. Sustain the resonant call with spacious musical reverberation. Make it feel ancestral, spiritual, majestic and deeply human, using original wordless vowels and non-lexical vocables. Present this solo call only once. Distant warm choral responses with rich, organic Southern African-inspired harmonies gradually emerge from the silence.\n\nAdd delicate wooden flutes, subtle hand drums, gentle rattles and soft acoustic percussion, warm sustained orchestral strings and delicate melodic textures. Build slowly as first light reaches the horizon. Let the sun crest the mountains at the emotional high point around 0:25–0:30, synchronized with the early sunrise in the scene. Sustain the sense of unfolding daylight well beyond that crest. Make the climax radiant, majestic, hopeful and timeless, with the feeling of the world awakening. Then settle into a peaceful and warm passage expressing human curiosity, reverence for nature, and the quiet mystery of existence. Leave a gentle sustained tail for the transition into the next narrative beat.\n\nAvoid modern electronic instruments, pop structures, aggressive war drums, action or battle scoring, exaggerated trailer percussion, medieval European idioms, stereotypical jungle adventure scoring, recognizable lyrics, existing melodies and copyrighted themes. Use only music and expressive wordless voices. Omit birdsong, animals, wind and all environmental sound effects. Keep the orchestration spacious enough to coexist with separate narration and ambience. This is an artistic interpretation, not an archaeological reconstruction.\n\nRevision instructions (take precedence where they conflict with the base brief):\nQuero algo mais primitivo e menos angelical, algo mais tribal",
+          "promptHash": "4e07c43be2ab7f624f64789f67b0a6b2e019e65ab5dec2ffac73791e9e553a36",
+          "createdAt": "2026-11-18T12:29:54.320Z",
+          "status": "rejected",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "dawn-of-humanity-39f837b6-0a4d-4896-a7c0-e21370599e25.mp3",
+          "durationMs": 175569,
+          "bytes": 4221372,
+          "approval": "pending",
+          "notes": "Sem",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": null,
+            "crossfadeMs": 1800
+          },
+          "generatedAt": "2026-11-18T12:30:35.190Z",
+          "interactionId": "v1_ChdRcHI5YXVXQ09hbjcwX2dQbE1YbzJBWRIXUXByOWF1V0NPYW43MF9nUGxNWG8yQVk",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 4221372,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 175.569,
+          "volume": 1
+        },
+        {
+          "id": "d4e5c5e0-96cd-4977-a940-6d92f3199c8d",
+          "requestId": "37c67412-1aa4-4fea-b3bd-4a089a270443",
+          "model": "lyria-3.5",
+          "prompt": "Create one complete, original cinematic orchestral composition, Dawn of Humanity, inspired by traditional Southern African musical aesthetics. The scene is a contemplative sunrise at Border Cave 42,000 years ago, looking across a vast ancient Southern African landscape. Aim for 3 minutes if supported, within 3–5 minutes if possible. If the model supports a shorter duration, preserve the complete arc and a resolved ending. Slow to moderate tempo, 65–80 BPM. Use a through-composed form, natural acoustic instrumentation, organic rhythms, and original memorable melodic and harmonic material.\n\nStart in darkness with a powerful, solitary, open-throated Southern African-inspired vocal invocation immediately at the opening. Sustain the resonant call with spacious musical reverberation. Make it feel ancestral, spiritual, majestic and deeply human, using original wordless vowels and non-lexical vocables. Present this solo call only once. Distant warm choral responses with rich, organic Southern African-inspired harmonies gradually emerge from the silence.\n\nAdd delicate wooden flutes, subtle hand drums, gentle rattles and soft acoustic percussion, warm sustained orchestral strings and delicate melodic textures. Build slowly as first light reaches the horizon. Let the sun crest the mountains at the emotional high point around 0:25–0:30, synchronized with the early sunrise in the scene. Sustain the sense of unfolding daylight well beyond that crest. Make the climax radiant, majestic, hopeful and timeless, with the feeling of the world awakening. Then settle into a peaceful and warm passage expressing human curiosity, reverence for nature, and the quiet mystery of existence. Leave a gentle sustained tail for the transition into the next narrative beat.\n\nAvoid modern electronic instruments, pop structures, aggressive war drums, action or battle scoring, exaggerated trailer percussion, medieval European idioms, stereotypical jungle adventure scoring, recognizable lyrics, existing melodies and copyrighted themes. Use only music and expressive wordless voices. Omit birdsong, animals, wind and all environmental sound effects. Keep the orchestration spacious enough to coexist with separate narration and ambience. This is an artistic interpretation, not an archaeological reconstruction.",
+          "promptHash": "e4872b711c55077807a7062d0a34c3fa0996af87abda938b05f05ac728bb5661",
+          "createdAt": "2026-11-18T12:21:10.916Z",
+          "status": "rejected",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "dawn-of-humanity-d4e5c5e0-96cd-4977-a940-6d92f3199c8d.mp3",
+          "durationMs": 172695,
+          "bytes": 4152409,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": false,
+            "startSeconds": 0,
+            "endSeconds": null,
+            "crossfadeMs": 1800
+          },
+          "generatedAt": "2026-11-18T12:22:01.173Z",
+          "interactionId": "v1_ChdOcGo5YW9MNU5NLUV5dE1QMi1yMDZRRRIXTnBqOWFvTDVOTS1FeXRNUDItcjA2UUU",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 4152409,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 0,
+          "cropEndSeconds": 172.695,
+          "volume": 1
+        }
+      ],
+      "previewVersionId": "a321f9e7-780d-429b-8c65-15a5fc0615bd",
+      "approvedVersionId": "a321f9e7-780d-429b-8c65-15a5fc0615bd"
     }
   }
 }

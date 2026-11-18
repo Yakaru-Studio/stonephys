@@ -3,7 +3,8 @@ import { createHash, randomUUID } from 'node:crypto'
 import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
-const EFFECT_IDS = ['library-scroll-unroll', 'library-scroll-roll']
+const EFFECT_IDS = ['library-scroll-unroll', 'library-scroll-roll', 'border-cave-wind', 'border-cave-vegetation', 'border-cave-night-crickets', 'border-cave-ring-necked-dove', 'border-cave-crested-francolin', 'border-cave-natal-spurfowl', 'border-cave-chacma-baboon', 'border-cave-plains-zebra']
+const definitionName = (id) => id.startsWith('library-scroll-') ? id.replace('library-scroll-', 'scroll-') : id
 const APPROVAL = 'I understand this may consume quota or be billed'
 const MAX_IMPORT_BYTES = 24 * 1024 * 1024
 const inFlight = new Set()
@@ -57,7 +58,7 @@ async function saveLibrary(root, store) {
 async function definitions(root, store) {
   const p = paths(root)
   return Promise.all(EFFECT_IDS.map(async (id) => {
-    const definition = await readJson(path.join(p.definitions, `${id.replace('library-scroll-', 'scroll-')}.json`))
+    const definition = await readJson(path.join(p.definitions, `${definitionName(id)}.json`))
     const record = store.effects[id]
     const preview = record.versions.find((version) => version.id === record.previewVersionId)
     const approved = record.versions.find((version) => version.id === record.approvedVersionId)
@@ -177,7 +178,7 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
         return
       }
 
-      const fileMatch = route.match(/^\/file\/(library-scroll-(?:unroll|roll))\/([a-zA-Z0-9._-]+)$/)
+      const fileMatch = route.match(/^\/file\/([a-zA-Z0-9._-]+)\/([a-zA-Z0-9._-]+)$/)
       if (fileMatch && req.method === 'GET') {
         const [, effectId, versionId] = fileMatch
         const version = store.effects[effectId].versions.find((item) => item.id === versionId)
@@ -192,7 +193,7 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
         if (!EFFECT_IDS.includes(body.effectId)) { send(res, 400, { error: 'Efeito desconhecido.' }); return }
         const prompt = String(body.prompt || '').trim()
         if (!prompt || prompt.length > 450) { send(res, 400, { error: 'O prompt precisa ter de 1 a 450 caracteres.' }); return }
-        const file = path.join(p.definitions, `${body.effectId.replace('library-scroll-', 'scroll-')}.json`)
+        const file = path.join(p.definitions, `${definitionName(body.effectId)}.json`)
         const definition = await readJson(file)
         definition.promptRevisions ||= []
         if (definition.prompt !== prompt) definition.promptRevisions.unshift({ prompt: definition.prompt, savedAt: new Date().toISOString() })
@@ -200,7 +201,7 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
         if (body.durationSeconds !== undefined) definition.durationSeconds = Math.max(.5, Math.min(30, Number(body.durationSeconds)))
         if (body.promptInfluence !== undefined) definition.promptInfluence = Math.max(0, Math.min(1, Number(body.promptInfluence)))
         if (body.volume !== undefined) definition.defaultVolume = Math.max(0, Math.min(1, Number(body.volume)))
-        definition.loop = false
+        definition.loop = Boolean(body.loop)
         await writeJson(file, definition)
         send(res, 200, { ok: true }); return
       }
@@ -208,7 +209,7 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
       if (route === '/license' && req.method === 'POST') {
         const body = await bodyJson(req, 30_000)
         if (!EFFECT_IDS.includes(body.effectId)) { send(res, 400, { error: 'Efeito desconhecido.' }); return }
-        const file = path.join(p.definitions, `${body.effectId.replace('library-scroll-', 'scroll-')}.json`)
+        const file = path.join(p.definitions, `${definitionName(body.effectId)}.json`)
         const definition = await readJson(file)
         definition.license = { plan: String(body.plan || 'unknown').slice(0, 80), commercialRightsConfirmed: Boolean(body.commercialRightsConfirmed), evaluationOnly: !body.commercialRightsConfirmed, notes: String(body.notes || '').slice(0, 600), updatedAt: new Date().toISOString() }
         await writeJson(file, definition)
@@ -235,13 +236,18 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
         version.syncOffsetMs = Math.max(-2000, Math.min(2000, Number(body.syncOffsetMs ?? version.syncOffsetMs ?? 0)))
         version.notes = String(body.notes ?? version.notes ?? '').slice(0, 1000)
         version.playback = { loop: false, ...version.playback }
+        const approved = store.effects[body.effectId]?.approvedVersionId === version.id
+        if (approved && version.productionEligible) {
+          const catalog = await readJson(p.approvedManifest).catch(() => ({ schemaVersion: 1, effects: {} }))
+          if (catalog.effects?.[body.effectId]) { catalog.effects[body.effectId].volume = version.volume; await writeJson(p.approvedManifest, catalog) }
+        }
         await saveLibrary(root, store)
         send(res, 200, { ok: true }); return
       }
 
       if (route === '/import' && req.method === 'POST') {
         const body = await bodyJson(req, MAX_IMPORT_BYTES * 1.45)
-        if (!EFFECT_IDS.includes(body.effectId) || !/^audio\/(mpeg|mp3|wav|x-wav|ogg|mp4|webm|flac)/i.test(String(body.mimeType || ''))) { send(res, 400, { error: 'Escolha um arquivo de áudio válido e um dos dois efeitos do catálogo.' }); return }
+        if (!EFFECT_IDS.includes(body.effectId) || !/^audio\/(mpeg|mp3|wav|x-wav|ogg|mp4|webm|flac)/i.test(String(body.mimeType || ''))) { send(res, 400, { error: 'Escolha um arquivo de áudio válido e um efeito do catálogo.' }); return }
         const data = Buffer.from(String(body.data || ''), 'base64')
         if (!data.length || data.length > MAX_IMPORT_BYTES) { send(res, 400, { error: 'O arquivo de áudio está vazio ou excede 24 MB.' }); return }
         const versionId = `import-${randomUUID()}`
@@ -257,36 +263,33 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
 
       if (route === '/generate' && req.method === 'POST') {
         const body = await bodyJson(req, 30_000)
-        if (!EFFECT_IDS.includes(body.effectId)) { send(res, 400, { error: 'Esta etapa permite apenas os dois efeitos de pergaminho cadastrados.' }); return }
+        if (!EFFECT_IDS.includes(body.effectId)) { send(res, 400, { error: 'Efeito desconhecido.' }); return }
         if (body.authorization !== APPROVAL) { send(res, 428, { error: 'Confirme a solicitação de geração paga no estúdio antes de prosseguir.' }); return }
         if (!apiKey) { send(res, 409, { error: 'ELEVENLABS_API_KEY não configurada no ambiente local.' }); return }
         if (!isOn(settings.generationEnabled) || !isOn(settings.allowPaidGeneration)) { send(res, 409, { error: 'Geração bloqueada. Ative SFX_GENERATION_ENABLED e SFX_ALLOW_PAID_GENERATION no ambiente local para usar o orçamento autorizado.' }); return }
         if (model !== 'eleven_text_to_sound_v3' || body.model !== model) { send(res, 400, { error: 'A geração desta tarefa usa exclusivamente eleven_text_to_sound_v3.' }); return }
-        const definitionPath = path.join(p.definitions, `${body.effectId.replace('library-scroll-', 'scroll-')}.json`)
+        const definitionPath = path.join(p.definitions, `${definitionName(body.effectId)}.json`)
         const definition = await readJson(definitionPath)
         const prompt = String(body.prompt || '').trim()
         if (!prompt || prompt.length > 450) { send(res, 400, { error: 'O prompt precisa ter de 1 a 450 caracteres.' }); return }
         const durationSeconds = Number(body.durationSeconds)
         const promptInfluence = Number(body.promptInfluence)
-        if (!Number.isFinite(durationSeconds) || durationSeconds < .5 || durationSeconds > 30 || !Number.isFinite(promptInfluence) || promptInfluence < 0 || promptInfluence > 1 || body.loop !== false) { send(res, 400, { error: 'Duração deve estar entre 0,5 e 30 s, influência entre 0 e 1 e loop desativado para o modelo escolhido.' }); return }
+        if (!Number.isFinite(durationSeconds) || durationSeconds < .5 || durationSeconds > 30 || !Number.isFinite(promptInfluence) || promptInfluence < 0 || promptInfluence > 1 || Boolean(body.loop) !== Boolean(definition.loop)) { send(res, 400, { error: 'Duração deve estar entre 0,5 e 30 s, influência entre 0 e 1 e loop deve corresponder à definição.' }); return }
         const budget = await readJson(p.budgetFile)
         const estimatedCredits = durationSeconds * budget.creditsPerSecond
         const externalRequests = store.requests.filter((item) => item.externalRequestMade)
-        const alreadyGenerated = store.requests.some((item) => item.effectId === body.effectId && item.externalRequestMade)
-        const configHash = createHash('sha256').update(JSON.stringify({ effectId: body.effectId, prompt, model, durationSeconds, promptInfluence, loop: false, outputFormat: 'mp3_44100_128' })).digest('hex')
+        const configHash = createHash('sha256').update(JSON.stringify({ effectId: body.effectId, prompt, model, durationSeconds, promptInfluence, loop: Boolean(body.loop), outputFormat: 'mp3_44100_128' })).digest('hex')
         const duplicate = store.requests.find((item) => item.requestId === body.requestId)
         if (duplicate) { send(res, 200, { duplicate: true, request: duplicate }); return }
-        if (store.requests.some((item) => item.configHash === configHash && item.externalRequestMade)) { send(res, 409, { error: 'Esta configuração já gerou uma solicitação. A política desta etapa não permite repetir automaticamente a geração.' }); return }
-        if (alreadyGenerated) { send(res, 409, { error: 'Já foi feita uma solicitação paga para este efeito nesta etapa.' }); return }
         if (inFlight.has(body.effectId)) { send(res, 409, { error: 'Este efeito já está sendo gerado. Aguarde o resultado da única solicitação.' }); return }
         const spentCredits = externalRequests.reduce((sum, item) => sum + Number(item.estimatedCredits || 0), 0)
-        if (externalRequests.length >= budget.maxPaidRequests || spentCredits + estimatedCredits > budget.authorizedCredits) { send(res, 409, { error: 'A solicitação excederia o limite autorizado de duas gerações ou 160 créditos.' }); return }
+        if (externalRequests.length >= budget.maxPaidRequests || spentCredits + estimatedCredits > budget.authorizedCredits) { send(res, 409, { error: `A solicitação excederia o limite autorizado de ${budget.maxPaidRequests} gerações ou ${budget.authorizedCredits} créditos.` }); return }
         inFlight.add(body.effectId)
         const request = { requestId: String(body.requestId || randomUUID()), effectId: body.effectId, configHash, model, durationRequestedSeconds: durationSeconds, estimatedCredits, actualCredits: null, status: 'pending', startedAt: new Date().toISOString(), externalRequestMade: true, outputFormat: 'mp3_44100_128' }
         store.requests.push(request); await saveLibrary(root, store)
         try {
           const params = new URLSearchParams({ output_format: 'mp3_44100_128' })
-          const response = await fetch(`https://api.elevenlabs.io/v1/sound-generation?${params}`, { method: 'POST', headers: { 'xi-api-key': apiKey, 'content-type': 'application/json', accept: 'audio/mpeg' }, body: JSON.stringify({ text: prompt, model_id: model, duration_seconds: durationSeconds, prompt_influence: promptInfluence, loop: false }), signal: AbortSignal.timeout(180_000) })
+          const response = await fetch(`https://api.elevenlabs.io/v1/sound-generation?${params}`, { method: 'POST', headers: { 'xi-api-key': apiKey, 'content-type': 'application/json', accept: 'audio/mpeg' }, body: JSON.stringify({ text: prompt, model_id: model, duration_seconds: durationSeconds, prompt_influence: promptInfluence, loop: Boolean(body.loop) }), signal: AbortSignal.timeout(180_000) })
           if (!response.ok) {
             const message = (await response.text()).slice(0, 600)
             request.status = 'failed'; request.httpStatus = response.status; request.error = `ElevenLabs HTTP ${response.status}: ${message}`; request.completedAt = new Date().toISOString()
@@ -299,7 +302,7 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
           const fullPath = path.join(p.generations, body.effectId, fileName)
           await mkdir(path.dirname(fullPath), { recursive: true }); await writeFile(fullPath, data)
           const info = mediaInfo(fullPath); const signal = validateSignal(fullPath)
-          const version = { id: versionId, effectId: body.effectId, name: definition.name, source: 'generated', provider: 'elevenlabs', model, prompt, requestedDurationSeconds: durationSeconds, promptInfluence, loop: false, outputFormat: 'mp3_44100_128', durationSeconds: info.durationSeconds, generatedAt: new Date().toISOString(), createdAt: new Date().toISOString(), estimatedCredits, actualCredits: null, providerCostHeader: response.headers.get('character-cost') || null, status: 'generated', assetPath: path.relative(root, fullPath).replaceAll(path.sep, '/'), bytes: data.length, validation: { ...info, signal }, volume: definition.defaultVolume ?? .72, cropStartSeconds: 0, cropEndSeconds: info.durationSeconds, synchronization: { event: definition.eventBindings[0], offsetMs: 0 }, license: { ...definition.license }, notes: '' }
+          const version = { id: versionId, effectId: body.effectId, name: definition.name, source: 'generated', provider: 'elevenlabs', model, prompt, requestedDurationSeconds: durationSeconds, promptInfluence, loop: Boolean(body.loop), outputFormat: 'mp3_44100_128', durationSeconds: info.durationSeconds, generatedAt: new Date().toISOString(), createdAt: new Date().toISOString(), estimatedCredits, actualCredits: null, providerCostHeader: response.headers.get('character-cost') || null, status: 'generated', assetPath: path.relative(root, fullPath).replaceAll(path.sep, '/'), bytes: data.length, validation: { ...info, signal }, volume: definition.defaultVolume ?? .72, cropStartSeconds: 0, cropEndSeconds: info.durationSeconds, synchronization: { event: definition.eventBindings?.[0] || null, offsetMs: 0 }, license: { ...definition.license }, notes: '' }
           store.effects[body.effectId].versions.unshift(version); store.effects[body.effectId].previewVersionId = version.id
           request.status = 'generated'; request.versionId = version.id; request.durationActualSeconds = info.durationSeconds; request.bytes = data.length; request.completedAt = new Date().toISOString(); request.providerUsage = { characterCostHeader: version.providerCostHeader }
           await saveLibrary(root, store); send(res, 200, { version, request }); return
@@ -329,16 +332,16 @@ export function createSoundEffectsMiddleware({ root, getApiKey, getSettings }) {
         version.status = body.status; version.reviewedAt = new Date().toISOString(); version.notes = String(body.notes || version.notes || '').slice(0, 1000)
         if (body.status === 'approved') {
           record.approvedVersionId = version.id
-          const definition = await readJson(path.join(p.definitions, `${body.effectId.replace('library-scroll-', 'scroll-')}.json`))
-          if (definition.license?.commercialRightsConfirmed) {
+          const definition = await readJson(path.join(p.definitions, `${definitionName(body.effectId)}.json`))
+          if (definition.license?.commercialRightsConfirmed && body.publish === true) {
             const source = validateAssetPath(root, version.assetPath)
             if (!source) { send(res, 409, { error: 'Esta versão não pode ser copiada como asset aprovado.' }); return }
-            const basename = `${body.effectId.replace('library-scroll-', 'scroll-')}.mp3`
+            const basename = `${definitionName(body.effectId)}.mp3`
             const directory = path.join(p.approved, 'library')
             await mkdir(directory, { recursive: true }); await copyFile(source, path.join(directory, basename))
             version.assetUrl = `/audio/sfx/approved/library/${basename}`; version.productionEligible = true
             const catalog = await readJson(p.approvedManifest).catch(() => ({ schemaVersion: 1, effects: {} }))
-            catalog.effects[body.effectId] = { url: version.assetUrl, volume: version.volume ?? definition.defaultVolume, durationSeconds: version.durationSeconds, versionId: version.id, approvedAt: version.reviewedAt, provider: version.provider, model: version.model, license: definition.license }
+            catalog.effects[body.effectId] = { url: version.assetUrl, volume: version.volume ?? definition.defaultVolume, durationSeconds: version.durationSeconds, loop: version.loop ?? definition.loop, versionId: version.id, approvedAt: version.reviewedAt, provider: version.provider, model: version.model, license: definition.license }
             await writeJson(p.approvedManifest, catalog)
           } else { version.productionEligible = false; version.assetUrl = null; version.evaluationOnly = true }
         } else if (record.approvedVersionId === version.id) record.approvedVersionId = null

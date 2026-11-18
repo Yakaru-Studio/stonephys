@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { ArrowLeft, Pause, Play, SkipForward } from 'lucide-react'
 import type { HistoricalScene, NarrationManifest, SceneLocale } from './sceneTypes'
 import { audioManager } from '../audio/AudioManager'
+import AudioControls from '../audio/AudioControls'
 import { useLocale } from '../i18n'
 import BorderCaveArrival from './time/BorderCaveArrival'
 import './historical-scene.css'
@@ -215,6 +216,7 @@ export default function HistoricalScenePlayer({ scene, onExit }: { scene: Histor
   }
 
   return <main className={`historical-scene ${reducedMotion ? 'historical-scene-reduced-motion' : ''} ${phase === 'rewinding' ? 'historical-scene-rewinding' : ''}`} aria-label={`${sceneTitle}, ${sceneLocation}, ${scenePeriod}`}>
+    <div className="historical-scene-audio-control"><AudioControls/></div>
     <div className="historical-scene-camera" style={{ transform: `scale(${cameraZoom})` }}>
       {scene.layers.map((layer) => <div key={layer.id} className="historical-scene-layer" style={{ backgroundImage: `url("${layer.image}")`, backgroundSize: layer.fit ?? 'cover', opacity: layer.opacity ?? 1, zIndex: layer.depth }}/>) }
       <div className="historical-scene-window-light" aria-hidden="true"/>

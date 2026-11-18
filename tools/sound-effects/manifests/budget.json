@@ -3,8 +3,17 @@
   "provider": "elevenlabs",
   "model": "eleven_text_to_sound_v3",
   "creditsPerSecond": 40,
-  "authorizedCredits": 160,
-  "maxPaidRequests": 2,
-  "initialEffects": ["library-scroll-unroll", "library-scroll-roll"],
+  "authorizedCredits": 10000,
+  "maxPaidRequests": 16,
+  "initialEffects": [
+    "border-cave-wind",
+    "border-cave-vegetation",
+    "border-cave-night-crickets",
+    "border-cave-ring-necked-dove",
+    "border-cave-crested-francolin",
+    "border-cave-natal-spurfowl",
+    "border-cave-chacma-baboon",
+    "border-cave-plains-zebra"
+  ],
   "updatedAt": null
 }

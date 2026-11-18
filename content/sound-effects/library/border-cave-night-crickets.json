@@ -1,0 +1,31 @@
+{
+  "id": "border-cave-night-crickets",
+  "name": "Grilos antes da alvorada",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Fauna noturna",
+  "description": "Grilos esparsos no capim antes do amanhecer.",
+  "prompt": "Sparse nocturnal field cricket stridulation from grasses and shrubs in southern African savanna woodland before dawn. Small scattered cricket calls, irregular natural chirping rhythms, quiet pauses, low insect density. Seamless ambience. Only field crickets. No cicadas, frogs, birds, mammals, wind, voices or music.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 30,
+  "promptInfluence": 0.7,
+  "loop": true,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.17,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false,
+    "notes": "",
+    "updatedAt": "2026-11-18T03:07:35.98Z"
+  },
+  "soundscape": {
+    "kind": "ambience",
+    "taxon": "Gryllidae",
+    "commonName": "grilos de campo",
+    "scientificConfidence": "inferência ecológica plausível; sem espécie fóssil identificada",
+    "period": "noite inicial até a alvorada",
+    "references": []
+  }
+}

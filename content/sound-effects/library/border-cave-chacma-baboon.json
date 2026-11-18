@@ -1,0 +1,33 @@
+{
+  "id": "border-cave-chacma-baboon",
+  "name": "Babuíno-chacma",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Fauna diurna",
+  "description": "Grunhidos afiliativos baixos de indivíduos em atividade calma.",
+  "prompt": "Authentic isolated Chacma Baboon, Papio ursinus, vocalizations during calm social interaction and early morning foraging. A few soft low-pitched affiliative contact grunts from two individuals, with natural pauses and subtle variations. Peaceful behavior. No alarm calls, aggressive wahoos, screaming, chimpanzees, gorillas, other animals, music or voices.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 8,
+  "promptInfluence": 0.7,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.16,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false
+  },
+  "soundscape": {
+    "kind": "event",
+    "taxon": "Papio ursinus",
+    "commonName": "Chacma Baboon / babuíno-chacma",
+    "region": "África Austral",
+    "behavior": "grunhidos afiliativos em forrageio calmo",
+    "scientificConfidence": "babuínos presentes arqueologicamente; espécie moderna é referência acústica",
+    "period": "próximo ao nascer do sol e manhã",
+    "references": [
+      "https://www.sanbi.org/animal-of-the-week/chacma-baboon/"
+    ]
+  }
+}

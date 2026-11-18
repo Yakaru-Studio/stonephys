@@ -1,7 +1,9 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import type { SceneLocale } from '../sceneTypes'
 import SceneIntroTitle from './SceneIntroTitle'
+import AudioControls from '../../audio/AudioControls'
+import { audioManager } from '../../audio/AudioManager'
 import nightLandscape from '../../assets/scenes/time/border-cave-night-clean.png'
 import dayLandscape from '../../assets/scenes/time/border-cave-day-clean.png'
 import nightLandscapePortrait from '../../assets/scenes/time/border-cave-night-clean-portrait.png'
@@ -53,6 +55,12 @@ export default function BorderCaveArrival({ locale, onExit }: { locale: SceneLoc
   const [birds, setBirds] = useState(true)
   const [portrait, setPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches)
   const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }))
+  const elapsedRef = useRef(elapsed)
+  const wildlifeRef = useRef(wildlife)
+  const birdsRef = useRef(birds)
+  elapsedRef.current = elapsed
+  wildlifeRef.current = wildlife
+  birdsRef.current = birds
 
   useEffect(() => {
     if (!playing) return
@@ -81,6 +89,50 @@ export default function BorderCaveArrival({ locale, onExit }: { locale: SceneLoc
     return () => window.removeEventListener('resize', update)
   }, [])
 
+  useEffect(() => {
+    audioManager.fadeMusicOut(1100)
+    if (!playing) { audioManager.pauseNaturalAmbience(); return }
+    let eventTimer = 0
+    let previousEvent = ''
+    const updateAmbience = () => {
+      const solarTime = elapsedRef.current * 1.5
+      const dawn = clamp01((solarTime - 7) / 110)
+      const cricketLevel = .58 * (1 - smoothstep(dawn / .34))
+      void audioManager.setNaturalAmbience([
+        { id: 'border-cave-wind', volume: .72, pan: 0 },
+        { id: 'border-cave-vegetation', volume: .56, pan: .2 },
+        { id: 'border-cave-night-crickets', volume: cricketLevel, pan: -.16 },
+      ])
+    }
+    const playSparseWildlife = () => {
+      const delay = 23000 + Math.random() * 29000
+      eventTimer = window.setTimeout(() => {
+        if (wildlifeRef.current) {
+          const dawn = clamp01((elapsedRef.current * 1.5 - 7) / 110)
+          const candidates: Array<{ id: string; chance: number; volume: number; pan: number }> = []
+          if (birdsRef.current && dawn < .74) {
+            candidates.push({ id: 'border-cave-crested-francolin', chance: dawn < .35 ? .48 : .12, volume: .68, pan: .28 })
+            candidates.push({ id: 'border-cave-ring-necked-dove', chance: dawn < .22 ? .18 : .48, volume: .62, pan: -.25 })
+            candidates.push({ id: 'border-cave-natal-spurfowl', chance: dawn < .4 ? .24 : .06, volume: .55, pan: .52 })
+          }
+          if (dawn > .08 && dawn < .88) candidates.push({ id: 'border-cave-chacma-baboon', chance: .2, volume: .42, pan: -.76 })
+          if (dawn > .2 && dawn < .82) candidates.push({ id: 'border-cave-plains-zebra', chance: .08, volume: .3, pan: .36 })
+          const available = candidates.filter((candidate) => candidate.id !== previousEvent)
+          const candidate = available[Math.floor(Math.random() * available.length)]
+          if (candidate && Math.random() < candidate.chance) {
+            previousEvent = candidate.id
+            void audioManager.playSoundEffectById(candidate.id, { volume: candidate.volume, pan: candidate.pan, group: 'border-cave-wildlife' }).catch(() => {})
+          }
+        }
+        playSparseWildlife()
+      }, delay)
+    }
+    updateAmbience()
+    const ambienceTimer = window.setInterval(updateAmbience, 1200)
+    playSparseWildlife()
+    return () => { window.clearInterval(ambienceTimer); window.clearTimeout(eventTimer); audioManager.pauseNaturalAmbience() }
+  }, [playing])
+
   // Match the background's cover crop so actors and the mountain mask stay
   // anchored to the same points in the illustration at every viewport ratio.
   const sourceWidth = portrait ? 941 : 1672
@@ -98,7 +150,8 @@ export default function BorderCaveArrival({ locale, onExit }: { locale: SceneLoc
 
   // A fixed east-facing camera sees the sun rise ahead, climb diagonally
   // toward the zenith, then pass overhead and disappear behind the viewer.
-  const sunProgress = clamp01((elapsed - 7) / 110)
+  const solarElapsed = elapsed * 1.5
+  const sunProgress = clamp01((solarElapsed - 7) / 110)
   const sunArc = 1 - Math.cos(sunProgress * Math.PI / 2)
   const sunSizeProgress = smoothstep(sunProgress)
   const sunX = 52 + sunProgress * 23
@@ -112,14 +165,15 @@ export default function BorderCaveArrival({ locale, onExit }: { locale: SceneLoc
   const ridgeScreenY = coverTop + coverHeight * ridgeY / 100
   const sunCoreDiameter = Math.min(58, Math.max(38, viewport.width * .036))
   const visibleSunFraction = clamp01((ridgeScreenY - sunScreenY + sunCoreDiameter / 2) / sunCoreDiameter)
-  const daylight = smoothstep((visibleSunFraction - .58) / .42) * (1 - smoothstep((elapsed - 112) / 25))
-  const nightReturn = smoothstep((elapsed - 119) / 24)
+  const daylight = smoothstep((visibleSunFraction - .58) / .42) * (1 - smoothstep((solarElapsed - 112) / 25))
+  const nightReturn = smoothstep((solarElapsed - 119) / 24)
   const nightOpacity = Math.max(1 - daylight, nightReturn)
   const warmLight = daylight
   const skyLight = daylight * .92
-  const sunOpacity = smoothstep(sunProgress / .035) * (1 - smoothstep((sunProgress - .82) / .16)) * smoothstep(visibleSunFraction / .22)
+  const emergenceGlow = .24 + smoothstep(visibleSunFraction) * .76
+  const sunOpacity = smoothstep(sunProgress / .035) * (1 - smoothstep((sunProgress - .82) / .16)) * smoothstep(visibleSunFraction / .22) * emergenceGlow
   const horizonGlow = sunOpacity * visibleSunFraction * (1 - smoothstep((sunProgress - .035) / .4))
-  const sunStyle = { ...sunScreen, opacity: sunOpacity, '--sun-scale': 1.18 - sunSizeProgress * .46, '--sun-yellow': 1 - sunProgress * .1, '--sun-aura-level': 1 - daylight * .45, '--sun-visible': `${visibleSunFraction * 100}%` } as CSSProperties
+  const sunStyle = { ...sunScreen, opacity: sunOpacity, '--sun-scale': 1.18 - sunSizeProgress * .46, '--sun-yellow': 1 - sunProgress * .1, '--sun-aura-level': emergenceGlow * (1 - daylight * .45), '--sun-visible': `${visibleSunFraction * 100}%` } as CSSProperties
   const horizonStyle = { ...screenPoint(sunX, ridgeY), opacity: horizonGlow } as CSSProperties
   const skyStyle = { opacity: skyLight * .92 } as CSSProperties
   const lightStyle = { opacity: warmLight } as CSSProperties
@@ -162,6 +216,7 @@ export default function BorderCaveArrival({ locale, onExit }: { locale: SceneLoc
       <button className="historical-scene-icon-button" onClick={onExit} aria-label={english ? 'Return to the act library' : 'Voltar à biblioteca de atos'}><ArrowLeft size={19}/></button>
       <div className="historical-scene-meta"><span>{english ? 'SOUTHERN AFRICA' : 'ÁFRICA AUSTRAL'}</span><b>{english ? 'AROUND 42,000 YEARS AGO' : 'HÁ CERCA DE 42 MIL ANOS'}</b></div>
     </header>
+    <div className="historical-scene-audio-control"><AudioControls/></div>
     {debugMode && <details className="border-cave-debug"><summary>{english ? 'Scene controls' : 'Controles da cena'}</summary><label>{english ? 'Day cycle' : 'Ciclo do dia'}<input type="range" min="0" max={DAY_CYCLE_SECONDS} step=".1" value={Math.min(elapsed, DAY_CYCLE_SECONDS)} onChange={(event) => setElapsed(Number(event.target.value))}/></label><button onClick={() => setPlaying((value) => !value)}>{playing ? (english ? 'Pause' : 'Pausar') : (english ? 'Play' : 'Reproduzir')}</button><button onClick={() => { setElapsed(0); setPlaying(true) }}>{english ? 'Restart' : 'Reiniciar'}</button><label><input type="checkbox" checked={wildlife} onChange={(event) => setWildlife(event.target.checked)}/>{english ? 'Wildlife' : 'Animais'}</label><label><input type="checkbox" checked={birds} onChange={(event) => setBirds(event.target.checked)}/>{english ? 'Distant birds' : 'Aves distantes'}</label><output>{Math.floor(elapsed)}s</output></details>}
   </main>
 }

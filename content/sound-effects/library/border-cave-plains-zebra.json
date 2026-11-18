@@ -1,0 +1,33 @@
+{
+  "id": "border-cave-plains-zebra",
+  "name": "Zebra-das-planícies",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Fauna diurna",
+  "description": "Chamado de contato nasal breve e bufada suave, raro e distante.",
+  "prompt": "Authentic isolated Plains Zebra, Equus quagga, vocalization during calm grazing. A brief natural zebra contact call with its characteristic nasal barking quality and a soft snort, followed by silence. No distress, stampede, galloping, domestic horse neighs, donkeys, other animals, wind, music or voices.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 5,
+  "promptInfluence": 0.7,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.13,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false
+  },
+  "soundscape": {
+    "kind": "event",
+    "taxon": "Equus quagga",
+    "commonName": "Plains Zebra / zebra-das-planícies",
+    "region": "África Austral",
+    "behavior": "chamado de contato durante pastagem",
+    "scientificConfidence": "equídeos documentados no registro zooarqueológico; camada de 42 mil anos não estabelecida",
+    "period": "manhã",
+    "references": [
+      "https://www.xeno-canto.org/species/Equus-quagga"
+    ]
+  }
+}

@@ -157,3 +157,6 @@
   .border-cave-birds svg{left:58%;}
 }
 @media(prefers-reduced-motion:reduce){.border-cave-animal-baboon,.border-cave-birds svg,.border-cave-birds path{animation:none}}
+/* One shared, safe-area-aware audio control placement for every playable scene. */
+.historical-scene-audio-control{position:absolute;z-index:20;top:calc(env(safe-area-inset-top) + 12px);right:clamp(14px,3vw,42px);pointer-events:auto}
+.historical-scene-audio-control .audio-toggle{background:rgba(11,18,27,.68);border-color:rgba(232,184,111,.34);color:#f0d7a9}

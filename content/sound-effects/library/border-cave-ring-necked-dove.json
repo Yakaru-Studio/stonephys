@@ -1,0 +1,35 @@
+{
+  "id": "border-cave-ring-necked-dove",
+  "name": "Rola-do-cabo",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Fauna diurna",
+  "description": "Arrulhos espaçados de Streptopelia capicola.",
+  "prompt": "Authentic isolated call of a southern African Ring-necked Dove, Streptopelia capicola. Soft rhythmic three-note cooing phrases with the middle syllable emphasized, repeated naturally with short pauses. Calm dawn contact or territorial calling. Only this bird species. No other birds, insects, mammals, wind, music or voices.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 8,
+  "promptInfluence": 0.7,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.26,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false,
+    "notes": "",
+    "updatedAt": "2026-11-18T03:09:30.925Z"
+  },
+  "soundscape": {
+    "kind": "event",
+    "taxon": "Streptopelia capicola",
+    "commonName": "Ring-necked Dove / rola-do-cabo",
+    "region": "África Austral",
+    "behavior": "chamado de contato/territorial calmo",
+    "scientificConfidence": "analogia ecológica moderna regional",
+    "period": "alvorada e manhã",
+    "references": [
+      "https://www.sanbi.org/animal-of-the-week/ring-necked-dove/"
+    ]
+  }
+}

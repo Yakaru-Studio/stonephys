@@ -1,0 +1,34 @@
+{
+  "id": "border-cave-natal-spurfowl",
+  "name": "Francolim-de-natal",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Fauna diurna",
+  "description": "Série curta de chamados kik-kik-kik ao longe.",
+  "prompt": "Authentic isolated Natal Spurfowl call, Pternistis natalensis, from southern African bushveld at first light. A short series of characteristic sharp, accelerating, strident kik-kik-kik calls ending in a rougher note, followed by silence. Only this species. No domestic chickens, roosters, other birds, mammals, insects, music or voices.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 6,
+  "promptInfluence": 0.7,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.13,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false
+  },
+  "soundscape": {
+    "kind": "event",
+    "taxon": "Pternistis natalensis",
+    "commonName": "Natal Spurfowl / francolim-de-natal",
+    "region": "África Austral",
+    "behavior": "chamado curto ao primeiro claro",
+    "scientificConfidence": "analogia ecológica moderna regional",
+    "period": "alvorada",
+    "references": [
+      "https://www.xeno-canto.org/species/Pternistis-natalensis"
+    ]
+  },
+  "promptRevisions": []
+}

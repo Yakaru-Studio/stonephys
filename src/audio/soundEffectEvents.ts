@@ -4,5 +4,5 @@ export const soundEffectEventBindings = {
 } as const
 
 export type SoundEffectEvent = keyof typeof soundEffectEventBindings
-export type SoundEffectAsset = { url: string; volume?: number; source?: 'approved' | 'development-preview' }
-export type SoundEffectCatalog = Partial<Record<(typeof soundEffectEventBindings)[SoundEffectEvent], SoundEffectAsset>>
+export type SoundEffectAsset = { url: string; volume?: number; loop?: boolean; source?: 'approved' | 'development-preview' }
+export type SoundEffectCatalog = Record<string, SoundEffectAsset>

@@ -30,6 +30,54 @@
         "notes": "",
         "updatedAt": "2026-11-17T23:36:55.175Z"
       }
+    },
+    "border-cave-night-crickets": {
+      "url": "/audio/sfx/approved/library/border-cave-night-crickets.mp3",
+      "volume": 0.17,
+      "loop": true,
+      "versionId": "gen-ff503bb5-eede-4709-a703-3bdcbaabd04b",
+      "approvedAt": "2026-11-18T03:07:36.008Z",
+      "provider": "elevenlabs",
+      "model": "eleven_text_to_sound_v3",
+      "license": {
+        "plan": "unknown",
+        "commercialRightsConfirmed": true,
+        "evaluationOnly": false,
+        "notes": "",
+        "updatedAt": "2026-11-18T03:07:35.980Z"
+      }
+    },
+    "border-cave-ring-necked-dove": {
+      "url": "/audio/sfx/approved/library/border-cave-ring-necked-dove.mp3",
+      "volume": 0.26,
+      "loop": false,
+      "versionId": "gen-fe432980-a5b9-4fb0-a729-1dd681e309b3",
+      "approvedAt": "2026-11-18T03:09:30.953Z",
+      "provider": "elevenlabs",
+      "model": "eleven_text_to_sound_v3",
+      "license": {
+        "plan": "unknown",
+        "commercialRightsConfirmed": true,
+        "evaluationOnly": false,
+        "notes": "",
+        "updatedAt": "2026-11-18T03:09:30.925Z"
+      }
+    },
+    "border-cave-vegetation": {
+      "url": "/audio/sfx/approved/library/border-cave-vegetation.mp3",
+      "volume": 0.16,
+      "loop": true,
+      "versionId": "gen-c6c51695-0b9f-43ac-88f1-4615580e22f9",
+      "approvedAt": "2026-11-18T03:10:59.585Z",
+      "provider": "elevenlabs",
+      "model": "eleven_text_to_sound_v3",
+      "license": {
+        "plan": "unknown",
+        "commercialRightsConfirmed": true,
+        "evaluationOnly": false,
+        "notes": "",
+        "updatedAt": "2026-11-18T03:10:59.553Z"
+      }
     }
   }
 }

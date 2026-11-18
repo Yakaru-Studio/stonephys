@@ -25,6 +25,7 @@ type Tone = {
 
 type SoundPattern = { volume: number; tones: Tone[] }
 type MusicDeck = { element: HTMLAudioElement; source: MediaElementAudioSourceNode; gain: GainNode; cropStart: number; cropEnd: number | null; loop: boolean; loopCrossfadeMs: number; loopCrossfading: boolean }
+type NaturalAmbienceNode = { element: HTMLAudioElement; source: MediaElementAudioSourceNode; gain: GainNode; panner: StereoPannerNode; pauseTimer: number | null }
 
 const soundPatterns: Record<SoundEffect, SoundPattern> = {
   neuronSelect: { volume: .8, tones: [
@@ -102,7 +103,9 @@ class AudioManager {
   private soundEffectCatalog: SoundEffectCatalog = {}
   private soundEffectElements = new Map<string, HTMLAudioElement>()
   private soundEffectSources = new Map<string, MediaElementAudioSourceNode>()
+  private soundEffectPanners = new Map<string, StereoPannerNode>()
   private activeSoundByGroup = new Map<string, string>()
+  private naturalAmbienceNodes = new Map<string, NaturalAmbienceNode>()
 
   setSettings(settings: AudioSettings) {
     this.settings = settings
@@ -292,17 +295,66 @@ class AudioManager {
     this.soundEffectCatalog = catalog
   }
 
-  async playSoundEvent(event: SoundEffectEvent) {
+  async setNaturalAmbience(layers: Array<{ id: string; volume: number; pan?: number }>) {
+    if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.ambienceVolume <= 0) {
+      this.pauseNaturalAmbience()
+      return
+    }
+    const context = this.getContext()
+    if (context.state === 'suspended') await context.resume()
+    const now = context.currentTime
+    const active = new Set<string>()
+    for (const layer of layers) {
+      const asset = this.soundEffectCatalog[layer.id]
+      if (!asset?.url || !asset.loop) continue
+      active.add(layer.id)
+      let track = this.naturalAmbienceNodes.get(layer.id)
+      if (!track) {
+        const element = new Audio()
+        element.preload = 'auto'
+        element.loop = true
+        element.src = new URL(asset.url, window.location.href).href
+        const source = context.createMediaElementSource(element)
+        const panner = context.createStereoPanner()
+        const gain = context.createGain()
+        gain.gain.value = .0001
+        source.connect(panner)
+        panner.connect(gain)
+        gain.connect(this.ambienceGain!)
+        track = { element, source, gain, panner, pauseTimer: null }
+        this.naturalAmbienceNodes.set(layer.id, track)
+      } else if (track.element.src !== new URL(asset.url, window.location.href).href) {
+        track.element.src = new URL(asset.url, window.location.href).href
+      }
+      if (track.pauseTimer !== null) { window.clearTimeout(track.pauseTimer); track.pauseTimer = null }
+      track.element.loop = true
+      track.panner.pan.setTargetAtTime(Math.max(-1, Math.min(1, layer.pan ?? 0)), now, .35)
+      track.gain.gain.setTargetAtTime(Math.max(.0001, Math.min(1, (asset.volume ?? 1) * layer.volume)), now, .8)
+      if (track.element.paused) void track.element.play().catch(() => {})
+    }
+    for (const [id, track] of this.naturalAmbienceNodes) {
+      if (active.has(id)) continue
+      track.gain.gain.setTargetAtTime(.0001, now, .8)
+      if (track.pauseTimer === null) track.pauseTimer = window.setTimeout(() => { track.element.pause(); track.pauseTimer = null }, 2600)
+    }
+  }
+
+  pauseNaturalAmbience() {
+    for (const track of this.naturalAmbienceNodes.values()) {
+      if (this.context) track.gain.gain.setTargetAtTime(.0001, this.context.currentTime, .55)
+      if (track.pauseTimer === null) track.pauseTimer = window.setTimeout(() => { track.element.pause(); track.pauseTimer = null }, 1800)
+    }
+  }
+
+  async playSoundEffectById(effectId: string, options: { volume?: number; pan?: number; group?: string } = {}) {
     if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.soundEffectsVolume <= 0) return
-    const effectId = soundEffectEventBindings[event]
     const asset = this.soundEffectCatalog[effectId]
     if (!asset?.url || !this.soundEffectsGain) return
-    const group = event.startsWith('library.scroll.') ? 'library-scroll' : event
+    const group = options.group || effectId
     const previousId = this.activeSoundByGroup.get(group)
     const previous = previousId ? this.soundEffectElements.get(previousId) : null
     if (previous && !previous.paused && previousId === effectId) return
     if (previous && !previous.paused) { previous.pause(); previous.currentTime = 0 }
-
     const context = this.getContext()
     if (context.state === 'suspended') await context.resume()
     let element = this.soundEffectElements.get(effectId)
@@ -310,23 +362,29 @@ class AudioManager {
       element = new Audio()
       element.preload = 'auto'
       const source = context.createMediaElementSource(element)
-      source.connect(this.soundEffectsGain)
-      element.addEventListener('ended', () => {
-        if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group)
-      })
-      this.soundEffectElements.set(effectId, element)
+      const panner = context.createStereoPanner()
+      source.connect(panner)
+      panner.connect(this.soundEffectsGain)
       this.soundEffectSources.set(effectId, source)
+      this.soundEffectPanners.set(effectId, panner)
+      element.addEventListener('ended', () => { if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group) })
+      this.soundEffectElements.set(effectId, element)
     }
+    const panner = this.soundEffectPanners.get(effectId)
+    if (panner) panner.pan.setTargetAtTime(Math.max(-1, Math.min(1, options.pan ?? 0)), context.currentTime, .2)
     const absoluteUrl = new URL(asset.url, window.location.href).href
     if (element.src !== absoluteUrl) element.src = absoluteUrl
-    element.volume = Math.max(0, Math.min(1, asset.volume ?? .72))
+    element.volume = Math.max(0, Math.min(1, (asset.volume ?? .72) * (options.volume ?? 1)))
+    element.loop = false
     element.currentTime = 0
     this.activeSoundByGroup.set(group, effectId)
-    try { await element.play() }
-    catch (error) {
-      if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group)
-      throw error
-    }
+    try { await element.play() } catch (error) { if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group); throw error }
+  }
+
+  async playSoundEvent(event: SoundEffectEvent) {
+    const effectId = soundEffectEventBindings[event]
+    const group = event.startsWith('library.scroll.') ? 'library-scroll' : event
+    await this.playSoundEffectById(effectId, { group })
   }
 
   private playBlackoutWhoosh() {

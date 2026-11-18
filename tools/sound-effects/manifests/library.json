@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17T23:36:55.240Z",
+  "updatedAt": "2026-11-18T03:19:46.765Z",
   "effects": {
     "library-scroll-unroll": {
       "versions": [
@@ -103,6 +103,512 @@
       ],
       "previewVersionId": "gen-28d10291-0db0-41de-9e5b-5951b1bc47d8",
       "approvedVersionId": "gen-28d10291-0db0-41de-9e5b-5951b1bc47d8"
+    },
+    "border-cave-wind": {
+      "versions": [
+        {
+          "id": "gen-fcc4a351-88fa-4891-9288-9392b0364a7d",
+          "effectId": "border-cave-wind",
+          "name": "Vento nas montanhas de Lebombo",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Gentle natural breeze across an elevated rocky hillside in southern African savanna woodland. Soft airy wind passing through scattered shrubs and trees, with subtle irregular gusts. Open landscape, calm and spacious. Seamless natural ambience. No animals, birds, insects, water, voices, music or modern sounds. não relinche igual cavalo",
+          "requestedDurationSeconds": 30,
+          "promptInfluence": 0.7,
+          "loop": true,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:19:08.157Z",
+          "createdAt": "2026-11-18T03:19:08.157Z",
+          "estimatedCredits": 1200,
+          "actualCredits": null,
+          "providerCostHeader": "300",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/border-cave-wind/gen-fcc4a351-88fa-4891-9288-9392b0364a7d.mp3",
+          "bytes": 481114,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.06,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": true,
+            "evaluationOnly": false
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-4d26fee2-baf2-4b0a-a3e1-10a3e3b8d831",
+          "effectId": "border-cave-wind",
+          "name": "Vento nas montanhas de Lebombo",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Gentle natural breeze across an elevated rocky hillside in southern African savanna woodland. Soft airy wind passing through scattered shrubs and trees, with subtle irregular gusts. Open landscape, calm and spacious. Seamless natural ambience. No animals, birds, insects, water, voices, music or modern sounds.",
+          "requestedDurationSeconds": 30,
+          "promptInfluence": 0.7,
+          "loop": true,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:05:23.391Z",
+          "createdAt": "2026-11-18T03:05:23.391Z",
+          "estimatedCredits": 1200,
+          "actualCredits": null,
+          "providerCostHeader": "300",
+          "status": "rejected",
+          "assetPath": "tools/sound-effects/generations/border-cave-wind/gen-4d26fee2-baf2-4b0a-a3e1-10a3e3b8d831.mp3",
+          "bytes": 481114,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.26,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "",
+          "reviewedAt": "2026-11-18T03:06:37.455Z"
+        }
+      ],
+      "previewVersionId": "gen-fcc4a351-88fa-4891-9288-9392b0364a7d",
+      "approvedVersionId": null
+    },
+    "border-cave-vegetation": {
+      "versions": [
+        {
+          "id": "gen-c6c51695-0b9f-43ac-88f1-4615580e22f9",
+          "effectId": "border-cave-vegetation",
+          "name": "Vegetação ao vento",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Subtle natural rustling of dry grasses, small leaves and sparse woodland foliage moving in a gentle breeze on a southern African hillside. Delicate irregular organic friction, calm and understated. Seamless loop. No birds, insects, animal calls, footsteps, voices, music or artificial sounds.",
+          "requestedDurationSeconds": 20,
+          "promptInfluence": 0.7,
+          "loop": true,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:10:01.046Z",
+          "createdAt": "2026-11-18T03:10:01.046Z",
+          "estimatedCredits": 800,
+          "actualCredits": null,
+          "providerCostHeader": "200",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/border-cave-vegetation/gen-c6c51695-0b9f-43ac-88f1-4615580e22f9.mp3",
+          "bytes": 321035,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.16,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "",
+          "reviewedAt": "2026-11-18T03:10:59.585Z",
+          "assetUrl": "/audio/sfx/approved/library/border-cave-vegetation.mp3",
+          "productionEligible": true
+        }
+      ],
+      "previewVersionId": "gen-c6c51695-0b9f-43ac-88f1-4615580e22f9",
+      "approvedVersionId": "gen-c6c51695-0b9f-43ac-88f1-4615580e22f9"
+    },
+    "border-cave-night-crickets": {
+      "versions": [
+        {
+          "id": "gen-ff503bb5-eede-4709-a703-3bdcbaabd04b",
+          "effectId": "border-cave-night-crickets",
+          "name": "Grilos antes da alvorada",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Sparse nocturnal field cricket stridulation from grasses and shrubs in southern African savanna woodland before dawn. Small scattered cricket calls, irregular natural chirping rhythms, quiet pauses, low insect density. Seamless ambience. Only field crickets. No cicadas, frogs, birds, mammals, wind, voices or music.",
+          "requestedDurationSeconds": 30,
+          "promptInfluence": 0.7,
+          "loop": true,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:07:02.323Z",
+          "createdAt": "2026-11-18T03:07:02.324Z",
+          "estimatedCredits": 1200,
+          "actualCredits": null,
+          "providerCostHeader": "300",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/border-cave-night-crickets/gen-ff503bb5-eede-4709-a703-3bdcbaabd04b.mp3",
+          "bytes": 481114,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.17,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "",
+          "reviewedAt": "2026-11-18T03:07:36.008Z",
+          "assetUrl": "/audio/sfx/approved/library/border-cave-night-crickets.mp3",
+          "productionEligible": true
+        }
+      ],
+      "previewVersionId": "gen-ff503bb5-eede-4709-a703-3bdcbaabd04b",
+      "approvedVersionId": "gen-ff503bb5-eede-4709-a703-3bdcbaabd04b"
+    },
+    "border-cave-ring-necked-dove": {
+      "versions": [
+        {
+          "id": "gen-fe432980-a5b9-4fb0-a729-1dd681e309b3",
+          "effectId": "border-cave-ring-necked-dove",
+          "name": "Rola-do-cabo",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Authentic isolated call of a southern African Ring-necked Dove, Streptopelia capicola. Soft rhythmic three-note cooing phrases with the middle syllable emphasized, repeated naturally with short pauses. Calm dawn contact or territorial calling. Only this bird species. No other birds, insects, mammals, wind, music or voices.",
+          "requestedDurationSeconds": 8,
+          "promptInfluence": 0.7,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:09:12.272Z",
+          "createdAt": "2026-11-18T03:09:12.272Z",
+          "estimatedCredits": 320,
+          "actualCredits": null,
+          "providerCostHeader": "80",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/border-cave-ring-necked-dove/gen-fe432980-a5b9-4fb0-a729-1dd681e309b3.mp3",
+          "bytes": 129192,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.26,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "",
+          "reviewedAt": "2026-11-18T03:09:30.953Z",
+          "assetUrl": "/audio/sfx/approved/library/border-cave-ring-necked-dove.mp3",
+          "productionEligible": true
+        }
+      ],
+      "previewVersionId": "gen-fe432980-a5b9-4fb0-a729-1dd681e309b3",
+      "approvedVersionId": "gen-fe432980-a5b9-4fb0-a729-1dd681e309b3"
+    },
+    "border-cave-crested-francolin": {
+      "versions": [
+        {
+          "id": "gen-c9908097-1d2a-4525-9c5b-499729dadfa2",
+          "effectId": "border-cave-crested-francolin",
+          "name": "Francolim-de-poupa",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Authentic isolated dawn call of a Crested Francolin, Ortygornis sephaena, native to southern African bushveld. Characteristic rhythmic metallic cackling phrases, with a natural brief antiphonal response from another individual of the same species. Only this species. No domestic chickens, roosters, other birds, mammals, insects, music or voices.",
+          "requestedDurationSeconds": 8,
+          "promptInfluence": 0.7,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:11:36.091Z",
+          "createdAt": "2026-11-18T03:11:36.091Z",
+          "estimatedCredits": 320,
+          "actualCredits": null,
+          "providerCostHeader": "80",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/border-cave-crested-francolin/gen-c9908097-1d2a-4525-9c5b-499729dadfa2.mp3",
+          "bytes": 129192,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.09,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "Aprovada para avaliação no Studio.",
+          "reviewedAt": "2026-11-18T03:12:43.036Z",
+          "productionEligible": false,
+          "assetUrl": null,
+          "evaluationOnly": true,
+          "cropEndSeconds": null,
+          "syncOffsetMs": 0,
+          "playback": {
+            "loop": false
+          }
+        }
+      ],
+      "previewVersionId": "gen-c9908097-1d2a-4525-9c5b-499729dadfa2",
+      "approvedVersionId": "gen-c9908097-1d2a-4525-9c5b-499729dadfa2"
+    },
+    "border-cave-natal-spurfowl": {
+      "versions": [
+        {
+          "id": "gen-cf1e69c7-bbcf-4ae8-952e-347d43fd64ea",
+          "effectId": "border-cave-natal-spurfowl",
+          "name": "Francolim-de-natal",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Authentic isolated Natal Spurfowl call, Pternistis natalensis, from southern African bushveld at first light. A short series of characteristic sharp, accelerating, strident kik-kik-kik calls ending in a rougher note, followed by silence. Only this species. No domestic chickens, roosters, other birds, mammals, insects, music or voices.",
+          "requestedDurationSeconds": 6,
+          "promptInfluence": 0.7,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:13:16.576Z",
+          "createdAt": "2026-11-18T03:13:16.576Z",
+          "estimatedCredits": 240,
+          "actualCredits": null,
+          "providerCostHeader": "60",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/border-cave-natal-spurfowl/gen-cf1e69c7-bbcf-4ae8-952e-347d43fd64ea.mp3",
+          "bytes": 97009,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.21,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "Aprovada para avaliação no Studio.",
+          "cropEndSeconds": null,
+          "syncOffsetMs": 0,
+          "playback": {
+            "loop": false
+          },
+          "reviewedAt": "2026-11-18T03:13:30.451Z",
+          "productionEligible": false,
+          "assetUrl": null,
+          "evaluationOnly": true
+        }
+      ],
+      "previewVersionId": "gen-cf1e69c7-bbcf-4ae8-952e-347d43fd64ea",
+      "approvedVersionId": "gen-cf1e69c7-bbcf-4ae8-952e-347d43fd64ea"
+    },
+    "border-cave-chacma-baboon": {
+      "versions": [
+        {
+          "id": "gen-f75fd550-63fb-44de-a6cb-347bc840b799",
+          "effectId": "border-cave-chacma-baboon",
+          "name": "Babuíno-chacma",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Authentic isolated Chacma Baboon, Papio ursinus, vocalizations during calm social interaction and early morning foraging. A few soft low-pitched affiliative contact grunts from two individuals, with natural pauses and subtle variations. Peaceful behavior. No alarm calls, aggressive wahoos, screaming, chimpanzees, gorillas, other animals, music or voices.",
+          "requestedDurationSeconds": 8,
+          "promptInfluence": 0.7,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:14:20.529Z",
+          "createdAt": "2026-11-18T03:14:20.529Z",
+          "estimatedCredits": 320,
+          "actualCredits": null,
+          "providerCostHeader": "80",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/border-cave-chacma-baboon/gen-f75fd550-63fb-44de-a6cb-347bc840b799.mp3",
+          "bytes": 129192,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.04,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "Aprovada para avaliação no Studio.",
+          "cropEndSeconds": null,
+          "syncOffsetMs": 0,
+          "playback": {
+            "loop": false
+          },
+          "reviewedAt": "2026-11-18T03:14:43.898Z",
+          "productionEligible": false,
+          "assetUrl": null,
+          "evaluationOnly": true
+        }
+      ],
+      "previewVersionId": "gen-f75fd550-63fb-44de-a6cb-347bc840b799",
+      "approvedVersionId": "gen-f75fd550-63fb-44de-a6cb-347bc840b799"
+    },
+    "border-cave-plains-zebra": {
+      "versions": [
+        {
+          "id": "gen-cf3d6d53-c3fd-403c-a59f-f1eae163b6e0",
+          "effectId": "border-cave-plains-zebra",
+          "name": "Zebra-das-planícies",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Authentic isolated Plains Zebra, Equus quagga, vocalization during calm grazing. A brief natural zebra contact call with its characteristic nasal barking quality and a soft snort, followed by silence. No distress, stampede, galloping, domestic horse neighs, donkeys, other animals, wind, music or voices. não relinche igual cavalo",
+          "requestedDurationSeconds": 5,
+          "promptInfluence": 0.7,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:19:36.414Z",
+          "createdAt": "2026-11-18T03:19:36.414Z",
+          "estimatedCredits": 200,
+          "actualCredits": null,
+          "providerCostHeader": "50",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/border-cave-plains-zebra/gen-cf3d6d53-c3fd-403c-a59f-f1eae163b6e0.mp3",
+          "bytes": 81127,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.05,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": true,
+            "evaluationOnly": false
+          },
+          "notes": "",
+          "cropEndSeconds": null,
+          "syncOffsetMs": 0,
+          "playback": {
+            "loop": false
+          }
+        },
+        {
+          "id": "gen-e467c3f0-efe8-4a23-8584-5d6f09f5d2e4",
+          "effectId": "border-cave-plains-zebra",
+          "name": "Zebra-das-planícies",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Authentic isolated Plains Zebra, Equus quagga, vocalization during calm grazing. A brief natural zebra contact call with its characteristic nasal barking quality and a soft snort, followed by silence. No distress, stampede, galloping, domestic horse neighs, donkeys, other animals, wind, music or voices.",
+          "requestedDurationSeconds": 5,
+          "promptInfluence": 0.7,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-18T03:14:53.025Z",
+          "createdAt": "2026-11-18T03:14:53.025Z",
+          "estimatedCredits": 200,
+          "actualCredits": null,
+          "providerCostHeader": "50",
+          "status": "rejected",
+          "assetPath": "tools/sound-effects/generations/border-cave-plains-zebra/gen-e467c3f0-efe8-4a23-8584-5d6f09f5d2e4.mp3",
+          "bytes": 81127,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.09,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true
+          },
+          "notes": "",
+          "cropEndSeconds": null,
+          "syncOffsetMs": 0,
+          "playback": {
+            "loop": false
+          },
+          "reviewedAt": "2026-11-18T03:17:10.994Z"
+        }
+      ],
+      "previewVersionId": "gen-cf3d6d53-c3fd-403c-a59f-f1eae163b6e0",
+      "approvedVersionId": null
     }
   },
   "requests": [
@@ -142,6 +648,196 @@
       "completedAt": "2026-11-17T23:36:46.817Z",
       "providerUsage": {
         "characterCostHeader": "5"
+      }
+    },
+    {
+      "requestId": "ca632dae-ffb2-4c49-80c5-2c5f2bd2ff10",
+      "effectId": "border-cave-wind",
+      "configHash": "71667f2938546020b7d28928b8741344b1c5f1dd733fd6bf6b097592c236175a",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 30,
+      "estimatedCredits": 1200,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:05:19.251Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-4d26fee2-baf2-4b0a-a3e1-10a3e3b8d831",
+      "bytes": 481114,
+      "completedAt": "2026-11-18T03:05:23.392Z",
+      "providerUsage": {
+        "characterCostHeader": "300"
+      }
+    },
+    {
+      "requestId": "70299225-68c8-4d88-8482-0a00d9a0764c",
+      "effectId": "border-cave-night-crickets",
+      "configHash": "3442a0241c893ff923b53429464f4694dbc539b52ca1560a3cdedb7403baf461",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 30,
+      "estimatedCredits": 1200,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:06:58.217Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-ff503bb5-eede-4709-a703-3bdcbaabd04b",
+      "bytes": 481114,
+      "completedAt": "2026-11-18T03:07:02.324Z",
+      "providerUsage": {
+        "characterCostHeader": "300"
+      }
+    },
+    {
+      "requestId": "e190ef2a-99be-47c4-91e5-224c922c4f6b",
+      "effectId": "border-cave-ring-necked-dove",
+      "configHash": "aedf5de6e3604093d890e231479534ef301b33d9e549671050ec96bf37f94344",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 8,
+      "estimatedCredits": 320,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:09:10.448Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-fe432980-a5b9-4fb0-a729-1dd681e309b3",
+      "bytes": 129192,
+      "completedAt": "2026-11-18T03:09:12.273Z",
+      "providerUsage": {
+        "characterCostHeader": "80"
+      }
+    },
+    {
+      "requestId": "a5e6d9d4-3c32-445e-9d9e-669b18810710",
+      "effectId": "border-cave-vegetation",
+      "configHash": "9994e731d570fa2ef85219e1e8ee8ae70676c686e3846b4059f2f5ffbf51b571",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 20,
+      "estimatedCredits": 800,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:09:57.841Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-c6c51695-0b9f-43ac-88f1-4615580e22f9",
+      "bytes": 321035,
+      "completedAt": "2026-11-18T03:10:01.046Z",
+      "providerUsage": {
+        "characterCostHeader": "200"
+      }
+    },
+    {
+      "requestId": "cc362e6b-0197-4f60-8c3e-343a3f84a7b2",
+      "effectId": "border-cave-crested-francolin",
+      "configHash": "34703467b20e5bcab3df1d43a6a0799f792fba933f248d706c1ffccc9fc0f8b1",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 8,
+      "estimatedCredits": 320,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:11:33.904Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-c9908097-1d2a-4525-9c5b-499729dadfa2",
+      "bytes": 129192,
+      "completedAt": "2026-11-18T03:11:36.091Z",
+      "providerUsage": {
+        "characterCostHeader": "80"
+      }
+    },
+    {
+      "requestId": "60ccbb33-97b3-478e-843e-21de629de6ef",
+      "effectId": "border-cave-natal-spurfowl",
+      "configHash": "99980b9f5081048397c34bc6b4338801b1a06c167632dcef9e6f0b378dd9657d",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 6,
+      "estimatedCredits": 240,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:13:14.802Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-cf1e69c7-bbcf-4ae8-952e-347d43fd64ea",
+      "bytes": 97009,
+      "completedAt": "2026-11-18T03:13:16.576Z",
+      "providerUsage": {
+        "characterCostHeader": "60"
+      }
+    },
+    {
+      "requestId": "f56c139e-d4eb-4532-b64e-7f7fa4110095",
+      "effectId": "border-cave-chacma-baboon",
+      "configHash": "6eab463d39923bd42867a155d23dd7e8406cc93e5e21856f502b1e8d98b7f52e",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 8,
+      "estimatedCredits": 320,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:14:18.509Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-f75fd550-63fb-44de-a6cb-347bc840b799",
+      "bytes": 129192,
+      "completedAt": "2026-11-18T03:14:20.529Z",
+      "providerUsage": {
+        "characterCostHeader": "80"
+      }
+    },
+    {
+      "requestId": "d101ed9e-44ce-44dd-a93d-4fb865c44900",
+      "effectId": "border-cave-plains-zebra",
+      "configHash": "b0eedc6db6a10a9d01d84e62887176df4e2e8aac848037f18bc9b2bcc95cdbbe",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 5,
+      "estimatedCredits": 200,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:14:51.167Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-e467c3f0-efe8-4a23-8584-5d6f09f5d2e4",
+      "bytes": 81127,
+      "completedAt": "2026-11-18T03:14:53.025Z",
+      "providerUsage": {
+        "characterCostHeader": "50"
+      }
+    },
+    {
+      "requestId": "d219c01d-ad1c-4783-afc3-af6144da1602",
+      "effectId": "border-cave-wind",
+      "configHash": "872acb04bb5975538bc70414e42e6d4498c27de8928bb45a84df692bf02a28f2",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 30,
+      "estimatedCredits": 1200,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:19:01.214Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-fcc4a351-88fa-4891-9288-9392b0364a7d",
+      "bytes": 481114,
+      "completedAt": "2026-11-18T03:19:08.157Z",
+      "providerUsage": {
+        "characterCostHeader": "300"
+      }
+    },
+    {
+      "requestId": "6a49405f-60b5-48a5-a5a5-0ab11d5606cd",
+      "effectId": "border-cave-plains-zebra",
+      "configHash": "0f5240b48a8cb4548e6e0ec97093588eb47f6536e82937dc72d8d83c4537cf7d",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 5,
+      "estimatedCredits": 200,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-18T03:19:34.783Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-cf3d6d53-c3fd-403c-a59f-f1eae163b6e0",
+      "bytes": 81127,
+      "completedAt": "2026-11-18T03:19:36.414Z",
+      "providerUsage": {
+        "characterCostHeader": "50"
       }
     }
   ]

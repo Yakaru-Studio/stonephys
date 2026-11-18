@@ -1,0 +1,28 @@
+{
+  "id": "border-cave-wind",
+  "name": "Vento nas montanhas de Lebombo",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Ambiência natural",
+  "description": "Vento suave contínuo sobre uma encosta elevada.",
+  "prompt": "Gentle natural breeze across an elevated rocky hillside in southern African savanna woodland. Soft airy wind passing through scattered shrubs and trees, with subtle irregular gusts. Open landscape, calm and spacious. Seamless natural ambience. No animals, birds, insects, water, voices, music or modern sounds.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 30,
+  "promptInfluence": 0.7,
+  "loop": true,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.06,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false
+  },
+  "soundscape": {
+    "kind": "ambience",
+    "scientificConfidence": "reconstrução ambiental plausível",
+    "period": "cena inteira",
+    "references": []
+  },
+  "promptRevisions": []
+}

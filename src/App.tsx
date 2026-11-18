@@ -60,7 +60,7 @@ export default function App() {
           for (const effect of result?.effects || []) {
             const version = effect.versions?.find((item: any) => item.id === effect.previewVersionId)
             const url = version ? effect.previewUrl : effect.approvedAssetUrl
-            if (url) effects[effect.id] = { url, volume: version?.volume ?? effect.defaultVolume ?? .72 }
+            if (url) effects[effect.id] = { url, volume: version?.volume ?? effect.defaultVolume ?? .72, loop: version?.loop ?? effect.loop ?? false }
           }
         } else {
           const manifest = await fetch('/audio/sfx/approved/manifest.json').then((response) => response.ok ? response.json() : null)
@@ -80,6 +80,7 @@ export default function App() {
       : Object.entries(packagedMusic).some(([file, item]) => file.includes('/the-sanctuary-of-wisdom/composition.json') && item.approvedAssetUrl)
     const targetId = harrisonSceneOpen
       ? 'the-clockmaker-of-time'
+      : borderCaveSceneOpen ? null
       : selectedArc ? wisdomSanctuaryApproved ? 'the-sanctuary-of-wisdom' : 'paths-of-discovery' : selectedModuleId || audioUnlocked ? 'eternity-of-knowledge' : null
     if (!targetId) { audioManager.fadeMusicOut(900); return }
     const composition = music.find((item) => item.id === targetId)
@@ -94,7 +95,7 @@ export default function App() {
     if (!source) { audioManager.fadeMusicOut(900); return }
     // Loop behavior is configured in Music Studio; tracks default to looping.
     void audioManager.playMusicAsset(source, { loop: loopSettings?.enabled ?? true, fadeMs: loopSettings?.crossfadeMs ?? 1800, loopCrossfadeMs: loopSettings?.crossfadeMs ?? 1800, trackGain: settings?.defaultVolume ?? .2, volume, cropStartSeconds, cropEndSeconds }).catch(() => {})
-  }, [music, selectedModuleId, selectedArc, harrisonSceneOpen, audioUnlocked])
+  }, [music, selectedModuleId, selectedArc, harrisonSceneOpen, borderCaveSceneOpen, audioUnlocked])
 
   useEffect(() => {
     document.documentElement.lang = locale

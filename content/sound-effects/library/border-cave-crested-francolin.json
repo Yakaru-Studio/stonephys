@@ -1,0 +1,36 @@
+{
+  "id": "border-cave-crested-francolin",
+  "name": "Francolim-de-poupa",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Fauna diurna",
+  "description": "Chamado cadenciado e resposta breve da mesma espécie.",
+  "prompt": "Authentic isolated dawn call of a Crested Francolin, Ortygornis sephaena, native to southern African bushveld. Characteristic rhythmic metallic cackling phrases, with a natural brief antiphonal response from another individual of the same species. Only this species. No domestic chickens, roosters, other birds, mammals, insects, music or voices.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 8,
+  "promptInfluence": 0.7,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.08,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false,
+    "notes": "",
+    "updatedAt": "2026-11-18T03:12:04.167Z"
+  },
+  "soundscape": {
+    "kind": "event",
+    "taxon": "Ortygornis sephaena",
+    "commonName": "Crested Francolin / francolim-de-poupa",
+    "region": "África Austral",
+    "behavior": "chamado de alvorada",
+    "scientificConfidence": "analogia ecológica moderna regional",
+    "period": "alvorada",
+    "references": [
+      "https://www.xeno-canto.org/species/Ortygornis-sephaena"
+    ]
+  },
+  "promptRevisions": []
+}

@@ -1,0 +1,30 @@
+{
+  "id": "border-cave-vegetation",
+  "name": "Vegetação ao vento",
+  "group": "Border Cave — Dawn Ambience",
+  "category": "Ambiência natural",
+  "description": "Capim seco e folhas leves roçando com a brisa.",
+  "prompt": "Subtle natural rustling of dry grasses, small leaves and sparse woodland foliage moving in a gentle breeze on a southern African hillside. Delicate irregular organic friction, calm and understated. Seamless loop. No birds, insects, animal calls, footsteps, voices, music or artificial sounds.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 6.5,
+  "promptInfluence": 0.7,
+  "loop": true,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.04,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false,
+    "notes": "",
+    "updatedAt": "2026-11-18T03:10:59.553Z"
+  },
+  "soundscape": {
+    "kind": "ambience",
+    "scientificConfidence": "reconstrução ambiental plausível",
+    "period": "cena inteira",
+    "references": []
+  },
+  "promptRevisions": []
+}

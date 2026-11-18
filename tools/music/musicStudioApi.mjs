@@ -6,7 +6,7 @@ import path from 'node:path'
 const MODEL = 'lyria-3.5'
 const PRICE = 0.08
 const MAX_BUDGET = 1.50
-const IDS = ['eternity-of-knowledge', 'paths-of-discovery', 'the-clockmaker-of-time']
+const IDS = ['eternity-of-knowledge', 'paths-of-discovery', 'the-clockmaker-of-time', 'the-sanctuary-of-wisdom']
 const APPROVAL = 'I understand this may consume quota or be billed'
 const safeName = (value) => String(value).replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 100)
 const readJson = async (file) => JSON.parse(await readFile(file, 'utf8'))

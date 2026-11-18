@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-17T23:36:55.240Z",
+  "effects": {
+    "library-scroll-unroll": {
+      "versions": [
+        {
+          "id": "gen-edb82880-3b39-4888-8759-9427a8078fa5",
+          "effectId": "library-scroll-unroll",
+          "name": "Desenrolar pergaminho",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "An ancient thick parchment scroll smoothly unrolling from its tightly rolled cylindrical form. Authentic dry parchment rustling, gentle layered friction and subtle movement of wooden rollers. One continuous opening motion with a natural soft ending. Close-up realistic Foley, elegant and restrained. No tearing, no crumpling, no music, no voices, no background noise.",
+          "requestedDurationSeconds": 0.95,
+          "promptInfluence": 0.5,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-17T23:36:05.894Z",
+          "createdAt": "2026-11-17T23:36:05.894Z",
+          "estimatedCredits": 38,
+          "actualCredits": null,
+          "providerCostHeader": "9",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/library-scroll-unroll/gen-edb82880-3b39-4888-8759-9427a8078fa5.mp3",
+          "bytes": 15925,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "library.scroll.unroll",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": "Verificar plano e direitos comerciais antes de copiar para os assets aprovados."
+          },
+          "notes": "",
+          "reviewedAt": "2026-11-17T23:36:23.948Z",
+          "assetUrl": "/audio/sfx/approved/library/scroll-unroll.mp3",
+          "productionEligible": true
+        }
+      ],
+      "previewVersionId": "gen-edb82880-3b39-4888-8759-9427a8078fa5",
+      "approvedVersionId": "gen-edb82880-3b39-4888-8759-9427a8078fa5"
+    },
+    "library-scroll-roll": {
+      "versions": [
+        {
+          "id": "gen-28d10291-0db0-41de-9e5b-5951b1bc47d8",
+          "effectId": "library-scroll-roll",
+          "name": "Enrolar pergaminho",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "An ancient thick dry parchment scroll being gently rolled back into a compact cylindrical shape. Soft layered parchment friction, subtle natural creaking and delicate wooden roller movement. One continuous closing motion, gradually tightening into a roll with a quiet natural finish. Close-up realistic Foley, elegant and restrained. No tearing, no crumpling, no music, no voices, no background noise.",
+          "requestedDurationSeconds": 0.5,
+          "promptInfluence": 0.5,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-17T23:36:46.817Z",
+          "createdAt": "2026-11-17T23:36:46.817Z",
+          "estimatedCredits": 20,
+          "actualCredits": null,
+          "providerCostHeader": "5",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/library-scroll-roll/gen-28d10291-0db0-41de-9e5b-5951b1bc47d8.mp3",
+          "bytes": 8820,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "library.scroll.roll",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": "Verificar plano e direitos comerciais antes de copiar para os assets aprovados."
+          },
+          "notes": "",
+          "reviewedAt": "2026-11-17T23:36:55.197Z",
+          "assetUrl": "/audio/sfx/approved/library/scroll-roll.mp3",
+          "productionEligible": true
+        }
+      ],
+      "previewVersionId": "gen-28d10291-0db0-41de-9e5b-5951b1bc47d8",
+      "approvedVersionId": "gen-28d10291-0db0-41de-9e5b-5951b1bc47d8"
+    }
+  },
+  "requests": [
+    {
+      "requestId": "aaf6d467-74e9-4b3f-98b8-579d8433c424",
+      "effectId": "library-scroll-unroll",
+      "configHash": "52eb21bb26a4be8fb518bfdc1bdbe76bef20b0ffbdbb678ad769aa7be46ead01",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 0.95,
+      "estimatedCredits": 38,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-17T23:36:04.321Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-edb82880-3b39-4888-8759-9427a8078fa5",
+      "bytes": 15925,
+      "completedAt": "2026-11-17T23:36:05.895Z",
+      "providerUsage": {
+        "characterCostHeader": "9"
+      }
+    },
+    {
+      "requestId": "144fe5f5-a4dc-484d-995c-a4d10d556c28",
+      "effectId": "library-scroll-roll",
+      "configHash": "1de83ddd45b0b4c1b9a1ead0406fb246e96326dee2f798b96d4f397af8b3530f",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 0.5,
+      "estimatedCredits": 20,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-17T23:36:45.226Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-28d10291-0db0-41de-9e5b-5951b1bc47d8",
+      "bytes": 8820,
+      "completedAt": "2026-11-17T23:36:46.817Z",
+      "providerUsage": {
+        "characterCostHeader": "5"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "creditsPerSecond": 40,
+  "authorizedCredits": 160,
+  "maxPaidRequests": 2,
+  "initialEffects": ["library-scroll-unroll", "library-scroll-roll"],
+  "updatedAt": null
+}

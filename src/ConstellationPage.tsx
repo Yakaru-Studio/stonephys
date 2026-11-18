@@ -226,9 +226,7 @@ export default function ConstellationPage({ moduleId, unlockedStarIds, completed
     <header className="constellation-header">
       <button className="constellation-back" onClick={handleBack} disabled={isLeaving} aria-label={t('constellation.back')}><ArrowLeft size={19} /></button>
       <div className="constellation-heading">
-        <p>{locale === 'en' ? 'CONSTELLATION' : 'CONSTELAÇÃO'}</p>
         <h1>{config.name}</h1>
-        <span>{config.eyebrow}</span>
       </div>
       <div className="constellation-header-tools">
         <div className="constellation-count" aria-label={locale === 'en' ? `${completedStarIds.length} of ${config.stars.length} stages completed` : `${completedStarIds.length} de ${config.stars.length} etapas concluídas`}>

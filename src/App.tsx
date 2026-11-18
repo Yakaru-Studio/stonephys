@@ -13,7 +13,13 @@ import { localizeModule, useLocale } from './i18n'
 const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
 const VoiceStudio = lazy(() => import('./narration/VoiceStudio'))
 const MusicStudio = lazy(() => import('./music/MusicStudio'))
+const SoundEffectsStudio = lazy(() => import('./sound-effects/SoundEffectsStudio'))
 const packagedMusic = import.meta.glob('../content/music/*/composition.json', { eager: true, import: 'default' }) as Record<string, Record<string, any>>
+const workshopIntroStorageKey = 'stonephys.time.arc-one.workshop-intro-seen.v1'
+
+function hasSeenWorkshopIntro() {
+  try { return window.localStorage.getItem(workshopIntroStorageKey) === 'true' } catch { return false }
+}
 
 export default function App() {
   const { locale, t } = useLocale()
@@ -23,6 +29,7 @@ export default function App() {
   const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
   const [selectedArc, setSelectedArc] = useState<{ moduleId: string; starId: string } | null>(null)
   const [harrisonSceneOpen, setHarrisonSceneOpen] = useState(false)
+  const [workshopIntroSeen, setWorkshopIntroSeen] = useState(hasSeenWorkshopIntro)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
   const [homeTransition, setHomeTransition] = useState(false)
   const [stageProgress, setStageProgress] = useState<Record<string, { unlocked: string[]; completed: string[] }>>({
@@ -43,9 +50,35 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    const loadEffects = async () => {
+      try {
+        let effects: Record<string, any> = {}
+        if (import.meta.env.DEV) {
+          const result = await fetch('/__voice-studio/api/sfx/status').then((response) => response.ok ? response.json() : null)
+          for (const effect of result?.effects || []) {
+            const version = effect.versions?.find((item: any) => item.id === effect.previewVersionId)
+            const url = version ? effect.previewUrl : effect.approvedAssetUrl
+            if (url) effects[effect.id] = { url, volume: version?.volume ?? effect.defaultVolume ?? .72 }
+          }
+        } else {
+          const manifest = await fetch('/audio/sfx/approved/manifest.json').then((response) => response.ok ? response.json() : null)
+          effects = manifest?.effects || {}
+        }
+        audioManager.setSoundEffectCatalog(effects)
+      } catch { audioManager.setSoundEffectCatalog({}) }
+    }
+    void loadEffects()
+    window.addEventListener('stonephys:sfx-preview-changed', loadEffects)
+    return () => window.removeEventListener('stonephys:sfx-preview-changed', loadEffects)
+  }, [])
+
+  useEffect(() => {
+    const wisdomSanctuaryApproved = import.meta.env.DEV
+      ? music.some((item) => item.id === 'the-sanctuary-of-wisdom' && item.approvedVersionId)
+      : Object.entries(packagedMusic).some(([file, item]) => file.includes('/the-sanctuary-of-wisdom/composition.json') && item.approvedAssetUrl)
     const targetId = harrisonSceneOpen
       ? 'the-clockmaker-of-time'
-      : selectedArc ? 'paths-of-discovery' : selectedModuleId || audioUnlocked ? 'eternity-of-knowledge' : null
+      : selectedArc ? wisdomSanctuaryApproved ? 'the-sanctuary-of-wisdom' : 'paths-of-discovery' : selectedModuleId || audioUnlocked ? 'eternity-of-knowledge' : null
     if (!targetId) { audioManager.fadeMusicOut(900); return }
     const composition = music.find((item) => item.id === targetId)
     const packaged = Object.entries(packagedMusic).find(([file]) => file.includes(`/${targetId}/composition.json`))?.[1]
@@ -70,6 +103,7 @@ export default function App() {
     return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de voz…</div>}><VoiceStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   }
   if (import.meta.env.DEV && window.location.pathname === '/__audio-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de música…</div>}><MusicStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
+  if (import.meta.env.DEV && window.location.pathname === '/__sound-effects-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de efeitos…</div>}><SoundEffectsStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
@@ -86,6 +120,11 @@ export default function App() {
         onOpenArc={learningArcs[selectedModule.id] ? (star) => {
           audioManager.play('navigation')
           setSelectedArc({ moduleId: selectedModule.id, starId: star.id })
+          if (selectedModule.id === 'time' && star.id === 'sky' && !workshopIntroSeen) {
+            setWorkshopIntroSeen(true)
+            try { window.localStorage.setItem(workshopIntroStorageKey, 'true') } catch { /* Keep this visit working if storage is unavailable. */ }
+            setHarrisonSceneOpen(true)
+          }
         } : undefined}
         onUnlockStar={(starId) => {
           const config = constellations[selectedModule.id]
@@ -148,14 +187,12 @@ export default function App() {
         }}
         onStartAct={(act) => {
           const arc = learningArcs[selectedArc.moduleId]
-          if (selectedArc.moduleId === 'time' && act.id === 'counting-marks') setHarrisonSceneOpen(true)
           window.dispatchEvent(new CustomEvent('stonephys:start-act', {
             detail: {
               moduleId: selectedArc.moduleId,
               arcId: arc.id,
               actId: act.id,
               intent: act.status === 'completed' ? 'review' : 'start',
-              sceneId: selectedArc.moduleId === 'time' && act.id === 'counting-marks' ? 'harrison-workshop-1760' : undefined,
             },
           }))
         }}

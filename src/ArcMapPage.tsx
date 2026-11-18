@@ -1,530 +1,33 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
-import { ArrowLeft, X } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { audioManager } from './audio/AudioManager'
-import { learningArcs, type ArcAct, type ArcConnection, type ActSymbol } from './arcActs'
-import ActSiteArt from './ActSiteArt'
+import AudioControls from './audio/AudioControls'
+import { learningArcs, type ArcAct, type LearningArc } from './arcActs'
 import './arc-map.css'
 import { localizeArc, useLocale, type AppLocale } from './i18n'
 
-const ancientStoneTexture = new URL('./assets/arcs/ancient-stone-floor.png', import.meta.url).href
-const ancientMedallionStoneTexture = new URL('./assets/arcs/ancient-medallion-limestone-weathered.png', import.meta.url).href
-const greekRuinsArtwork = new URL('./assets/arcs/greek-ruins-rudimentary.png', import.meta.url).href
-const greekRuinStonesArtwork = new URL('./assets/arcs/greek-ruin-stones-lowpoly.png', import.meta.url).href
-const greekRuinStonesCompactArtwork = new URL('./assets/arcs/greek-ruin-stones-compact.png', import.meta.url).href
-const greekRuinWallArtwork = new URL('./assets/arcs/greek-ruin-wall.png', import.meta.url).href
-const greekRuinCapitalArtwork = new URL('./assets/arcs/greek-ruin-capital.png', import.meta.url).href
-const templeWeedsArtwork = new URL('./assets/arcs/temple-weeds-lowpoly.png', import.meta.url).href
-const templeStoneFragmentsArtwork = new URL('./assets/arcs/temple-stone-fragments.png', import.meta.url).href
-const currentFireArtwork = new URL('./assets/arcs/current-fire-fluid.png', import.meta.url).href
+const libraryShelfArtwork = new URL('./assets/arcs/library-cabinet-cutout.png', import.meta.url).href
+const libraryBackgroundArtwork = new URL('./assets/arcs/knowledge-library-background.jpg', import.meta.url).href
+const libraryScrollArtwork = new URL('./assets/arcs/library-scroll-blank-small.png', import.meta.url).href
+const libraryLampArtwork = new URL('./assets/arcs/library-oil-lamp-small.png', import.meta.url).href
+const baboonSkullArtwork = new URL('./assets/arcs/library-baboon-skull-front.png', import.meta.url).href
+const boneSealArtwork = new URL('./assets/arcs/library-bone-seal.png', import.meta.url).href
+const lockSealArtwork = new URL('./assets/arcs/library-lock-seal.png', import.meta.url).href
+const completedSealArtwork = new URL('./assets/arcs/library-completed-seal.png', import.meta.url).href
+const parchmentScrollArtwork = new URL('./assets/arcs/act-parchment-scroll.png', import.meta.url).href
 
-function pointFor(act: ArcAct) {
-  return { x: act.position.x * 10, y: act.position.y * 16 }
-}
-
-function routeGeometry(from: ArcAct, to: ArcAct, kind: ArcConnection['kind']) {
-  const a = pointFor(from)
-  const b = pointFor(to)
-  const dx = b.x - a.x
-  const dy = b.y - a.y
-  const bend = kind === 'optional' ? 64 : -42
-  const length = Math.hypot(dx, dy) || 1
-  const normal = { x: -dy / length, y: dx / length }
-  const middle = { x: (a.x + b.x) * .5 + normal.x * bend, y: (a.y + b.y) * .5 + normal.y * bend }
-  const firstHandle = { x: a.x + dx * .18, y: a.y + dy * .18 }
-  const incomingMiddle = { x: middle.x - dx * .12, y: middle.y - dy * .12 }
-  const outgoingMiddle = { x: middle.x + dx * .12, y: middle.y + dy * .12 }
-  const finalHandle = { x: b.x - dx * .18, y: b.y - dy * .18 }
-  const d = `M${a.x} ${a.y} C${firstHandle.x} ${firstHandle.y} ${incomingMiddle.x} ${incomingMiddle.y} ${middle.x} ${middle.y} C${outgoingMiddle.x} ${outgoingMiddle.y} ${finalHandle.x} ${finalHandle.y} ${b.x} ${b.y}`
-  const routeWave = kind === 'optional' ? 10 : 7
-  const routePhase = (from.id.length + to.id.length) * .17
-  const firstRootSegment = taperedRoot(a, firstHandle, incomingMiddle, middle, 16, 11.5, routeWave, routePhase, .8)
-  const secondRootSegment = taperedRoot(middle, outgoingMiddle, finalHandle, b, 11.5, 7, routeWave, routePhase + .8, .8)
-  const trunk = { samples: [...firstRootSegment.samples.slice(0, -1), ...secondRootSegment.samples] }
-  const crossingRoots: Array<{
-    path: string
-    facetPath: string
-    thornD: string
-    thornFacetD: string
-    start: ThornPoint
-    angle: number
-    twigs: Array<{ path: string; facetPath: string; thornD: string; thornFacetD: string; start: ThornPoint; angle: number }>
-  }> = []
-
-  const fmt = (point: ThornPoint) => `${point.x.toFixed(1)} ${point.y.toFixed(1)}`
-  const addSpine = (sample: ThornSample, index: number, thorns: string[], thornFacets: string[], scale = 1) => {
-    const direction = index % 2 === 0 ? 1 : -1
-    const length = (17 + (index % 3) * 3) * scale
-    const halfBase = (5 + (index % 2)) * scale
-    const tip = { x: sample.point.x + sample.normal.x * direction * length, y: sample.point.y + sample.normal.y * direction * length }
-    const left = { x: sample.point.x - sample.tangent.x * halfBase, y: sample.point.y - sample.tangent.y * halfBase }
-    const right = { x: sample.point.x + sample.tangent.x * halfBase, y: sample.point.y + sample.tangent.y * halfBase }
-    thorns.push(`M${fmt(left)} L${fmt(tip)} L${fmt(right)} Z`)
-    const facetLeft = { x: left.x * .42 + tip.x * .58, y: left.y * .42 + tip.y * .58 }
-    const facetRight = { x: right.x * .42 + tip.x * .58, y: right.y * .42 + tip.y * .58 }
-    thornFacets.push(`M${fmt(facetLeft)} L${fmt(tip)} L${fmt(facetRight)} Z`)
-  }
-
-  const crossings = [
-    { t: .1, side: -1, width: 29, startShift: -16, endShift: 8, bend: 19, wave: 8, phase: .3 },
-    { t: .22, side: 1, width: 37, startShift: 18, endShift: -12, bend: -25, wave: 9, phase: 1.3 },
-    { t: .36, side: -1, width: 31, startShift: -7, endShift: 18, bend: 14, wave: 7, phase: 2.1 },
-    { t: .49, side: 1, width: 40, startShift: 22, endShift: -21, bend: -19, wave: 12, phase: .7 },
-    { t: .63, side: -1, width: 34, startShift: -24, endShift: 5, bend: 26, wave: 10, phase: 1.9 },
-    { t: .74, side: 1, width: 29, startShift: 6, endShift: -19, bend: -15, wave: 8, phase: .5 },
-    { t: .85, side: -1, width: 38, startShift: 17, endShift: -6, bend: 22, wave: 11, phase: 2.7 },
-  ]
-  crossings.forEach((crossing, index) => {
-    const thorns: string[] = []
-    const thornFacets: string[] = []
-    const sample = trunk.samples[Math.round(crossing.t * (trunk.samples.length - 1))]
-    const { side, width: crossingWidth } = crossing
-    const start = { x: sample.point.x + sample.normal.x * side * crossingWidth + sample.tangent.x * crossing.startShift, y: sample.point.y + sample.normal.y * side * crossingWidth + sample.tangent.y * crossing.startShift }
-    const end = { x: sample.point.x - sample.normal.x * side * (crossingWidth + 4) + sample.tangent.x * crossing.endShift, y: sample.point.y - sample.normal.y * side * (crossingWidth + 4) + sample.tangent.y * crossing.endShift }
-    const controlA = { x: start.x + sample.tangent.x * crossing.bend + sample.normal.x * side * 8, y: start.y + sample.tangent.y * crossing.bend + sample.normal.y * side * 8 }
-    const controlB = { x: end.x - sample.tangent.x * crossing.bend * .72 - sample.normal.x * side * 7, y: end.y - sample.tangent.y * crossing.bend * .72 - sample.normal.y * side * 7 }
-    const branch = taperedRoot(start, controlA, controlB, end, 8.4 + (index % 2) * .8, .3, crossing.wave, crossing.phase, 1.5 + (index % 3) * .28)
-    ;[.23, .51, .8].forEach((spineT, spineIndex) => addSpine(branch.samples[Math.round(spineT * (branch.samples.length - 1))], index + spineIndex + 1, thorns, thornFacets, .9))
-
-    const twigCount = index % 3 === 0 ? 1 : index % 2 === 0 ? 1 : 0
-    const twigGeometries: Array<{ path: string; facetPath: string; thornD: string; thornFacetD: string; start: ThornPoint; angle: number }> = []
-    Array.from({ length: twigCount }, (_, twigIndex) => {
-      const twigThorns: string[] = []
-      const twigThornFacets: string[] = []
-      const twigProgress = twigCount === 1 ? .55 : .34 + twigIndex * .34
-      const twigStartSample = branch.samples[Math.round(twigProgress * (branch.samples.length - 1))]
-      const twigSide = (index + twigIndex) % 2 === 0 ? -1 : 1
-      const twigStart = twigStartSample.point
-      const twigLength = 19 + ((index + twigIndex) % 3) * 4
-      const alongPath = twigIndex % 2 === 0 ? 11 : -9
-      const twigEnd = { x: twigStart.x + twigStartSample.normal.x * twigSide * twigLength + twigStartSample.tangent.x * alongPath, y: twigStart.y + twigStartSample.normal.y * twigSide * twigLength + twigStartSample.tangent.y * alongPath }
-      const twigControlA = { x: twigStart.x + twigStartSample.tangent.x * 5 + twigStartSample.normal.x * twigSide * 9, y: twigStart.y + twigStartSample.tangent.y * 5 + twigStartSample.normal.y * twigSide * 9 }
-      const twigControlB = { x: twigEnd.x - twigStartSample.tangent.x * 6 + twigStartSample.normal.x * twigSide * 3, y: twigEnd.y - twigStartSample.tangent.y * 6 + twigStartSample.normal.y * twigSide * 3 }
-      const twig = taperedRoot(twigStart, twigControlA, twigControlB, twigEnd, 4.8, .12, 4.2, index * .8 + twigIndex, 1.7)
-      addSpine(twig.samples[Math.round(.58 * (twig.samples.length - 1))], index + twigIndex + 2, twigThorns, twigThornFacets, .72)
-      twigGeometries.push({
-        path: twig.path,
-        facetPath: twig.facetPath,
-        thornD: twigThorns.join(' '),
-        thornFacetD: twigThornFacets.join(' '),
-        start: twig.start,
-        angle: Math.atan2(twig.samples[0].tangent.y, twig.samples[0].tangent.x) * 180 / Math.PI,
-      })
-    })
-    crossingRoots.push({
-      path: branch.path,
-      facetPath: branch.facetPath,
-      thornD: thorns.join(' '),
-      thornFacetD: thornFacets.join(' '),
-      start: branch.start,
-      angle: Math.atan2(branch.samples[0].tangent.y, branch.samples[0].tangent.x) * 180 / Math.PI,
-      twigs: twigGeometries,
-    })
-  })
-
-  return { d, crossingRoots }
-}
-
-function Terrain() {
-  return <svg className="arc-terrain" viewBox="0 0 1000 1600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="arc-stone-ground" x2=".8" y2="1"><stop stopColor="#77736d"/><stop offset=".48" stopColor="#625f5a"/><stop offset="1" stopColor="#494743"/></linearGradient>
-      <pattern id="arc-stone-phototexture" width="420" height="420" patternUnits="userSpaceOnUse">
-        <image href={ancientStoneTexture} width="420" height="420" preserveAspectRatio="xMidYMid slice" style={{ filter: 'grayscale(.34) brightness(.96) sepia(.1) contrast(1.05)' }} />
-      </pattern>
-      <radialGradient id="edge-shadow"><stop offset=".55" stopColor="#171510" stopOpacity="0"/><stop offset="1" stopColor="#171510" stopOpacity=".5"/></radialGradient>
-    </defs>
-    <rect width="1000" height="1600" fill="url(#arc-stone-ground)"/>
-    <rect width="1000" height="1600" fill="url(#arc-stone-phototexture)" opacity=".92"/>
-    <rect width="1000" height="1600" fill="#8d9293" opacity=".12"/>
-    <rect width="1000" height="1600" fill="url(#edge-shadow)"/>
-    <g className="arc-ground-details" aria-hidden="true">
-      <image className="arc-ground-weed-art" href={templeWeedsArtwork} x="430" y="390" width="92" height="78" preserveAspectRatio="xMidYMid meet" transform="rotate(8 476 429)"/>
-      <image className="arc-ground-weed-art" href={templeWeedsArtwork} x="820" y="485" width="80" height="68" preserveAspectRatio="xMidYMid meet" transform="rotate(-17 860 519)"/>
-      <image className="arc-ground-weed-art" href={templeWeedsArtwork} x="80" y="780" width="84" height="72" preserveAspectRatio="xMidYMid meet" transform="rotate(10 122 816)"/>
-      <image className="arc-ground-weed-art" href={templeWeedsArtwork} x="860" y="1048" width="88" height="76" preserveAspectRatio="xMidYMid meet" transform="rotate(-12 904 1086)"/>
-      <image className="arc-ground-weed-art" href={templeWeedsArtwork} x="470" y="1395" width="76" height="65" preserveAspectRatio="xMidYMid meet" transform="rotate(18 508 1427)"/>
-      <image className="arc-ground-stone-art" href={templeStoneFragmentsArtwork} x="384" y="448" width="88" height="58" preserveAspectRatio="xMidYMid meet" transform="rotate(-11 428 477)"/>
-      <image className="arc-ground-stone-art" href={templeStoneFragmentsArtwork} x="120" y="1034" width="94" height="62" preserveAspectRatio="xMidYMid meet" transform="rotate(12 167 1065)"/>
-      <image className="arc-ground-stone-art" href={templeStoneFragmentsArtwork} x="842" y="775" width="100" height="66" preserveAspectRatio="xMidYMid meet" transform="rotate(7 892 808)"/>
-      <image className="arc-ground-stone-art" href={templeStoneFragmentsArtwork} x="576" y="1190" width="84" height="56" preserveAspectRatio="xMidYMid meet" transform="rotate(-16 618 1218)"/>
-      <image className="arc-ground-stone-art" href={templeStoneFragmentsArtwork} x="780" y="1450" width="90" height="60" preserveAspectRatio="xMidYMid meet" transform="rotate(14 825 1480)"/>
-    </g>
-    <image className="arc-ruin-art" href={greekRuinsArtwork} x="-48" y="78" width="405" height="405" preserveAspectRatio="xMidYMid meet"/>
-    <g className="arc-temple-mosaic" transform="translate(1010 1300) rotate(-18)" aria-hidden="true">
-      <path d={polygonPathAt(0, 0, 226, 16)}/><path d={polygonPathAt(0, 0, 206, 16)}/><path d={polygonPathAt(0, 0, 184, 16)}/>
-      <path d="M-184 0h368M0-184v368M-130-130l260 260m0-260-260 260"/>
-      <path d="M-164-164h38v14h-24v24h-14zm328 0h-38v14h24v24h14zM-164 164h38v-14h-24v-24h-14zm328 0h-38v-14h24v-24h14z"/>
-      <path d="m0-138 18 120L138 0 18 18 0 138-18 18-138 0-18-18z"/>
-    </g>
-    <image className="arc-ruin-stones-art" href={greekRuinStonesArtwork} x="-24" y="1275" width="205" height="137" preserveAspectRatio="xMidYMid meet"/>
-    <image className="arc-ruin-stones-art" href={greekRuinStonesCompactArtwork} x="818" y="708" width="188" height="125" preserveAspectRatio="xMidYMid meet"/>
-    <image className="arc-ruin-stones-art" href={greekRuinCapitalArtwork} x="-24" y="1435" width="198" height="132" preserveAspectRatio="xMidYMid meet"/>
-    <image className="arc-ruin-stones-art" href={greekRuinWallArtwork} x="820" y="1482" width="185" height="123" preserveAspectRatio="xMidYMid meet"/>
-    <EdgeThornBranches/>
-  </svg>
-}
-
-function MedallionSymbol({ symbol }: { symbol: ActSymbol }) {
-  if (symbol === 'telescope') return <g className="medallion-symbol telescope-symbol"><path d="m54 74 64-24 12 20-64 26z"/><path d="M82 90 78 126m4-27-23 30m23-30 25 24"/><path d="m48 72 9-4 9 23-9 4z"/></g>
-  if (symbol === 'pyramid') return <g className="medallion-symbol pyramid-symbol"><path d="m48 116 42-58 42 58z"/><path d="M58 102h64M68 88h44M78 74h24"/></g>
-  if (symbol === 'bull') return <g className="medallion-symbol bull-symbol">
-    <path className="bull-body" d="m47 90 8-15 18-8 29 2 15 11 18 4-4 13-16 2-8 24-8 2-5-23-19 1-7 22-9-1 1-25-13 3z"/>
-    <path className="bull-facet" d="m57 77 18-10 27 2 14 10-25 6-19-2z"/>
-    <path className="bull-legs" d="m58 95-3 25 8 1 8-22m21-1 4 23 8-1 4-24m14-12 1 33 8 1 3-32"/>
-    <path className="bull-horns" d="m56 76-8-11-9 2m70 5 9-10 10 2"/>
-  </g>
-  if (symbol === 'compass') return <g className="medallion-symbol compass-symbol"><path d="m90 47 9 33 31 10-31 9-9 34-9-34-32-9 32-10z"/><path d="m90 63 4 23 22 4-22 4-4 25-5-25-22-4 22-4z"/></g>
-  if (symbol === 'tally') return <g className="medallion-symbol tally-symbol"><path d="m58 62 18 61m7-68 18 61m7-68 18 61M47 112l84-32"/><path d="M52 129h76"/></g>
-  if (symbol === 'bone') return <g className="medallion-symbol bone-symbol"><path className="bone-base" d="M45 77 54 67 65 67 74 76 106 76 115 67 126 67 136 77 136 86 127 95 136 104 126 113 115 113 106 104 74 104 65 113 54 113 45 104 45 95 54 86z"/><path className="bone-facet" d="M72 80h36l-7 20H79z"/></g>
-  return <g className="medallion-lock"><path d="M75 88V76a15 15 0 0 1 30 0v12"/><rect x="66" y="86" width="48" height="37" rx="5"/><circle cx="90" cy="103" r="4"/><path d="M90 106v8"/></g>
-}
-
-type ThornPoint = { x: number; y: number }
-type ThornSample = { point: ThornPoint; normal: ThornPoint; tangent: ThornPoint; halfWidth: number }
-
-function taperedRoot(start: ThornPoint, controlA: ThornPoint, controlB: ThornPoint, end: ThornPoint, startWidth: number, endWidth: number, wave = 0, phase = 0, waves = 1.5) {
-  const points = Array.from({ length: 25 }, (_, index) => {
-    const t = index / 24
-    const inverse = 1 - t
-    const point = {
-      x: inverse ** 3 * start.x + 3 * inverse ** 2 * t * controlA.x + 3 * inverse * t ** 2 * controlB.x + t ** 3 * end.x,
-      y: inverse ** 3 * start.y + 3 * inverse ** 2 * t * controlA.y + 3 * inverse * t ** 2 * controlB.y + t ** 3 * end.y,
-    }
-    const tangent = {
-      x: 3 * inverse ** 2 * (controlA.x - start.x) + 6 * inverse * t * (controlB.x - controlA.x) + 3 * t ** 2 * (end.x - controlB.x),
-      y: 3 * inverse ** 2 * (controlA.y - start.y) + 6 * inverse * t * (controlB.y - controlA.y) + 3 * t ** 2 * (end.y - controlB.y),
-    }
-    const length = Math.hypot(tangent.x, tangent.y) || 1
-    const normal = { x: -tangent.y / length, y: tangent.x / length }
-    const sway = Math.sin(t * Math.PI * 2 * waves + phase) * Math.sin(t * Math.PI) * wave
-    point.x += normal.x * sway
-    point.y += normal.y * sway
-    return point
-  })
-  const samples: ThornSample[] = points.map((point, index) => {
-    const before = points[Math.max(0, index - 1)]
-    const after = points[Math.min(points.length - 1, index + 1)]
-    let tangent = { x: after.x - before.x, y: after.y - before.y }
-    const length = Math.hypot(tangent.x, tangent.y) || 1
-    tangent = { x: tangent.x / length, y: tangent.y / length }
-    return {
-      point,
-      tangent,
-      normal: { x: -tangent.y, y: tangent.x },
-      halfWidth: endWidth + (startWidth - endWidth) * (1 - index / (points.length - 1)) ** 1.18,
-    }
-  })
-  const fmt = ({ x, y }: ThornPoint) => `${x.toFixed(1)} ${y.toFixed(1)}`
-  const side = (sample: ThornSample, amount: number) => ({
-    x: sample.point.x + sample.normal.x * sample.halfWidth * amount,
-    y: sample.point.y + sample.normal.y * sample.halfWidth * amount,
-  })
-  const outline = [...samples.map((sample) => side(sample, 1)), ...samples.slice().reverse().map((sample) => side(sample, -1))]
-  const facet = [...samples.map((sample) => side(sample, .42)), ...samples.slice().reverse().map((sample) => sample.point)]
-  const meshPath = (points: ThornPoint[]) => `M${fmt(points[0])} ${points.slice(1).map((point) => `L${fmt(point)}`).join(' ')} Z`
-  const centerline = `M${fmt(start)} C${fmt(controlA)} ${fmt(controlB)} ${fmt(end)}`
-  return { path: meshPath(outline), facetPath: meshPath(facet), centerline, samples, start }
-}
-
-function thornPointAt(angle: number, radius: number): ThornPoint {
-  return { x: 90 + Math.cos(angle) * radius, y: 90 + Math.sin(angle) * radius }
-}
-
-function ThornCrown({ state }: { state: 'emerging' | 'rooted' | 'submerging' }) {
-  const rootPattern = [
-    { degrees: -88, end: -69, radius: 17, bend: 11, wave: 2.4, phase: .2 },
-    { degrees: -63, end: -89, radius: 39, bend: -14, wave: 3.8, phase: 1.4 },
-    { degrees: -44, end: -30, radius: 24, bend: 17, wave: 2.1, phase: 2.1 },
-    { degrees: -18, end: -48, radius: 47, bend: -12, wave: 4.1, phase: .8 },
-    { degrees: 5, end: 21, radius: 13, bend: 14, wave: 2.8, phase: 2.8 },
-    { degrees: 31, end: 4, radius: 34, bend: -18, wave: 4.8, phase: 1.8 },
-    { degrees: 49, end: 67, radius: 46, bend: 12, wave: 2.5, phase: .4 },
-    { degrees: 78, end: 52, radius: 20, bend: -16, wave: 3.7, phase: 2.5 },
-    { degrees: 103, end: 123, radius: 37, bend: 15, wave: 2.2, phase: 1.1 },
-    { degrees: 131, end: 110, radius: 12, bend: -13, wave: 4.2, phase: 2.9 },
-    { degrees: 153, end: 174, radius: 43, bend: 18, wave: 3.1, phase: .6 },
-    { degrees: 178, end: 151, radius: 28, bend: -15, wave: 2.6, phase: 1.6 },
-    { degrees: 204, end: 224, radius: 18, bend: 13, wave: 4.5, phase: 2.2 },
-    { degrees: 231, end: 206, radius: 48, bend: -17, wave: 2.4, phase: .9 },
-    { degrees: 249, end: 271, radius: 31, bend: 12, wave: 3.6, phase: 2.7 },
-    { degrees: 281, end: 258, radius: 41, bend: -14, wave: 2.8, phase: .1 },
-  ]
-  const radians = (degrees: number) => (degrees * Math.PI) / 180
-  const roots = rootPattern.filter((_, sourceIndex) => ![1, 2, 5, 9, 11, 13].includes(sourceIndex)).map((root, index) => {
-    const angle = radians(root.degrees)
-    const endAngle = radians(root.end)
-    const start = thornPointAt(angle, 84 + (index % 4) * 1.8)
-    const end = thornPointAt(endAngle, root.radius * .88)
-    const tangent = { x: -Math.sin(angle), y: Math.cos(angle) }
-    const endTangent = { x: -Math.sin(endAngle), y: Math.cos(endAngle) }
-    const shoulder = thornPointAt(angle, 59 + (index % 3) * 3)
-    const innerShoulder = thornPointAt(endAngle, root.radius * .88 + 23 + (index % 4) * 2)
-    const controlA = { x: shoulder.x + tangent.x * root.bend, y: shoulder.y + tangent.y * root.bend }
-    const controlB = { x: innerShoulder.x - endTangent.x * root.bend * .55, y: innerShoulder.y - endTangent.y * root.bend * .55 }
-    const main = taperedRoot(start, controlA, controlB, end, 4.7 + (index % 3) * .38, .12, root.wave, root.phase, 1.35 + (index % 4) * .27)
-    const branchCount = index % 3 === 1 ? 1 : 0
-    const branches = Array.from({ length: branchCount }, (_, branchIndex) => {
-      const side = (index * 7) % 3 === 0 ? 1 : -1
-      const progress = .38 + ((index * 7) % 5) * .07
-      const branchStartSample = main.samples[Math.round(progress * (main.samples.length - 1))]
-      const branchStart = branchStartSample.point
-      const branchAngle = endAngle + side * (.3 + branchIndex * .13)
-      const branchRadius = 23 + ((index + branchIndex * 2) % 5) * 5
-      const branchEnd = thornPointAt(branchAngle, branchRadius)
-      const branchBend = side * (5 + ((index + branchIndex) % 4) * 2)
-      const branchControlA = {
-        x: branchStart.x + branchStartSample.tangent.x * 8 + branchStartSample.normal.x * branchBend,
-        y: branchStart.y + branchStartSample.tangent.y * 8 + branchStartSample.normal.y * branchBend,
-      }
-      const branchShoulder = thornPointAt(branchAngle, branchRadius + 17)
-      const branchTangent = { x: -Math.sin(branchAngle), y: Math.cos(branchAngle) }
-      const branchControlB = { x: branchShoulder.x - branchTangent.x * branchBend * .6, y: branchShoulder.y - branchTangent.y * branchBend * .6 }
-      return taperedRoot(branchStart, branchControlA, branchControlB, branchEnd, 2.5 + ((index + branchIndex) % 3) * .22, .08, 1.5 + ((index + branchIndex) % 3) * .36, root.phase + branchIndex * .9, 1.5 + (index % 3) * .3)
-    })
-    const makeSpines = (samples: ThornSample[], count: number, seed: number, scale: number) => Array.from({ length: count }, (_, spineIndex) => {
-      const t = .19 + ((spineIndex + 1) / (count + 1)) * .65 + ((seed + spineIndex) % 3 - 1) * .025
-      const sample = samples[Math.max(1, Math.min(samples.length - 2, Math.round(t * (samples.length - 1))))]
-      const direction = (spineIndex + seed) % 3 === 0 ? 1 : -1
-      const length = (6.2 + ((spineIndex * 2 + seed) % 4) * .7) * scale
-      const tip = { x: sample.point.x + sample.normal.x * direction * length, y: sample.point.y + sample.normal.y * direction * length }
-      const halfBase = 1.45 * scale
-      const left = { x: sample.point.x - sample.tangent.x * halfBase, y: sample.point.y - sample.tangent.y * halfBase }
-      const right = { x: sample.point.x + sample.tangent.x * halfBase, y: sample.point.y + sample.tangent.y * halfBase }
-      const fmtPoint = ({ x, y }: ThornPoint) => `${x.toFixed(1)} ${y.toFixed(1)}`
-      const facetBase = { x: left.x * .42 + tip.x * .58, y: left.y * .42 + tip.y * .58 }
-      const facetRight = { x: right.x * .42 + tip.x * .58, y: right.y * .42 + tip.y * .58 }
-      return { path: `M${fmtPoint(left)} L${fmtPoint(tip)} L${fmtPoint(right)} Z`, facetPath: `M${fmtPoint(facetBase)} L${fmtPoint(tip)} L${fmtPoint(facetRight)} Z`, index: spineIndex }
-    })
-    return {
-      main,
-      branches,
-      mainSpines: makeSpines(main.samples, 2 + (index % 2), index, 1),
-      branchSpines: branches.map((branch, branchIndex) => makeSpines(branch.samples, 1 + ((index + branchIndex) % 2), index + branchIndex + 1, .85)),
-      index,
-    }
-  })
-  return <svg className={`act-thorn-crown act-thorn-crown-${state}`} viewBox="0 0 180 180" aria-hidden="true">
-    <g className="thorn-crown-roots">
-      {roots.map(({ main, branches, mainSpines, branchSpines, index }) => <g className="thorn-root-primary" key={index} style={{ transformOrigin: `${(main.start.x / 180) * 100}% ${(main.start.y / 180) * 100}%` }}>
-        <path className="thorn-root-shadow" d={main.path}/>
-        <path className="thorn-root-body" d={main.path}/>
-        <path className="thorn-root-facets" d={main.facetPath}/>
-        {branches.map((branch, branchIndex) => <g className="thorn-root-branch" key={branchIndex}>
-          <path className="thorn-root-shadow thorn-root-branch-shadow" d={branch.path}/>
-          <path className="thorn-root-body thorn-root-branch-body" d={branch.path}/>
-          <path className="thorn-root-facets thorn-root-branch-facets" d={branch.facetPath}/>
-          {branchSpines[branchIndex].map((spine) => <g key={spine.index}><path className="thorn-root-spine" d={spine.path}/><path className="thorn-root-spine-facet" d={spine.facetPath}/></g>)}
-        </g>)}
-        {mainSpines.map((spine) => <g key={spine.index}><path className="thorn-root-spine" d={spine.path}/><path className="thorn-root-spine-facet" d={spine.facetPath}/></g>)}
-      </g>)}
-    </g>
-  </svg>
-}
-
-function ArcBramble({ geometry, state }: {
-  geometry: ReturnType<typeof routeGeometry>
-  state: 'blocking' | 'submerging'
-}) {
-  return <g className={`arc-bramble arc-bramble-${state}`} aria-hidden="true">
-    {geometry.crossingRoots.map((root, index) => {
-      const rootStyle = {
-        transformOrigin: `${root.start.x / 10}% ${root.start.y / 16}%`,
-        animationDelay: `${index * .085}s`,
-        '--cross-angle': `${root.angle}deg`,
-      } as CSSProperties & { '--cross-angle': string }
-      return <g className="arc-bramble-crossing" key={index} style={rootStyle}>
-        <path className="arc-bramble-branch-shadow" d={root.path}/>
-        <path className="arc-bramble-branch" d={root.path}/>
-        <path className="arc-bramble-branch-facets" d={root.facetPath}/>
-        <path className="arc-bramble-thorns-shadow" d={root.thornD}/>
-        <path className="arc-bramble-thorns" d={root.thornD}/>
-        <path className="arc-bramble-thorn-facets" d={root.thornFacetD}/>
-        {root.twigs.map((twig, twigIndex) => {
-          const twigStyle = {
-            transformOrigin: `${twig.start.x / 10}% ${twig.start.y / 16}%`,
-            animationDelay: `${.24 + index * .085 + twigIndex * .12}s`,
-            '--cross-angle': `${twig.angle}deg`,
-          } as CSSProperties & { '--cross-angle': string }
-          return <g className="arc-bramble-crossing-twig" key={twigIndex} style={twigStyle}>
-            <path className="arc-bramble-twig-shadow" d={twig.path}/>
-            <path className="arc-bramble-twig" d={twig.path}/>
-            <path className="arc-bramble-twig-facets" d={twig.facetPath}/>
-            <path className="arc-bramble-thorns-shadow" d={twig.thornD}/>
-            <path className="arc-bramble-thorns" d={twig.thornD}/>
-            <path className="arc-bramble-thorn-facets" d={twig.thornFacetD}/>
-          </g>
-        })}
-      </g>
-    })}
-  </g>
-}
-
-function EdgeThornBranches() {
-  const clusters = [
-    { start: { x: -18, y: 510 }, a: { x: 16, y: 472 }, b: { x: 18, y: 366 }, end: { x: 112, y: 292 }, wave: 8, phase: .4 },
-    { start: { x: 1018, y: 510 }, a: { x: 981, y: 472 }, b: { x: 980, y: 366 }, end: { x: 888, y: 292 }, wave: 7, phase: 1.2 },
-    { start: { x: -22, y: 1232 }, a: { x: 17, y: 1192 }, b: { x: 22, y: 1084 }, end: { x: 134, y: 1004 }, wave: 9, phase: 2.2 },
-    { start: { x: 1022, y: 1150 }, a: { x: 982, y: 1110 }, b: { x: 970, y: 1010 }, end: { x: 862, y: 936 }, wave: 8, phase: .9 },
-  ]
-  const point = (value: ThornPoint) => `${value.x.toFixed(1)} ${value.y.toFixed(1)}`
-  const makeThorns = (root: ReturnType<typeof taperedRoot>, seed: number, positions: number[]) => {
-    const shapes: Array<{ body: string; facet: string }> = []
-    positions.forEach((progress, index) => {
-      const sample = root.samples[Math.round(progress * (root.samples.length - 1))]
-      const side = (seed + index) % 2 === 0 ? 1 : -1
-      const length = 13 + ((seed + index) % 3) * 2
-      const halfBase = 3.1 + ((seed + index) % 2) * .5
-      const tip = { x: sample.point.x + sample.normal.x * side * length, y: sample.point.y + sample.normal.y * side * length }
-      const left = { x: sample.point.x - sample.tangent.x * halfBase, y: sample.point.y - sample.tangent.y * halfBase }
-      const right = { x: sample.point.x + sample.tangent.x * halfBase, y: sample.point.y + sample.tangent.y * halfBase }
-      const facetLeft = { x: left.x * .4 + tip.x * .6, y: left.y * .4 + tip.y * .6 }
-      const facetRight = { x: right.x * .4 + tip.x * .6, y: right.y * .4 + tip.y * .6 }
-      shapes.push({
-        body: `M${point(left)} L${point(tip)} L${point(right)} Z`,
-        facet: `M${point(facetLeft)} L${point(tip)} L${point(facetRight)} Z`,
-      })
-    })
-    return shapes
-  }
-
-  return <g className="arc-edge-thorn-branches" aria-hidden="true">
-    {clusters.map((cluster, clusterIndex) => {
-      const main = taperedRoot(cluster.start, cluster.a, cluster.b, cluster.end, 7.4, .35, cluster.wave, cluster.phase, 1.7)
-      const branches = [.34, .68].map((progress, branchIndex) => {
-        const sample = main.samples[Math.round(progress * (main.samples.length - 1))]
-        const side = (clusterIndex + branchIndex) % 2 === 0 ? -1 : 1
-        const start = sample.point
-        const end = { x: start.x + sample.normal.x * side * 31 + sample.tangent.x * (branchIndex === 0 ? -13 : 16), y: start.y + sample.normal.y * side * 31 + sample.tangent.y * (branchIndex === 0 ? -13 : 16) }
-        const controlA = { x: start.x + sample.tangent.x * 8 + sample.normal.x * side * 12, y: start.y + sample.tangent.y * 8 + sample.normal.y * side * 12 }
-        const controlB = { x: end.x - sample.tangent.x * 8 + sample.normal.x * side * 4, y: end.y - sample.tangent.y * 8 + sample.normal.y * side * 4 }
-        return taperedRoot(start, controlA, controlB, end, 4.2, .12, 5, cluster.phase + branchIndex, 1.6)
-      })
-      const roots = [main, ...branches]
-      return <g key={clusterIndex}>
-        {roots.map((root, rootIndex) => {
-          const thorns = makeThorns(root, clusterIndex + rootIndex, rootIndex === 0 ? [.22, .45, .69, .88] : [.4, .74])
-          return <g key={rootIndex}>
-            <path className="arc-bramble-branch-shadow" d={root.path}/>
-            <path className="arc-bramble-branch" d={root.path}/>
-            <path className="arc-bramble-branch-facets" d={root.facetPath}/>
-            <path className="arc-bramble-thorns-shadow" d={thorns.map((thorn) => thorn.body).join(' ')}/>
-            <path className="arc-bramble-thorns" d={thorns.map((thorn) => thorn.body).join(' ')}/>
-            <path className="arc-bramble-thorn-facets" d={thorns.map((thorn) => thorn.facet).join(' ')}/>
-          </g>
-        })}
-      </g>
-    })}
-  </g>
-}
-
-function polygonPathAt(cx: number, cy: number, radius: number, sides = 20) {
-  return Array.from({ length: sides }, (_, index) => {
-    const angle = -Math.PI / 2 + index * (Math.PI * 2 / sides)
-    const x = cx + Math.cos(angle) * radius
-    const y = cy + Math.sin(angle) * radius
-    return `${index === 0 ? 'M' : 'L'}${x.toFixed(1)} ${y.toFixed(1)}`
-  }).join(' ') + 'Z'
-}
-
-function medallionPolygon(radius: number, sides = 16) { return polygonPathAt(90, 90, radius, sides) }
-
-function medallionSideFacet(index: number, radius: number, lowerRadius: number, depth: number, sides = 16) {
-  const point = (i: number, lower = false) => {
-    const angle = -Math.PI / 2 + i * (Math.PI * 2 / sides)
-    const activeRadius = lower ? lowerRadius : radius
-    return `${(90 + Math.cos(angle) * activeRadius).toFixed(1)},${(90 + Math.sin(angle) * activeRadius + (lower ? depth : 0)).toFixed(1)}`
-  }
-  return `M${point(index)} L${point(index + 1)} L${point(index + 1, true)} L${point(index, true)} Z`
-}
-
-function ActMedallion({ act, isCurrent, onSelect, locale }: { act: ArcAct; isCurrent: boolean; onSelect: () => void; locale: AppLocale }) {
-  const locked = act.status === 'locked'
-  const [crownState, setCrownState] = useState<'emerging' | 'rooted' | 'submerging' | 'hidden'>(locked ? 'emerging' : 'hidden')
-  const statusLabel = locale === 'en' ? act.status === 'completed' ? 'act completed' : locked ? 'act locked' : 'act available' : act.status === 'completed' ? 'ato completo' : locked ? 'ato bloqueado' : 'ato disponível'
-  const keyPattern = `meander-${act.id}`
-  const keyMask = `meander-mask-${act.id}`
-
-  useEffect(() => {
-    if (locked) {
-      setCrownState('emerging')
-      const settleTimer = window.setTimeout(() => setCrownState('rooted'), 1350)
-      return () => window.clearTimeout(settleTimer)
-    }
-    if (crownState === 'hidden') return
-    setCrownState('submerging')
-    const sinkTimer = window.setTimeout(() => setCrownState('hidden'), 950)
-    return () => window.clearTimeout(sinkTimer)
-  }, [locked])
-  return <div className="arc-medallion-node" style={{ left: `${act.position.x}%`, top: `${act.position.y}%` }}>
-    <ActSiteArt environment={act.siteEnvironment}/>
-    <button
-      className={`act-medallion act-medallion-${act.status} act-medallion-symbol-${act.symbol} ${isCurrent ? 'act-medallion-current' : ''} ${act.kind === 'optional' ? 'act-medallion-optional' : ''}`}
-      onClick={onSelect}
-      disabled={locked}
-      aria-label={`${statusLabel}: Ato ${String(act.number).padStart(2, '0')}, ${act.title}`}
-    >
-    <svg className="act-medallion-art" viewBox="0 0 180 180" aria-hidden="true">
-      <defs>
-        <radialGradient id={`stone-${act.id}`} cx="35%" cy="24%"><stop stopColor="#d0c7b2"/><stop offset=".46" stopColor="#a69b83"/><stop offset="1" stopColor="#716b5c"/></radialGradient>
-        <pattern id={`medallion-limestone-${act.id}`} width="180" height="180" patternUnits="userSpaceOnUse" patternTransform={`rotate(${(act.number * 19) % 360} 90 90)`}><image href={ancientMedallionStoneTexture} width="180" height="180" preserveAspectRatio="xMidYMid slice" style={{ filter: 'saturate(.72) brightness(.98) contrast(1.08)' }}/></pattern>
-        <pattern id={keyPattern} width="13" height="13" patternUnits="userSpaceOnUse"><path d="M1 2h8v8H4V5h3" fill="none" stroke="#85785f" strokeWidth="1.35"/></pattern>
-        <mask id={keyMask}><rect width="180" height="180" fill="black"/><path d={medallionPolygon(78)} fill="white"/><path d={medallionPolygon(65)} fill="black"/></mask>
-        <clipPath id={`face-clip-${act.id}`}><path d={medallionPolygon(60)}/></clipPath>
-        <clipPath id={`stone-clip-${act.id}`}><path d={medallionPolygon(80)}/></clipPath>
-      </defs>
-      <path className="medallion-depth" d={medallionPolygon(83)} transform="translate(0 9)"/>
-      <path className="medallion-depth-texture" d={medallionPolygon(83)} transform="translate(0 9)" fill={`url(#medallion-limestone-${act.id})`}/>
-      <g className="medallion-side-facets">{Array.from({ length: 16 }, (_, index) => <path key={index} className={index % 2 ? 'side-facet-dark' : 'side-facet-light'} d={medallionSideFacet(index, 80, 83, 9)}/>)}</g>
-      <g className="medallion-side-texture">{Array.from({ length: 16 }, (_, index) => <path key={index} d={medallionSideFacet(index, 80, 83, 9)} fill={`url(#medallion-limestone-${act.id})`}/>)}</g>
-      <path className="medallion-stone" d={medallionPolygon(80)} fill={`url(#stone-${act.id})`}/>
-      <g className="medallion-stone-facets" clipPath={`url(#stone-clip-${act.id})`}>
-        <path d="M90 90 90 10 147 39Z"/><path d="M90 90 147 39 170 88Z"/><path d="M90 90 170 88 137 147Z"/>
-        <path d="M90 90 137 147 75 169Z"/><path d="M90 90 75 169 24 122Z"/><path d="M90 90 24 122 18 58Z"/><path d="M90 90 18 58 53 22Z"/>
-      </g>
-      <path className="medallion-top-texture" d={medallionPolygon(80)} fill={`url(#medallion-limestone-${act.id})`} clipPath={`url(#stone-clip-${act.id})`}/>
-      <path className="medallion-outer-rim" d={medallionPolygon(77)}/>
-      <rect className="medallion-meander" width="180" height="180" fill={`url(#${keyPattern})`} mask={`url(#${keyMask})`}/>
-      <path className="medallion-rim-line" d={medallionPolygon(65)}/>
-      <path className="medallion-face" d={medallionPolygon(60)}/>
-      <g className="medallion-facets" clipPath={`url(#face-clip-${act.id})`}>
-        <path d="M90 90 90 28 139 52Z"/><path d="M90 90 139 52 151 96Z"/><path d="M90 90 151 96 126 145Z"/><path d="M90 90 126 145 62 144Z"/><path d="M90 90 62 144 32 88Z"/><path d="M90 90 32 88 52 43Z"/>
-      </g>
-      <path className="medallion-face-texture" d={medallionPolygon(60)} fill={`url(#medallion-limestone-${act.id})`} clipPath={`url(#face-clip-${act.id})`}/>
-      <path className="medallion-inner-line" d={medallionPolygon(54)}/>
-      <MedallionSymbol symbol={act.symbol}/>
-    </svg>
-    {crownState !== 'hidden' && <ThornCrown state={crownState === 'rooted' ? 'rooted' : crownState === 'submerging' ? 'submerging' : 'emerging'}/>}
-    {locked && <span className="act-medallion-lock-shadow"><span className="act-lock-glyph" aria-hidden="true"><svg viewBox="0 0 32 38"><path className="act-lock-shackle" d="M8 17V10a8 8 0 0 1 16 0v7"/><rect className="act-lock-body" x="5" y="15" width="22" height="19" rx="3"/><circle className="act-lock-keyhole" cx="16" cy="23" r="2.5"/><path className="act-lock-stem" d="M16 25.5v4"/></svg></span></span>}
-    {act.status === 'completed' && <span className="act-medallion-complete-seal" aria-label="Concluído"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path d="m11 20 6 6 12-13"/></svg></span>}
-    </button>
-  </div>
-}
-
-function ArcRouteArt({ connection, from, to }: { connection: ArcConnection; from: ArcAct; to: ArcAct }) {
-  const geometry = useMemo(() => routeGeometry(from, to, connection.kind), [from, to, connection.kind])
-  const isBlocked = to.status === 'locked'
-  const [brambleState, setBrambleState] = useState<'blocking' | 'submerging' | 'hidden'>(isBlocked ? 'blocking' : 'hidden')
-
-  useEffect(() => {
-    if (isBlocked) {
-      setBrambleState('blocking')
-      return
-    }
-    if (brambleState === 'hidden') return
-    setBrambleState('submerging')
-    const timer = window.setTimeout(() => setBrambleState('hidden'), 850)
-    return () => window.clearTimeout(timer)
-  }, [isBlocked])
-
-  const isLit = from.status === 'completed' && to.status !== 'locked'
-  return <g className={`arc-route ${connection.kind === 'optional' ? 'arc-route-optional' : ''} ${isBlocked ? 'arc-route-blocked' : ''} ${isLit ? 'arc-route-lit' : ''}`}>
-    <path className="arc-route-underpaint" d={geometry.d}/>
-    {isLit && <path className="arc-route-glow" d={geometry.d}/>}
-    <path className="arc-route-pigment" d={geometry.d}/>
-    <path className="arc-route-etch" d={geometry.d}/>
-    {!isBlocked && <path className="arc-route-flourish" d={geometry.d} pathLength="100"/>}
-    {brambleState !== 'hidden' && <ArcBramble geometry={geometry} state={brambleState}/>}
-  </g>
+function ParchmentEmblem({ symbol, position }: { symbol: ArcAct['symbol']; position: 'top' | 'bottom' }) {
+  return <span className={`parchment-emblem parchment-emblem-${position} emblem-${symbol}`} aria-hidden="true">
+    {symbol === 'bone' ? <img src={boneSealArtwork} alt="" draggable={false}/> : <svg viewBox="0 0 64 64" focusable="false">
+      {symbol === 'sun-moon' && <><circle cx="23" cy="31" r="10"/><path d="M41 14a18 18 0 1 0 8 34 16 16 0 0 1-8-34Z"/><path d="M23 14v-6m0 46v-5m-17-18H1m44 0h7M11 19l-4-4m31 31 4 4"/></>}
+      {symbol === 'tally' && <><path d="M13 14v36m10-36v36m10-36v36m10-36v36m-31-7 34-24"/></>}
+      {symbol === 'compass' && <><circle cx="32" cy="32" r="24"/><path d="m42 21-7 16-14 6 7-16 14-6Z"/><circle cx="32" cy="32" r="2"/></>}
+      {symbol === 'telescope' && <><path d="m18 13 31 31-11 11-31-31 11-11Zm-5 14 9-9m15 26 9-9M13 48l-6 9m40-5 8 5"/><circle cx="19" cy="14" r="5"/></>}
+      {symbol === 'pyramid' && <><path d="m8 51 24-39 24 39H8Zm24-39v39m-15-12h30"/></>}
+      {symbol === 'bull' && <><path d="M19 24 8 15l1 18 10 4m26-13 11-9-1 18-10 4M19 25c4-8 22-8 26 0l-2 22c-5 8-17 8-22 0l-2-22Zm6 11h.1m14 0h.1M27 47h10"/></>}
+      {symbol === 'lock' && <><rect x="15" y="28" width="34" height="27" rx="4"/><path d="M22 28v-8a10 10 0 0 1 20 0v8m-10 10v8"/></>}
+    </svg>}
+  </span>
 }
 
 function Parchment({ act, closing, onClose, onStart, onComplete, starting, locale }: {
@@ -538,32 +41,20 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
 }) {
   const completed = act.status === 'completed'
   return <div className={`arc-parchment-backdrop ${closing ? 'is-closing' : 'is-opening'}`} onClick={onClose}>
+    <div className="parchment-audio-control"><AudioControls/></div>
     <section className="arc-parchment" role="dialog" aria-modal="true" aria-labelledby="act-parchment-title" onClick={(event) => event.stopPropagation()}>
-      <div className="parchment-roller parchment-roller-top"><span/><span/><span/></div>
+      <img className="parchment-scroll-artwork" src={parchmentScrollArtwork} alt="" draggable={false}/>
+      <ParchmentEmblem symbol={act.topEmblem ?? act.symbol} position="top"/>
+      <ParchmentEmblem symbol={act.bottomEmblem ?? act.symbol} position="bottom"/>
       <button className="parchment-close" onClick={onClose} aria-label={locale === 'en' ? 'Close scroll' : 'Fechar pergaminho'}><X size={20}/></button>
       <article className="parchment-paper">
-        <div className="parchment-paper-grain" aria-hidden="true">
-          <svg className="parchment-fiber-texture" viewBox="0 0 300 500" preserveAspectRatio="none">
-            <filter id="parchment-fiber-noise"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="17" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .34"/></feComponentTransfer></filter>
-            <rect width="100%" height="100%" filter="url(#parchment-fiber-noise)"/>
-          </svg>
-          <svg className="parchment-scuffs" viewBox="0 0 300 500" preserveAspectRatio="none">
-            <g fill="none" stroke="#704724" strokeLinecap="round">
-              <path d="m24 63 13-5 8 2 7-4m-12 7 4 5m4-10 7-5m-31 9-6 4m219 19 9-4 7 1 9-5m-17 7 6 4m-3-8 7-6" strokeWidth="1.2"/>
-              <path d="m35 392 11-4 8 1m-10 3-5 5m219-31-9 5-8-1-8 4m15-5 4 6m-5-9-6-5m-166 72 8-3 7 2m-11 0-3 4" strokeWidth=".9"/>
-              <path d="m78 119 7 2 4 6m134 204-5 4-2 7m-176-89 5-2 4-5m166-169-3 5 2 4" strokeWidth=".65"/>
-            </g>
-            <g fill="#80552e" opacity=".42"><ellipse cx="33" cy="70" rx="9" ry="3" transform="rotate(-18 33 70)"/><ellipse cx="265" cy="91" rx="12" ry="3.5" transform="rotate(-24 265 91)"/><ellipse cx="48" cy="405" rx="11" ry="4" transform="rotate(-15 48 405)"/><ellipse cx="258" cy="376" rx="13" ry="4" transform="rotate(-24 258 376)"/></g>
-          </svg>
-        </div>
-        <div className="parchment-ornament parchment-ornament-top" aria-hidden="true"/>
-        <p className="parchment-act-number">{locale === 'en' ? 'Act' : 'Ato'} {String(act.number).padStart(2, '0')}</p>
         <h2 id="act-parchment-title">{act.title}</h2>
         <figure className="parchment-illustration">
           <img src={act.illustration} alt={`${locale === 'en' ? 'Illustration of' : 'Ilustração de'} ${act.title}`} />
         </figure>
         <div className="parchment-divider" aria-hidden="true"><span/><b>✦</b><span/></div>
         <p className="parchment-description">{act.description}</p>
+        <div className={`parchment-state ${completed ? 'is-completed' : ''}`}>{completed ? (locale === 'en' ? 'Completed' : 'Concluído') : (locale === 'en' ? 'Available' : 'Disponível')}</div>
         <div className="parchment-actions">
         <button className="parchment-start" onClick={onStart} disabled={starting}>
           <svg viewBox="0 0 66 44" aria-hidden="true"><path d="M32 39Q13 28 7 9q14-1 22 15Q25 7 31 3q8 8 5 21Q43 9 57 8q-2 18-23 31M12 15q9 0 13 10m18-5q3-9 11-9M24 26l-4 8m21-8 5 8"/></svg>
@@ -574,10 +65,56 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
           <span>{completed ? (locale === 'en' ? 'ACT COMPLETED' : 'ATO CONCLUÍDO') : (locale === 'en' ? 'COMPLETE ACT' : 'CONCLUIR ATO')}</span>
         </button>
         </div>
-        <div className="parchment-ornament parchment-ornament-bottom" aria-hidden="true"/>
       </article>
-      <div className="parchment-roller parchment-roller-bottom"><span/><span/><span/></div>
     </section>
+  </div>
+}
+
+function LibraryScroll({ act, current, onSelect }: { act: ArcAct; current: boolean; onSelect: () => void }) {
+  const sealArtwork = act.status === 'locked' ? lockSealArtwork : act.status === 'completed' ? completedSealArtwork : act.symbol === 'bone' ? boneSealArtwork : null
+  return <button className={`library-scroll ${act.status} ${current ? 'is-current' : ''}`} onClick={onSelect} disabled={act.status === 'locked'} aria-label={act.title}>
+    <img className="scroll-artwork" src={libraryScrollArtwork} alt="" draggable={false}/>
+    <span className={`scroll-wax ${sealArtwork ? 'has-artwork' : ''} ${act.status === 'completed' ? 'is-completed' : ''}`}>
+      {sealArtwork && <img src={sealArtwork} alt="" draggable={false}/>}
+    </span>
+  </button>
+}
+
+function LibraryShelf({ arc, acts, currentActId, onSelect, locale }: { arc: LearningArc; acts: ArcAct[]; currentActId: string | null; onSelect: (act: ArcAct) => void; locale: AppLocale }) {
+  const tracks = [...new Set(arc.acts.map((act) => act.kind))]
+  const [trackIndex, setTrackIndex] = useState(Math.max(0, tracks.indexOf('main')))
+  const [trackMotion, setTrackMotion] = useState(0)
+  const touchStart = useRef<number | null>(null)
+  const track = tracks[trackIndex] ?? 'main'
+  const shelfActs = acts.filter((act) => act.kind === track).sort((a, b) => a.number - b.number).slice(0, 4)
+  const navigate = (direction: number) => {
+    const next = Math.max(0, Math.min(tracks.length - 1, trackIndex + direction))
+    if (next !== trackIndex) { setTrackMotion(direction); setTrackIndex(next) }
+  }
+  const trackName = track === 'main' ? (locale === 'en' ? 'Main Path' : 'Trilha Principal') : (locale === 'en' ? 'Optional Path' : 'Trilha Opcional')
+  return <div className="library-room" onTouchStart={(event) => { touchStart.current = event.touches[0]?.clientX ?? null }} onTouchEnd={(event) => {
+    if (touchStart.current === null) return
+    const delta = (event.changedTouches[0]?.clientX ?? touchStart.current) - touchStart.current
+    if (Math.abs(delta) > 64) navigate(delta < 0 ? 1 : -1)
+    touchStart.current = null
+  }}>
+    <div className="library-depth library-depth-left"/><div className="library-depth library-depth-right"/>
+    <button className="library-track-nav library-track-prev" onClick={() => navigate(-1)} disabled={trackIndex === 0} aria-label={locale === 'en' ? 'Previous shelf' : 'Estante anterior'}><ChevronLeft/></button>
+    <section className={`knowledge-shelf motion-${trackMotion}`} aria-label={trackName} key={track}>
+      <img className="shelf-cabinet-artwork" src={libraryShelfArtwork} alt="" draggable={false}/>
+      <div className="shelf-crown"><span className="shelf-emblem" aria-hidden="true"><svg viewBox="-20 -14 40 28"><g className="sun-moon-mark"><circle className="sun-moon-sun" cx="-6" cy="0" r="5"/><path className="sun-moon-rays" d="M-6-9v-2m0 22v-2m9-9h2m-22 0h2m15.4-6.4 1.5-1.5m-15.8 15.8L-17.4 8m11.4 3v2m0-24v2m-6.4 15.4-1.5-1.5m15.8-15.8L3.4-8"/><path className="sun-moon-crescent" d="M10-8a9 9 0 1 0 0 16A6.8 6.8 0 0 1 10-8Z"/><circle className="sun-moon-star" cx="14" cy="-8" r="1.2"/></g></svg></span></div>
+      <div className="shelf-columns"><i/><i/></div>
+      <div className="shelf-content">
+        {shelfActs.map((act) => <div className={`shelf-row ${act.status}`} key={act.id}>
+          <div className="shelf-artifact">{act.siteEnvironment && <img src={baboonSkullArtwork} alt="Crânio de babuíno" draggable={false}/>}</div>
+          <LibraryScroll act={act} current={act.id === currentActId} onSelect={() => onSelect(act)}/>
+          <div className={`shelf-lamp ${act.id === currentActId ? 'lit' : ''} ${act.id === 'counting-marks' ? 'bone-act-lamp' : ''}`} aria-hidden="true"><img src={libraryLampArtwork} alt=""/><span className="lamp-flame"/></div>
+        </div>)}
+        {!shelfActs.length && <div className="library-empty">{locale === 'en' ? 'This shelf awaits its scrolls.' : 'Esta estante ainda aguarda seus pergaminhos.'}</div>}
+      </div>
+      <footer className="shelf-footer">{track === 'main' ? (locale === 'en' ? 'Main Path' : 'Trilha Principal') : (locale === 'en' ? 'Optional Path' : 'Trilha Opcional')}</footer>
+    </section>
+    <button className="library-track-nav library-track-next" onClick={() => navigate(1)} disabled={trackIndex >= tracks.length - 1} aria-label={locale === 'en' ? 'Next shelf' : 'Próxima estante'}><ChevronRight/></button>
   </div>
 }
 
@@ -590,57 +127,21 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
 }) {
   const { locale } = useLocale()
   const arc = localizeArc(locale, learningArcs[moduleId])
-  const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }))
   const [selectedActId, setSelectedActId] = useState<string | null>(null)
   const [closingParchment, setClosingParchment] = useState(false)
   const closeTimer = useRef<number | null>(null)
   const startTimer = useRef<number | null>(null)
   const [flameActId, setFlameActId] = useState<string | null>(null)
   const [startingAct, setStartingAct] = useState(false)
-  useEffect(() => {
-    const updateViewport = () => setViewport({ width: window.innerWidth, height: window.innerHeight })
-    window.addEventListener('resize', updateViewport)
-    window.addEventListener('orientationchange', updateViewport)
-    return () => {
-      window.removeEventListener('resize', updateViewport)
-      window.removeEventListener('orientationchange', updateViewport)
-    }
-  }, [])
   const acts = useMemo(() => arc.acts.map((act) => {
     const completed = completedActIds.includes(act.id)
     const available = !completed && act.prerequisites.every((prerequisite) => completedActIds.includes(prerequisite))
-    let position = act.position
-    if (viewport.width <= 700 && viewport.height >= viewport.width) {
-      const portraitPositions: Record<string, { x: number; y: number }> = viewport.height < 600 ? {
-        'counting-marks': { x: 50, y: 82 }, 'age-of-sun': { x: 29, y: 65 },
-        'wayfinder': { x: 71, y: 61 }, 'first-observation': { x: 29, y: 45 },
-        'shadow-measure': { x: 71, y: 42 }, 'last-seal': { x: 50, y: 26 },
-      } : {
-        'counting-marks': { x: 50, y: 81 }, 'age-of-sun': { x: 29, y: 62 },
-        'wayfinder': { x: 71, y: 57 }, 'first-observation': { x: 29, y: 39 },
-        'shadow-measure': { x: 71, y: 34 }, 'last-seal': { x: 50, y: 18 },
-      }
-      position = portraitPositions[act.id] ?? act.position
-    } else if (viewport.width > 1000) {
-      const desktopPositions: Record<string, { x: number; y: number }> = {
-        'counting-marks': { x: 50, y: 84 }, 'age-of-sun': { x: 27, y: 64 },
-        'wayfinder': { x: 74, y: 61 }, 'first-observation': { x: 19, y: 42 },
-        'shadow-measure': { x: 81, y: 39 }, 'last-seal': { x: 51, y: 18 },
-      }
-      position = desktopPositions[act.id] ?? act.position
-    } else if (viewport.width <= 1000) {
-      const compactPositions: Record<string, { x: number; y: number }> = {
-        'counting-marks': { x: 50, y: 80 }, 'age-of-sun': { x: 27, y: 62 },
-        'wayfinder': { x: 73, y: 60 }, 'first-observation': { x: 20, y: 43 },
-        'shadow-measure': { x: 80, y: 41 }, 'last-seal': { x: 50, y: 28 },
-      }
-      position = compactPositions[act.id] ?? act.position
-    }
-    return { ...act, position, status: completed ? 'completed' as const : available ? 'available' as const : 'locked' as const }
-  }), [arc.acts, completedActIds, viewport])
+    return { ...act, status: completed ? 'completed' as const : available ? 'available' as const : 'locked' as const }
+  }), [arc.acts, completedActIds])
   const actsById = new Map(acts.map((act) => [act.id, act]))
-  const currentActId = acts.find((act) => act.status === 'available')?.id ?? null
-  const flameTarget = actsById.get(flameActId ?? currentActId ?? '')
+  const currentActId = acts.find((act) => act.kind === 'main' && act.status === 'available')?.id
+    ?? acts.find((act) => act.status === 'available')?.id
+    ?? null
   const selectedAct = selectedActId ? actsById.get(selectedActId) ?? null : null
   const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -659,24 +160,17 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   }, [selectedAct])
 
   function closeParchment() {
-    if (!selectedActId) return
+    if (!selectedActId || closingParchment) return
+    void audioManager.playSoundEvent('library.scroll.roll')
     if (closeTimer.current !== null) window.clearTimeout(closeTimer.current)
-    if (reducedMotion) {
-      setSelectedActId(null)
-      setClosingParchment(false)
-      return
-    }
-    setClosingParchment(true)
-    closeTimer.current = window.setTimeout(() => {
-      setSelectedActId(null)
-      setClosingParchment(false)
-      closeTimer.current = null
-    }, 530)
+    closeTimer.current = null
+    setSelectedActId(null)
+    setClosingParchment(false)
   }
 
   const openAct = (act: ArcAct) => {
     if (act.status === 'locked') return
-    audioManager.play('starSelect')
+    void audioManager.playSoundEvent('library.scroll.unroll')
     setStartingAct(false)
     setClosingParchment(false)
     setSelectedActId(act.id)
@@ -701,48 +195,17 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
     if (!selectedAct || selectedAct.status !== 'available') return
     audioManager.play('starUnlock')
     onCompleteAct(selectedAct.id)
+    setFlameActId(null)
   }
 
-  return <main className="arc-map-screen" aria-label={locale === 'en' ? `Arc map: ${arc.title}` : `Mapa do arco ${arc.title}`}>
-    <div className="arc-map-scroll">
-      <section className="arc-map-scene">
-        <div className="arc-world-plane">
-          <Terrain/>
-        <svg className="arc-route-layer" viewBox="0 0 1000 1600" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <filter id="arc-paint-soft"><feGaussianBlur stdDeviation="2.4"/></filter>
-            <filter id="arc-route-lamp"><feGaussianBlur stdDeviation="5"/></filter>
-            <filter id="arc-flame-ripple" x="-35%" y="-25%" width="170%" height="150%" colorInterpolationFilters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency=".025 .045" numOctaves="2" seed="8" result="flame-noise">
-                <animate attributeName="baseFrequency" values=".025 .045;.045 .025;.018 .05;.035 .032;.025 .045" dur="2.8s" repeatCount="indefinite"/>
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="flame-noise" scale="5" xChannelSelector="R" yChannelSelector="G">
-                <animate attributeName="scale" values="4;9;5;10;4" dur="2.15s" repeatCount="indefinite"/>
-              </feDisplacementMap>
-            </filter>
-          </defs>
-          {arc.connections.map((connection) => {
-            const from = actsById.get(connection.from)
-            const to = actsById.get(connection.to)
-            if (!from || !to) return null
-            return <ArcRouteArt key={`${connection.from}-${connection.to}`} connection={connection} from={from} to={to}/>
-          })}
-          </svg>
-          <div className="arc-map-nodes">
-            {acts.map((act) => <ActMedallion key={act.id} act={act} locale={locale} isCurrent={act.id === (flameActId ?? currentActId)} onSelect={() => openAct(act)}/>)}
-            {flameTarget && <img className="act-current-flame arc-moving-flame" src={currentFireArtwork} alt={locale === 'en' ? 'Current act' : 'Ato atual'} draggable={false} style={{ left: `${flameTarget.position.x}%`, top: `${flameTarget.position.y}%` }}/>}
-          </div>
-        </div>
-        <header className="arc-map-header">
-          <button className="arc-map-back" onClick={onBack} aria-label={locale === 'en' ? 'Back to constellation' : 'Voltar à constelação'}><ArrowLeft size={22}/></button>
-          <div className="arc-map-title-block">
-            <span className="arc-map-module-name">{arc.moduleName}</span>
-            <h1>{arc.title}</h1>
-          </div>
-          <span className="arc-header-balance" aria-hidden="true"/>
-        </header>
-      </section>
-    </div>
+  return <main className="arc-map-screen knowledge-library-screen" aria-label={locale === 'en' ? `Knowledge Library: ${arc.title}` : `Biblioteca do Conhecimento: ${arc.title}`}>
+    <div className="library-background" aria-hidden="true" style={{ backgroundImage: `url("${libraryBackgroundArtwork}")` }}/>
+    <header className="arc-map-header library-header">
+      <button className="arc-map-back" onClick={() => selectedAct ? closeParchment() : onBack()} aria-label={locale === 'en' ? 'Back to constellation' : 'Voltar à constelação'}><ArrowLeft size={22}/></button>
+      <div className="library-heading"><p>{locale === 'en' ? 'Arc:' : 'Arco:'} {arc.title}</p></div>
+      <AudioControls/>
+    </header>
+    <LibraryShelf arc={arc} acts={acts} currentActId={flameActId ?? currentActId} onSelect={openAct} locale={locale}/>
     {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct} starting={startingAct} locale={locale}/ >}
   </main>
 }

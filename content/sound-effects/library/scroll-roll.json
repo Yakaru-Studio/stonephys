@@ -1,0 +1,27 @@
+{
+  "id": "library-scroll-roll",
+  "name": "Enrolar pergaminho",
+  "category": "Biblioteca do Conhecimento",
+  "description": "O pergaminho retorna suavemente à forma enrolada.",
+  "context": "Fechamento da modal do pergaminho e retorno à estante.",
+  "prompt": "An ancient thick dry parchment scroll being gently rolled back into a compact cylindrical shape. Soft layered parchment friction, subtle natural creaking and delicate wooden roller movement. One continuous closing motion, gradually tightening into a roll with a quiet natural finish. Close-up realistic Foley, elegant and restrained. No tearing, no crumpling, no music, no voices, no background noise.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 0.5,
+  "promptInfluence": 0.5,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.72,
+  "eventBindings": [
+    "library.scroll.roll"
+  ],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false,
+    "notes": "",
+    "updatedAt": "2026-11-17T23:36:55.175Z"
+  },
+  "promptRevisions": [],
+  "observations": "A animação parchment-roll-up dura 0,48 s; a API exige pelo menos 0,5 s quando a duração é definida."
+}

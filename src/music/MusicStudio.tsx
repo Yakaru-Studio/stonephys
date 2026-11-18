@@ -11,7 +11,7 @@ type Library = { apiConfigured: boolean; model: string; priceUsd: number; spentU
 
 export default function MusicStudio({ onClose }: { onClose: () => void }) {
   const [library, setLibrary] = useState<Library | null>(null)
-  const [selectedId, setSelectedId] = useState('eternity-of-knowledge')
+  const [selectedId, setSelectedId] = useState(() => new URLSearchParams(window.location.search).get('composition') || 'eternity-of-knowledge')
   const [prompt, setPrompt] = useState('')
   const [notes, setNotes] = useState('')
   const [loop, setLoop] = useState(true)

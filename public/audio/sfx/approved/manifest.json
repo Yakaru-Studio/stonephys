@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "effects": {
+    "library-scroll-unroll": {
+      "url": "/audio/sfx/approved/library/scroll-unroll.mp3",
+      "volume": 0.72,
+      "versionId": "gen-edb82880-3b39-4888-8759-9427a8078fa5",
+      "approvedAt": "2026-11-17T23:36:23.948Z",
+      "provider": "elevenlabs",
+      "model": "eleven_text_to_sound_v3",
+      "license": {
+        "plan": "unknown",
+        "commercialRightsConfirmed": true,
+        "evaluationOnly": false,
+        "notes": "",
+        "updatedAt": "2026-11-17T23:36:23.922Z"
+      }
+    },
+    "library-scroll-roll": {
+      "url": "/audio/sfx/approved/library/scroll-roll.mp3",
+      "volume": 0.72,
+      "versionId": "gen-28d10291-0db0-41de-9e5b-5951b1bc47d8",
+      "approvedAt": "2026-11-17T23:36:55.197Z",
+      "provider": "elevenlabs",
+      "model": "eleven_text_to_sound_v3",
+      "license": {
+        "plan": "unknown",
+        "commercialRightsConfirmed": true,
+        "evaluationOnly": false,
+        "notes": "",
+        "updatedAt": "2026-11-17T23:36:55.175Z"
+      }
+    }
+  }
+}

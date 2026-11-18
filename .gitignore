@@ -13,6 +13,9 @@ tools/narration/data/candidates/
 tools/narration/data/usage.json
 tools/narration/data/full-narrations.json
 tools/music/generations/
+tools/sound-effects/generations/
+tools/sound-effects/imports/
+tools/sound-effects/processed/
 public/audio/narration/staging/
 .DS_Store
 Thumbs.db

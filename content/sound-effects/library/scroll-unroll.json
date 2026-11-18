@@ -1,0 +1,27 @@
+{
+  "id": "library-scroll-unroll",
+  "name": "Desenrolar pergaminho",
+  "category": "Biblioteca do Conhecimento",
+  "description": "O pergaminho antigo se abre e revela seu conteúdo.",
+  "context": "Abertura da modal após selecionar um pergaminho disponível ou concluído na estante.",
+  "prompt": "An ancient thick parchment scroll smoothly unrolling from its tightly rolled cylindrical form. Authentic dry parchment rustling, gentle layered friction and subtle movement of wooden rollers. One continuous opening motion with a natural soft ending. Close-up realistic Foley, elegant and restrained. No tearing, no crumpling, no music, no voices, no background noise.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 0.95,
+  "promptInfluence": 0.5,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.72,
+  "eventBindings": [
+    "library.scroll.unroll"
+  ],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": true,
+    "evaluationOnly": false,
+    "notes": "",
+    "updatedAt": "2026-11-17T23:36:23.922Z"
+  },
+  "promptRevisions": [],
+  "observations": "Sincronizar com a animação parchment-unroll de 0,95 s."
+}

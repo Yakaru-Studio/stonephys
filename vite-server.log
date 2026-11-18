@@ -505,3 +505,44 @@ Port 5174 is in use, trying another one...
 18:01:47 [vite] (client) hmr update /src/App.tsx
 18:01:48 [vite] (client) hmr update /src/App.tsx
 18:01:48 [vite] (client) hmr update /src/App.tsx
+18:22:08 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:22:24 [vite] (client) hmr update /src/arc-map.css
+18:24:32 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:24:46 [vite] (client) hmr update /src/arc-map.css
+18:45:11 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:45:45 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:46:03 [vite] (client) hmr update /src/arc-map.css
+18:47:45 [vite] (client) hmr update /src/arc-map.css
+18:49:17 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:49:55 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:50:37 [vite] (client) hmr update /src/arc-map.css
+18:52:31 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:54:22 [vite] (client) hmr update /src/ArcMapPage.tsx
+18:54:38 [vite] (client) hmr update /src/arc-map.css
+18:55:39 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:16:47 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:17:28 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:18:21 [vite] (client) hmr update /src/arc-map.css
+19:18:28 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:21:06 [vite] (client) hmr update /src/arc-map.css
+19:22:43 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:23:41 [vite] (client) hmr update /src/arc-map.css
+19:23:41 [vite] (client) hmr update /src/arc-map.css
+19:24:14 [vite] (client) hmr update /src/arc-map.css
+19:24:14 [vite] (client) hmr update /src/arc-map.css
+19:24:35 [vite] (client) hmr update /src/ArcMapPage.tsx
+19:24:42 [vite] (client) hmr update /src/arc-map.css
+19:24:52 [vite] (client) hmr update /src/arc-map.css
+19:29:19 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+19:29:20 [vite] server restarted.
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: http://192.168.0.86:5175/  Wi-Fi
+20:18:46 [vite] vite.config.ts changed, restarting server...
+20:18:46 [vite] vite.config.ts changed, restarting server...
+20:18:47 [vite] server restarted.
+20:18:49 [vite] server restarted.
+20:34:11 [vite] .env.local changed, restarting server...
+20:34:12 [vite] server restarted.
+20:35:37 [vite] .env.local changed, restarting server...
+20:35:38 [vite] server restarted.

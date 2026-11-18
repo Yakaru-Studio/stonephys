@@ -1,0 +1,49 @@
+{
+  "id": "the-sanctuary-of-wisdom",
+  "name": {
+    "pt-BR": "O Santuário da Sabedoria",
+    "en": "The Sanctuary of Wisdom"
+  },
+  "description": {
+    "pt-BR": "Uma composição contemplativa para a Biblioteca do Conhecimento, onde pergaminhos preservam a curiosidade e as descobertas humanas através dos séculos.",
+    "en": "A contemplative composition for the Knowledge Library, where scrolls preserve human curiosity and discovery across the centuries."
+  },
+  "application": [
+    "knowledge-library",
+    "shelf-navigation",
+    "scroll-opening-and-closing",
+    "act-details",
+    "knowledge-unlock"
+  ],
+  "targetDurationSeconds": 240,
+  "targetBpm": "70–75",
+  "defaultVolume": 0.3,
+  "loop": {
+    "enabled": true,
+    "startSeconds": 0,
+    "endSeconds": null,
+    "crossfadeMs": 3000
+  },
+  "status": "awaiting-review",
+  "previewVersionId": "cbf72547-8d1f-4067-afaa-5623c96d65bd",
+  "approvedVersionId": "cbf72547-8d1f-4067-afaa-5623c96d65bd",
+  "approvedAssetUrl": "/audio/music/approved/the-sanctuary-of-wisdom.mp3",
+  "approvedCropStartSeconds": 25,
+  "approvedCropEndSeconds": 178.077,
+  "approvedVolume": 0.3,
+  "approvedLoop": {
+    "enabled": true,
+    "startSeconds": 25,
+    "endSeconds": 178.077,
+    "crossfadeMs": 3000
+  },
+  "previewCropStartSeconds": 25,
+  "previewCropEndSeconds": 178.077,
+  "previewVolume": 0.3,
+  "previewLoop": {
+    "enabled": true,
+    "startSeconds": 25,
+    "endSeconds": 178.077,
+    "crossfadeMs": 3000
+  }
+}

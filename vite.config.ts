@@ -7,6 +7,7 @@ import { createHash, randomUUID } from 'node:crypto'
 import path from 'node:path'
 import { validateAudioApproval, validateNarrationStage } from './src/narration/productionGates.mjs'
 import { createMusicStudioMiddleware } from './tools/music/musicStudioApi.mjs'
+import { createSoundEffectsMiddleware } from './tools/sound-effects/soundEffectsApi.mjs'
 
 const root = process.cwd()
 const studioPhrase = 'I understand this may consume quota or be billed'
@@ -26,13 +27,22 @@ const toWebVtt = (segments: Array<{ startMs: number; endMs: number; text: string
 
 function voiceStudio() {
   let apiKey = ''
+  let elevenLabsKey = ''
+  let sfxSettings = { model: 'eleven_text_to_sound_v3', generationEnabled: 'false', allowPaidGeneration: 'false' }
   return {
     name: 'stonephys-voice-studio-local-api',
     configResolved(config: { mode: string }) {
       const env = loadEnv(config.mode, root, '')
       apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || env.GEMINI_API_KEY || env.GOOGLE_API_KEY || ''
+      elevenLabsKey = process.env.ELEVENLABS_API_KEY || env.ELEVENLABS_API_KEY || ''
+      sfxSettings = {
+        model: process.env.ELEVENLABS_SFX_MODEL || env.ELEVENLABS_SFX_MODEL || 'eleven_text_to_sound_v3',
+        generationEnabled: process.env.SFX_GENERATION_ENABLED || env.SFX_GENERATION_ENABLED || 'false',
+        allowPaidGeneration: process.env.SFX_ALLOW_PAID_GENERATION || env.SFX_ALLOW_PAID_GENERATION || 'false',
+      }
     },
     configureServer(server: import('vite').ViteDevServer) {
+      server.middlewares.use('/__voice-studio/api/sfx', createSoundEffectsMiddleware({ root, getApiKey: () => elevenLabsKey, getSettings: () => sfxSettings }))
       server.middlewares.use('/__voice-studio/api', createMusicStudioMiddleware({ root, getApiKey: () => apiKey }))
       server.middlewares.use('/__voice-studio/api', async (req, res) => {
         const host = req.socket.remoteAddress

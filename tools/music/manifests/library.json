@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17T21:01:48.622Z",
+  "updatedAt": "2026-11-17T22:41:43.768Z",
   "requests": [
     {
       "requestId": "ba05fa40-b2e6-459f-946d-0290c66ae181",
@@ -37,6 +37,18 @@
       "status": "completed",
       "promptHash": "35d1aabe27059ecd799969ecd59a48a3a4c12f07fea2ce18a3dffd67551ea3b8",
       "interactionId": "v1_ChdLSjc4YXBQb0Q5MjdpTE1QaWNHTzBBNBIXS0o3OGFwUG9EOTI3aUxNUGljR08wQTQ"
+    },
+    {
+      "requestId": "41e51fd0-3668-412e-a58b-6cf78398f8b4",
+      "compositionId": "the-sanctuary-of-wisdom",
+      "versionId": "cbf72547-8d1f-4067-afaa-5623c96d65bd",
+      "model": "lyria-3.5",
+      "at": "2026-11-17T22:35:27.297Z",
+      "estimatedUsd": 0.08,
+      "externalRequestMade": true,
+      "status": "completed",
+      "promptHash": "f93d7a2bbfe741d73da608d0565e323f0a99f4917f0c8f697cb9f12f53df18ca",
+      "interactionId": "v1_ChdyOWI4YXNua000WEV4ZElQMmN2ZTRRaxIXcjliOGFzbmtNNFhFeGRJUDJjdmU0UWs"
     }
   ],
   "compositions": {
@@ -163,6 +175,49 @@
       ],
       "previewVersionId": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0",
       "approvedVersionId": "59a52e57-cd9f-4fa8-8b25-3716cfb034e0"
+    },
+    "the-sanctuary-of-wisdom": {
+      "versions": [
+        {
+          "id": "cbf72547-8d1f-4067-afaa-5623c96d65bd",
+          "requestId": "41e51fd0-3668-412e-a58b-6cf78398f8b4",
+          "model": "lyria-3.5",
+          "prompt": "An original instrumental cinematic soundtrack for an ancient library of human knowledge in a philosophical science exploration video game.\n\nImagine entering a monumental, timeless library inspired by the Library of Alexandria, filled with ancient papyrus scrolls, classical columns, historical artifacts, warm golden sunlight and softly burning oil lamps.\n\nEvoking ancient wisdom, classical philosophy, intellectual curiosity, scientific discovery and the preservation of human knowledge across millennia.\n\nThe music should feel wise, elegant, contemplative, mysterious, warm and quietly majestic.\n\nDraw inspiration from the musical traditions and cultural atmosphere of classical Greece and the ancient Mediterranean, combined with subtle cinematic orchestration.\n\nFeature ancient Greek lyre, kithara, delicate harp, soft acoustic flutes, gentle plucked strings and restrained sustained orchestral strings.\n\nUse a memorable, refined melodic theme with subtle modal harmonies and delicate instrumental variations.\n\nModerately slow tempo, approximately 70–75 BPM.\n\nCreate a sense of intellectual wonder and peaceful exploration, as if every ancient scroll contains a forgotten discovery waiting to be revealed.\n\nMaintain a gentle sense of movement and curiosity without becoming energetic, dramatic or adventurous in a medieval fantasy sense.\n\nThe atmosphere should evoke a sacred sanctuary of knowledge rather than a religious ceremony.\n\nKeep the arrangement spacious, organic and sophisticated.\n\nAvoid excessive ornamentation, virtuosic passages, repetitive ostinatos, dominant percussion or dramatic orchestral crescendos.\n\nNo vocals, no lyrics, no chanting, no narration, no modern electronic sounds, no medieval tavern music, no battle music, no heroic adventure themes, no environmental sound effects.\n\nDesigned for extended listening and seamless looping within a game interface.\n\nMaintain a coherent emotional atmosphere throughout, with smooth musical development and a gentle ending harmonically compatible with the beginning.\n\nCreate a complete instrumental composition of approximately four minutes.",
+          "promptHash": "f93d7a2bbfe741d73da608d0565e323f0a99f4917f0c8f697cb9f12f53df18ca",
+          "createdAt": "2026-11-17T22:35:27.297Z",
+          "status": "approved",
+          "source": "generated",
+          "estimatedUsd": 0.08,
+          "externalRequestMade": true,
+          "fileName": "the-sanctuary-of-wisdom-cbf72547-8d1f-4067-afaa-5623c96d65bd.mp3",
+          "durationMs": 178077,
+          "bytes": 4281558,
+          "approval": "pending",
+          "notes": "",
+          "loop": {
+            "enabled": true,
+            "startSeconds": 25,
+            "endSeconds": 178.077,
+            "crossfadeMs": 3000
+          },
+          "generatedAt": "2026-11-17T22:36:04.304Z",
+          "interactionId": "v1_ChdyOWI4YXNua000WEV4ZElQMmN2ZTRRaxIXcjliOGFzbmtNNFhFeGRJUDJjdmU0UWs",
+          "validation": {
+            "fileExists": true,
+            "sizeBytes": 4281558,
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; duração e codec podem ser lidos pelo navegador.",
+            "ffmpeg": false,
+            "ffmpegNote": "FFmpeg não instalado; não foi possível medir clipping ou silêncios."
+          },
+          "cropStartSeconds": 25,
+          "cropEndSeconds": 178.077,
+          "volume": 0.3,
+          "approvedAt": "2026-11-17T22:41:40.510Z"
+        }
+      ],
+      "previewVersionId": "cbf72547-8d1f-4067-afaa-5623c96d65bd",
+      "approvedVersionId": "cbf72547-8d1f-4067-afaa-5623c96d65bd"
     }
   }
 }

@@ -1,4 +1,5 @@
 import { defaultAudioSettings, type AudioSettings } from './audioSettings'
+import { soundEffectEventBindings, type SoundEffectCatalog, type SoundEffectEvent } from './soundEffectEvents'
 
 export type SoundEffect =
   | 'neuronSelect'
@@ -77,6 +78,8 @@ class AudioManager {
   private context: AudioContext | null = null
   private masterGain: GainNode | null = null
   private effectsGain: GainNode | null = null
+  private soundEffectsGain: GainNode | null = null
+  private ambienceGain: GainNode | null = null
   private musicGain: GainNode | null = null
   private voiceGain: GainNode | null = null
   private narrationElement: HTMLAudioElement | null = null
@@ -96,13 +99,19 @@ class AudioManager {
   private clockTickIndex = 0
   private clockTickIntervalMs = 1000
   private clockTickLastAt = 0
+  private soundEffectCatalog: SoundEffectCatalog = {}
+  private soundEffectElements = new Map<string, HTMLAudioElement>()
+  private soundEffectSources = new Map<string, MediaElementAudioSourceNode>()
+  private activeSoundByGroup = new Map<string, string>()
 
   setSettings(settings: AudioSettings) {
     this.settings = settings
-    if (!this.context || !this.masterGain || !this.effectsGain || !this.musicGain || !this.voiceGain) return
+    if (!this.context || !this.masterGain || !this.effectsGain || !this.soundEffectsGain || !this.ambienceGain || !this.musicGain || !this.voiceGain) return
     const now = this.context.currentTime
     this.masterGain.gain.setTargetAtTime(settings.enabled ? settings.masterVolume : 0, now, .025)
     this.effectsGain.gain.setTargetAtTime(settings.effectsVolume, now, .025)
+    this.soundEffectsGain.gain.setTargetAtTime(settings.soundEffectsVolume, now, .025)
+    this.ambienceGain.gain.setTargetAtTime(settings.ambienceVolume, now, .04)
     this.musicGain.gain.setTargetAtTime(this.narrationElement && !this.narrationElement.paused ? settings.musicVolume * this.narrationMusicLevel : settings.musicVolume, now, .04)
     this.voiceGain.gain.setTargetAtTime(settings.voiceVolume, now, .04)
   }
@@ -277,6 +286,47 @@ class AudioManager {
       voice.disconnect()
       this.activeVoices = Math.max(0, this.activeVoices - 1)
     }, (longestTone + .9) * 1000)
+  }
+
+  setSoundEffectCatalog(catalog: SoundEffectCatalog) {
+    this.soundEffectCatalog = catalog
+  }
+
+  async playSoundEvent(event: SoundEffectEvent) {
+    if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.soundEffectsVolume <= 0) return
+    const effectId = soundEffectEventBindings[event]
+    const asset = this.soundEffectCatalog[effectId]
+    if (!asset?.url || !this.soundEffectsGain) return
+    const group = event.startsWith('library.scroll.') ? 'library-scroll' : event
+    const previousId = this.activeSoundByGroup.get(group)
+    const previous = previousId ? this.soundEffectElements.get(previousId) : null
+    if (previous && !previous.paused && previousId === effectId) return
+    if (previous && !previous.paused) { previous.pause(); previous.currentTime = 0 }
+
+    const context = this.getContext()
+    if (context.state === 'suspended') await context.resume()
+    let element = this.soundEffectElements.get(effectId)
+    if (!element) {
+      element = new Audio()
+      element.preload = 'auto'
+      const source = context.createMediaElementSource(element)
+      source.connect(this.soundEffectsGain)
+      element.addEventListener('ended', () => {
+        if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group)
+      })
+      this.soundEffectElements.set(effectId, element)
+      this.soundEffectSources.set(effectId, source)
+    }
+    const absoluteUrl = new URL(asset.url, window.location.href).href
+    if (element.src !== absoluteUrl) element.src = absoluteUrl
+    element.volume = Math.max(0, Math.min(1, asset.volume ?? .72))
+    element.currentTime = 0
+    this.activeSoundByGroup.set(group, effectId)
+    try { await element.play() }
+    catch (error) {
+      if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group)
+      throw error
+    }
   }
 
   private playBlackoutWhoosh() {
@@ -537,6 +587,8 @@ class AudioManager {
     const context = new AudioContext()
     const master = context.createGain()
     const effects = context.createGain()
+    const soundEffects = context.createGain()
+    const ambience = context.createGain()
     const music = context.createGain()
     const voice = context.createGain()
     const compressor = context.createDynamicsCompressor()
@@ -547,6 +599,8 @@ class AudioManager {
 
     master.gain.value = this.settings.enabled ? this.settings.masterVolume : 0
     effects.gain.value = this.settings.effectsVolume
+    soundEffects.gain.value = this.settings.soundEffectsVolume
+    ambience.gain.value = this.settings.ambienceVolume
     music.gain.value = this.settings.musicVolume
     voice.gain.value = this.settings.voiceVolume
     compressor.threshold.value = -16
@@ -560,6 +614,8 @@ class AudioManager {
     feedback.gain.value = .16
 
     effects.connect(master)
+    soundEffects.connect(master)
+    ambience.connect(master)
     music.connect(master)
     voice.connect(master)
     master.connect(compressor)
@@ -573,6 +629,8 @@ class AudioManager {
     this.context = context
     this.masterGain = master
     this.effectsGain = effects
+    this.soundEffectsGain = soundEffects
+    this.ambienceGain = ambience
     this.musicGain = music
     this.voiceGain = voice
     this.reverbInput = reverbInput

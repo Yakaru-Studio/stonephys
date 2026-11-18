@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Music2, Volume2, VolumeX, X } from 'lucide-react'
+import { AudioLines, Music2, Volume2, VolumeX, X } from 'lucide-react'
 import { audioManager } from './AudioManager'
 import { loadAudioSettings, saveAudioSettings, type AudioSettings } from './audioSettings'
 import { useLocale } from '../i18n'
@@ -59,6 +59,8 @@ export default function AudioControls() {
       <div className="audio-volumes">
         <VolumeControl label={t('audio.master')} value={settings.masterVolume} disabled={!settings.enabled} onChange={(masterVolume) => updateSettings({ masterVolume })} />
         <VolumeControl label={t('audio.effects')} value={settings.effectsVolume} disabled={!settings.enabled} onChange={(effectsVolume) => updateSettings({ effectsVolume })} />
+        <VolumeControl label={locale === 'en' ? 'Sound effects' : 'Efeitos sonoros'} value={settings.soundEffectsVolume} disabled={!settings.enabled} onChange={(soundEffectsVolume) => updateSettings({ soundEffectsVolume })} />
+        <VolumeControl label={locale === 'en' ? 'Ambience' : 'Ambiência'} value={settings.ambienceVolume} disabled={!settings.enabled} onChange={(ambienceVolume) => updateSettings({ ambienceVolume })} />
         <VolumeControl label={t('audio.music')} value={settings.musicVolume} disabled={!settings.enabled} onChange={(musicVolume) => updateSettings({ musicVolume })} />
         <VolumeControl label={t('audio.voice')} value={settings.voiceVolume} disabled={!settings.enabled} onChange={(voiceVolume) => updateSettings({ voiceVolume })} />
       </div>
@@ -67,6 +69,7 @@ export default function AudioControls() {
         <span>{locale === 'en' ? 'Audio studios' : 'Estúdios de áudio'}</span>
         <a href="/__voice-studio">Voice Studio <small>{locale === 'en' ? 'Narration' : 'Narração'}</small></a>
         <a href="/__audio-studio"><Music2 size={14}/> Music Studio <small>{locale === 'en' ? 'Original soundtracks' : 'Trilhas originais'}</small></a>
+        <a href="/__sound-effects-studio"><AudioLines size={14}/> Sound Effects Studio <small>{locale === 'en' ? 'Foley and effects' : 'Foley e efeitos'}</small></a>
       </nav>}
     </section>}
   </div>

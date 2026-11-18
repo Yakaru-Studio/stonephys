@@ -1,0 +1,76 @@
+{
+  "name": "observando",
+  "width": 432,
+  "height": 384,
+  "anchor": {
+    "x": 100,
+    "y": 340
+  },
+  "loop": true,
+  "frames": [
+    {
+      "file": "frame_01.png",
+      "durationMs": 200
+    },
+    {
+      "file": "frame_02.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_03.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_04.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_05.png",
+      "durationMs": 180
+    },
+    {
+      "file": "frame_06.png",
+      "durationMs": 200
+    },
+    {
+      "file": "frame_07.png",
+      "durationMs": 200
+    },
+    {
+      "file": "frame_08.png",
+      "durationMs": 200
+    },
+    {
+      "file": "frame_09.png",
+      "durationMs": 200
+    },
+    {
+      "file": "frame_10.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_11.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_12.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_13.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_14.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_15.png",
+      "durationMs": 130
+    },
+    {
+      "file": "frame_16.png",
+      "durationMs": 300
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import { audioManager } from './audio/AudioManager'
 import ArcMapPage from './ArcMapPage'
 import { learningArcs } from './arcActs'
 import { localizeModule, useLocale } from './i18n'
+import BorderCaveArrival from './scenes/time/BorderCaveArrival'
 
 const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
 const VoiceStudio = lazy(() => import('./narration/VoiceStudio'))
@@ -29,6 +30,7 @@ export default function App() {
   const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
   const [selectedArc, setSelectedArc] = useState<{ moduleId: string; starId: string } | null>(null)
   const [harrisonSceneOpen, setHarrisonSceneOpen] = useState(false)
+  const [borderCaveSceneOpen, setBorderCaveSceneOpen] = useState(false)
   const [workshopIntroSeen, setWorkshopIntroSeen] = useState(hasSeenWorkshopIntro)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
   const [homeTransition, setHomeTransition] = useState(false)
@@ -104,6 +106,7 @@ export default function App() {
   }
   if (import.meta.env.DEV && window.location.pathname === '/__audio-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de música…</div>}><MusicStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   if (import.meta.env.DEV && window.location.pathname === '/__sound-effects-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de efeitos…</div>}><SoundEffectsStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
+  if (import.meta.env.DEV && window.location.pathname === '/__border-cave-preview') return <BorderCaveArrival locale={locale} onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
@@ -183,21 +186,25 @@ export default function App() {
         onBack={() => {
           audioManager.play('navigation')
           setHarrisonSceneOpen(false)
+          setBorderCaveSceneOpen(false)
           setSelectedArc(null)
         }}
         onStartAct={(act) => {
           const arc = learningArcs[selectedArc.moduleId]
+          if (selectedArc.moduleId === 'time' && act.id === 'counting-marks') setBorderCaveSceneOpen(true)
           window.dispatchEvent(new CustomEvent('stonephys:start-act', {
             detail: {
               moduleId: selectedArc.moduleId,
               arcId: arc.id,
               actId: act.id,
               intent: act.status === 'completed' ? 'review' : 'start',
+              sceneId: selectedArc.moduleId === 'time' && act.id === 'counting-marks' ? 'border-cave-42000-bce' : undefined,
             },
           }))
         }}
       />}
       {selectedArc && harrisonSceneOpen && <Suspense fallback={<div className="historical-scene-loading">{t('scene.loading')}</div>}><HarrisonWorkshopExperience onExit={() => setHarrisonSceneOpen(false)}/></Suspense>}
+      {selectedArc && borderCaveSceneOpen && !harrisonSceneOpen && <BorderCaveArrival locale={locale} onExit={() => setBorderCaveSceneOpen(false)}/>}
     </>
   }
 

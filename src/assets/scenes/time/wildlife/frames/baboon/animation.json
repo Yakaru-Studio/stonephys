@@ -1,0 +1,59 @@
+{
+  "width": 416,
+  "height": 384,
+  "anchor": {
+    "x": 0.5,
+    "y": 0.9375
+  },
+  "loop": true,
+  "frames": [
+    {
+      "file": "frame_01.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_02.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_03.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_04.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_05.png",
+      "durationMs": 220
+    },
+    {
+      "file": "frame_06.png",
+      "durationMs": 220
+    },
+    {
+      "file": "frame_07.png",
+      "durationMs": 220
+    },
+    {
+      "file": "frame_08.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_09.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_10.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_11.png",
+      "durationMs": 160
+    },
+    {
+      "file": "frame_12.png",
+      "durationMs": 160
+    }
+  ]
+}

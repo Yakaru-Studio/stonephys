@@ -1,0 +1,22 @@
+{
+  "id": "lebombo-bone-engraving",
+  "name": "Pedra lascada marcando a fíbula",
+  "category": "Lebombo",
+  "description": "Uma única raspada curta e seca de pedra lascada marcando a fíbula de um babuíno.",
+  "prompt": "One quick, dry scoring stroke: the sharp edge of a chipped stone drags across a dry baboon fibula, leaving a small notch. Close-miked realistic Foley, crisp gritty texture, immediate clean stop. Only one stroke. No separate impact, repeated scraping, reverb, ambience, voices, or music.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 0.5,
+  "promptInfluence": 0.75,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.72,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": false,
+    "evaluationOnly": true,
+    "notes": ""
+  },
+  "promptRevisions": []
+}

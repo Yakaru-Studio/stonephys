@@ -13,7 +13,7 @@
   ],
   "targetDurationSeconds": 180,
   "targetBpm": "65–80",
-  "defaultVolume": 0.20,
+  "defaultVolume": 0.2,
   "introVolume": {
     "gain": 0.38,
     "durationSeconds": 7,

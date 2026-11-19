@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties, type KeyboardEvent } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { audioManager } from '../../audio/AudioManager'
 import AudioControls from '../../audio/AudioControls'
@@ -9,6 +9,8 @@ import { ARU_CURIOSITY_AUDIO_DIR } from '../../narration/harrisonScript'
 import dawnOfHumanity from '../../../content/music/dawn-of-humanity/composition.json'
 import wideLandscape from '../../assets/scenes/time/lebombo/border-cave-dusk-wide.png'
 import portraitLandscape from '../../assets/scenes/time/lebombo/border-cave-dusk-portrait.png'
+import aruSkyVideo from '../../assets/scenes/time/lebombo/aru-sky-transparent.webm'
+import aruScanVideo from '../../assets/scenes/time/lebombo/aru-scan-final.webm'
 import baboonSkull from '../../assets/scenes/time/lebombo/baboon-skull-reference.png'
 import lebomboFibula from '../../assets/scenes/time/lebombo/lebombo-fibula-reference.png'
 import engravingFlake from '../../assets/scenes/time/lebombo/engraving-flake-low-poly.png'
@@ -41,6 +43,26 @@ const antelopeLookFrames = loadWildlifeFrames(
   import.meta.glob('../../assets/scenes/time/wildlife/frames/antelope/observando/frame_*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>,
   [200, 130, 130, 130, 180, 200, 200, 200, 200, 130, 130, 130, 130, 130, 130, 300],
 )
+const aruFrames = loadWildlifeFrames(
+  import.meta.glob('../../assets/scenes/time/lebombo/aru-sky-frames/aru_sky_*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>,
+  // Use all 64 interpolated frames at 16 fps; pause longer at the skyward pose.
+  Array.from({ length: 64 }, (_, index) => index === 32 ? 3200 : 62.5),
+)
+const aruScanFrames = loadWildlifeFrames(
+  import.meta.glob('../../assets/scenes/time/lebombo/aru-scan-64-frames/aru_scan_*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>,
+  Array.from({ length: 64 }, () => 62.5),
+)
+const aruScanIntroFrames = aruScanFrames.slice(0, 49)
+const aruScanIntroDurationMs = aruScanIntroFrames.reduce((total, frame) => total + frame.durationMs, 0)
+const aruBilateralFrames = aruScanFrames.slice(16, 49).map((frame, index, frames) => ({
+  ...frame,
+  durationMs: index === 0 || index === frames.length - 1 ? 280 : 82,
+}))
+// Begin from the leftmost pose reached by the intro, sweep back to the right,
+// then travel forward again. This keeps her head lowered while the scan loops.
+const aruBilateralPingPongFrames = [...aruBilateralFrames.slice().reverse(), ...aruBilateralFrames.slice(1, -1)]
+const aruSkyReturnFrames = aruFrames.slice(32)
+const aruSkyReturnDurationMs = aruSkyReturnFrames.reduce((total, frame) => total + frame.durationMs, 0)
 
 function loopingWildlifeFrame(frames: WildlifeFrame[], elapsedSeconds: number, offsetSeconds: number, pauseMs: number, rate = 1.55) {
   if (!frames.length) return null
@@ -52,6 +74,27 @@ function loopingWildlifeFrame(frames: WildlifeFrame[], elapsedSeconds: number, o
   for (const frame of frames) {
     cursor += frame.durationMs
     if (activeMs < cursor) return frame
+  }
+  return frames[frames.length - 1]
+}
+
+function singlePassWildlifeFrame(frames: WildlifeFrame[], elapsedSeconds: number) {
+  if (!frames.length) return null
+  let elapsedMs = Math.min(Math.max(0, elapsedSeconds * 1000), frames.reduce((total, frame) => total + frame.durationMs, 0) - 1)
+  for (const frame of frames) {
+    if (elapsedMs < frame.durationMs) return frame
+    elapsedMs -= frame.durationMs
+  }
+  return frames[frames.length - 1]
+}
+
+function cyclingWildlifeFrame(frames: WildlifeFrame[], elapsedSeconds: number) {
+  if (!frames.length) return null
+  const cycleMs = frames.reduce((total, frame) => total + frame.durationMs, 0)
+  let elapsedMs = ((elapsedSeconds * 1000) % cycleMs + cycleMs) % cycleMs
+  for (const frame of frames) {
+    if (elapsedMs < frame.durationMs) return frame
+    elapsedMs -= frame.durationMs
   }
   return frames[frames.length - 1]
 }
@@ -97,11 +140,11 @@ const sceneObjects: SceneObject[] = [
 ]
 
 const distantAnimals = [
-  { id: 'zebra-a', kind: 'zebra', x: 47.5, y: 50.4, size: 3.2, offset: 0 },
-  { id: 'zebra-b', kind: 'zebra', x: 50, y: 51, size: 3, offset: .16 },
-  { id: 'zebra-c', kind: 'zebra', x: 52.4, y: 50.6, size: 2.85, offset: .32 },
-  { id: 'antelope-a', kind: 'antelope-graze', x: 56, y: 50.8, size: 2.9, offset: .22 },
-  { id: 'antelope-b', kind: 'antelope-look', x: 60, y: 50.5, size: 3, offset: .42 },
+  { id: 'zebra-a', kind: 'zebra', x: 34, y: 52.4, size: 3.2, offset: 0 },
+  { id: 'zebra-b', kind: 'zebra', x: 37, y: 53, size: 3, offset: 1.6 },
+  { id: 'zebra-c', kind: 'zebra', x: 40, y: 52.6, size: 2.85, offset: 3.1 },
+  { id: 'antelope-a', kind: 'antelope-graze', x: 66, y: 53.8, size: 3.5, offset: .22 },
+  { id: 'antelope-b', kind: 'antelope-look', x: 74, y: 53.5, size: 3.6, offset: .42 },
   { id: 'baboon-a', kind: 'baboon', x: 25, y: 52.8, size: 3.6, offset: .12 },
 ] as const
 
@@ -110,6 +153,14 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
   const [portrait, setPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches)
   const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }))
   const [animalElapsed, setAnimalElapsed] = useState(0)
+  const directMusicStarted = useRef(false)
+  const [aruSkyVideoFinished, setAruSkyVideoFinished] = useState(false)
+  const [aruSkyVideoFailed, setAruSkyVideoFailed] = useState(false)
+  const [aruScanVideoReady, setAruScanVideoReady] = useState(false)
+  const [aruScanVideoStarted, setAruScanVideoStarted] = useState(false)
+  const [aruScanVideoFailed, setAruScanVideoFailed] = useState(false)
+  const aruScanVideoRef = useRef<HTMLVideoElement | null>(null)
+  const [aruIntroEndElapsed, setAruIntroEndElapsed] = useState<number | null>(null)
   const [selectedObject, setSelectedObject] = useState<SceneObject | null>(null)
   const [equippedItems, setEquippedItems] = useState<string[]>([])
   const [equipmentMessage, setEquipmentMessage] = useState('')
@@ -117,10 +168,29 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
   const [standaloneNarrationTime, setStandaloneNarrationTime] = useState(0)
   const [standaloneToolsReady, setStandaloneToolsReady] = useState(false)
   const english = locale === 'en'
+  const wideWebLayout = !portrait && viewport.width >= 768
   const equipmentComplete = equippedItems.includes('lebombo-fibula') && equippedItems.includes('engraving-flake')
   const canInteractWithObjects = (preserveNarration ? interactionEnabled : standaloneToolsReady) && !equipmentComplete
   const standaloneCaption = standaloneManifest?.segments.find((cue) => cue.startMs <= standaloneNarrationTime * 1000 && standaloneNarrationTime * 1000 < cue.endMs)?.text
   const visibleCaption = caption ?? standaloneCaption
+  const startDirectSceneMusic = () => {
+    if (preserveNarration || directMusicStarted.current) return
+    const composition = dawnOfHumanity as typeof dawnOfHumanity & { approvedAssetUrl?: string; approvedVolume?: number; approvedCropStartSeconds?: number; approvedCropEndSeconds?: number | null; introVolume?: { gain?: number }; loop?: { crossfadeMs?: number } }
+    if (!composition.approvedAssetUrl) return
+    audioManager.setNarrationMusicLevel(composition.ducking.musicLevelDuringNarration)
+    void audioManager.playMusicAsset(composition.approvedAssetUrl, {
+      fadeMs: 500,
+      loop: true,
+      loopCrossfadeMs: composition.loop?.crossfadeMs ?? 1800,
+      trackGain: composition.introVolume?.gain ?? composition.defaultVolume,
+      volume: composition.approvedVolume,
+      cropStartSeconds: composition.approvedCropStartSeconds,
+      cropEndSeconds: composition.approvedCropEndSeconds,
+    }).then(() => {
+      const activeTrack = audioManager.getMusicAudioElement()
+      if (activeTrack && !activeTrack.paused && activeTrack.src === new URL(composition.approvedAssetUrl!, window.location.href).href) directMusicStarted.current = true
+    }).catch(() => {})
+  }
 
   useEffect(() => {
     const media = window.matchMedia('(orientation: portrait)')
@@ -150,6 +220,13 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
     if (!preserveNarration) audioManager.stopNarration()
     audioManager.stopClockTicks()
   }, [preserveNarration])
+
+  useEffect(() => {
+    if (!aruSkyVideoFinished || aruSkyVideoFailed || !aruScanVideoReady || aruScanVideoFailed) return
+    const scanVideo = aruScanVideoRef.current
+    if (!scanVideo) return
+    void scanVideo.play().catch(() => setAruScanVideoFailed(true))
+  }, [aruSkyVideoFinished, aruSkyVideoFailed, aruScanVideoReady, aruScanVideoFailed])
 
   useEffect(() => {
     if (preserveNarration) return
@@ -190,9 +267,11 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
   }, [preserveNarration])
 
   useEffect(() => {
-    if (preserveNarration) return
     const composition = dawnOfHumanity as typeof dawnOfHumanity & { approvedAssetUrl?: string; approvedVolume?: number; approvedCropStartSeconds?: number; approvedCropEndSeconds?: number | null; introVolume?: { gain?: number }; loop?: { crossfadeMs?: number } }
     if (!composition.approvedAssetUrl) return
+    // When opened from the arrival scene, preserve its current playback position.
+    // A standalone entry should begin the soundtrack from its configured crop start.
+    if (!preserveNarration) audioManager.seekMusic(composition.approvedCropStartSeconds ?? 0)
     audioManager.setNarrationMusicLevel(composition.ducking.musicLevelDuringNarration)
     void audioManager.playMusicAsset(composition.approvedAssetUrl, {
       fadeMs: 500,
@@ -202,8 +281,11 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
       volume: composition.approvedVolume,
       cropStartSeconds: composition.approvedCropStartSeconds,
       cropEndSeconds: composition.approvedCropEndSeconds,
+    }).then(() => {
+      const activeTrack = audioManager.getMusicAudioElement()
+      if (!preserveNarration && activeTrack && !activeTrack.paused && activeTrack.src === new URL(composition.approvedAssetUrl!, window.location.href).href) directMusicStarted.current = true
     }).catch(() => {})
-    return () => audioManager.fadeMusicOut(900)
+    return () => { if (!preserveNarration) audioManager.fadeMusicOut(900) }
   }, [preserveNarration])
 
   useEffect(() => {
@@ -246,17 +328,36 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
   const coverWidth = sourceWidth * coverScale
   const coverHeight = sourceHeight * coverScale
   const coverLeft = (viewport.width - coverWidth) / 2
-  const coverTop = (viewport.height - coverHeight) / 2
+  // Wide viewports crop some of the sky and reveal more of the rock's front face
+  // and the ground in front of it, matching the portrait composition.
+  const coverTop = (viewport.height - coverHeight) / 2 - (wideWebLayout ? coverHeight * .08 : 0)
   const landscapeStyle = { inset: 'auto', left: `${coverLeft}px`, top: `${coverTop}px`, width: `${coverWidth}px`, height: `${coverHeight}px` } as CSSProperties
   const distantPoint = (x: number, y: number) => ({
     left: `${coverLeft + coverWidth * x / 100}px`,
     top: `${coverTop + coverHeight * y / 100}px`,
   })
+  const aruFallbackElapsed = aruSkyVideoFailed && aruIntroEndElapsed !== null ? animalElapsed - aruIntroEndElapsed : 0
+  const aruFallbackDuration = aruSkyReturnDurationMs / 1000
+  const aruScanElapsed = aruSkyVideoFinished && aruIntroEndElapsed !== null
+    ? animalElapsed - aruIntroEndElapsed
+    : aruSkyVideoFailed && aruIntroEndElapsed !== null
+      ? aruFallbackElapsed - aruFallbackDuration
+      : 0
+  const aruFallbackFrame = aruSkyVideoFailed && aruFallbackElapsed < aruFallbackDuration
+    ? singlePassWildlifeFrame(aruSkyReturnFrames, aruFallbackElapsed)?.src ?? aruFrames[32]?.src
+    : null
+  const aruScanFrame = aruScanElapsed < aruScanIntroDurationMs / 1000
+    ? singlePassWildlifeFrame(aruScanIntroFrames, aruScanElapsed)?.src ?? aruScanIntroFrames[0]?.src
+    : cyclingWildlifeFrame(aruBilateralPingPongFrames, aruScanElapsed - aruScanIntroDurationMs / 1000)?.src ?? aruScanIntroFrames[aruScanIntroFrames.length - 1]?.src
+  const aruStyle = {
+    ...distantPoint(50, wideWebLayout ? 77 : portrait ? 61.5 : 72),
+    width: `${coverWidth * (wideWebLayout ? .18 : portrait ? .4 : .2)}px`,
+  } as CSSProperties
   const animalSource = (animal: typeof distantAnimals[number]) => {
-    if (animal.kind === 'zebra') return loopingWildlifeFrame(zebraFrames, animalElapsed, animal.offset, 140)?.src ?? zebraFrames[0]?.src
-    if (animal.kind === 'baboon') return loopingWildlifeFrame(baboonFrames, animalElapsed, animal.offset, 140)?.src ?? baboonFrames[0]?.src
-    if (animal.kind === 'antelope-look') return loopingWildlifeFrame(antelopeLookFrames, animalElapsed, animal.offset, 140)?.src ?? antelopeLookFrames[0]?.src
-    return loopingWildlifeFrame(antelopeGrazeFrames, animalElapsed, animal.offset, 140)?.src ?? antelopeGrazeFrames[0]?.src
+    if (animal.kind === 'zebra') return loopingWildlifeFrame(zebraFrames, animalElapsed, animal.offset, 2400, 1.1)?.src ?? zebraFrames[0]?.src
+    if (animal.kind === 'baboon') return loopingWildlifeFrame(baboonFrames, animalElapsed, animal.offset, 4200, 1.05)?.src ?? baboonFrames[0]?.src
+    if (animal.kind === 'antelope-look') return loopingWildlifeFrame(antelopeLookFrames, animalElapsed, animal.offset, 2100, 1.15)?.src ?? antelopeLookFrames[0]?.src
+    return loopingWildlifeFrame(antelopeGrazeFrames, animalElapsed, animal.offset, 2300, 1.15)?.src ?? antelopeGrazeFrames[0]?.src
   }
   const itemLabel = (object: SceneObject) => english
     ? object.id === 'baboon-skull' ? 'Chacma baboon skull (without lower jaw)'
@@ -301,7 +402,7 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
     if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectObject(object) }
   }
 
-  return <main className={`lebombo-discovery-scene ${portrait ? 'is-portrait' : ''}`} aria-label={english ? 'Border Cave archaeological scene' : 'Cena arqueológica em Border Cave'}>
+  return <main className={`lebombo-discovery-scene ${portrait ? 'is-portrait' : ''}`} aria-label={english ? 'Border Cave archaeological scene' : 'Cena arqueológica em Border Cave'} onPointerDownCapture={startDirectSceneMusic} onKeyDownCapture={startDirectSceneMusic}>
     <picture className="lebombo-landscape" style={landscapeStyle} aria-hidden="true">
       <source media="(orientation: portrait)" srcSet={portraitLandscape}/>
       <img src={wideLandscape} alt="" style={{ width: '100%', height: '100%' }}/>
@@ -313,8 +414,8 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
         key={animal.id}
         className={`lebombo-animal lebombo-animal-${animal.kind}`}
         style={{
-          ...distantPoint(animal.x, animal.y),
-          width: `${coverWidth * animal.size / 100}px`,
+          ...distantPoint(wideWebLayout && animal.id === 'antelope-b' ? 70 : animal.x, animal.y + (wideWebLayout ? (animal.kind === 'baboon' ? 4 : 9) : 0)),
+          width: `${coverWidth * animal.size / 100 * (wideWebLayout ? .85 : 1)}px`,
           zIndex: Math.round(animal.y),
         } as CSSProperties}
       ><img src={animalSource(animal)} alt="" draggable={false}/></div>)}
@@ -324,7 +425,7 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
         const isEquipped = equippedItems.includes(object.id)
         const style = {
           left: `${object.x}%`,
-          top: `${object.y}%`,
+          top: `${wideWebLayout ? 88 + (object.y - 76.8) * .55 : object.y}%`,
           width: object.realLengthCm
             ? `${object.realLengthCm / (portrait ? PORTRAIT_WORLD_REFERENCE_WIDTH_CM : WORLD_REFERENCE_WIDTH_CM) * 100}vw`
             : object.width,
@@ -348,6 +449,35 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
           style={style}
         />
       })}
+    </div>
+    <div className="lebombo-aru" style={aruStyle} aria-hidden="true">
+      {!aruSkyVideoFailed && (!aruSkyVideoFinished || (!aruScanVideoStarted && !aruScanVideoFailed)) && (
+        <video
+          className="lebombo-aru-sky-video"
+          src={aruSkyVideo}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          onLoadedMetadata={(event) => { event.currentTarget.currentTime = Math.min(1.5, Math.max(0, event.currentTarget.duration - .05)) }}
+          onEnded={() => { setAruSkyVideoFinished(true); setAruIntroEndElapsed(animalElapsed) }}
+          onError={() => { setAruSkyVideoFailed(true); setAruIntroEndElapsed(animalElapsed) }}
+        />
+      )}
+      {aruSkyVideoFailed && aruFallbackFrame && <img src={aruFallbackFrame} alt="" draggable={false}/>}
+      {((aruSkyVideoFailed && !aruFallbackFrame) || (aruSkyVideoFinished && aruScanVideoFailed)) && <img src={aruScanFrame ?? ''} alt="" draggable={false}/>}
+      <video
+        ref={aruScanVideoRef}
+        className={`lebombo-aru-scan-video ${aruScanVideoStarted && !aruScanVideoFailed ? 'is-active' : 'is-preload'}`}
+        src={aruScanVideo}
+        muted
+        playsInline
+        preload="auto"
+        loop
+        onCanPlay={() => setAruScanVideoReady(true)}
+        onPlaying={() => setAruScanVideoStarted(true)}
+        onError={() => setAruScanVideoFailed(true)}
+      />
     </div>
     {canInteractWithObjects && <div className="lebombo-action-hint">{english ? 'Click the items to equip' : 'Clique nos itens para equipar'}</div>}
     {equipmentMessage && <div className="lebombo-equipment-feedback" role="status">{equipmentMessage}</div>}

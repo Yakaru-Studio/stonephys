@@ -6,20 +6,20 @@ type BirdPlacement = { x: number; y: number; size: number; delay: number; durati
 
 const flocks: Record<FlockVariant, BirdPlacement[]> = {
   'border-cave': [
-    { x: 15, y: 18, size: 24, delay: -8, duration: 23, tilt: -8, scale: .9 },
-    { x: 28, y: 27, size: 13, delay: -17, duration: 27, tilt: 7, scale: 1.05 },
-    { x: 42, y: 14, size: 26, delay: -4, duration: 22, tilt: -3, scale: .94 },
-    { x: 57, y: 23, size: 17, delay: -13, duration: 29, tilt: 6, scale: 1.12 },
-    { x: 73, y: 12, size: 25, delay: -21, duration: 24, tilt: -5, scale: 1 },
-    { x: 85, y: 25, size: 12, delay: -10, duration: 26, tilt: 8, scale: .86 },
+    { x: 15, y: 46, size: 24, delay: 0, duration: 26, tilt: -8, scale: .9 },
+    { x: 28, y: 55, size: 13, delay: 3, duration: 30, tilt: 7, scale: 1.05 },
+    { x: 42, y: 42, size: 26, delay: 6, duration: 27, tilt: -3, scale: .94 },
+    { x: 57, y: 51, size: 17, delay: 9, duration: 32, tilt: 6, scale: 1.12 },
+    { x: 73, y: 44, size: 25, delay: 12, duration: 29, tilt: -5, scale: 1 },
+    { x: 85, y: 57, size: 12, delay: 15, duration: 31, tilt: 8, scale: .86 },
   ],
   lebombo: [
-    { x: 22, y: 17, size: 14, delay: -14, duration: 26, tilt: -8, scale: .9 },
-    { x: 33, y: 27, size: 23, delay: -5, duration: 22, tilt: 5, scale: 1.08 },
-    { x: 45, y: 14, size: 12, delay: -20, duration: 28, tilt: -4, scale: .92 },
-    { x: 56, y: 23, size: 25, delay: -11, duration: 24, tilt: 7, scale: 1 },
-    { x: 68, y: 12, size: 17, delay: -25, duration: 29, tilt: -6, scale: 1.12 },
-    { x: 79, y: 25, size: 22, delay: -17, duration: 23, tilt: 4, scale: .88 },
+    { x: 22, y: 17, size: 14, delay: 0, duration: 26, tilt: -8, scale: .9 },
+    { x: 33, y: 27, size: 23, delay: 3, duration: 30, tilt: 5, scale: 1.08 },
+    { x: 45, y: 14, size: 12, delay: 6, duration: 27, tilt: -4, scale: .92 },
+    { x: 56, y: 23, size: 25, delay: 9, duration: 32, tilt: 7, scale: 1 },
+    { x: 68, y: 12, size: 17, delay: 12, duration: 29, tilt: -6, scale: 1.12 },
+    { x: 79, y: 25, size: 22, delay: 15, duration: 31, tilt: 4, scale: .88 },
   ],
 }
 

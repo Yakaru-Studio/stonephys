@@ -11,6 +11,7 @@ import { learningArcs } from './arcActs'
 import { localizeModule, useLocale } from './i18n'
 import BorderCaveArrival from './scenes/time/BorderCaveArrival'
 import LebomboDiscoveryScene from './scenes/time/LebomboDiscoveryScene'
+import dawnOfHumanity from '../content/music/dawn-of-humanity/composition.json'
 
 const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
 const VoiceStudio = lazy(() => import('./narration/VoiceStudio'))
@@ -21,6 +22,21 @@ const workshopIntroStorageKey = 'stonephys.time.arc-one.workshop-intro-seen.v1'
 
 function hasSeenWorkshopIntro() {
   try { return window.localStorage.getItem(workshopIntroStorageKey) === 'true' } catch { return false }
+}
+
+function startLebomboDiscoveryMusic() {
+  const composition = dawnOfHumanity as typeof dawnOfHumanity & { approvedAssetUrl?: string; approvedVolume?: number; approvedCropStartSeconds?: number; approvedCropEndSeconds?: number | null; introVolume?: { gain?: number }; loop?: { crossfadeMs?: number } }
+  if (!composition.approvedAssetUrl) return Promise.resolve()
+  audioManager.setNarrationMusicLevel(composition.ducking.musicLevelDuringNarration)
+  return audioManager.playMusicAsset(composition.approvedAssetUrl, {
+    fadeMs: 500,
+    loop: true,
+    loopCrossfadeMs: composition.loop?.crossfadeMs ?? 1800,
+    trackGain: composition.introVolume?.gain ?? composition.defaultVolume,
+    volume: composition.approvedVolume,
+    cropStartSeconds: composition.approvedCropStartSeconds,
+    cropEndSeconds: composition.approvedCropEndSeconds,
+  })
 }
 
 export default function App() {
@@ -77,7 +93,7 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (borderCaveSceneOpen || (import.meta.env.DEV && window.location.pathname === '/__border-cave-preview')) return
+    if (borderCaveSceneOpen || (import.meta.env.DEV && ['/__border-cave-preview', '/__lebombo-discovery-preview'].includes(window.location.pathname))) return
     const wisdomSanctuaryApproved = import.meta.env.DEV
       ? music.some((item) => item.id === 'the-sanctuary-of-wisdom' && item.approvedVersionId)
       : Object.entries(packagedMusic).some(([file, item]) => file.includes('/the-sanctuary-of-wisdom/composition.json') && item.approvedAssetUrl)
@@ -113,6 +129,7 @@ export default function App() {
   if (import.meta.env.DEV && window.location.pathname === '/__lebombo-discovery-preview') return <LebomboDiscoveryScene onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
   if (import.meta.env.DEV && devSceneOverride === 'border-cave-cycle') return <BorderCaveArrival locale={locale} onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
   if (import.meta.env.DEV && devSceneOverride === 'lebombo-discovery') return <LebomboDiscoveryScene onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
+  if (import.meta.env.DEV && devSceneOverride === 'lebombo-bone-activity') return <BorderCaveArrival locale={locale} startInBoneActivity onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
@@ -197,8 +214,12 @@ export default function App() {
           setSelectedArc(null)
         }}
         onStartAct={(act, devScene) => {
+          // Starting a scene is a direct user gesture; unlock audio here so
+          // browser autoplay restrictions do not silently suppress ambience.
+          void audioManager.resumeAudioContext().catch(() => {})
           if (import.meta.env.DEV && devScene) {
             audioManager.fadeMusicOut(500)
+            if (devScene === 'lebombo-discovery') void startLebomboDiscoveryMusic().catch(() => {})
             setBorderCaveSceneOpen(true)
             setDevSceneOverride(devScene)
             return

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-18T03:19:46.765Z",
+  "updatedAt": "2026-11-19T03:05:42.889Z",
   "effects": {
     "library-scroll-unroll": {
       "versions": [
@@ -609,6 +609,185 @@
       ],
       "previewVersionId": "gen-cf3d6d53-c3fd-403c-a59f-f1eae163b6e0",
       "approvedVersionId": null
+    },
+    "lebombo-bone-engraving": {
+      "versions": [
+        {
+          "id": "gen-e663de13-8bc6-4e5b-9377-deec744049c6",
+          "effectId": "lebombo-bone-engraving",
+          "name": "Pedra lascada marcando a fíbula",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "One quick, dry scoring stroke: the sharp edge of a chipped stone drags across a dry baboon fibula, leaving a small notch. Close-miked realistic Foley, crisp gritty texture, immediate clean stop. Only one stroke. No separate impact, repeated scraping, reverb, ambience, voices, or music.\nAdditional direction: Precisa parecer um som mais de pedra sendo arrastada e menos chiado, um som com inicio e fim feito para caber em uma ação só",
+          "requestedDurationSeconds": 0.5,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T03:04:58.273Z",
+          "createdAt": "2026-11-19T03:04:58.273Z",
+          "estimatedCredits": 20,
+          "actualCredits": null,
+          "providerCostHeader": "5",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/lebombo-bone-engraving/gen-e663de13-8bc6-4e5b-9377-deec744049c6.mp3",
+          "bytes": 8820,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": "Aprovada para publicação no jogo.",
+          "reviewedAt": "2026-11-19T03:05:42.888Z",
+          "productionEligible": false,
+          "assetUrl": null,
+          "evaluationOnly": true
+        },
+        {
+          "id": "gen-8ce0db45-8788-4db9-a309-7f8b0148deac",
+          "effectId": "lebombo-bone-engraving",
+          "name": "Pedra lascada marcando a fíbula",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "One quick, dry scoring stroke: the sharp edge of a chipped stone drags across a dry baboon fibula, leaving a small notch. Close-miked realistic Foley, crisp gritty texture, immediate clean stop. Only one stroke. No separate impact, repeated scraping, reverb, ambience, voices, or music.\nAdditional direction: Precisa parecer um som mais de pedra sendo arrastada e menos chiado",
+          "requestedDurationSeconds": 0.5,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T03:04:16.881Z",
+          "createdAt": "2026-11-19T03:04:16.881Z",
+          "estimatedCredits": 20,
+          "actualCredits": null,
+          "providerCostHeader": "5",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/lebombo-bone-engraving/gen-8ce0db45-8788-4db9-a309-7f8b0148deac.mp3",
+          "bytes": 8820,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-b085f9d9-5fde-4992-85af-6b2e426a8f4d",
+          "effectId": "lebombo-bone-engraving",
+          "name": "Pedra lascada marcando a fíbula",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "One quick, dry scoring stroke: the sharp edge of a chipped stone drags across a dry baboon fibula, leaving a small notch. Close-miked realistic Foley, crisp gritty texture, immediate clean stop. Only one stroke. No separate impact, repeated scraping, reverb, ambience, voices, or music.\nAdditional direction: Quero um som mais de pedra em atrito com osso um som mais croc",
+          "requestedDurationSeconds": 0.5,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T03:02:34.131Z",
+          "createdAt": "2026-11-19T03:02:34.131Z",
+          "estimatedCredits": 20,
+          "actualCredits": null,
+          "providerCostHeader": "5",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/lebombo-bone-engraving/gen-b085f9d9-5fde-4992-85af-6b2e426a8f4d.mp3",
+          "bytes": 8820,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-b06d7e14-837e-4079-a7f9-b506a24a7e35",
+          "effectId": "lebombo-bone-engraving",
+          "name": "Pedra lascada marcando a fíbula",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "One quick, dry scoring stroke: the sharp edge of a chipped stone drags across a dry baboon fibula, leaving a small notch. Close-miked realistic Foley, crisp gritty texture, immediate clean stop. Only one stroke. No separate impact, repeated scraping, reverb, ambience, voices, or music.",
+          "requestedDurationSeconds": 0.5,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T03:01:11.281Z",
+          "createdAt": "2026-11-19T03:01:11.281Z",
+          "estimatedCredits": 20,
+          "actualCredits": null,
+          "providerCostHeader": "5",
+          "status": "rejected",
+          "assetPath": "tools/sound-effects/generations/lebombo-bone-engraving/gen-b06d7e14-837e-4079-a7f9-b506a24a7e35.mp3",
+          "bytes": 8820,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": "",
+          "reviewedAt": "2026-11-19T03:01:52.290Z"
+        }
+      ],
+      "previewVersionId": "gen-e663de13-8bc6-4e5b-9377-deec744049c6",
+      "approvedVersionId": "gen-e663de13-8bc6-4e5b-9377-deec744049c6"
     }
   },
   "requests": [
@@ -838,6 +1017,82 @@
       "completedAt": "2026-11-18T03:19:36.414Z",
       "providerUsage": {
         "characterCostHeader": "50"
+      }
+    },
+    {
+      "requestId": "c385a564-c78d-410f-bc1f-46487b0e788b",
+      "effectId": "lebombo-bone-engraving",
+      "configHash": "8b4d96e375ba426ffb54e78d58cf00582ac8ad20744eba320f26c4276ee4f534",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 0.5,
+      "estimatedCredits": 20,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T03:01:09.572Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-b06d7e14-837e-4079-a7f9-b506a24a7e35",
+      "bytes": 8820,
+      "completedAt": "2026-11-19T03:01:11.281Z",
+      "providerUsage": {
+        "characterCostHeader": "5"
+      }
+    },
+    {
+      "requestId": "0948a233-1c52-405a-a268-28e2e1abdcf4",
+      "effectId": "lebombo-bone-engraving",
+      "configHash": "4fcb47cd7f6627060dde2495e278ffbbf70b4b4affebb8a60fe8ebcde7818789",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 0.5,
+      "estimatedCredits": 20,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T03:02:31.942Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-b085f9d9-5fde-4992-85af-6b2e426a8f4d",
+      "bytes": 8820,
+      "completedAt": "2026-11-19T03:02:34.131Z",
+      "providerUsage": {
+        "characterCostHeader": "5"
+      }
+    },
+    {
+      "requestId": "16e9a6bf-106c-4a6c-9c40-371a5e36869a",
+      "effectId": "lebombo-bone-engraving",
+      "configHash": "0ad2b0b0a55599571dc0edff35c12da14f5b2bb1dd99ad20cf67f512a6e34289",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 0.5,
+      "estimatedCredits": 20,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T03:04:15.501Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-8ce0db45-8788-4db9-a309-7f8b0148deac",
+      "bytes": 8820,
+      "completedAt": "2026-11-19T03:04:16.881Z",
+      "providerUsage": {
+        "characterCostHeader": "5"
+      }
+    },
+    {
+      "requestId": "5d94c482-5f58-4446-a3b2-b2b649e7ccd3",
+      "effectId": "lebombo-bone-engraving",
+      "configHash": "9bf9b77b0b5d038f38378baa97c280c5772890f09d01c5143feebbfdf3120cd5",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 0.5,
+      "estimatedCredits": 20,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T03:04:56.613Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-e663de13-8bc6-4e5b-9377-deec744049c6",
+      "bytes": 8820,
+      "completedAt": "2026-11-19T03:04:58.273Z",
+      "providerUsage": {
+        "characterCostHeader": "5"
       }
     }
   ]

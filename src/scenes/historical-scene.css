@@ -125,7 +125,7 @@
 .border-cave-moonlight{position:absolute;z-index:1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 74% 31%,rgba(178,199,239,.2),rgba(136,163,214,.08) 23%,transparent 48%);mix-blend-mode:screen;transition:opacity 1.8s ease}
 .border-cave-moon{position:absolute;z-index:3;aspect-ratio:1;transform:translate(-50%,-50%);overflow:hidden;border-radius:50%;filter:brightness(1.12) drop-shadow(0 0 12px rgba(219,227,244,.3)) drop-shadow(0 0 24px rgba(169,190,232,.18));pointer-events:none;will-change:left,top,opacity;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--moon-visible,100%),transparent calc(var(--moon-visible,100%) + 1.5%));mask-image:linear-gradient(to bottom,#000 0%,#000 var(--moon-visible,100%),transparent calc(var(--moon-visible,100%) + 1.5%))}
 .border-cave-moon img{position:absolute;left:50%;top:50%;display:block;width:148%;height:148%;max-width:none;object-fit:contain;transform:translate(-50%,-50%)}
-.border-cave-moon-shadow{position:absolute;top:0;left:calc(50% + var(--moon-phase,0%));width:100%;height:100%;transform:translateX(-50%);border-radius:50%;background:rgba(12,18,36,.9);opacity:var(--moon-shadow-opacity,0);transition:left 4.5s ease,opacity .8s ease;mix-blend-mode:multiply}
+.border-cave-moon-shadow{position:absolute;top:0;left:calc(50% + var(--moon-phase,0%));width:100%;height:100%;transform:translateX(-50%);border-radius:50%;background:rgba(12,18,36,.9);opacity:var(--moon-shadow-opacity,0);transition:left var(--moon-transition,4.5s) ease,opacity .8s ease;mix-blend-mode:multiply}
 .border-cave-lunar-blackout{position:absolute;z-index:30;inset:0;background:#03040a;pointer-events:none;will-change:opacity}
 @media(min-width:701px){
   .border-cave-animal-baboon{width:1%;}

@@ -1,0 +1,1 @@
+64 PNG RGBA 328 x 299. 16 originais preservados + 48 intermediarios por fluxo optico. Loop 16 FPS = 4 segundos; 24 FPS = 2,67 segundos. Interpolacao pode produzir artefatos locais.

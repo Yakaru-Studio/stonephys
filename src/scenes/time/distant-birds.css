@@ -1,7 +1,7 @@
 .distant-bird-flock{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.distant-bird-flock-border-cave{z-index:2}
+.distant-bird-flock-border-cave{z-index:4}
 .distant-bird-flock-lebombo{z-index:3}
-.distant-bird{position:absolute;left:var(--bird-x);top:var(--bird-y);width:var(--bird-size);height:auto;overflow:visible;color:#171a28;opacity:.82;filter:drop-shadow(0 1px 1.5px rgba(7,10,20,.38));animation:distant-bird-glide var(--bird-duration) linear infinite;animation-delay:var(--bird-delay)}
+.distant-bird{position:absolute;left:0;top:var(--bird-y);width:var(--bird-size);height:auto;overflow:visible;color:#171a28;opacity:.82;filter:drop-shadow(0 1px 1.5px rgba(7,10,20,.38));animation:distant-bird-cross-screen var(--bird-duration) linear infinite;animation-delay:var(--bird-delay);animation-fill-mode:backwards}
 .distant-bird-flock-lebombo .distant-bird{color:#201a19;opacity:.74;filter:drop-shadow(0 1px 1.2px rgba(23,13,12,.32))}
 .distant-bird-wings{fill:currentColor;transform-origin:36px 22px;animation:distant-bird-wingbeat var(--wing-duration) ease-in-out infinite alternate;animation-delay:var(--wing-delay)}
 .distant-bird-wing{fill:currentColor;stroke:currentColor;stroke-width:.55;stroke-linejoin:round}
@@ -13,5 +13,5 @@
 @keyframes distant-bird-wing-left{from{transform:rotate(-12deg) scaleY(.76)}to{transform:rotate(8deg) scaleY(1.08)}}
 @keyframes distant-bird-wing-right{from{transform:rotate(12deg) scaleY(.76)}to{transform:rotate(-8deg) scaleY(1.08)}}
 @keyframes distant-bird-wingbeat{from{transform:translateY(1px)}to{transform:translateY(-1px)}}
-@keyframes distant-bird-glide{0%{translate:-1vw 0;opacity:.45}12%{opacity:.82}52%{translate:6vw -1.3vh;opacity:.84}100%{translate:13vw .5vh;opacity:.42}}
-@media(prefers-reduced-motion:reduce){.distant-bird,.distant-bird-wings,.distant-bird-wing-left,.distant-bird-wing-right{animation:none}}
+@keyframes distant-bird-cross-screen{0%{translate:-110% 0;opacity:0}7%{opacity:.76}92%{opacity:.76}100%{translate:calc(100vw + 110%) 0;opacity:0}}
+@media(prefers-reduced-motion:reduce){.distant-bird{left:var(--bird-x);translate:0 0;animation:none;opacity:.8}.distant-bird-wings,.distant-bird-wing-left,.distant-bird-wing-right{animation:none}}

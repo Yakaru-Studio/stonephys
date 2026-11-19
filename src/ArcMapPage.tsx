@@ -62,6 +62,7 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
           <select value={devScene} onChange={(event) => onDevSceneChange(event.currentTarget.value as DevSceneTarget)}>
             <option value="border-cave-cycle">{locale === 'en' ? 'Scene 1 · Sun and Moon' : 'Cena 1 · Sol e Lua'}</option>
             <option value="lebombo-discovery">{locale === 'en' ? 'Scene 2 · Lebombo discovery' : 'Cena 2 · Descoberta do Lebombo'}</option>
+            <option value="lebombo-bone-activity">{locale === 'en' ? 'Scene 3 · Bone activity' : 'Cena 3 · Atividade do osso'}</option>
           </select>
         </label>}
         <div className="parchment-actions">
@@ -79,7 +80,7 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
   </div>
 }
 
-export type DevSceneTarget = 'border-cave-cycle' | 'lebombo-discovery'
+export type DevSceneTarget = 'border-cave-cycle' | 'lebombo-discovery' | 'lebombo-bone-activity'
 
 function LibraryScroll({ act, current, onSelect }: { act: ArcAct; current: boolean; onSelect: () => void }) {
   const sealArtwork = act.status === 'locked' ? lockSealArtwork : act.status === 'completed' ? completedSealArtwork : act.symbol === 'bone' ? boneSealArtwork : null
@@ -194,7 +195,6 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
     const actToStart = selectedAct
     setFlameActId(actToStart.id)
     setStartingAct(true)
-    closeParchment()
     const begin = () => onStartAct(actToStart, import.meta.env.DEV ? devScene : undefined)
     if (reducedMotion) {
       begin()

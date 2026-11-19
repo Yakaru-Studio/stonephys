@@ -566,3 +566,1064 @@ Port 5174 is in use, trying another one...
 00:11:16 [vite] server restarted.
 00:18:23 [vite] tools/sound-effects/soundEffectsApi.mjs changed, restarting server...
 00:18:23 [vite] server restarted.
+09:12:22 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+09:15:11 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+09:20:05 [vite] (client) hmr update /src/App.tsx
+09:20:06 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+09:20:06 [vite] server restarted.
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: http://100.64.0.1:5175/    Conexão Local
+  ➜  Network: http://192.168.0.86:5175/  Wi-Fi
+09:21:09 [vite] (client) hmr update /src/arc-map.css
+09:21:41 [vite] (client) hmr update /src/App.tsx
+09:21:41 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+09:22:28 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/ArcMapPage.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:22:28 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+09:23:01 [vite] (client) hmr update /src/arc-map.css
+09:23:41 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:24:30 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:24:48 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:24:49 [vite] (client) hmr update /src/App.tsx
+09:24:49 [vite] (client) hmr update /src/constellation.css
+09:31:19 [vite] .env.local changed, restarting server...
+09:31:19 [vite] server restarted.
+09:31:22 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/ArcMapPage.tsx
+09:31:22 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/ArcMapPage.tsx
+09:31:23 [vite] (client) hmr update /src/audio/AudioControls.tsx
+09:31:23 [vite] (client) hmr update /src/i18n.tsx
+09:31:23 [vite] (client) hmr invalidate /src/i18n.tsx Could not Fast Refresh ("localizeArc" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+09:31:23 [vite] (client) page reload src/i18n.tsx
+09:31:57 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:35:36 [vite] (client) hmr update /src/ConstellationPage.tsx
+09:35:36 [vite] (client) hmr update /src/App.tsx
+09:37:34 [vite] (client) hmr update /src/ArcMapPage.tsx
+09:37:35 [vite] (client) hmr update /src/arc-map.css
+09:39:31 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:42:39 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:43:30 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+09:45:23 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:45:58 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:49:16 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:49:45 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:49:49 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:51:18 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:52:11 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:52:18 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:52:32 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:53:55 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:54:05 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:54:36 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:55:25 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:55:37 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:56:50 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:57:04 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:57:10 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:57:20 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:57:39 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:57:40 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:58:12 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:58:12 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:58:25 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+09:59:31 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:00:48 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:00:48 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:01:48 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:01:48 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:03:01 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:03:51 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:06:32 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+10:06:32 [vite] vite.config.ts changed, restarting server...
+10:06:32 [vite] server restarted.
+10:07:42 [vite] src/narration/harrisonScript.ts changed, restarting server...
+10:07:42 [vite] vite.config.ts changed, restarting server...
+10:07:42 [vite] server restarted.
+10:07:43 [vite] server restarted.
+10:08:18 [vite] (client) hmr update /src/audio/AudioControls.tsx
+10:08:19 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:08:34 [vite] vite.config.ts changed, restarting server...
+10:08:34 [vite] server restarted.
+10:10:25 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:12:00 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:15:37 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:15:54 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:20:03 [vite] (client) hmr update /src/scenes/time/SceneIntroTitle.tsx
+10:20:03 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/ArcMapPage.tsx
+10:20:03 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:20:03 [vite] (client) hmr invalidate /src/scenes/time/SceneIntroTitle.tsx Could not Fast Refresh (export "SCENE_TITLE_RISE_SECONDS" added)
+10:20:03 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:17:00 [vite] src/narration/harrisonScript.ts changed, restarting server...
+11:17:01 [vite] vite.config.ts changed, restarting server...
+11:17:01 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:17:01 [vite] server restarted.
+11:17:01 [vite] server restarted.
+11:17:26 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:18:58 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:18:59 [vite] (client) hmr update /src/narration/voice-studio.css
+11:19:22 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:21:40 [vite] vite.config.ts changed, restarting server...
+11:21:40 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:21:40 [vite] server restarted.
+11:22:01 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:22:31 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:24:45 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:28:53 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:29:39 [vite] src/narration/harrisonScript.ts changed, restarting server...
+11:29:39 [vite] vite.config.ts changed, restarting server...
+11:29:39 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+11:29:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:29:39 [vite] server restarted.
+11:29:40 [vite] server restarted.
+11:38:43 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:39:17 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:39:31 [vite] (client) hmr update /src/scenes/historical-scene.css
+11:40:55 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:51:18 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:51:42 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:51:56 [vite] (client) hmr update /src/scenes/historical-scene.css
+11:52:25 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:53:08 [vite] (client) hmr update /src/scenes/historical-scene.css
+11:54:26 [vite] (client) hmr update /src/scenes/historical-scene.css
+11:59:16 [vite] (client) hmr update /src/ArcMapPage.tsx
+11:59:25 [vite] (client) hmr update /src/arc-map.css
+11:59:37 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:59:54 [vite] (client) hmr update /src/scenes/historical-scene.css
+12:08:41 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:09:21 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:09:28 [vite] (client) hmr update /src/scenes/historical-scene.css
+12:10:22 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:10:29 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:10:47 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:11:39 [vite] (client) hmr update /src/scenes/historical-scene.css
+12:18:52 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:19:37 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:19:57 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:25:16 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:25:38 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:30:40 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:37:19 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:37:26 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:41:38 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:41:57 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:42:44 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:44:46 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:58:12 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:58:24 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:08:59 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:11:13 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+15:41:06 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+15:44:06 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+15:44:06 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+15:44:06 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+15:44:23 [vite] (client) hmr update /src/App.tsx
+15:46:48 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+15:46:48 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+15:46:48 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+15:46:48 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx, /src/App.tsx
+15:55:17 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+15:56:32 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+15:56:32 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+15:56:32 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx, /src/App.tsx
+15:56:55 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+15:56:55 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+15:56:55 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx, /src/App.tsx
+15:57:23 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+15:59:01 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+15:59:01 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+15:59:01 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx, /src/App.tsx
+16:00:11 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:00:11 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:00:11 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx, /src/App.tsx
+16:00:20 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+16:02:10 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:02:10 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:02:10 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx, /src/App.tsx
+16:02:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:02:24 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:02:24 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx, /src/App.tsx
+16:02:41 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+16:07:46 [vite] src/narration/harrisonScript.ts changed, restarting server...
+16:07:46 [vite] vite.config.ts changed, restarting server...
+16:07:46 [vite] (client) hmr update /src/narration/VoiceStudio.tsx
+16:07:46 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:07:46 [vite] (client) hmr update /src/scenes/historical-scene.css
+16:07:46 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:07:47 [vite] server restarted.
+16:07:47 [vite] server restarted.
+16:08:45 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:13:34 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:13:35 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:13:35 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:13:35 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:14:40 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+16:15:11 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:15:49 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:15:49 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:15:49 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:16:14 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:16:14 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:16:15 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:16:39 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+16:19:00 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:19:12 [vite] (client) hmr update /src/arc-map.css
+16:22:21 [vite] (client) hmr update /src/App.tsx
+16:23:07 [vite] (client) hmr update /src/ArcMapPage.tsx
+16:29:44 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:29:59 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:29:59 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:29:59 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:32:44 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:33:11 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:33:43 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:33:43 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:33:43 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:34:14 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+16:34:50 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:34:50 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:34:50 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:36:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:36:08 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:36:08 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:36:34 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:36:35 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:36:35 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:36:35 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+16:40:26 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/ArcMapPage.tsx
+16:40:26 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:40:26 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:41:19 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:41:19 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:41:19 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:42:12 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:42:12 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:42:12 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:43:26 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:44:09 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:44:09 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:44:09 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:45:11 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:45:11 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:45:11 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:51:15 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+16:51:15 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+16:51:15 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+16:51:15 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+16:51:16 [vite] (client) hmr update /src/scenes/historical-scene.css
+16:56:19 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+16:56:20 [vite] (client) hmr update /src/scenes/time/distant-birds.css
+16:58:35 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+17:00:15 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+17:07:43 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:07:44 [vite] (client) [optimizer] bundling dependencies...
+17:07:45 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:07:45 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:07:45 [vite] (client) dependencies optimized: three/addons/loaders/GLTFLoader.js, three/addons/utils/SkeletonUtils.js
+17:08:02 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+17:10:09 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:12:26 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+17:12:43 [vite] (client) hmr update /src/scenes/time/distant-birds.css
+17:13:00 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:13:00 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:13:00 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:15:09 [vite] (client) hmr update /src/ArcMapPage.tsx
+17:15:40 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+17:15:54 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:15:54 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:15:54 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:20:18 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+17:20:49 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+17:21:07 [vite] (client) hmr update /src/scenes/time/distant-birds.css
+17:23:05 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:23:30 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:23:30 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:23:30 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:24:00 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+17:28:43 [vite] (client) hmr update /src/scenes/historical-scene.css
+17:28:57 [vite] (client) hmr update /src/scenes/time/distant-birds.css
+17:29:11 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:29:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:29:25 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:29:25 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:38:07 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:38:08 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:38:08 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:38:08 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+17:38:08 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:38:08 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:42:11 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:42:12 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:42:12 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:42:12 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:45:28 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:45:28 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:45:28 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:48:08 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:48:09 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:48:09 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:48:09 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:48:55 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+17:48:55 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+17:48:55 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+17:52:29 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:52:59 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:53:44 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:53:44 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:55:44 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:56:33 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+17:57:20 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+18:04:36 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+18:10:07 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+18:14:53 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+18:16:14 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+18:25:59 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+18:25:59 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+18:25:59 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+18:25:59 [vite] (client) hmr update /src/scenes/time/AruOnRock.tsx
+18:48:26 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+18:48:54 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+18:49:02 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+18:49:38 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+18:49:45 [vite] (client) hmr update /src/audio/AudioControls.tsx
+18:50:53 [vite] (client) hmr update /src/App.tsx
+18:51:00 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+18:51:53 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+18:52:09 [vite] (client) hmr update /src/audio/AudioControls.tsx
+18:57:06 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+18:57:06 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+18:57:06 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+18:57:20 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+18:57:20 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+18:57:20 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:00:26 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:00:26 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:00:26 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-sky-frames/aru_sky_003.png
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:17 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:01:19 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:01:19 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:02:01 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:02:01 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:02:01 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:02:14 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:02:14 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:02:14 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:07:15 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:07:15 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:07:15 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:07:15 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:09:36 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:09:36 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:09:36 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:09:36 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:13:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:13:18 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:13:18 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:13:18 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:16:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:16:25 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:16:25 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:17:01 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:17:01 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:17:01 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:20:16 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:20:16 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:20:16 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:20:40 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx
+19:20:41 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:20:41 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:25:21 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:25:21 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:25:21 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:27:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:27:08 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:27:08 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:27:16 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+19:27:16 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:27:16 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:28:03 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:28:03 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:28:03 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:29:04 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:29:04 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:29:04 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:31:32 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:31:32 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:31:32 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:31:43 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+19:31:43 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:31:43 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+19:53:33 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_001.png
+19:53:33 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_002.png
+19:53:33 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_003.png
+19:53:33 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_004.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_005.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_006.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_007.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_008.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_009.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_010.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_011.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_012.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_013.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_014.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_015.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_016.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_017.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_018.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_019.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_020.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_021.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_022.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_023.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_024.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_025.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_026.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_027.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_028.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_029.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_030.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_031.png
+19:53:34 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_032.png
+20:37:22 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:22 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+20:37:22 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_000.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_001.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_002.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_003.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_004.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_005.png
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_006.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_007.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_008.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_009.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_010.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_011.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_012.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_013.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_014.png
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_015.png
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_000.png
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:24 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_001.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_002.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_003.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_004.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_005.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_006.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_007.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_008.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_009.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_010.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_011.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_012.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_013.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_014.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_015.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_016.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_017.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_018.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_019.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_020.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_021.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_022.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_023.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_024.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_025.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_026.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_027.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_028.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_029.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_030.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_031.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_032.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_033.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_034.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_035.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_036.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_037.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_038.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_039.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_040.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_041.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_042.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_043.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_044.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_045.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_046.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_047.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_048.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_049.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_050.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_051.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_052.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_053.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_054.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_053.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_054.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_055.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_056.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_057.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_058.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_059.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_060.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_061.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_062.png
+20:37:25 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_063.png
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+20:37:25 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_001.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_002.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_003.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_004.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_005.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_006.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_007.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_008.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_009.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_010.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_011.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_012.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_013.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_014.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_015.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_016.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_017.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_018.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_019.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_020.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_021.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_022.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_023.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_024.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_025.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_026.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_027.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_028.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_029.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_030.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_031.png
+21:06:45 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-frames/aru_032.png
+21:08:03 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:08:03 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+21:08:03 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+21:20:49 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:20:49 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+21:20:49 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+21:21:11 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+21:22:12 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+21:22:55 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+21:26:12 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:26:12 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+21:26:12 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_000.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_001.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_002.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_003.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_004.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_005.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_006.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_008.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_007.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_009.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_010.png
+21:38:06 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_011.png
+21:38:07 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_012.png
+21:38:07 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_013.png
+21:38:07 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_014.png
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-16-frames/aru_scan_015.png
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_000.png
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:07 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_001.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_002.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_003.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_004.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_005.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_006.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_007.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_008.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_009.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_010.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_011.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_012.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_013.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_014.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_015.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_016.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_017.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_018.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_019.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_020.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_021.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_022.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_023.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_024.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_025.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_025.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_026.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_027.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_028.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_029.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_030.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_031.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_032.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_033.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_034.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_035.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_036.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_037.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_038.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_039.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_040.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_041.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_042.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_044.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_045.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_043.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_046.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_047.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_048.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_049.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_050.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_051.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_052.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_053.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_054.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_055.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_056.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_057.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_058.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_059.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_060.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_061.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_062.png
+21:38:08 [vite] (client) page reload src/assets/scenes/time/lebombo/aru-scan-frames/aru_scan_063.png
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:38:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:49:29 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:49:30 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+21:49:30 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+21:56:26 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+21:56:26 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+21:56:26 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:00:52 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:00:53 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:00:53 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:02:19 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:02:19 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:02:19 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:03:16 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+22:25:44 [vite] (client) hmr update /src/App.tsx
+22:29:55 [vite] (client) hmr update /src/App.tsx
+22:30:45 [vite] (client) hmr update /src/App.tsx, /src/audio/AudioControls.tsx, /src/ConstellationPage.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/ArcMapPage.tsx, /src/scenes/HistoricalScenePlayer.tsx
+22:30:45 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:30:45 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:31:16 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:31:16 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:31:16 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:38:12 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+22:40:08 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:40:08 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:40:08 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:40:15 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+22:41:43 [vite] (client) hmr update /src/scenes/time/DistantBirdFlock.tsx
+22:41:51 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+22:45:49 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:45:49 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:45:49 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:54:43 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:54:43 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:54:43 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:56:40 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:56:40 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:56:40 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:57:02 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:57:02 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:57:02 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:57:11 [vite] (client) hmr update /src/scenes/time/lebombo-scene.css
+22:57:30 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:57:31 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:57:31 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+22:57:43 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+22:57:43 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+22:57:43 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+23:38:06 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:38:51 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:39:02 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+23:39:02 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+23:39:02 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+23:39:23 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:40:05 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:40:22 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+23:40:22 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+23:40:22 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:41:08 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+23:41:25 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+23:42:39 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+23:42:39 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+23:42:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:42:51 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:42:59 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:43:06 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:43:31 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+23:44:24 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:44:33 [vite] (client) hmr update /src/scenes/historical-scene.css
+23:44:52 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+23:44:52 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+23:44:52 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:51:14 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:51:41 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:55:43 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+23:55:43 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+23:55:43 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:56:47 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+23:58:38 [vite] tools/sound-effects/soundEffectsApi.mjs changed, restarting server...
+23:58:38 [vite] server restarted.
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: http://192.168.0.86:5175/  Wi-Fi
+00:00:22 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:00:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:01:30 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+00:04:11 [vite] (client) hmr update /src/ArcMapPage.tsx
+00:04:12 [vite] (client) hmr update /src/App.tsx
+00:05:15 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+00:05:15 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+00:05:15 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:06:20 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+00:06:20 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+00:06:20 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:06:21 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:06:28 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+00:06:59 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+00:07:01 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/ArcMapPage.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+00:07:01 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+00:07:01 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+00:07:01 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+00:07:01 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:07:01 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+00:07:01 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+00:07:01 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:07:42 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+00:07:42 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+00:07:42 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:07:43 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+00:08:10 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css

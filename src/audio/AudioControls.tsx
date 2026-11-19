@@ -59,7 +59,7 @@ export default function AudioControls() {
   }
 
   return <div className="audio-control-root">
-    <button className="audio-toggle" onClick={() => setOpen((value) => !value)} aria-label={open ? t('audio.close') : t('audio.open')} aria-expanded={open}>
+    <button className="audio-toggle" onClick={() => { void audioManager.resumeAudioContext().catch(() => {}); setOpen((value) => !value) }} aria-label={open ? t('audio.close') : t('audio.open')} aria-expanded={open}>
       {settings.enabled ? <Volume2 size={17} /> : <VolumeX size={17} />}
     </button>
     {open && <section className="audio-panel" aria-label={t('audio.title')}>

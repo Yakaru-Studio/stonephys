@@ -67,9 +67,10 @@ const soundPatterns: Record<SoundEffect, SoundPattern> = {
     { frequency: 783.99, start: .1, duration: .27, gain: .052, type: 'sine' },
     { frequency: 1046.5, start: .21, duration: .42, gain: .038, type: 'triangle' },
   ] },
-  equipmentError: { volume: .62, tones: [
-    { frequency: 246.94, start: 0, duration: .18, gain: .042, type: 'triangle' },
-    { frequency: 196, start: .1, duration: .24, gain: .035, type: 'sine' },
+  equipmentError: { volume: .88, tones: [
+    { frequency: 293.66, start: 0, duration: .2, gain: .12, type: 'triangle' },
+    { frequency: 220, start: .12, duration: .28, gain: .1, type: 'triangle' },
+    { frequency: 146.83, start: .24, duration: .34, gain: .075, type: 'sine' },
   ] },
   navigation: { volume: .58, tones: [
     { frequency: 330, endFrequency: 495, start: 0, duration: .22, gain: .04 },
@@ -330,6 +331,11 @@ class AudioManager {
     this.soundEffectCatalog = catalog
   }
 
+  async resumeAudioContext() {
+    const context = this.getContext()
+    if (context.state === 'suspended') await context.resume()
+  }
+
   async setNaturalAmbience(layers: Array<{ id: string; volume: number; pan?: number }>) {
     if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.ambienceVolume <= 0) {
       this.pauseNaturalAmbience()
@@ -381,14 +387,14 @@ class AudioManager {
     }
   }
 
-  async playSoundEffectById(effectId: string, options: { volume?: number; pan?: number; group?: string } = {}) {
+  async playSoundEffectById(effectId: string, options: { volume?: number; pan?: number; group?: string; restart?: boolean } = {}) {
     if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.effectsVolume <= 0) return
     const asset = this.soundEffectCatalog[effectId]
     if (!asset?.url || !this.soundEffectsGain) return
     const group = options.group || effectId
     const previousId = this.activeSoundByGroup.get(group)
     const previous = previousId ? this.soundEffectElements.get(previousId) : null
-    if (previous && !previous.paused && previousId === effectId) return
+    if (previous && !previous.paused && previousId === effectId && !options.restart) return
     if (previous && !previous.paused) { previous.pause(); previous.currentTime = 0 }
     const context = this.getContext()
     if (context.state === 'suspended') await context.resume()
@@ -462,7 +468,10 @@ class AudioManager {
   async playMusicAsset(source: string, options: { loop?: boolean; fadeMs?: number; loopCrossfadeMs?: number; trackGain?: number; volume?: number; cropStartSeconds?: number; cropEndSeconds?: number | null; signal?: AbortSignal } = {}) {
     if (options.signal?.aborted || !this.settings.enabled || this.settings.musicVolume <= 0) return
     const context = this.getContext()
-    if (context.state === 'suspended') await context.resume()
+    // Request context resume and media playback in the same user-gesture turn.
+    // Waiting for resume first can make HTMLMediaElement.play() lose activation
+    // when a scene is opened directly, causing the browser to block its music.
+    const resumePromise = context.state === 'suspended' ? context.resume() : Promise.resolve()
     if (options.signal?.aborted) return
     this.ensureMusicDecks(context)
     const absoluteSource = new URL(source, window.location.href).href
@@ -473,7 +482,9 @@ class AudioManager {
       this.configureMusicDeck(active, options)
       if (typeof options.trackGain === 'number') this.setMusicTrackGain(options.trackGain)
       this.musicLoop = options.loop ?? this.musicLoop
-      if (active.element.paused) await active.element.play()
+      if (active.element.ended) active.element.currentTime = active.cropStart
+      const playPromise = active.element.paused ? active.element.play() : Promise.resolve()
+      await Promise.all([playPromise, resumePromise])
       return
     }
     const oldIndex = this.activeMusicDeck
@@ -488,7 +499,10 @@ class AudioManager {
     next.element.src = absoluteSource
     this.configureMusicDeck(next, options)
     next.element.load()
-    try { await next.element.play() }
+    try {
+      const playPromise = next.element.play()
+      await Promise.all([playPromise, resumePromise])
+    }
     catch (error) {
       if (options.signal?.aborted) return
       next.element.removeAttribute('src')

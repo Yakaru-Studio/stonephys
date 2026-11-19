@@ -3,6 +3,10 @@
 .lebombo-landscape img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .lebombo-atmosphere{position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,12,25,.18),transparent 30%,transparent 65%,rgba(24,12,11,.16));mix-blend-mode:multiply}
 .lebombo-fauna{position:absolute;z-index:2;inset:0;pointer-events:none}
+.lebombo-aru{position:absolute;z-index:3;pointer-events:none;overflow:visible;transform:translate(-50%,-86%);filter:drop-shadow(0 4px 6px rgba(31,15,10,.35))}
+.lebombo-aru img,.lebombo-aru video{display:block;width:100%;height:auto;object-fit:contain;user-select:none}
+.lebombo-aru .lebombo-aru-sky-video,.lebombo-aru .lebombo-aru-scan-video{transform:scale(1.8);transform-origin:50% 86%}
+.lebombo-aru .lebombo-aru-scan-video.is-preload{position:absolute;top:0;left:0;opacity:0;pointer-events:none}
 .lebombo-animal{position:absolute;display:block;transform:translate(-50%,-78%);transform-origin:50% 88%;opacity:.96}
 .lebombo-animal img{display:block;width:100%;height:auto;object-fit:contain;filter:brightness(.9) saturate(.9) drop-shadow(0 1px 2px rgba(25,15,15,.48));user-select:none}
 .lebombo-ground-objects{position:absolute;z-index:2;inset:0;pointer-events:none}

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { audioManager } from './audio/AudioManager'
 import AudioControls from './audio/AudioControls'
-import { learningArcs, type ArcAct, type LearningArc } from './arcActs'
+import { learningArcs, type ArcAct } from './arcActs'
 import './arc-map.css'
 import { localizeArc, useLocale, type AppLocale } from './i18n'
 
@@ -19,7 +19,7 @@ const parchmentScrollArtwork = new URL('./assets/arcs/act-parchment-scroll.png',
 function ParchmentEmblem({ symbol, position }: { symbol: ArcAct['symbol']; position: 'top' | 'bottom' }) {
   return <span className={`parchment-emblem parchment-emblem-${position} emblem-${symbol}`} aria-hidden="true">
     {symbol === 'bone' ? <img src={boneSealArtwork} alt="" draggable={false}/> : <svg viewBox="0 0 64 64" focusable="false">
-      {symbol === 'sun-moon' && <><circle cx="23" cy="31" r="10"/><path d="M41 14a18 18 0 1 0 8 34 16 16 0 0 1-8-34Z"/><path d="M23 14v-6m0 46v-5m-17-18H1m44 0h7M11 19l-4-4m31 31 4 4"/></>}
+      {symbol === 'sun-moon' && <g transform="translate(5.5 0)"><circle cx="23" cy="31" r="10"/><path d="M41 14a18 18 0 1 0 8 34 16 16 0 0 1-8-34Z"/><path d="M23 14v-6m0 46v-5m-17-18H1m44 0h7M11 19l-4-4m31 31 4 4"/></g>}
       {symbol === 'tally' && <><path d="M13 14v36m10-36v36m10-36v36m10-36v36m-31-7 34-24"/></>}
       {symbol === 'compass' && <><circle cx="32" cy="32" r="24"/><path d="m42 21-7 16-14 6 7-16 14-6Z"/><circle cx="32" cy="32" r="2"/></>}
       {symbol === 'telescope' && <><path d="m18 13 31 31-11 11-31-31 11-11Zm-5 14 9-9m15 26 9-9M13 48l-6 9m40-5 8 5"/><circle cx="19" cy="14" r="5"/></>}
@@ -92,8 +92,8 @@ function LibraryScroll({ act, current, onSelect }: { act: ArcAct; current: boole
   </button>
 }
 
-function LibraryShelf({ arc, acts, currentActId, onSelect, locale }: { arc: LearningArc; acts: ArcAct[]; currentActId: string | null; onSelect: (act: ArcAct) => void; locale: AppLocale }) {
-  const tracks = [...new Set(arc.acts.map((act) => act.kind))]
+function LibraryShelf({ acts, currentActId, onSelect, locale }: { acts: ArcAct[]; currentActId: string | null; onSelect: (act: ArcAct) => void; locale: AppLocale }) {
+  const tracks = [...new Set(acts.map((act) => act.kind))]
   const [trackIndex, setTrackIndex] = useState(Math.max(0, tracks.indexOf('main')))
   const [trackMotion, setTrackMotion] = useState(0)
   const touchStart = useRef<number | null>(null)
@@ -111,7 +111,7 @@ function LibraryShelf({ arc, acts, currentActId, onSelect, locale }: { arc: Lear
     touchStart.current = null
   }}>
     <div className="library-depth library-depth-left"/><div className="library-depth library-depth-right"/>
-    <button className="library-track-nav library-track-prev" onClick={() => navigate(-1)} disabled={trackIndex === 0} aria-label={locale === 'en' ? 'Previous shelf' : 'Estante anterior'}><ChevronLeft/></button>
+    {tracks.length > 1 && <button className="library-track-nav library-track-prev" onClick={() => navigate(-1)} disabled={trackIndex === 0} aria-label={locale === 'en' ? 'Previous shelf' : 'Estante anterior'}><ChevronLeft/></button>}
     <section className={`knowledge-shelf motion-${trackMotion}`} aria-label={trackName} key={track}>
       <img className="shelf-cabinet-artwork" src={libraryShelfArtwork} alt="" draggable={false}/>
       <div className="shelf-crown"><span className="shelf-emblem" aria-hidden="true"><svg viewBox="-20 -14 40 28"><g className="sun-moon-mark"><circle className="sun-moon-sun" cx="-6" cy="0" r="5"/><path className="sun-moon-rays" d="M-6-9v-2m0 22v-2m9-9h2m-22 0h2m15.4-6.4 1.5-1.5m-15.8 15.8L-17.4 8m11.4 3v2m0-24v2m-6.4 15.4-1.5-1.5m15.8-15.8L3.4-8"/><path className="sun-moon-crescent" d="M10-8a9 9 0 1 0 0 16A6.8 6.8 0 0 1 10-8Z"/><circle className="sun-moon-star" cx="14" cy="-8" r="1.2"/></g></svg></span></div>
@@ -126,13 +126,14 @@ function LibraryShelf({ arc, acts, currentActId, onSelect, locale }: { arc: Lear
       </div>
       <footer className="shelf-footer">{track === 'main' ? (locale === 'en' ? 'Main Path' : 'Trilha Principal') : (locale === 'en' ? 'Optional Path' : 'Trilha Opcional')}</footer>
     </section>
-    <button className="library-track-nav library-track-next" onClick={() => navigate(1)} disabled={trackIndex >= tracks.length - 1} aria-label={locale === 'en' ? 'Next shelf' : 'Próxima estante'}><ChevronRight/></button>
+    {tracks.length > 1 && <button className="library-track-nav library-track-next" onClick={() => navigate(1)} disabled={trackIndex >= tracks.length - 1} aria-label={locale === 'en' ? 'Next shelf' : 'Próxima estante'}><ChevronRight/></button>}
   </div>
 }
 
-export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartAct, onCompleteAct }: {
+export default function ArcMapPage({ moduleId, completedActIds, backToProgress, onBack, onStartAct, onCompleteAct }: {
   moduleId: string
   completedActIds: string[]
+  backToProgress?: boolean
   onBack: () => void
   onStartAct: (act: ArcAct, devScene?: DevSceneTarget) => void
   onCompleteAct: (actId: string) => void
@@ -146,11 +147,11 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   const [flameActId, setFlameActId] = useState<string | null>(null)
   const [startingAct, setStartingAct] = useState(false)
   const [devScene, setDevScene] = useState<DevSceneTarget>('border-cave-cycle')
-  const acts = useMemo(() => arc.acts.map((act) => {
+  const acts = useMemo(() => arc.acts.filter((act) => moduleId !== 'time' || act.id === 'counting-marks').map((act) => {
     const completed = completedActIds.includes(act.id)
     const available = !completed && act.prerequisites.every((prerequisite) => completedActIds.includes(prerequisite))
     return { ...act, status: completed ? 'completed' as const : available ? 'available' as const : 'locked' as const }
-  }), [arc.acts, completedActIds])
+  }), [arc.acts, completedActIds, moduleId])
   const actsById = new Map(acts.map((act) => [act.id, act]))
   const currentActId = acts.find((act) => act.kind === 'main' && act.status === 'available')?.id
     ?? acts.find((act) => act.status === 'available')?.id
@@ -213,11 +214,11 @@ export default function ArcMapPage({ moduleId, completedActIds, onBack, onStartA
   return <main className="arc-map-screen knowledge-library-screen" aria-label={locale === 'en' ? `Knowledge Library: ${arc.title}` : `Biblioteca do Conhecimento: ${arc.title}`}>
     <div className="library-background" aria-hidden="true" style={{ backgroundImage: `url("${libraryBackgroundArtwork}")` }}/>
     <header className="arc-map-header library-header">
-      <button className="arc-map-back" onClick={() => { if (!selectedAct) onBack() }} disabled={Boolean(selectedAct)} aria-label={locale === 'en' ? 'Back to constellation' : 'Voltar à constelação'}><ArrowLeft size={22}/></button>
+      <button className="arc-map-back" onClick={() => { if (!selectedAct) onBack() }} disabled={Boolean(selectedAct)} aria-label={backToProgress ? (locale === 'en' ? 'Back to progress' : 'Voltar ao progresso') : (locale === 'en' ? 'Back to constellation' : 'Voltar à constelação')}><ArrowLeft size={22}/></button>
       <div className="library-heading"><p>{locale === 'en' ? 'Arc:' : 'Arco:'} {arc.title}</p></div>
       <AudioControls/>
     </header>
-    <LibraryShelf arc={arc} acts={acts} currentActId={flameActId ?? currentActId} onSelect={openAct} locale={locale}/>
+    <LibraryShelf acts={acts} currentActId={flameActId ?? currentActId} onSelect={openAct} locale={locale}/>
     {selectedAct && <Parchment act={selectedAct} closing={closingParchment} onClose={closeParchment} onStart={startAct} onComplete={completeAct} starting={startingAct} locale={locale} devScene={devScene} onDevSceneChange={setDevScene}/ >}
   </main>
 }

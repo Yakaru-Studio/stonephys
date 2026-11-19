@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
-import { ArrowLeft } from 'lucide-react'
+import { Compass, ChartNoAxesColumnIncreasing, Trophy } from 'lucide-react'
 import Neuron from './Neuron'
 import { initialModules, stageForProgress } from './data'
 import ConstellationPage from './ConstellationPage'
@@ -10,8 +10,12 @@ import ArcMapPage, { type DevSceneTarget } from './ArcMapPage'
 import { learningArcs } from './arcActs'
 import { localizeModule, useLocale } from './i18n'
 import BorderCaveArrival from './scenes/time/BorderCaveArrival'
-import LebomboDiscoveryScene from './scenes/time/LebomboDiscoveryScene'
 import dawnOfHumanity from '../content/music/dawn-of-humanity/composition.json'
+import ProgressHome from './ProgressHome'
+import AchievementsHome from './AchievementsHome'
+import './home-tabs.css'
+import { readGameProgress, resetLocalProgress, saveGameProgress, type ArcLocation } from './gameProgress'
+import { readScientificNotes, scientificNoteReadEvent } from './scientificNotes'
 
 const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
 const VoiceStudio = lazy(() => import('./narration/VoiceStudio'))
@@ -19,7 +23,6 @@ const MusicStudio = lazy(() => import('./music/MusicStudio'))
 const SoundEffectsStudio = lazy(() => import('./sound-effects/SoundEffectsStudio'))
 const packagedMusic = import.meta.glob('../content/music/*/composition.json', { eager: true, import: 'default' }) as Record<string, Record<string, any>>
 const workshopIntroStorageKey = 'stonephys.time.arc-one.workshop-intro-seen.v1'
-
 function hasSeenWorkshopIntro() {
   try { return window.localStorage.getItem(workshopIntroStorageKey) === 'true' } catch { return false }
 }
@@ -41,25 +44,83 @@ function startLebomboDiscoveryMusic() {
 
 export default function App() {
   const { locale, t } = useLocale()
+  const [initialGameProgress] = useState(readGameProgress)
   const [pulse, setPulse] = useState<Record<string, number>>({})
-  const [progress, setProgress] = useState<Record<string, number>>({ time: 0 })
+  const [progress, setProgress] = useState<Record<string, number>>(() => Object.fromEntries(Object.entries(initialGameProgress.modules).map(([id, item]) => [id, item.progress])))
   const [currentModuleId, setCurrentModuleId] = useState(() => initialModules.find((module) => module.status === 'unlocked')?.id ?? initialModules[0].id)
   const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
-  const [selectedArc, setSelectedArc] = useState<{ moduleId: string; starId: string } | null>(null)
+  const [homeTab, setHomeTab] = useState<'progress' | 'explore' | 'achievements'>('progress')
+  const [selectedArc, setSelectedArc] = useState<ArcLocation | null>(null)
   const [harrisonSceneOpen, setHarrisonSceneOpen] = useState(false)
   const [borderCaveSceneOpen, setBorderCaveSceneOpen] = useState(false)
   const [devSceneOverride, setDevSceneOverride] = useState<DevSceneTarget | null>(null)
   const [workshopIntroSeen, setWorkshopIntroSeen] = useState(hasSeenWorkshopIntro)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
   const [homeTransition, setHomeTransition] = useState(false)
-  const [stageProgress, setStageProgress] = useState<Record<string, { unlocked: string[]; completed: string[] }>>({
-    time: { unlocked: ['sky'], completed: [] },
-    distance: { unlocked: ['body'], completed: [] },
-    velocity: { unlocked: ['motion'], completed: [] },
-  })
-  const [completedActs, setCompletedActs] = useState<Record<string, string[]>>({})
+  const [stageProgress, setStageProgress] = useState<Record<string, { unlocked: string[]; completed: string[] }>>(initialGameProgress.arcs)
+  const [journey, setJourney] = useState(() => ({ lastArc: initialGameProgress.lastArc, completedActs: initialGameProgress.acts }))
+  const [completedScenes, setCompletedScenes] = useState<string[]>(initialGameProgress.scenes.completed)
+  const [scientificNoteCount, setScientificNoteCount] = useState(() => readScientificNotes().length)
+  const { completedActs, lastArc } = journey
   const [music, setMusic] = useState<any[]>([])
   const [audioUnlocked, setAudioUnlocked] = useState(false)
+
+  useEffect(() => {
+    const achieved = completedActs.time?.includes('counting-marks')
+      ? ['lebombo', 'flaked-stone', 'aru', 'border-cave', 'counting', 'first-step', 'chacma-baboon', 'chacma-baboon-fossil', 'plains-zebra', 'impala', 'african-warthog', 'cape-vulture', 'sweet-thorn-acacia']
+      : []
+    if (scientificNoteCount > 0) achieved.push('curious-mind')
+    if (scientificNoteCount >= 10) achieved.push('thirst-for-knowledge')
+    saveGameProgress({
+      version: 1,
+      updatedAt: new Date().toISOString(),
+      lastArc,
+      modules: Object.fromEntries(initialModules.map((module) => [module.id, { progress: progress[module.id] ?? 0, status: module.status }])),
+      arcs: stageProgress,
+      acts: completedActs,
+      scenes: { completed: completedScenes },
+      achievements: { unlocked: achieved },
+    })
+  }, [lastArc, completedActs, progress, stageProgress, completedScenes, scientificNoteCount])
+
+  useEffect(() => {
+    const onNoteRead = () => setScientificNoteCount(readScientificNotes().length)
+    window.addEventListener(scientificNoteReadEvent, onNoteRead)
+    return () => window.removeEventListener(scientificNoteReadEvent, onNoteRead)
+  }, [])
+
+  useEffect(() => {
+    if (!borderCaveSceneOpen || selectedArc?.moduleId !== 'time') return
+    const completeLebombo = () => {
+      setJourney((current) => {
+        const existing = current.completedActs.time ?? []
+        return existing.includes('counting-marks') ? current : { ...current, completedActs: { ...current.completedActs, time: [...existing, 'counting-marks'] } }
+      })
+      setCompletedScenes((current) => current.includes('lebombo-bone-activity') ? current : [...current, 'lebombo-bone-activity'])
+    }
+    window.addEventListener('stonephys:lebombo-activity-complete', completeLebombo)
+    return () => window.removeEventListener('stonephys:lebombo-activity-complete', completeLebombo)
+  }, [borderCaveSceneOpen, selectedArc])
+
+  const openArc = (location: ArcLocation) => {
+    setSelectedArc(location)
+    setJourney((current) => ({ ...current, lastArc: location }))
+  }
+
+  const resetProgress = () => {
+    const empty = resetLocalProgress()
+    setProgress(Object.fromEntries(Object.entries(empty.modules).map(([id, item]) => [id, item.progress])))
+    setStageProgress(empty.arcs)
+    setJourney({ lastArc: empty.lastArc, completedActs: empty.acts })
+    setCompletedScenes(empty.scenes.completed)
+    setScientificNoteCount(0)
+    setWorkshopIntroSeen(false)
+    setSelectedArc(null)
+    setSelectedModuleId(null)
+    setHarrisonSceneOpen(false)
+    setBorderCaveSceneOpen(false)
+    setDevSceneOverride(null)
+  }
 
   useEffect(() => {
     if (!import.meta.env.DEV) return
@@ -99,7 +160,7 @@ export default function App() {
       : Object.entries(packagedMusic).some(([file, item]) => file.includes('/the-sanctuary-of-wisdom/composition.json') && item.approvedAssetUrl)
     const targetId = harrisonSceneOpen
       ? 'the-clockmaker-of-time'
-      : selectedArc ? wisdomSanctuaryApproved ? 'the-sanctuary-of-wisdom' : 'paths-of-discovery' : selectedModuleId || audioUnlocked ? 'eternity-of-knowledge' : null
+      : selectedArc ? wisdomSanctuaryApproved ? 'the-sanctuary-of-wisdom' : 'paths-of-discovery' : 'eternity-of-knowledge'
     if (!targetId) { audioManager.fadeMusicOut(900); return }
     const composition = music.find((item) => item.id === targetId)
     const packaged = Object.entries(packagedMusic).find(([file]) => file.includes(`/${targetId}/composition.json`))?.[1]
@@ -112,7 +173,8 @@ export default function App() {
     audioManager.setNarrationMusicLevel(settings?.ducking?.musicLevelDuringNarration ?? .42)
     if (!source) { audioManager.fadeMusicOut(900); return }
     // Loop behavior is configured in Music Studio; tracks default to looping.
-    void audioManager.playMusicAsset(source, { loop: loopSettings?.enabled ?? true, fadeMs: loopSettings?.crossfadeMs ?? 1800, loopCrossfadeMs: loopSettings?.crossfadeMs ?? 1800, trackGain: settings?.defaultVolume ?? .2, volume, cropStartSeconds, cropEndSeconds }).catch(() => {})
+    const fadeMs = harrisonSceneOpen ? 550 : loopSettings?.crossfadeMs ?? 1800
+    void audioManager.playMusicAsset(source, { loop: loopSettings?.enabled ?? true, fadeMs, loopCrossfadeMs: loopSettings?.crossfadeMs ?? 1800, trackGain: settings?.defaultVolume ?? .2, volume, cropStartSeconds, cropEndSeconds }).catch(() => {})
   }, [music, selectedModuleId, selectedArc, harrisonSceneOpen, borderCaveSceneOpen, audioUnlocked])
 
   useEffect(() => {
@@ -126,15 +188,15 @@ export default function App() {
   if (import.meta.env.DEV && window.location.pathname === '/__audio-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de música…</div>}><MusicStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   if (import.meta.env.DEV && window.location.pathname === '/__sound-effects-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de efeitos…</div>}><SoundEffectsStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   if (import.meta.env.DEV && window.location.pathname === '/__border-cave-preview') return <BorderCaveArrival locale={locale} onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
-  if (import.meta.env.DEV && window.location.pathname === '/__lebombo-discovery-preview') return <LebomboDiscoveryScene onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
+  if (import.meta.env.DEV && window.location.pathname === '/__lebombo-discovery-preview') return <BorderCaveArrival locale={locale} startInDiscovery onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
   if (import.meta.env.DEV && devSceneOverride === 'border-cave-cycle') return <BorderCaveArrival locale={locale} onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
-  if (import.meta.env.DEV && devSceneOverride === 'lebombo-discovery') return <LebomboDiscoveryScene onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
+  if (import.meta.env.DEV && devSceneOverride === 'lebombo-discovery') return <BorderCaveArrival locale={locale} startInDiscovery onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
   if (import.meta.env.DEV && devSceneOverride === 'lebombo-bone-activity') return <BorderCaveArrival locale={locale} startInBoneActivity onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
     return <>
-      <ConstellationPage
+      {homeTab === 'explore' && <ConstellationPage
         moduleId={selectedModule.id}
         unlockedStarIds={stageProgress[selectedModule.id]?.unlocked ?? [constellations[selectedModule.id].stars[0].id]}
         completedStarIds={stageProgress[selectedModule.id]?.completed ?? []}
@@ -145,7 +207,7 @@ export default function App() {
         }}
         onOpenArc={learningArcs[selectedModule.id] ? (star) => {
           audioManager.play('navigation')
-          setSelectedArc({ moduleId: selectedModule.id, starId: star.id })
+          openArc({ moduleId: selectedModule.id, starId: star.id })
           if (selectedModule.id === 'time' && star.id === 'sky' && !workshopIntroSeen) {
             setWorkshopIntroSeen(true)
             try { window.localStorage.setItem(workshopIntroStorageKey, 'true') } catch { /* Keep this visit working if storage is unavailable. */ }
@@ -197,21 +259,22 @@ export default function App() {
           }))
         } : undefined}
         onTestWorkshopIntro={import.meta.env.DEV && selectedModule.id === 'time' ? () => setHarrisonSceneOpen(true) : undefined}
-      />
+      />}
       {selectedArc && !harrisonSceneOpen && <ArcMapPage
         key={`${selectedArc.moduleId}-${selectedArc.starId}`}
         moduleId={selectedArc.moduleId}
+        backToProgress={homeTab === 'progress'}
         completedActIds={completedActs[selectedArc.moduleId] ?? []}
-        onCompleteAct={(actId) => setCompletedActs((current) => {
-          const existing = current[selectedArc.moduleId] ?? []
-          if (existing.includes(actId)) return current
-          return { ...current, [selectedArc.moduleId]: [...existing, actId] }
+        onCompleteAct={(actId) => setJourney((current) => {
+          const existing = current.completedActs[selectedArc.moduleId] ?? []
+          return existing.includes(actId) ? current : { ...current, completedActs: { ...current.completedActs, [selectedArc.moduleId]: [...existing, actId] } }
         })}
         onBack={() => {
           audioManager.play('navigation')
           setHarrisonSceneOpen(false)
           setBorderCaveSceneOpen(false)
           setSelectedArc(null)
+          if (homeTab === 'progress') setSelectedModuleId(null)
         }}
         onStartAct={(act, devScene) => {
           // Starting a scene is a direct user gesture; unlock audio here so
@@ -225,7 +288,10 @@ export default function App() {
             return
           }
           const arc = learningArcs[selectedArc.moduleId]
-          if (selectedArc.moduleId === 'time' && act.id === 'counting-marks') setBorderCaveSceneOpen(true)
+          if (selectedArc.moduleId === 'time' && act.id === 'counting-marks') {
+            audioManager.fadeMusicOut(650)
+            setBorderCaveSceneOpen(true)
+          }
           window.dispatchEvent(new CustomEvent('stonephys:start-act', {
             detail: {
               moduleId: selectedArc.moduleId,
@@ -242,7 +308,41 @@ export default function App() {
     </>
   }
 
-  return <main
+  const english = locale === 'en'
+  const selectHomeTab = (tab: 'progress' | 'explore' | 'achievements') => {
+    setAudioUnlocked(true)
+    void audioManager.resumeAudioContext().catch(() => {})
+    audioManager.play('navigation')
+    setHomeTab(tab)
+  }
+  return <>
+  {homeTab === 'progress' ? <ProgressHome
+    locale={locale}
+    completedActs={completedActs}
+    stageProgress={stageProgress}
+    moduleProgress={progress}
+    lastArc={lastArc}
+    onContinue={() => {
+      const location = lastArc ?? { moduleId: 'time', starId: 'sky' }
+      setAudioUnlocked(true)
+      void audioManager.resumeAudioContext().catch(() => {})
+      audioManager.play('navigation')
+      setSelectedModuleId(location.moduleId)
+      openArc(location)
+    }}
+    onStartJourney={() => {
+      const firstArc: ArcLocation = { moduleId: 'time', starId: 'sky' }
+      setAudioUnlocked(true)
+      void audioManager.resumeAudioContext().catch(() => {})
+      audioManager.play('navigation')
+      setSelectedModuleId(firstArc.moduleId)
+      openArc(firstArc)
+      setWorkshopIntroSeen(true)
+      try { window.localStorage.setItem(workshopIntroStorageKey, 'true') } catch { /* Keep the intro available for this session. */ }
+      setHarrisonSceneOpen(true)
+    }}
+    onResetProgress={import.meta.env.DEV ? resetProgress : undefined}
+  /> : homeTab === 'achievements' ? <AchievementsHome locale={locale} lebomboComplete={completedActs.time?.includes('counting-marks') ?? false}/> : <main
     className={`map-screen ${transitioningModuleId ? 'map-transition-out' : ''} ${homeTransition ? 'home-transition-in' : ''}`}
     aria-label={t('app.universe')}
     onPointerDown={() => setAudioUnlocked(true)}
@@ -250,7 +350,7 @@ export default function App() {
       if (event.target === event.currentTarget && homeTransition) setHomeTransition(false)
     }}
   >
-    <header className="map-header"><button className="back-button" onClick={()=>window.history.back()} aria-label={locale === 'en' ? 'Back' : 'Voltar'}><ArrowLeft size={18}/></button><h1>{t('app.modules')}</h1><AudioControls/></header>
+    <header className="map-header"><AudioControls/></header>
     <svg className="cosmos" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <radialGradient id="space"><stop stopColor="#111a28"/><stop offset=".58" stopColor="#0a111b"/><stop offset="1" stopColor="#050910"/></radialGradient>
@@ -290,5 +390,17 @@ export default function App() {
         }, 300)
       }}/>
     })}
-  </main>
+  </main>}
+  <nav className="home-tabs" aria-label={english ? 'Main navigation' : 'Navegação principal'}>
+    <button type="button" aria-current={homeTab === 'progress' ? 'page' : undefined} disabled={Boolean(transitioningModuleId)} onClick={() => selectHomeTab('progress')}>
+      <ChartNoAxesColumnIncreasing size={21} aria-hidden="true"/>{english ? 'Progress' : 'Progresso'}
+    </button>
+    <button type="button" aria-current={homeTab === 'explore' ? 'page' : undefined} disabled={Boolean(transitioningModuleId)} onClick={() => selectHomeTab('explore')}>
+      <Compass size={21} aria-hidden="true"/>{english ? 'Explore' : 'Explorar'}
+    </button>
+    <button type="button" aria-current={homeTab === 'achievements' ? 'page' : undefined} disabled={Boolean(transitioningModuleId)} onClick={() => selectHomeTab('achievements')}>
+      <Trophy size={21} aria-hidden="true"/>{english ? 'Achievements' : 'Conquistas'}
+    </button>
+  </nav>
+  </>
 }

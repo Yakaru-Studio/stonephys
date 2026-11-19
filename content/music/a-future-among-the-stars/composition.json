@@ -1,0 +1,49 @@
+{
+  "id": "a-future-among-the-stars",
+  "name": {
+    "pt-BR": "Um Futuro Entre as Estrelas",
+    "en": "A Future Among the Stars"
+  },
+  "description": {
+    "pt-BR": "Trilha ambiente cósmica para a janela de sucesso, conquistas e referências científicas.",
+    "en": "Cosmic ambient background music for the success window, achievements, and scientific references."
+  },
+  "application": [
+    "lebombo-success"
+  ],
+  "targetDurationSeconds": 150,
+  "targetBpm": "55–65",
+  "defaultVolume": 0.16,
+  "loop": {
+    "enabled": true,
+    "startSeconds": 0,
+    "endSeconds": null,
+    "crossfadeMs": 3000
+  },
+  "ducking": {
+    "enabled": true,
+    "musicLevelDuringNarration": 0.38
+  },
+  "status": "awaiting-review",
+  "previewVersionId": "ce574e6a-f524-41eb-9a99-c289ab2adeb8",
+  "previewCropStartSeconds": 0,
+  "previewCropEndSeconds": 161.5,
+  "previewVolume": 1,
+  "previewLoop": {
+    "enabled": true,
+    "startSeconds": 0,
+    "endSeconds": 161.5,
+    "crossfadeMs": 3000
+  },
+  "approvedVersionId": "ce574e6a-f524-41eb-9a99-c289ab2adeb8",
+  "approvedAssetUrl": "/audio/music/approved/a-future-among-the-stars.mp3",
+  "approvedCropStartSeconds": 0,
+  "approvedCropEndSeconds": 180.114,
+  "approvedVolume": 1,
+  "approvedLoop": {
+    "enabled": true,
+    "startSeconds": 0,
+    "endSeconds": null,
+    "crossfadeMs": 3000
+  }
+}

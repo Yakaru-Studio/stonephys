@@ -89,7 +89,10 @@ export default function MusicStudio({ onClose }: { onClose: () => void }) {
   const perform = async (label: string, operation: () => Promise<void>) => {
     setBusy(true); setStatus(label)
     try { await operation(); await refresh() }
-    catch (error) { setStatus(error instanceof Error ? error.message : 'Ocorreu um erro.') }
+    catch (error) {
+      setStatus(error instanceof Error ? error.message : 'Ocorreu um erro.')
+      await refresh().catch(() => {})
+    }
     finally { setBusy(false) }
   }
   const savePrompt = async () => {
@@ -109,7 +112,11 @@ export default function MusicStudio({ onClose }: { onClose: () => void }) {
     }
     const remaining = Math.max(0, library.sessionLimitUsd - library.spentUsd)
     if (remaining + 1e-8 < library.priceUsd) { setStatus(`O limite autorizado de US$ ${library.sessionLimitUsd.toFixed(2)} foi alcançado.`); return }
-    if (!window.confirm(`Gerar uma música completa com ${library.model}?\n\nComposição: ${selected.name[locale]}\nDuração pretendida: ~${Math.round(selected.targetDurationSeconds / 60)} min\nCusto estimado: US$ ${library.priceUsd.toFixed(2)}\nJá reservado: US$ ${library.spentUsd.toFixed(2)} de US$ ${library.sessionLimitUsd.toFixed(2)}\nApós esta chamada: até US$ ${(library.spentUsd + library.priceUsd).toFixed(2)}\n\nA geração pode levar alguns minutos. Nenhuma repetição será feita automaticamente. Continuar?`)) return
+    const previouslyBlocked = selected.versions.some((version) => version.prompt === generationPrompt && /copyright|recitation/i.test(version.error ?? ''))
+    const retryNotice = previouslyBlocked
+      ? '\n\nA Lyria já bloqueou este mesmo prompt. Uma nova tentativa fará outra chamada e pode receber o mesmo bloqueio.'
+      : ''
+    if (!window.confirm(`Gerar uma música completa com ${library.model}?\n\nComposição: ${selected.name[locale]}\nDuração pretendida: ~${Math.round(selected.targetDurationSeconds / 60)} min\nCusto estimado: US$ ${library.priceUsd.toFixed(2)}\nJá reservado: US$ ${library.spentUsd.toFixed(2)} de US$ ${library.sessionLimitUsd.toFixed(2)}\nApós esta chamada: até US$ ${(library.spentUsd + library.priceUsd).toFixed(2)}${retryNotice}\n\nA geração pode levar alguns minutos. Nenhuma repetição será feita automaticamente. Continuar?`)) return
     await perform('Gerando a faixa completa. Esta chamada pode levar alguns minutos; não feche o servidor local.', async () => {
       await api('/prompt', { compositionId: selected.id, prompt })
       await api('/generate', { authorization: AUTHORIZATION, compositionId: selected.id, prompt: generationPrompt, requestId: crypto.randomUUID(), forceNewVersion: true })

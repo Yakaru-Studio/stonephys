@@ -1833,3 +1833,750 @@ Incoming: [false]
 00:08:59 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
 00:08:59 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
 00:08:59 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:53:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:53:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+09:53:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+09:53:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:22:39 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:22:39 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:22:39 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:22:39 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:23:23 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:23:23 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:23:23 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:23:23 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:23:30 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:23:30 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:23:30 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:23:30 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:24:47 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:24:47 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:24:47 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:24:47 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:26:50 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:26:50 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:26:50 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:26:50 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:27:10 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:27:10 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:27:10 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:27:10 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:27:25 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:27:25 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:27:25 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:27:25 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:27:34 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:27:34 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:27:34 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:27:35 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:31:55 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:31:55 [vite] (client) [console.error] Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+10:31:55 [vite] (client) [Unhandled error] TypeError: Cannot read properties of null (reading 'useState')
+ > exports.useState node_modules/react/cjs/react.development.js:1309:33
+ > LocaleProvider src/i18n.tsx:30:30
+    28 |  
+    29 |  export function LocaleProvider({ children }: { children: ReactNode }) {
+    30 |    const [locale, setLocale] = useState<AppLocale>(getInitialLocale)
+       |                                ^
+    31 |    useEffect(() => { try { window.localStorage.setItem(LOCALE_KEY, locale) } catch { /* local storage may be disabled ...
+    32 |    const value = useMemo(() => ({ locale, setLocale, t: (key: keyof typeof messages['pt-BR']) => messages[locale][key]...
+ > Object.react_stack_bottom_frame ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:13895:12
+ > renderWithHooks ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:4153:19
+ > updateFunctionComponent ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:5528:16
+ > beginWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:6144:20
+ > runWithFiberInDEV ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:697:66
+ > performUnitOfWork ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8901:92
+ > workLoopSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8797:37
+ > renderRootSync ../../../../../../node_modules/.vite/deps/react-dom_client.js?v=9b3e8e8f:8781:6
+
+10:31:55 [vite] (client) [console.warn] An error occurred in the <LocaleProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:51:54 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:51:54 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:51:54 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:51:54 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+10:52:24 [vite] (client) [console.error] The final argument passed to useEffect changed size between renders. The order and size of this array must remain constant.
+
+Previous: [6.8840999998092895, 16, 0]
+Incoming: [6.8840999998092895, , 16, 0]
+10:52:37 [vite] (client) [Unhandled error] ReferenceError: boneActivityCueSeconds is not defined
+ > BorderCaveArrival src/scenes/time/BorderCaveArrival.tsx:563:25
+    561 |    const curiosityFallbackOpacity = curiosityFallbackAt === null ? 0 : smoothstep((elapsed - curiosityFallbackAt) / FI...
+    562 |    const shouldStartBoneActivity = !startInBoneActivity && (curiosityNarration
+    563 |      ? aruPlaybackTime >= boneActivityCueSeconds || (!curiosityPlaybackStarted && curiosityFallbackOpacity >= 1)
+        |                           ^
+    564 |      : finalBlackoutOpacity >= 1)
+    565 |    useEffect(() => {
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:34
+
+10:52:37 [vite] (client) [console.warn] An error occurred in the <BorderCaveArrival> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+10:52:46 [vite] (client) [Unhandled error] ReferenceError: boneActivityCueSeconds is not defined
+ > BorderCaveArrival src/scenes/time/BorderCaveArrival.tsx:563:25
+    561 |    const curiosityFallbackOpacity = curiosityFallbackAt === null ? 0 : smoothstep((elapsed - curiosityFallbackAt) / FI...
+    562 |    const shouldStartBoneActivity = !startInBoneActivity && (curiosityNarration
+    563 |      ? aruPlaybackTime >= boneActivityCueSeconds || (!curiosityPlaybackStarted && curiosityFallbackOpacity >= 1)
+        |                           ^
+    564 |      : finalBlackoutOpacity >= 1)
+    565 |    useEffect(() => {
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:34
+
+10:52:46 [vite] (client) [console.warn] An error occurred in the <BorderCaveArrival> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+11:11:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:11:35 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:11:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:11:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:59:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:59:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+11:59:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+11:59:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:10:26 [vite] Internal server error: Failed to resolve import "./achievements-home.css" from "src/AchievementsHome.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx:5:7
+  3  |  import AudioControls from "./audio/AudioControls";
+  4  |  import { readScientificNotes, scientificNoteReadEvent } from "./scientificNotes";
+  5  |  import "./achievements-home.css";
+     |          ^
+  6  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx";
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 38)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+13:10:26 [vite] Internal server error: Failed to resolve import "./achievements-home.css" from "src/AchievementsHome.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx:5:7
+  3  |  import AudioControls from "./audio/AudioControls";
+  4  |  import { readScientificNotes, scientificNoteReadEvent } from "./scientificNotes";
+  5  |  import "./achievements-home.css";
+     |          ^
+  6  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx";
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 38)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+13:10:26 [vite] (client) Pre-transform error: Failed to resolve import "./achievements-home.css" from "src/AchievementsHome.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx:5:7
+  3  |  import AudioControls from "./audio/AudioControls";
+  4  |  import { readScientificNotes, scientificNoteReadEvent } from "./scientificNotes";
+  5  |  import "./achievements-home.css";
+     |          ^
+  6  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx";
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+13:10:26 [vite] (client) Pre-transform error: Failed to resolve import "./achievements-home.css" from "src/AchievementsHome.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx:5:7
+  3  |  import AudioControls from "./audio/AudioControls";
+  4  |  import { readScientificNotes, scientificNoteReadEvent } from "./scientificNotes";
+  5  |  import "./achievements-home.css";
+     |          ^
+  6  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx";
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+13:10:26 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:10:26 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:10:26 [vite] Internal server error: Failed to resolve import "./achievements-home.css" from "src/AchievementsHome.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx:5:7
+  3  |  import AudioControls from "./audio/AudioControls";
+  4  |  import { readScientificNotes, scientificNoteReadEvent } from "./scientificNotes";
+  5  |  import "./achievements-home.css";
+     |          ^
+  6  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx";
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 38)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+13:10:26 [vite] (client) Pre-transform error: Failed to resolve import "./achievements-home.css" from "src/AchievementsHome.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx:5:7
+  3  |  import AudioControls from "./audio/AudioControls";
+  4  |  import { readScientificNotes, scientificNoteReadEvent } from "./scientificNotes";
+  5  |  import "./achievements-home.css";
+     |          ^
+  6  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx";
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+13:10:26 [vite] Internal server error: Failed to resolve import "./achievements-home.css" from "src/AchievementsHome.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx:5:7
+  3  |  import AudioControls from "./audio/AudioControls";
+  4  |  import { readScientificNotes, scientificNoteReadEvent } from "./scientificNotes";
+  5  |  import "./achievements-home.css";
+     |          ^
+  6  |  var _jsxFileName = "C:/Users/3d/OneDrive/Documentos/dev/stonephys/src/AchievementsHome.tsx";
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+      at TransformPluginContext._formatLog (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8865:39)
+      at TransformPluginContext.error (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8862:14)
+      at resolveId (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26552:18)
+      at async file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26651:23
+      at async Promise.all (index 38)
+      at async TransformPluginContext.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:26624:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:8636:14)
+      at async loadAndTransform (file:///C:/Users/3d/OneDrive/Documentos/dev/stonephys/node_modules/vite/dist/node/chunks/node.js:20112:26)
+13:10:26 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:10:27 [vite] (client) [console.error] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:39:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:39:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:39:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:39:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:39:46 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:39:46 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:39:46 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:39:46 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:13 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:13 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:17 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:17 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:17 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:17 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:23 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:23 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:40:23 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:40:23 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:54:15 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:54:15 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:54:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:54:15 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:55:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:55:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:55:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:55:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:56:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:56:01 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+13:56:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:56:02 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+13:57:29 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:57:29 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:57:29 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+13:57:29 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+14:00:53 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:00:53 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:00:53 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:00:53 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:01:45 [vite] (client) [Unhandled error] ReferenceError: module is not defined
+ > src/ProgressHome.tsx:64:63
+    62 |                    <div className="progress-arc-heading"><span className="progress-arc-marker" aria-hidden="true">{com...
+    63 |                    {acts.map((act) => {
+    64 |                      const actComplete = doneAct(completedActs, module.id, act.id)
+       |                                                                 ^
+    65 |                      const actAvailable = actComplete || act.prerequisites.every((id) => doneAct(completedActs, module...
+    66 |                      return <div className={`progress-act-item ${actComplete ? 'is-complete' : actAvailable ? 'is-avai...
+ > src/ProgressHome.tsx:63:24
+ > ProgressHome src/ProgressHome.tsx:52:20
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+
+14:01:45 [vite] (client) [console.warn] An error occurred in the <ProgressHome> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+14:01:47 [vite] (client) [Unhandled error] ReferenceError: module is not defined
+ > src/ProgressHome.tsx:64:63
+    62 |                    <div className="progress-arc-heading"><span className="progress-arc-marker" aria-hidden="true">{com...
+    63 |                    {acts.map((act) => {
+    64 |                      const actComplete = doneAct(completedActs, module.id, act.id)
+       |                                                                 ^
+    65 |                      const actAvailable = actComplete || act.prerequisites.every((id) => doneAct(completedActs, module...
+    66 |                      return <div className={`progress-act-item ${actComplete ? 'is-complete' : actAvailable ? 'is-avai...
+ > src/ProgressHome.tsx:63:24
+ > ProgressHome src/ProgressHome.tsx:52:20
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+
+14:01:47 [vite] (client) [console.warn] An error occurred in the <ProgressHome> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+14:01:53 [vite] (client) [Unhandled error] ReferenceError: module is not defined
+ > src/ProgressHome.tsx:61:63
+    59 |                    <div className="progress-arc-heading"><span className="progress-arc-marker" aria-hidden="true">{com...
+    60 |                    {acts.map((act) => {
+    61 |                      const actComplete = doneAct(completedActs, module.id, act.id)
+       |                                                                 ^
+    62 |                      const actAvailable = actComplete || act.prerequisites.every((id) => doneAct(completedActs, module...
+    63 |                      return <div className={`progress-act-item ${actComplete ? 'is-complete' : actAvailable ? 'is-avai...
+ > src/ProgressHome.tsx:60:24
+ > ProgressHome src/ProgressHome.tsx:49:20
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+
+14:01:53 [vite] (client) [console.warn] An error occurred in the <ProgressHome> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+14:01:53 [vite] (client) [Unhandled error] ReferenceError: module is not defined
+ > src/ProgressHome.tsx:61:63
+    59 |                    <div className="progress-arc-heading"><span className="progress-arc-marker" aria-hidden="true">{com...
+    60 |                    {acts.map((act) => {
+    61 |                      const actComplete = doneAct(completedActs, module.id, act.id)
+       |                                                                 ^
+    62 |                      const actAvailable = actComplete || act.prerequisites.every((id) => doneAct(completedActs, module...
+    63 |                      return <div className={`progress-act-item ${actComplete ? 'is-complete' : actAvailable ? 'is-avai...
+ > src/ProgressHome.tsx:60:24
+ > ProgressHome src/ProgressHome.tsx:49:20
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+
+14:01:53 [vite] (client) [console.warn] An error occurred in the <ProgressHome> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+14:02:10 [vite] (client) [Unhandled error] ReferenceError: module is not defined
+ > src/ProgressHome.tsx:61:63
+    59 |                    <div className="progress-arc-heading"><span className="progress-arc-marker" aria-hidden="true">{com...
+    60 |                    {acts.map((act) => {
+    61 |                      const actComplete = doneAct(completedActs, module.id, act.id)
+       |                                                                 ^
+    62 |                      const actAvailable = actComplete || act.prerequisites.every((id) => doneAct(completedActs, module...
+    63 |                      return <div className={`progress-act-item ${actComplete ? 'is-complete' : actAvailable ? 'is-avai...
+ > src/ProgressHome.tsx:60:24
+ > ProgressHome src/ProgressHome.tsx:49:20
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+
+14:02:10 [vite] (client) [console.warn] An error occurred in the <ProgressHome> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+14:04:04 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+14:04:04 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+14:04:04 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+14:04:04 [vite] (client) [console.error] [vite] Failed to reload /src/ProgressHome.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+14:04:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:05 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:04:05 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:04:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:16 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:04:16 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:04:22 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:22 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:22 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:04:22 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:04:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:04:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:04:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:05:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:05:34 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:05:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:05:35 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:05:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:05:55 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:05:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:05:55 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:00 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:00 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:00 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:00 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:20 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:20 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:20 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:20 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:32 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:32 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:36 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:06:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:06:36 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:07:18 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:07:18 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:07:18 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:07:18 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:08:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:08:24 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:08:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:08:24 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:08:27 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:08:27 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:08:27 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:08:27 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:03 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:03 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:06 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:06 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:06 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:06 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:57 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:09:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:09:57 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:11:25 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:11:25 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:11:25 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:11:25 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:11:28 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:11:28 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:11:28 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:11:28 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:12:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:12:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:12:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:12:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:17:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:17:39 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:17:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:17:39 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:20:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:20:48 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:20:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:20:48 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:25:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:25:07 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:25:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:25:07 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:26:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:26:11 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:26:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:26:11 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:26:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:26:37 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:26:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:26:37 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:28:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:28:33 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:28:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:28:33 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:42:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:42:30 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:42:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:42:30 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:44:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:44:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:44:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:44:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:47:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:47:52 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:47:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:47:52 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:48:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:48:47 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:48:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:48:47 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:50:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:50:38 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:50:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:50:38 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:57:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:57:31 [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+14:57:31 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.
+14:57:31 [vite] (client) [console.warn] THREE.Material: parameter 'blending' has value of undefined.

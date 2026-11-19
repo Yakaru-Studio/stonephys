@@ -4,7 +4,7 @@
   "model": "eleven_text_to_sound_v3",
   "creditsPerSecond": 40,
   "authorizedCredits": 10000,
-  "maxPaidRequests": 16,
+  "maxPaidRequests": 32,
   "initialEffects": [
     "border-cave-wind",
     "border-cave-vegetation",

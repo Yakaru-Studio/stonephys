@@ -1627,3 +1627,328 @@ Port 5174 is in use, trying another one...
 00:07:42 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
 00:07:43 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
 00:08:10 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+09:48:27 [vite] (client) hmr update /src/App.tsx
+09:48:27 [vite] (client) hmr update /src/ArcMapPage.tsx
+09:49:57 [vite] (client) hmr update /src/App.tsx
+09:50:11 [vite] (client) hmr update /src/App.tsx
+10:02:14 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+10:02:14 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:02:14 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:02:14 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+10:02:15 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+10:02:15 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:02:15 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:04:18 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:04:35 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:04:43 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+10:04:43 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:04:43 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:19:29 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:19:38 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:23:23 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+10:23:23 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:23:23 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:23:30 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:23:58 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+10:24:47 [vite] (client) hmr update /src/scenes/time/LebomboDiscoveryScene.tsx
+10:24:47 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:24:47 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/BorderCaveArrival.tsx
+10:26:50 [vite] (client) hmr update /src/App.tsx
+10:27:10 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:27:25 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:27:34 [vite] (client) hmr update /src/App.tsx
+10:31:55 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+10:31:55 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:31:55 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:32:34 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+10:35:42 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:37:22 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:37:34 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+10:37:34 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:37:34 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:40:48 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+10:44:58 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:52:24 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+10:52:24 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:52:24 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:52:37 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:53:44 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:55:59 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+10:56:17 [vite] (client) hmr update /src/ArcMapPage.tsx
+10:56:22 [vite] (client) hmr update /src/scenes/historical-scene.css
+10:57:11 [vite] (client) hmr update /src/ArcMapPage.tsx
+10:57:34 [vite] (client) hmr update /src/ArcMapPage.tsx
+11:15:45 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:15:45 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:15:45 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:15:52 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:34:29 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:34:29 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:34:29 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:34:51 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:34:51 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:34:51 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:35:18 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+11:35:30 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:35:30 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:35:30 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:36:02 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:36:02 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:36:02 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:38:50 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:38:50 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:38:50 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:47:00 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:47:00 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:47:00 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+11:47:52 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+11:49:52 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+11:49:52 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:49:52 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:03:57 [vite] tools/sound-effects/soundEffectsApi.mjs changed, restarting server...
+12:03:57 [vite] server restarted.
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: http://100.64.0.1:5175/    Conexão Local
+  ➜  Network: http://192.168.0.86:5175/  Wi-Fi
+12:08:34 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:08:34 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:08:34 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:08:50 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+12:11:11 [vite] .env.local changed, restarting server...
+12:11:11 [vite] .env.local changed, restarting server...
+12:11:11 [vite] server restarted.
+12:11:12 [vite] server restarted.
+12:25:16 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:25:16 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:25:16 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:28:58 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/ArcMapPage.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+12:28:58 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:28:58 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:28:58 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:28:58 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:29:19 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:29:19 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:29:19 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:32:38 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/ArcMapPage.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+12:32:39 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:32:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:32:39 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:32:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:32:39 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:32:39 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:32:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:32:39 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+12:34:33 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:34:33 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:34:33 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:34:34 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+12:35:18 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:35:18 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:35:18 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:35:18 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+12:36:14 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:36:14 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:36:14 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:36:14 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+12:41:47 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:41:47 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:41:47 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:41:47 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+12:53:10 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+12:53:11 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+12:53:11 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+12:54:01 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+13:00:40 [vite] tools/music/musicStudioApi.mjs changed, restarting server...
+13:00:41 [vite] server restarted.
+13:01:26 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+13:01:26 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:01:26 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:02:37 [vite] (client) hmr update /src/App.tsx, /src/ConstellationPage.tsx, /src/audio/AudioControls.tsx, /src/scenes/time/BorderCaveArrival.tsx, /src/ArcMapPage.tsx, /src/scenes/time/LebomboDiscoveryScene.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:02:37 [vite] (client) hmr invalidate /src/scenes/time/LebomboDiscoveryScene.tsx Could not Fast Refresh ("LEBOMBO_REFERENCE_MEASUREMENTS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:02:37 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:02:37 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:02:37 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:02:39 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:02:39 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:02:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:03:25 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:03:25 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:03:25 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:06:04 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:06:04 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:06:04 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:06:22 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:06:22 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:06:22 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:06:22 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:06:27 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:06:27 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:06:27 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:06:28 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:06:28 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:06:28 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:10:26 [vite] (client) hmr update /src/App.tsx
+13:11:02 [vite] (client) hmr update /src/home-tabs.css
+13:11:02 [vite] (client) hmr update /src/App.tsx
+13:11:44 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+13:11:44 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:11:44 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:12:49 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+13:12:49 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:12:49 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:13:40 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:14:14 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:14:14 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:14:14 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:16:18 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:16:18 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:16:18 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:17:14 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:17:28 [vite] (client) hmr update /src/music/MusicStudio.tsx
+13:17:49 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:18:19 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:18:19 [vite] (client) hmr update /src/achievements-home.css
+13:18:48 [vite] (client) hmr update /src/achievements-home.css
+13:21:03 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:21:03 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:21:03 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:21:03 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:22:06 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:22:26 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:22:27 [vite] (client) hmr update /src/achievements-home.css
+13:22:47 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:23:51 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:24:12 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:24:12 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:24:12 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:24:13 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:24:13 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:24:28 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:24:28 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:24:28 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:28:42 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:28:42 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:28:42 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:28:42 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:28:44 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:28:45 [vite] (client) hmr update /src/achievements-home.css
+13:29:00 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:29:00 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:29:00 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:29:03 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:29:04 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:29:04 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:30:34 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+13:30:34 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:30:34 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:30:34 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:33:39 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+13:33:39 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:33:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:40:10 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+13:40:10 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:40:10 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:41:17 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+13:41:17 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:41:17 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:41:41 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+13:43:31 [vite] (client) hmr update /src/App.tsx
+13:48:05 [vite] (client) hmr update /src/ArcMapPage.tsx
+13:48:06 [vite] (client) hmr update /src/arc-map.css
+13:48:07 [vite] (client) hmr update /src/App.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:48:07 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:48:07 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx, /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx, /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx, /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx, /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx, /src/scenes/time/LebomboBoneActivity.tsx
+13:53:25 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx, /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx, /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+13:53:25 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+13:53:25 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+13:57:15 [vite] (client) hmr update /src/App.tsx
+13:57:25 [vite] (client) hmr update /src/App.tsx
+13:57:29 [vite] (client) hmr update /src/ProgressHome.tsx
+13:58:14 [vite] (client) hmr update /src/ProgressHome.tsx
+13:59:02 [vite] (client) hmr update /src/home-tabs.css
+13:59:44 [vite] (client) hmr update /src/ProgressHome.tsx
+14:00:01 [vite] (client) hmr update /src/App.tsx
+14:00:01 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:00:01 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:00:01 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:00:25 [vite] (client) hmr update /src/ProgressHome.tsx
+14:00:25 [vite] (client) hmr update /src/AchievementsHome.tsx
+14:01:36 [vite] (client) hmr update /src/ProgressHome.tsx
+14:01:53 [vite] (client) hmr update /src/ProgressHome.tsx
+14:01:53 [vite] (client) hmr update /src/App.tsx
+14:02:26 [vite] (client) hmr update /src/ProgressHome.tsx
+14:04:03 [vite] (client) hmr update /src/App.tsx
+14:04:04 [vite] (client) hmr update /src/ProgressHome.tsx
+14:04:07 [vite] (client) hmr update /src/ProgressHome.tsx
+14:04:23 [vite] (client) hmr update /src/App.tsx
+14:06:46 [vite] (client) hmr update /src/ProgressHome.tsx
+14:06:50 [vite] (client) hmr update /src/App.tsx
+14:06:54 [vite] (client) hmr update /src/home-tabs.css
+14:09:21 [vite] (client) hmr update /src/App.tsx
+14:12:54 [vite] (client) hmr update /src/AchievementsHome.tsx
+14:12:58 [vite] (client) hmr update /src/home-tabs.css
+14:12:58 [vite] (client) hmr update /src/achievements-home.css
+14:17:47 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:17:47 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:17:47 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:17:51 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:22:00 [vite] (client) hmr update /src/ProgressHome.tsx
+14:22:23 [vite] (client) hmr update /src/ProgressHome.tsx
+14:22:23 [vite] (client) hmr update /src/App.tsx
+14:22:24 [vite] (client) hmr update /src/home-tabs.css
+14:26:27 [vite] (client) hmr update /src/ProgressHome.tsx
+14:26:36 [vite] (client) hmr update /src/ProgressHome.tsx
+14:26:58 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:26:58 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:26:58 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:29:09 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:29:09 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:29:09 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:30:14 [vite] (client) hmr update /src/AchievementsHome.tsx
+14:30:34 [vite] (client) hmr update /src/scenes/time/lebombo-bone-activity.css
+14:31:18 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:31:18 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:31:18 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:31:27 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:31:46 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:32:44 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:32:44 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:32:44 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:41:39 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:41:39 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:41:39 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:47:45 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:47:46 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:47:46 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:47:58 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:49:58 [vite] (client) hmr update /src/scenes/time/LebomboBoneActivity.tsx
+14:49:58 [vite] (client) hmr invalidate /src/scenes/time/LebomboBoneActivity.tsx Could not Fast Refresh ("LEBOMBO_ACTIVITY_CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+14:49:58 [vite] (client) hmr update /src/scenes/time/BorderCaveArrival.tsx
+14:51:46 [vite] (client) hmr update /src/ProgressHome.tsx
+14:51:56 [vite] (client) hmr update /src/App.tsx

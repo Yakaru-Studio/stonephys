@@ -1,0 +1,22 @@
+{
+  "id": "magical-discovery",
+  "name": "Descoberta mágica",
+  "category": "Descoberta",
+  "description": "Notas ascendentes de sinos de madeira com harmônicos cristalinos e brilho cósmico ao revelar um segredo antigo.",
+  "prompt": "2-second magical discovery and achievement cue for an educational adventure. Soft ascending warm wooden chime notes, delicate crystal harmonics and a subtle cosmic shimmer. Evoke wonder, curiosity and the joy of unlocking an ancient secret of the universe. Organic, elegant, mysterious and uplifting. Gentle attack, satisfying harmonic resolution, naturally fading tail. No percussion, arcade sounds, fanfare, voices or background music.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 2,
+  "promptInfluence": 0.75,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.72,
+  "eventBindings": [],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": false,
+    "evaluationOnly": true,
+    "notes": ""
+  },
+  "promptRevisions": []
+}

@@ -351,7 +351,7 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
     : cyclingWildlifeFrame(aruBilateralPingPongFrames, aruScanElapsed - aruScanIntroDurationMs / 1000)?.src ?? aruScanIntroFrames[aruScanIntroFrames.length - 1]?.src
   const aruStyle = {
     ...distantPoint(50, wideWebLayout ? 77 : portrait ? 61.5 : 72),
-    width: `${coverWidth * (wideWebLayout ? .18 : portrait ? .4 : .2)}px`,
+    width: `${coverWidth * (wideWebLayout ? .24 : portrait ? .4 : .2)}px`,
   } as CSSProperties
   const animalSource = (animal: typeof distantAnimals[number]) => {
     if (animal.kind === 'zebra') return loopingWildlifeFrame(zebraFrames, animalElapsed, animal.offset, 2400, 1.1)?.src ?? zebraFrames[0]?.src

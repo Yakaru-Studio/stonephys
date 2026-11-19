@@ -140,6 +140,9 @@ class AudioManager {
     if (!this.narrationElement) {
       this.narrationElement = new Audio()
       this.narrationElement.preload = 'auto'
+      this.narrationElement.addEventListener('ended', () => {
+        this.musicGain?.gain.setTargetAtTime(this.getConfiguredMusicVolume(), context.currentTime, .35)
+      })
       this.narrationSource = context.createMediaElementSource(this.narrationElement)
       this.narrationSource.connect(this.voiceGain!)
     }
@@ -420,6 +423,38 @@ class AudioManager {
     element.currentTime = 0
     this.activeSoundByGroup.set(group, effectId)
     try { await element.play() } catch (error) { if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group); throw error }
+  }
+
+  async playSoundEffectByIdAndWait(effectId: string, options: { volume?: number; pan?: number; group?: string; restart?: boolean } = {}, signal?: AbortSignal) {
+    if (signal?.aborted) return
+    await this.playSoundEffectById(effectId, options)
+    const element = this.soundEffectElements.get(effectId)
+    if (!element || element.paused || element.ended) return
+    await new Promise<void>((resolve) => {
+      const finish = () => {
+        element.removeEventListener('ended', finish)
+        element.removeEventListener('error', finish)
+        signal?.removeEventListener('abort', finish)
+        resolve()
+      }
+      element.addEventListener('ended', finish, { once: true })
+      element.addEventListener('error', finish, { once: true })
+      signal?.addEventListener('abort', finish, { once: true })
+      if (signal?.aborted || element.paused || element.ended) finish()
+    })
+  }
+
+  stopSoundEffectsById(effectIds: readonly string[]) {
+    const ids = new Set(effectIds)
+    for (const effectId of ids) {
+      const element = this.soundEffectElements.get(effectId)
+      if (!element) continue
+      element.pause()
+      element.currentTime = 0
+    }
+    for (const [group, effectId] of this.activeSoundByGroup) {
+      if (ids.has(effectId)) this.activeSoundByGroup.delete(group)
+    }
   }
 
   async playSoundEvent(event: SoundEffectEvent) {

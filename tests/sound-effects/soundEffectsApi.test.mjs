@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
 import { EventEmitter } from 'node:events'
+import { cp, mkdir, mkdtemp, rm } from 'node:fs/promises'
 import { test } from 'node:test'
+import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createSoundEffectsMiddleware } from '../../tools/sound-effects/soundEffectsApi.mjs'
@@ -20,13 +22,23 @@ async function invoke(middleware, method, url, body) {
   return { status: response.statusCode, json: JSON.parse(response.body || '{}') }
 }
 
-test('status lists exactly two local effects and keeps paid generation off by default', async () => {
-  const middleware = createSoundEffectsMiddleware({ root, getApiKey: () => '', getSettings: () => ({ model: 'eleven_text_to_sound_v3', generationEnabled: 'false', allowPaidGeneration: 'false' }) })
+test('status lists the catalog and keeps paid generation off by default', async (t) => {
+  const cleanRoot = await mkdtemp(path.join(os.tmpdir(), 'sound-effects-'))
+  t.after(() => rm(cleanRoot, { recursive: true, force: true }))
+  const definitions = 'content/sound-effects/library'
+  const manifests = 'tools/sound-effects/manifests'
+  await cp(path.join(root, definitions), path.join(cleanRoot, definitions), { recursive: true })
+  await mkdir(path.join(cleanRoot, manifests), { recursive: true })
+  await cp(path.join(root, manifests, 'budget.json'), path.join(cleanRoot, manifests, 'budget.json'))
+  const middleware = createSoundEffectsMiddleware({ root: cleanRoot, getApiKey: () => '', getSettings: () => ({ model: 'eleven_text_to_sound_v3', generationEnabled: 'false', allowPaidGeneration: 'false' }) })
   {
     const response = await invoke(middleware, 'GET', '/status')
     const status = response.json
     assert.equal(response.status, 200)
-    assert.deepEqual(status.effects.map((effect) => effect.id), ['library-scroll-unroll', 'library-scroll-roll'])
+    const discovery = status.effects.find((effect) => effect.id === 'magical-discovery')
+    assert.equal(discovery?.durationSeconds, 2)
+    assert.equal(discovery.loop, false)
+    assert.deepEqual(discovery.versions, [])
     assert.equal(status.canGenerate, false)
     assert.equal(status.apiConfigured, false)
     assert.equal(status.paidRequests, 0)

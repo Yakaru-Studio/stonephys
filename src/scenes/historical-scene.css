@@ -71,6 +71,7 @@
 .border-cave-shade{position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,9,25,.18),transparent 24%,transparent 66%,rgba(14,13,20,.12)),radial-gradient(ellipse at center,transparent 38%,rgba(8,10,20,.18) 100%)}
 .border-cave-header{background:linear-gradient(180deg,rgba(7,10,24,.46),transparent);pointer-events:none}
 .border-cave-header .historical-scene-icon-button{pointer-events:auto}
+.border-cave-scene-transition{position:fixed;inset:0;z-index:240;background:#03040a;opacity:0;transition:opacity .72s ease-in-out;pointer-events:none}
 .scene-intro-title{position:absolute;z-index:4;left:var(--intro-x);top:var(--intro-y);width:min(840px,calc(100% - 40px));transform:translate(-50%,-50%);text-align:center;pointer-events:none;opacity:var(--intro-opacity);color:#f5e8ca;text-shadow:0 2px 5px rgba(10,13,25,.9),0 0 24px rgba(255,210,146,.28);font-family:Georgia,'Times New Roman',serif}
 .scene-intro-title h1{margin:0 0 clamp(9px,1.5vh,16px);font-size:clamp(32px,5vw,66px);line-height:1.04;font-weight:500;letter-spacing:.025em;text-shadow:0 2px 4px rgba(8,10,20,.9),0 0 28px rgba(255,222,177,.2);transition:opacity .1s linear,transform .1s linear}
 .scene-intro-title p{margin:0;line-height:1.45;text-shadow:0 2px 4px rgba(7,9,20,.9),0 0 18px rgba(255,222,177,.16);transition:opacity .1s linear,transform .1s linear}

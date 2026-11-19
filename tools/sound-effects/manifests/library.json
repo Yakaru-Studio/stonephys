@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-19T03:05:42.889Z",
+  "updatedAt": "2026-11-19T16:58:34.267Z",
   "effects": {
     "library-scroll-unroll": {
       "versions": [
@@ -788,6 +788,277 @@
       ],
       "previewVersionId": "gen-e663de13-8bc6-4e5b-9377-deec744049c6",
       "approvedVersionId": "gen-e663de13-8bc6-4e5b-9377-deec744049c6"
+    },
+    "magical-discovery": {
+      "versions": [
+        {
+          "id": "gen-2e1e51f1-f32a-410c-9f15-fa5902eba284",
+          "effectId": "magical-discovery",
+          "name": "Descoberta mágica",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "2-second ancestral revelation. Close, breathy human voices begin a deep wordless hum. The raw, unpolished choir swells together into a vast, radiant harmony, as if early humans had just glimpsed a secret of the cosmos. A faint shimmer blooms inside the voices, then fades into a stone chamber's echo. One shared breath, no words, melody, drums, bells, synths, or orchestral backing.",
+          "requestedDurationSeconds": 2,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T15:23:55.163Z",
+          "createdAt": "2026-11-19T15:23:55.163Z",
+          "estimatedCredits": 80,
+          "actualCredits": null,
+          "providerCostHeader": "20",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/magical-discovery/gen-2e1e51f1-f32a-410c-9f15-fa5902eba284.mp3",
+          "bytes": 33061,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": "Aprovada para publicação no jogo.",
+          "reviewedAt": "2026-11-19T15:24:21.552Z",
+          "productionEligible": false,
+          "assetUrl": null,
+          "evaluationOnly": true
+        },
+        {
+          "id": "gen-b80fc82f-dd1b-4ead-8d31-a67b370b55cb",
+          "effectId": "magical-discovery",
+          "name": "Descoberta mágica",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "2-second ancestral revelation. Begin with a deep, rough resonance, like a vast stone chamber waking beneath the earth. In one swell, it opens into a huge, radiant harmony, with faint crystalline overtones high above. The awe of early humanity discovering something sacred and immense. Soft onset, powerful bloom, fading cavern tail. No melody, bells, beeps, drums, voices, or fanfare.",
+          "requestedDurationSeconds": 2,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T15:22:37.975Z",
+          "createdAt": "2026-11-19T15:22:37.975Z",
+          "estimatedCredits": 80,
+          "actualCredits": null,
+          "providerCostHeader": "20",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/magical-discovery/gen-b80fc82f-dd1b-4ead-8d31-a67b370b55cb.mp3",
+          "bytes": 33061,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 1,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": "Aprovada para publicação no jogo.",
+          "cropEndSeconds": null,
+          "syncOffsetMs": 0,
+          "playback": {
+            "loop": false
+          },
+          "reviewedAt": "2026-11-19T16:58:34.265Z",
+          "productionEligible": false,
+          "assetUrl": null,
+          "evaluationOnly": true
+        },
+        {
+          "id": "gen-f180d67a-2e29-4580-9dcd-1e364ac4b753",
+          "effectId": "magical-discovery",
+          "name": "Descoberta mágica",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "2-second magical discovery and achievement cue for an educational adventure. Soft ascending warm wooden chime notes, delicate crystal harmonics and a subtle cosmic shimmer. Evoke wonder, curiosity and the joy of unlocking an ancient secret of the universe. Organic, elegant, mysterious and uplifting. No arcade sounds, fanfare, voices or background music\nAdditional direction: marcante/alto descoberta mágica ancestral",
+          "requestedDurationSeconds": 2,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T15:22:08.087Z",
+          "createdAt": "2026-11-19T15:22:08.087Z",
+          "estimatedCredits": 80,
+          "actualCredits": null,
+          "providerCostHeader": "20",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/magical-discovery/gen-f180d67a-2e29-4580-9dcd-1e364ac4b753.mp3",
+          "bytes": 33061,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-119bd15d-321f-4775-8870-7d11d7f1cb2f",
+          "effectId": "magical-discovery",
+          "name": "Descoberta mágica",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "2-second ancestral cosmic revelation. A soft, low resonance like stone humming inside a deep cave slowly blooms into a warm, luminous chord. Faint crystalline overtones emerge from within the sound and dissolve into the distance. The awe and quiet triumph of early humans uncovering a secret of the universe. One continuous swell, no melody, beeps, percussion, voices or music\nAdditional direction: evoque descoberta humana mágica ancestral grandioso",
+          "requestedDurationSeconds": 2,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T15:20:04.920Z",
+          "createdAt": "2026-11-19T15:20:04.920Z",
+          "estimatedCredits": 80,
+          "actualCredits": null,
+          "providerCostHeader": "20",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/magical-discovery/gen-119bd15d-321f-4775-8870-7d11d7f1cb2f.mp3",
+          "bytes": 33061,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-294c37b7-1263-4570-946b-8391302fbd86",
+          "effectId": "magical-discovery",
+          "name": "Descoberta mágica",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "2-second ancestral cosmic discovery cue. Begin with a soft, earthy wooden chime. Two warm notes rise into a luminous, crystalline resolution, as if early humanity has just unlocked an ancient secret of the universe. Evoke the quiet triumph of a discovery that changes everything. Let a fine starlike shimmer fade naturally. No percussion, arcade sounds, fanfare, voices, or background music.",
+          "requestedDurationSeconds": 2,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T15:18:05.336Z",
+          "createdAt": "2026-11-19T15:18:05.336Z",
+          "estimatedCredits": 80,
+          "actualCredits": null,
+          "providerCostHeader": "20",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/magical-discovery/gen-294c37b7-1263-4570-946b-8391302fbd86.mp3",
+          "bytes": 33061,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-4df632b9-15db-46a9-8f18-46d14af3057d",
+          "effectId": "magical-discovery",
+          "name": "Descoberta mágica",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "2-second magical discovery and achievement cue for an educational adventure. Soft ascending warm wooden chime notes, delicate crystal harmonics and a subtle cosmic shimmer. Evoke wonder, curiosity and the joy of unlocking an ancient secret of the universe. Organic, elegant, mysterious and uplifting. Gentle attack, satisfying harmonic resolution, naturally fading tail. No percussion, arcade sounds, fanfare, voices or background music.",
+          "requestedDurationSeconds": 2,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-19T15:16:42.012Z",
+          "createdAt": "2026-11-19T15:16:42.012Z",
+          "estimatedCredits": 80,
+          "actualCredits": null,
+          "providerCostHeader": "20",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/magical-discovery/gen-4df632b9-15db-46a9-8f18-46d14af3057d.mp3",
+          "bytes": 33061,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": null,
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        }
+      ],
+      "previewVersionId": "gen-b80fc82f-dd1b-4ead-8d31-a67b370b55cb",
+      "approvedVersionId": "gen-b80fc82f-dd1b-4ead-8d31-a67b370b55cb"
     }
   },
   "requests": [
@@ -1093,6 +1364,120 @@
       "completedAt": "2026-11-19T03:04:58.273Z",
       "providerUsage": {
         "characterCostHeader": "5"
+      }
+    },
+    {
+      "requestId": "a8b90fba-74cd-455d-bfa6-028868043f02",
+      "effectId": "magical-discovery",
+      "configHash": "e56ad61696e56c93cca08696abce1c2571fe8e019b01c74132fcbb9fe5f18003",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 2,
+      "estimatedCredits": 80,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T15:16:40.510Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-4df632b9-15db-46a9-8f18-46d14af3057d",
+      "bytes": 33061,
+      "completedAt": "2026-11-19T15:16:42.012Z",
+      "providerUsage": {
+        "characterCostHeader": "20"
+      }
+    },
+    {
+      "requestId": "53997866-c683-429b-a95f-94c39c15da51",
+      "effectId": "magical-discovery",
+      "configHash": "242f8f0a127342b6a4eca63afd22d14dcf6fec55f56f2d5f0aa3550751c57d6b",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 2,
+      "estimatedCredits": 80,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T15:18:03.674Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-294c37b7-1263-4570-946b-8391302fbd86",
+      "bytes": 33061,
+      "completedAt": "2026-11-19T15:18:05.336Z",
+      "providerUsage": {
+        "characterCostHeader": "20"
+      }
+    },
+    {
+      "requestId": "794f1fcc-cd9b-415f-a04d-e02ee75328f4",
+      "effectId": "magical-discovery",
+      "configHash": "83b33f08106bfae61c235459495f700c25c299aaa23e1fc7d6335d7c007c9212",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 2,
+      "estimatedCredits": 80,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T15:20:03.207Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-119bd15d-321f-4775-8870-7d11d7f1cb2f",
+      "bytes": 33061,
+      "completedAt": "2026-11-19T15:20:04.920Z",
+      "providerUsage": {
+        "characterCostHeader": "20"
+      }
+    },
+    {
+      "requestId": "27621493-03f1-49ec-8c21-750327c86fbb",
+      "effectId": "magical-discovery",
+      "configHash": "666958bddef4cd40400ecf5441b5cd05df729b604047274401f4e8987a567969",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 2,
+      "estimatedCredits": 80,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T15:22:06.503Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-f180d67a-2e29-4580-9dcd-1e364ac4b753",
+      "bytes": 33061,
+      "completedAt": "2026-11-19T15:22:08.088Z",
+      "providerUsage": {
+        "characterCostHeader": "20"
+      }
+    },
+    {
+      "requestId": "c7609055-72bf-4964-945c-5adf793b3a25",
+      "effectId": "magical-discovery",
+      "configHash": "9479f8427ffacb3863ad5ea9d7c07c8a9f9bedc9ec30a1ce3e2f81125a30e413",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 2,
+      "estimatedCredits": 80,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T15:22:36.367Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-b80fc82f-dd1b-4ead-8d31-a67b370b55cb",
+      "bytes": 33061,
+      "completedAt": "2026-11-19T15:22:37.975Z",
+      "providerUsage": {
+        "characterCostHeader": "20"
+      }
+    },
+    {
+      "requestId": "53372d10-ea56-49a2-8c4b-f215c0c48d2d",
+      "effectId": "magical-discovery",
+      "configHash": "a245f44398e1116415ffec576f04551a1ae3819a08ba7bad6b1efdbd766b8cba",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 2,
+      "estimatedCredits": 80,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-19T15:23:53.284Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-2e1e51f1-f32a-410c-9f15-fa5902eba284",
+      "bytes": 33061,
+      "completedAt": "2026-11-19T15:23:55.163Z",
+      "providerUsage": {
+        "characterCostHeader": "20"
       }
     }
   ]

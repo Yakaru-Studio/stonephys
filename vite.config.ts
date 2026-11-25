@@ -195,7 +195,7 @@ function voiceStudio() {
           }
           if (route === '/gemini/design-voice' && req.method === 'POST') {
             if (body.authorization !== studioPhrase) { send(428, { error: 'Confirmação de possível cobrança/cota ausente.' }); return }
-            const response = await fetch('https://generativelanguage.googleapis.com/v1beta/voices', { method: 'POST', headers: { 'x-goog-api-key': apiKey, 'content-type': 'application/json' }, body: JSON.stringify({ store: true, voice: { model: 'gemini-3.8-flash-tts', type: 'prompted', display_name: 'John Harrison (Stone Phys)', gender: 'male', language_code: 'pt-BR', prompted: { input: body.description } } }) })
+            const response = await fetch('https://generativelanguage.googleapis.com/v1beta/voices', { method: 'POST', headers: { 'x-goog-api-key': apiKey, 'content-type': 'application/json' }, body: JSON.stringify({ store: true, voice: { model: 'gemini-3.8-flash-tts', type: 'prompted', display_name: 'John Harrison (Sharp Stone)', gender: 'male', language_code: 'pt-BR', prompted: { input: body.description } } }) })
             const result: any = await response.json()
             if (!response.ok) { send(response.status, { error: result.error?.message || 'Falha ao criar voz.' }); return }
             if (result.sample_audio?.data) await writeFile(path.join(studioDir, `voice-sample-${safeName(result.id)}.wav`), Buffer.from(result.sample_audio.data, 'base64'))

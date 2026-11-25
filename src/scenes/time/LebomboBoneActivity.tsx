@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, AudioLines, CheckCircle2, CircleAlert, Flag, Info, LibraryBig, RotateCcw, Speech, Trophy } from 'lucide-react'
+import { ArrowRight, AudioLines, CheckCircle2, CircleAlert, Flag, Info, LibraryBig, RotateCcw, SkipForward, Speech, TrendingUp, Trophy, X } from 'lucide-react'
 import type { SceneLocale } from '../sceneTypes'
 import AudioControls from '../../audio/AudioControls'
 import { audioManager } from '../../audio/AudioManager'
 import { readScientificNotes, recordScientificNoteRead } from '../../scientificNotes'
+import { achievementImage, getAchievementGroups } from '../../contentCatalog'
 import engravingFlake from '../../assets/scenes/time/lebombo/engraving-flake-low-poly.png'
 import trophyLebomboBone from '../../assets/achievements/conquistas/osso_de_lebombo.png'
 import trophyFlakedStone from '../../assets/achievements/conquistas/pedra_lascada.png'
-import trophyAru from '../../assets/achievements/conquistas/aru.png'
-import trophyBorderCave from '../../assets/achievements/conquistas/border_cave.png'
 import trophyCounting from '../../assets/achievements/conquistas/contagem.png'
 import trophyFirstStep from '../../assets/achievements/conquistas/o_primeiro_passo.png'
 import trophyCuriousMind from '../../assets/achievements/conquistas/mente_curiosa.png'
 import successMusic from '../../../content/music/a-future-among-the-stars/composition.json'
 import './lebombo-bone-activity.css'
+import TaskSuccessModal from './TaskSuccessModal'
+import AllAchievementsModal from './AllAchievementsModal'
 
 type SuccessMusicLoop = Omit<typeof successMusic.loop, 'endSeconds'> & { endSeconds: number | null }
 type SuccessMusic = Omit<typeof successMusic, 'loop' | 'previewLoop'> & {
@@ -74,18 +75,21 @@ type ActivityProps = {
   onRestartRound: (previousDays: number) => void
   onRoundEnded: () => void
   onComplete: () => void
+  onRestartAct: () => void
+  onNextAct?: () => void
 }
 
-export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready, locale, onExit, onRestartRound, onRoundEnded, onComplete }: ActivityProps) {
+export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready, locale, onExit, onRestartRound, onRoundEnded, onComplete, onRestartAct, onNextAct }: ActivityProps) {
   const english = locale === 'en'
   const [marks, setMarks] = useState<number[]>([])
   const [incising, setIncising] = useState(false)
   const [result, setResult] = useState<'wrong' | 'correct' | 'complete' | null>(null)
   const [completionStep, setCompletionStep] = useState<'task' | 'act' | 'success' | null>(null)
-  const [successTab, setSuccessTab] = useState<'story' | 'info' | 'achievements' | 'references'>('story')
-  const [readSuccessTabs, setReadSuccessTabs] = useState<Set<'story' | 'info' | 'achievements' | 'references'>>(() => new Set(['story']))
+  const [successTab, setSuccessTab] = useState<'story' | 'info' | 'achievements' | 'advanced-achievements' | 'references'>('story')
+  const [readSuccessTabs, setReadSuccessTabs] = useState<Set<'story' | 'info' | 'achievements' | 'advanced-achievements' | 'references'>>(() => new Set(['story']))
   const [showAchievementSequence, setShowAchievementSequence] = useState(false)
   const [achievementIndex, setAchievementIndex] = useState(0)
+  const [showAllAchievements, setShowAllAchievements] = useState(false)
   const [hasReadScientificNote, setHasReadScientificNote] = useState(() => readScientificNotes().length > 0)
   const incisingRef = useRef(false)
   const roundClosedRef = useRef(false)
@@ -100,20 +104,16 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
     { id: 'first-step', icon: trophyFirstStep, title: english ? 'The First Step' : 'O Primeiro Passo', description: english ? 'Complete your first interactive activity.' : 'Conclua sua primeira atividade interativa.' },
     ...(hasReadScientificNote ? [{ id: 'curious-mind', icon: trophyCuriousMind, title: english ? 'Curious Mind' : 'Mente Curiosa', description: english ? 'Read your first scientific note.' : 'Leia sua primeira nota científica.' }] : []),
   ]
+  const achievementGroups = getAchievementGroups(locale, ['counting-marks'], readScientificNotes().length)
+  const earnedAchievementGroups = achievementGroups.map((group) => ({ ...group, items: group.items.filter((item) => item.earned) })).filter((group) => group.items.length > 0)
+  const advancedAchievementGroups = achievementGroups.map((group) => ({ ...group, items: group.items.filter((item) => !item.earned && item.progress > 0) })).filter((group) => group.items.length > 0)
+  const allVisibleAchievementGroups = achievementGroups.map((group) => ({ ...group, items: group.items.filter((item) => item.earned || item.progress > 0) })).filter((group) => group.items.length > 0)
 
   useEffect(() => { void preloadBoneFrames() }, [])
   useEffect(() => {
-    if (result !== 'complete') return
-    if (completionStep === 'task') void audioManager.playSoundEffectById('magical-discovery', { restart: true })
-    if (completionStep === 'act') void audioManager.playSoundEffectById('magical-discovery', { restart: true })
-  }, [completionStep, result])
-  useEffect(() => {
-    if (result === 'complete' && showAchievementSequence) audioManager.play('equipmentSuccess')
-  }, [achievementIndex, result, showAchievementSequence])
-  useEffect(() => {
     if (result !== 'complete' || completionStep !== 'success') return
     const controller = new AbortController()
-    audioManager.fadeMusicOut(450)
+    audioManager.stopMusicImmediately()
     audioManager.pauseNaturalAmbience()
     audioManager.stopSoundEffectsById(BORDER_CAVE_ANIMAL_EFFECTS)
 
@@ -122,7 +122,7 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
       audioManager.setNarrationMusicLevel(composition.ducking.musicLevelDuringNarration)
       if (!composition.approvedAssetUrl) return
       await audioManager.playMusicAsset(composition.approvedAssetUrl, {
-        fadeMs: 850,
+        fadeMs: 0,
         loop: true,
         loopCrossfadeMs: (composition.approvedLoop ?? composition.loop).crossfadeMs,
         trackGain: composition.defaultVolume,
@@ -140,7 +140,7 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
     void Promise.allSettled([playSuccessMusic(), playSuccessNarration()])
     return () => {
       controller.abort()
-      audioManager.fadeMusicOut(650)
+      audioManager.stopMusicImmediately()
       if (!english) audioManager.stopNarration()
     }
   }, [completionStep, english, result])
@@ -169,6 +169,7 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
     evaluatedRef.current = true
     const correct = markDaysRef.current.length === roundDays
     if (!correct) {
+      void audioManager.playSoundEvent('task.failure').catch(() => {})
       setResult('wrong')
       return
     }
@@ -176,6 +177,7 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
     scoreRef.current = nextScore
     if (nextScore >= LEBOMBO_ACTIVITY_CONFIG.requiredCorrectRounds) {
       setSuccessTab('story')
+      void audioManager.playSuccessCue()
       setCompletionStep('task')
       setResult('complete')
     } else setResult('correct')
@@ -234,7 +236,7 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
     setAchievementIndex(0)
     onRoundEnded()
   }
-  const openSuccessTab = (tab: 'story' | 'info' | 'achievements' | 'references') => {
+  const openSuccessTab = (tab: 'story' | 'info' | 'achievements' | 'advanced-achievements' | 'references') => {
     setSuccessTab(tab)
     setReadSuccessTabs((current) => new Set(current).add(tab))
     if (tab === 'info') recordScientificNoteRead('lebombo-artifact-note')
@@ -246,12 +248,19 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
     setAchievementIndex(0)
     setShowAchievementSequence(true)
   }
+  const openAllAchievements = () => {
+    setShowAllAchievements(true)
+    void audioManager.play('achievementReveal')
+  }
   const advanceAchievementSequence = () => {
     if (achievementIndex < successAchievements.length - 1) setAchievementIndex((index) => index + 1)
-    else onComplete()
+    else (onNextAct ?? onComplete)()
   }
   const advanceCompletion = () => {
-    if (completionStep === 'task') setCompletionStep('act')
+    if (completionStep === 'task') {
+      void audioManager.playSuccessCue()
+      setCompletionStep('act')
+    }
     else if (completionStep === 'act') setCompletionStep('success')
   }
   const replaySuccessNarration = () => {
@@ -266,6 +275,7 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
     <button className="lebombo-activity-restart" type="button" onClick={restartActivity} disabled={incising} aria-label={english ? 'Restart activity' : 'Reiniciar atividade'} title={english ? 'Restart activity' : 'Reiniciar atividade'}><RotateCcw size={17}/></button>
     <div className="historical-scene-audio-control"><AudioControls/></div>
     <p className="lebombo-action-prompt">{english ? 'Mark the bone every time you see the moon rise in the sky' : 'Marque o osso toda vez que ver a lua subir no céu'}</p>
+    {marks.length === 0 && !result && <div className="lebombo-bone-first-mark-hint" role="status">{english ? 'Click the bone to make marks' : 'Clique em cima do osso para fazer as marcações'}</div>}
     <p className="lebombo-mark-count" aria-live="polite">{english ? 'Marks' : 'Marcas'}: {marks.length}</p>
     <div className={`lebombo-marking-stage ${incising ? 'is-incising' : ''}`}>
       <button className="lebombo-bone-target" type="button" onClick={incise} disabled={!ready || roundClosedRef.current || !!result || incising || marks.length >= LEBOMBO_ACTIVITY_CONFIG.maximumMarks} aria-label={english ? 'Make an incision in the bone' : 'Fazer uma incisão no osso'}>
@@ -274,36 +284,54 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
       <img className="lebombo-engraving-flake" src={engravingFlake} alt="" draggable={false}/>
     </div>
     {import.meta.env.DEV && <button className="lebombo-dev-success" type="button" onClick={skipToSuccess}>{english ? 'Skip to success' : 'Pular para o sucesso'}</button>}
-    {result && <div className="lebombo-result-overlay" role="dialog" aria-modal="true" aria-labelledby="lebombo-result-title">
-      {result === 'complete' ? (completionStep !== 'success' ? <section className="lebombo-result-card lebombo-completion-card" key={completionStep}>
-        <div className="lebombo-completion-icon" aria-hidden="true">{completionStep === 'task' ? <CheckCircle2 size={42}/> : <Flag size={42}/>}</div>
-        <span className="lebombo-completion-kicker">{completionStep === 'task' ? (english ? 'Task completed' : 'Tarefa concluída') : (english ? 'Act completed' : 'Ato concluído')}</span>
-        <h1 id="lebombo-result-title">{completionStep === 'task' ? (english ? 'Mark the Lebombo bone' : 'Marcação do osso de Lebombo') : (english ? 'The Lebombo Bone' : 'O osso de Lebombo')}</h1>
-        <p>{completionStep === 'task'
-          ? (english ? 'You recorded the days of the lunar cycle with marks on the bone.' : 'Você registrou os dias do ciclo lunar com marcas no osso.')
-          : (english ? 'Arc I · The Gods of Light and Darkness' : 'Arco I · Os Deuses da Luz e Escuridão')}</p>
-        <button type="button" className="is-primary" onClick={advanceCompletion}>{english ? 'Continue' : 'Avançar'}<ArrowRight size={17} aria-hidden="true"/></button>
-      </section> : <section className={`lebombo-result-card lebombo-success-card ${showAchievementSequence ? 'is-achievement-reveal' : ''}`}>
+    {result === 'complete' && completionStep === 'task' && <TaskSuccessModal
+      english={english}
+      titleId="lebombo-bone-task-success-title"
+      kicker={english ? 'Task completed' : 'Tarefa concluída'}
+      title={english ? 'Mark the Lebombo bone' : 'Marcação do osso de Lebombo'}
+      description={english ? 'You recorded the days of the lunar cycle with marks on the bone.' : 'Você registrou os dias do ciclo lunar com marcas no osso.'}
+      continueLabel={english ? 'Continue' : 'Avançar'}
+      onContinue={advanceCompletion}
+      restartLabel={english ? 'Restart task' : 'Reiniciar tarefa'}
+      onRestart={restartActivity}
+    />}
+    {result === 'complete' && completionStep === 'act' && <TaskSuccessModal
+      english={english}
+      titleId="lebombo-act-success-title"
+      kicker={english ? 'Act completed' : 'Ato concluído'}
+      title={english ? 'The Lebombo Bone' : 'O osso de Lebombo'}
+      description={english ? 'Arc I · The Gods of Light and Darkness' : 'Arco I · Os Deuses da Luz e Escuridão'}
+      continueLabel={english ? 'Continue' : 'Avançar'}
+      onContinue={advanceCompletion}
+      icon={<Flag size={42} aria-hidden="true"/>}
+    />}
+    {result && !(result === 'complete' && (completionStep === 'task' || completionStep === 'act')) && <div className="lebombo-result-overlay" role="dialog" aria-modal="true" aria-labelledby="lebombo-result-title">
+      {result === 'complete' ? <section className={`lebombo-result-card lebombo-success-card ${showAchievementSequence ? 'is-achievement-reveal' : ''}`}>
         {showAchievementSequence ? <>
           <div className="lebombo-achievement-reveal" key={successAchievements[achievementIndex].id}>
             <span className="lebombo-achievement-reveal-kicker"><CheckCircle2 size={16} aria-hidden="true"/>{english ? 'Achievement unlocked' : 'Conquista desbloqueada'}</span>
             <img className="lebombo-achievement-reveal-icon" src={successAchievements[achievementIndex].icon} alt=""/>
             <h1 id="lebombo-result-title">{successAchievements[achievementIndex].title}</h1>
             <p>{successAchievements[achievementIndex].description}</p>
+            <button type="button" className="lebombo-view-all-achievements" onClick={openAllAchievements}>{english ? 'View all achievements' : 'Ver todas as conquistas'}</button>
             <span className="lebombo-achievement-reveal-count">{achievementIndex + 1} / {successAchievements.length}</span>
           </div>
           <footer className="lebombo-success-actions lebombo-achievement-reveal-actions">
-            <button type="button" className="is-primary" onClick={advanceAchievementSequence}>{english ? (achievementIndex === successAchievements.length - 1 ? 'Finish' : 'Continue') : (achievementIndex === successAchievements.length - 1 ? 'Concluir' : 'Avançar')}<ArrowRight size={17} aria-hidden="true"/></button>
+            {achievementIndex === 0 && <button type="button" onClick={() => setAchievementIndex(successAchievements.length - 1)}><SkipForward size={16} aria-hidden="true"/>{english ? 'Skip all' : 'Pular todas'}</button>}
+            {achievementIndex === successAchievements.length - 1 && <button type="button" onClick={onComplete}><X size={16} aria-hidden="true"/>{english ? 'Exit' : 'Sair'}</button>}
+            <button type="button" className="is-primary" onClick={advanceAchievementSequence}>{english ? (achievementIndex === successAchievements.length - 1 ? 'Next Act' : 'Continue') : (achievementIndex === successAchievements.length - 1 ? 'Próximo Ato' : 'Avançar')}<ArrowRight size={17} aria-hidden="true"/></button>
           </footer>
+          {showAllAchievements && <AllAchievementsModal groups={allVisibleAchievementGroups} english={english} onClose={() => setShowAllAchievements(false)}/>}
         </> : <>
         <nav className="lebombo-success-tabs" role="tablist" aria-orientation="vertical" aria-label={english ? 'Success message sections' : 'Seções da mensagem de sucesso'}>
           <button type="button" role="tab" aria-selected={successTab === 'story'} aria-controls="lebombo-success-message" id="lebombo-success-story-tab" className={successTab === 'story' ? 'is-active' : ''} onClick={() => openSuccessTab('story')} aria-label={english ? 'Narrator message' : 'Mensagem do narrador'} title={english ? 'Narrator message' : 'Mensagem do narrador'}><AudioLines size={21}/></button>
           <button type="button" role="tab" aria-selected={successTab === 'info'} aria-controls="lebombo-success-message" id="lebombo-success-info-tab" className={successTab === 'info' ? 'is-active' : ''} onClick={() => openSuccessTab('info')} aria-label={english ? 'Artifact information' : 'Informações sobre o artefato'} title={english ? 'Artifact information' : 'Informações sobre o artefato'}><Info size={21}/>{!readSuccessTabs.has('info') && <CircleAlert className="lebombo-tab-unread" size={15} aria-hidden="true"/>}</button>
-          <button type="button" role="tab" aria-selected={successTab === 'achievements'} aria-controls="lebombo-success-message" id="lebombo-success-achievements-tab" className={successTab === 'achievements' ? 'is-active' : ''} onClick={() => openSuccessTab('achievements')} aria-label={english ? 'Achievements' : 'Conquistas'} title={english ? 'Achievements' : 'Conquistas'}><Trophy size={21}/>{!readSuccessTabs.has('achievements') && <CircleAlert className="lebombo-tab-unread" size={15} aria-hidden="true"/>}</button>
+          <button type="button" role="tab" aria-selected={successTab === 'achievements'} aria-controls="lebombo-success-message" id="lebombo-success-achievements-tab" className={successTab === 'achievements' ? 'is-active' : ''} onClick={() => openSuccessTab('achievements')} aria-label={english ? 'Achievements conquered' : 'Conquistas conquistadas'} title={english ? 'Achievements conquered' : 'Conquistas conquistadas'}><Trophy size={21}/>{!readSuccessTabs.has('achievements') && <CircleAlert className="lebombo-tab-unread" size={15} aria-hidden="true"/>}</button>
+          <button type="button" role="tab" aria-selected={successTab === 'advanced-achievements'} aria-controls="lebombo-success-message" id="lebombo-success-advanced-achievements-tab" className={successTab === 'advanced-achievements' ? 'is-active' : ''} onClick={() => openSuccessTab('advanced-achievements')} aria-label={english ? 'Achievements in progress' : 'Conquistas avançadas'} title={english ? 'Achievements in progress' : 'Conquistas avançadas'}><TrendingUp size={21}/>{!readSuccessTabs.has('advanced-achievements') && <CircleAlert className="lebombo-tab-unread" size={15} aria-hidden="true"/>}</button>
           <button type="button" role="tab" aria-selected={successTab === 'references'} aria-controls="lebombo-success-message" id="lebombo-success-references-tab" className={successTab === 'references' ? 'is-active' : ''} onClick={() => openSuccessTab('references')} aria-label={english ? 'Bibliographic references' : 'Referências bibliográficas'} title={english ? 'Bibliographic references' : 'Referências bibliográficas'}><LibraryBig size={21}/>{!readSuccessTabs.has('references') && <CircleAlert className="lebombo-tab-unread" size={15} aria-hidden="true"/>}</button>
         </nav>
         <div className="lebombo-success-main">
-          <div id="lebombo-success-message" className={`lebombo-success-message ${successTab === 'achievements' ? 'is-achievements' : ''}`} role="tabpanel" aria-labelledby={successTab === 'story' ? 'lebombo-success-story-tab' : successTab === 'info' ? 'lebombo-success-info-tab' : successTab === 'achievements' ? 'lebombo-success-achievements-tab' : 'lebombo-success-references-tab'} tabIndex={0}>
+          <div id="lebombo-success-message" className={`lebombo-success-message ${successTab === 'achievements' || successTab === 'advanced-achievements' ? 'is-achievements' : ''}`} role="tabpanel" aria-labelledby={successTab === 'story' ? 'lebombo-success-story-tab' : successTab === 'info' ? 'lebombo-success-info-tab' : successTab === 'achievements' ? 'lebombo-success-achievements-tab' : successTab === 'advanced-achievements' ? 'lebombo-success-advanced-achievements-tab' : 'lebombo-success-references-tab'} tabIndex={0}>
             {successTab === 'story' ? <>
               <h1 id="lebombo-result-title">{english ? 'You did it!' : 'Você conseguiu!'}</h1>
               <p>{english
@@ -331,19 +359,26 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
                 <p>Independentemente de sua função original, o artefato revela a capacidade humana de produzir registros materiais muito antes do surgimento da escrita.</p>
                 <p>Na experiência que você acabou de vivenciar, exploramos uma de suas possíveis utilizações: registrar a passagem do tempo por meio de marcas.</p>
               </>}
-            </> : successTab === 'achievements' ? <>
-              <h1 id="lebombo-result-title">{english ? 'Achievements' : 'Conquistas'}</h1>
-              <h2 className="lebombo-achievement-section-title">{english ? 'Educational collection' : 'Coleção educacional'}</h2>
-              <div className="lebombo-achievement-grid">
-                <article className="lebombo-achievement-item"><img src={trophyLebomboBone} alt=""/><span>{english ? 'Lebombo Bone' : 'Osso de Lebombo'}</span></article>
-                <article className="lebombo-achievement-item"><img src={trophyFlakedStone} alt=""/><span>{english ? 'Flaked Stone' : 'Pedra Lascada'}</span></article>
-                <article className="lebombo-achievement-item"><img src={trophyAru} alt=""/><span>Aru</span></article>
-                <article className="lebombo-achievement-item"><img src={trophyBorderCave} alt=""/><span>Border Cave</span></article>
-                <article className="lebombo-achievement-item"><img src={trophyCounting} alt=""/><span>{english ? 'Counting' : 'Contagem'}</span></article>
-              </div>
-              <h2 className="lebombo-achievement-section-title">{english ? 'Traditional achievements' : 'Conquistas tradicionais'}</h2>
-              <div className="lebombo-achievement-grid lebombo-achievement-grid-traditional">
-                <article className="lebombo-achievement-item"><img src={trophyFirstStep} alt=""/><span>{english ? 'The First Step' : 'O primeiro passo'}</span></article>
+            </> : successTab === 'achievements' || successTab === 'advanced-achievements' ? <>
+              <h1 id="lebombo-result-title">{successTab === 'achievements' ? (english ? 'Achievements conquered' : 'Conquistas conquistadas') : (english ? 'Achievements in progress' : 'Conquistas avançadas')}</h1>
+              <p className="lebombo-achievement-tab-description">{successTab === 'achievements'
+                ? (english ? 'Achievements already unlocked.' : 'Conquistas que já foram desbloqueadas.')
+                : (english ? 'Achievements with progress underway.' : 'Conquistas que já têm progresso iniciado.')}</p>
+              <div className="lebombo-success-achievement-categories">
+                {(successTab === 'achievements' ? earnedAchievementGroups : advancedAchievementGroups).map((group) => <section key={group.id}>
+                  <h2 className="lebombo-achievement-section-title"><img src={achievementImage('categorias', group.icon)} alt=""/>{group.title}</h2>
+                  <div className="lebombo-achievement-grid">
+                    {group.items.map((item) => <article className={`lebombo-achievement-item ${item.masked ? 'is-masked' : ''}`} key={item.id}>
+                      <img src={achievementImage('conquistas', item.icon)} alt=""/>
+                      <span>{item.masked ? (english ? 'Hidden achievement' : 'Conquista oculta') : item.title}</span>
+                      {!item.masked && item.description && <small>{item.description}</small>}
+                      {item.earned ? <small>{english ? 'Unlocked' : 'Conquistada'}</small> : <span className="lebombo-success-achievement-progress"><i style={{ width: `${item.progress * 100}%` }}/></span>}
+                    </article>)}
+                  </div>
+                </section>)}
+                {(successTab === 'achievements' ? earnedAchievementGroups : advancedAchievementGroups).length === 0 && <p className="lebombo-achievement-empty">{successTab === 'achievements'
+                  ? (english ? 'No achievements unlocked yet.' : 'Ainda não há conquistas desbloqueadas.')
+                  : (english ? 'No achievements have progress yet.' : 'Ainda não há conquistas com progresso iniciado.')}</p>}
               </div>
             </> : <>
               <h1 id="lebombo-result-title">{english ? 'Bibliographic references' : 'Referências bibliográficas'}</h1>
@@ -361,12 +396,12 @@ export default function LebomboBoneActivity({ elapsed, roundDays, roundId, ready
             </>}
           </div>
           <footer className="lebombo-success-actions">
-            <button type="button" onClick={restartActivity}><RotateCcw size={16} aria-hidden="true"/>{english ? 'Restart' : 'Reiniciar'}</button>
+            <button type="button" onClick={onRestartAct} aria-label={english ? 'Restart the act from scene 1' : 'Reiniciar o ato desde a cena 1'} title={english ? 'Restart the act from scene 1' : 'Reiniciar o ato desde a cena 1'}><RotateCcw size={16} aria-hidden="true"/>{english ? 'Restart act' : 'Reiniciar ato'}</button>
             <button type="button" className="is-primary" onClick={beginAchievementSequence}>{english ? 'Continue' : 'Avançar'}<ArrowRight size={17} aria-hidden="true"/></button>
           </footer>
         </div>
         </>}
-      </section>) : <div className="lebombo-result-card">
+      </section> : <div className="lebombo-result-card">
         <h1 id="lebombo-result-title">{result === 'wrong'
           ? (english ? 'Something is not right...' : 'Algo não está certo...')
           : (english ? 'Well done!' : 'Muito bem!')}</h1>

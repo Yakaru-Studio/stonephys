@@ -6,6 +6,7 @@ import { useLocale } from '../../i18n'
 import DistantBirdFlock from './DistantBirdFlock'
 import type { NarrationManifest } from '../sceneTypes'
 import { ARU_CURIOSITY_AUDIO_DIR } from '../../narration/harrisonScript'
+import TaskSuccessModal from './TaskSuccessModal'
 import dawnOfHumanity from '../../../content/music/dawn-of-humanity/composition.json'
 import wideLandscape from '../../assets/scenes/time/lebombo/border-cave-dusk-wide.png'
 import portraitLandscape from '../../assets/scenes/time/lebombo/border-cave-dusk-portrait.png'
@@ -14,7 +15,6 @@ import aruScanVideo from '../../assets/scenes/time/lebombo/aru-scan-final.webm'
 import baboonSkull from '../../assets/scenes/time/lebombo/baboon-skull-reference.png'
 import lebomboFibula from '../../assets/scenes/time/lebombo/lebombo-fibula-reference.png'
 import engravingFlake from '../../assets/scenes/time/lebombo/engraving-flake-low-poly.png'
-import boneFragment from '../../assets/scenes/time/lebombo/bone-fragment-low-poly.png'
 import naturalStone from '../../assets/scenes/time/lebombo/natural-stone-low-poly.png'
 import './lebombo-scene.css'
 
@@ -102,7 +102,7 @@ function cyclingWildlifeFrame(frames: WildlifeFrame[], elapsedSeconds: number) {
 type SceneObject = {
   id: string
   image: string
-  kind: 'skull' | 'fibula' | 'tool' | 'bone-fragment' | 'stone' | 'flake'
+  kind: 'skull' | 'fibula' | 'tool' | 'stone'
   x: number
   y: number
   width: string
@@ -128,15 +128,10 @@ const sceneObjects: SceneObject[] = [
   { id: 'baboon-skull', image: baboonSkull, kind: 'skull', x: 25, y: 76.8, width: 'clamp(102px, 13.2vw, 232px)', rotation: -8, depth: 1, label: 'Crânio de babuíno chacma, sem mandíbula', realLengthCm: 22 },
   { id: 'lebombo-fibula', image: lebomboFibula, kind: 'fibula', x: 70, y: 80.5, width: 'clamp(100px, 9.6vw, 176px)', rotation: 5, depth: 2, label: 'Fíbula de babuíno', realLengthCm: 16 },
   { id: 'engraving-flake', image: engravingFlake, kind: 'tool', x: 48, y: 84.5, width: 'clamp(54px, 5.8vw, 102px)', rotation: -22, depth: 3, label: 'Lasca de pedra usada como ferramenta' },
-  { id: 'bone-chip-a', image: boneFragment, kind: 'bone-fragment', x: 36, y: 83, width: 'clamp(37px, 4vw, 72px)', rotation: 26, depth: 3 },
-  { id: 'bone-chip-b', image: boneFragment, kind: 'bone-fragment', x: 59, y: 86, width: 'clamp(31px, 3.1vw, 56px)', rotation: -33, depth: 4 },
-  { id: 'bone-chip-c', image: boneFragment, kind: 'bone-fragment', x: 83, y: 82, width: 'clamp(26px, 2.7vw, 48px)', rotation: 52, depth: 2 },
   { id: 'stone-a', image: naturalStone, kind: 'stone', x: 14, y: 85, width: 'clamp(36px, 4.1vw, 74px)', rotation: -11, depth: 3 },
   { id: 'stone-b', image: naturalStone, kind: 'stone', x: 31, y: 89, width: 'clamp(27px, 3vw, 54px)', rotation: 18, depth: 4 },
   { id: 'stone-c', image: naturalStone, kind: 'stone', x: 56, y: 80, width: 'clamp(28px, 3vw, 54px)', rotation: 35, depth: 1 },
   { id: 'stone-d', image: naturalStone, kind: 'stone', x: 78, y: 88, width: 'clamp(34px, 3.7vw, 66px)', rotation: -17, depth: 4 },
-  { id: 'flake-a', image: engravingFlake, kind: 'flake', x: 43, y: 88.5, width: 'clamp(25px, 2.7vw, 48px)', rotation: 14, depth: 4 },
-  { id: 'flake-b', image: engravingFlake, kind: 'flake', x: 88, y: 84.5, width: 'clamp(23px, 2.4vw, 43px)', rotation: 43, depth: 3 },
 ]
 
 const distantAnimals = [
@@ -162,7 +157,9 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
   const aruScanVideoRef = useRef<HTMLVideoElement | null>(null)
   const [aruIntroEndElapsed, setAruIntroEndElapsed] = useState<number | null>(null)
   const [selectedObject, setSelectedObject] = useState<SceneObject | null>(null)
+  const [hasClickedAnObject, setHasClickedAnObject] = useState(false)
   const [equippedItems, setEquippedItems] = useState<string[]>([])
+  const [showEquipmentSuccess, setShowEquipmentSuccess] = useState(false)
   const [equipmentMessage, setEquipmentMessage] = useState('')
   const [standaloneManifest, setStandaloneManifest] = useState<NarrationManifest | null>(null)
   const [standaloneNarrationTime, setStandaloneNarrationTime] = useState(0)
@@ -179,7 +176,7 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
     if (!composition.approvedAssetUrl) return
     audioManager.setNarrationMusicLevel(composition.ducking.musicLevelDuringNarration)
     void audioManager.playMusicAsset(composition.approvedAssetUrl, {
-      fadeMs: 500,
+      fadeMs: 0,
       loop: true,
       loopCrossfadeMs: composition.loop?.crossfadeMs ?? 1800,
       trackGain: composition.introVolume?.gain ?? composition.defaultVolume,
@@ -274,7 +271,7 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
     if (!preserveNarration) audioManager.seekMusic(composition.approvedCropStartSeconds ?? 0)
     audioManager.setNarrationMusicLevel(composition.ducking.musicLevelDuringNarration)
     void audioManager.playMusicAsset(composition.approvedAssetUrl, {
-      fadeMs: 500,
+      fadeMs: 0,
       loop: true,
       loopCrossfadeMs: composition.loop?.crossfadeMs ?? 1800,
       trackGain: composition.introVolume?.gain ?? composition.defaultVolume,
@@ -285,7 +282,7 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
       const activeTrack = audioManager.getMusicAudioElement()
       if (!preserveNarration && activeTrack && !activeTrack.paused && activeTrack.src === new URL(composition.approvedAssetUrl!, window.location.href).href) directMusicStarted.current = true
     }).catch(() => {})
-    return () => { if (!preserveNarration) audioManager.fadeMusicOut(900) }
+    return () => { if (!preserveNarration) audioManager.stopMusicImmediately() }
   }, [preserveNarration])
 
   useEffect(() => {
@@ -364,11 +361,11 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
       : object.id === 'lebombo-fibula' ? 'Lebombo bone (baboon fibula)'
       : object.kind === 'tool' ? 'Stone flake engraving tool'
       : object.kind === 'stone' ? 'Natural stone'
-      : object.kind === 'flake' ? 'Knapped stone flake'
-      : 'Bone fragment'
-    : object.label ?? (object.kind === 'stone' ? 'Pedra natural' : object.kind === 'flake' ? 'Fragmento de pedra lascada' : 'Fragmento ósseo')
+      : 'Archaeological object'
+    : object.label ?? (object.kind === 'stone' ? 'Pedra natural' : 'Objeto arqueológico')
   const selectObject = (object: SceneObject) => {
     if (!canInteractWithObjects || equippedItems.includes(object.id)) return
+    setHasClickedAnObject(true)
     audioManager.play('starSelect')
     setSelectedObject(object)
     setEquipmentMessage('')
@@ -389,14 +386,20 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
     const correctPair = nextItems.includes('lebombo-fibula') && nextItems.includes('engraving-flake')
     if (correctPair) {
       setEquippedItems(nextItems)
-      audioManager.play('equipmentSuccess')
-      if (onEquipmentComplete) onEquipmentComplete()
-      else void audioManager.resumeNarration()
+      setShowEquipmentSuccess(true)
+      audioManager.pauseNarration()
+      void audioManager.playSuccessCue()
       return
     }
-    setEquippedItems([])
+    const correctItem = nextItems.find((id) => id === 'lebombo-fibula' || id === 'engraving-flake')
+    setEquippedItems(correctItem ? [correctItem] : [])
     setEquipmentMessage(english ? 'These items are not ideal for making a mark. Choose again.' : 'Estes itens não são ideais para fazer uma marcação, escolha novamente.')
-    audioManager.play('equipmentError')
+    void audioManager.playSoundEvent('task.failure').catch(() => {})
+  }
+  const continueAfterEquipmentSuccess = () => {
+    setShowEquipmentSuccess(false)
+    if (onEquipmentComplete) onEquipmentComplete()
+    else void audioManager.resumeNarration().catch(() => {})
   }
   const handleItemKey = (event: KeyboardEvent<HTMLImageElement>, object: SceneObject) => {
     if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectObject(object) }
@@ -480,7 +483,17 @@ export default function LebomboDiscoveryScene({ onExit, caption, preserveNarrati
       />
     </div>
     {canInteractWithObjects && <div className="lebombo-action-hint">{english ? 'Click the items to equip' : 'Clique nos itens para equipar'}</div>}
+    {canInteractWithObjects && !hasClickedAnObject && <div className="lebombo-action-hint-extra" role="status">{english ? 'Choose two items to make marks' : 'Escolha dois itens para fazer marcações'}</div>}
     {equipmentMessage && <div className="lebombo-equipment-feedback" role="status">{equipmentMessage}</div>}
+    {showEquipmentSuccess && <TaskSuccessModal
+      english={english}
+      titleId="lebombo-discovery-task-success-title"
+      kicker={english ? 'Task completed' : 'Tarefa concluída'}
+      title={english ? 'Tools ready' : 'Ferramentas preparadas'}
+      description={english ? 'You equipped the Lebombo bone and the stone flake. You are ready to make the marks.' : 'Você equipou o osso de Lebombo e a lasca de pedra. Agora está pronto para fazer as marcações.'}
+      continueLabel={english ? 'Continue' : 'Avançar'}
+      onContinue={continueAfterEquipmentSuccess}
+    />}
     <div className="lebombo-equipment" aria-label={english ? 'Equipment slots' : 'Espaços de equipamento'}>
       {[0, 1].map((slot) => {
         const id = equippedItems[slot]

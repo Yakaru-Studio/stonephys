@@ -1,0 +1,1 @@
+32 frames RGBA, 221 x 221 px. Grid 8 x 4. 12.5 FPS original; loop. No individual resizing.

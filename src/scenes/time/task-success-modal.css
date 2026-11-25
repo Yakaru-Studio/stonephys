@@ -1,0 +1,13 @@
+.task-success-backdrop{position:absolute;z-index:30;inset:0;display:grid;place-items:center;padding:22px;background:rgba(3,5,10,.72);backdrop-filter:blur(2px);pointer-events:auto;animation:task-success-backdrop-in .4s ease-out both}
+.task-success-card{display:flex;width:min(480px,calc(100vw - 32px));min-height:360px;flex-direction:column;align-items:center;justify-content:center;padding:clamp(24px,5vw,46px);border:1px solid rgba(235,206,154,.38);border-radius:14px;background:linear-gradient(145deg,rgba(34,28,24,.96),rgba(13,17,26,.98));box-shadow:0 20px 80px #0009;text-align:center;animation:task-success-card-in .5s cubic-bezier(.2,.75,.3,1) both}
+.task-success-icon{display:grid;place-items:center;width:82px;height:82px;flex:0 0 auto;margin-bottom:18px;border:1px solid rgba(235,206,154,.55);border-radius:50%;background:radial-gradient(circle at 35% 28%,rgba(241,200,126,.3),rgba(90,62,32,.2) 70%);box-shadow:0 0 30px rgba(226,175,91,.2),inset 0 0 22px rgba(226,175,91,.12);color:#f3cb81}
+.task-success-kicker{margin-bottom:10px;color:#e9c991;font:700 11px/1.2 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.task-success-card h1{max-width:100%;margin:0;color:#f5e5c8;font:500 clamp(25px,4.5vw,35px)/1.15 Georgia,serif;text-shadow:0 2px 10px #0008}
+.task-success-card p{max-width:360px;margin:18px 0 24px;color:#e4d8c3;font:clamp(15px,2.5vw,18px)/1.5 Georgia,serif}
+.task-success-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:4px}
+.task-success-actions button{display:inline-flex;min-width:148px;min-height:44px;align-items:center;justify-content:center;gap:9px;padding:0 20px;border:1px solid #c99953;border-radius:7px;background:linear-gradient(#9d6b35,#6d4625);color:#fff0cf;font:600 15px Georgia,serif;cursor:pointer;box-shadow:0 3px 12px #0006;transition:filter .2s ease}
+.task-success-actions button:hover{filter:brightness(1.12)}
+.task-success-actions button.is-secondary{border-color:rgba(235,206,154,.42);background:rgba(42,34,27,.9);color:#f3dfc0}
+@keyframes task-success-backdrop-in{from{opacity:0}to{opacity:1}}@keyframes task-success-card-in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:520px){.task-success-backdrop{padding:12px}.task-success-card{width:calc(100vw - 24px);min-height:320px;padding:24px 20px}.task-success-actions{width:100%}.task-success-actions button{flex:1;min-width:0;padding:0 12px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){.task-success-backdrop,.task-success-card{animation:none}}

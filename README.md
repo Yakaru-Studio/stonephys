@@ -1,4 +1,4 @@
-# SharpStone Phys — Pedra Lascada: Física
+# Sharp Stone — Pedra Lascada: Física
 
 Protótipo web do Universo do Conhecimento. A interface usa React + TypeScript; os neurônios são estruturas 3D procedurais renderizadas por Three.js com React Three Fiber, em câmera ortográfica fixa e com malhas translúcidas adequadas ao mapa 2.5D.
 

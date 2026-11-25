@@ -64,7 +64,7 @@ export default function AudioControls() {
     </button>
     {open && <section className="audio-panel" aria-label={t('audio.title')}>
       <header className="audio-panel-header">
-        <div><span>SHARPSTONE PHYS</span><h2>{t('audio.title')}</h2></div>
+        <div><span>SHARP STONE</span><h2>{t('audio.title')}</h2></div>
         <button className="audio-close" onClick={() => setOpen(false)} aria-label={t('audio.close')}><X size={17} /></button>
       </header>
       <label className="audio-switch">

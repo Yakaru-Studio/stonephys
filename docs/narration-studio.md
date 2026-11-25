@@ -1,4 +1,4 @@
-# Voice Studio — SharpStone Phys
+# Voice Studio — Sharp Stone
 
 O Voice Studio é uma ferramenta local de desenvolvimento para a introdução de John Harrison no primeiro ato do arco Tempo. Não aparece no menu do jogo e a chave Gemini é lida pelo processo local do Vite; nenhuma credencial deve usar o prefixo `VITE_`.
 

@@ -9,7 +9,7 @@ export type SoundEffect =
   | 'connection'
   | 'moduleComplete'
   | 'equipmentSuccess'
-  | 'equipmentError'
+  | 'achievementReveal'
   | 'navigation'
   | 'sceneTransition'
   | 'blackoutWhoosh'
@@ -67,10 +67,12 @@ const soundPatterns: Record<SoundEffect, SoundPattern> = {
     { frequency: 783.99, start: .1, duration: .27, gain: .052, type: 'sine' },
     { frequency: 1046.5, start: .21, duration: .42, gain: .038, type: 'triangle' },
   ] },
-  equipmentError: { volume: .88, tones: [
-    { frequency: 293.66, start: 0, duration: .2, gain: .12, type: 'triangle' },
-    { frequency: 220, start: .12, duration: .28, gain: .1, type: 'triangle' },
-    { frequency: 146.83, start: .24, duration: .34, gain: .075, type: 'sine' },
+  achievementReveal: { volume: .78, tones: [
+    { frequency: 392, start: 0, duration: .55, gain: .052, attack: .06, release: .18, type: 'sine' },
+    { frequency: 493.88, start: .12, duration: .72, gain: .045, attack: .07, release: .22, type: 'sine' },
+    { frequency: 587.33, start: .24, duration: .9, gain: .042, attack: .08, release: .28, type: 'triangle' },
+    { frequency: 783.99, start: .42, duration: 1.08, gain: .035, attack: .08, release: .35, type: 'triangle' },
+    { frequency: 1174.66, start: .58, duration: 1.22, gain: .018, attack: .1, release: .45, type: 'sine' },
   ] },
   navigation: { volume: .58, tones: [
     { frequency: 330, endFrequency: 495, start: 0, duration: .22, gain: .04 },
@@ -272,13 +274,16 @@ class AudioManager {
     oscillator.start(now); oscillator.stop(now + .052)
   }
 
-  play(effect: SoundEffect) {
+  async play(effect: SoundEffect) {
     if (effect === 'blackoutWhoosh') { this.playBlackoutWhoosh(); return }
     if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.effectsVolume <= 0) return
     if (this.activeVoices >= this.maxVoices) return
 
     const context = this.getContext()
-    if (context.state === 'suspended') void context.resume()
+    if (context.state === 'suspended') {
+      try { await context.resume() } catch { return }
+    }
+    if (context.state !== 'running') return
     const pattern = soundPatterns[effect]
     const voice = context.createGain()
     voice.gain.value = pattern.volume
@@ -390,16 +395,16 @@ class AudioManager {
     }
   }
 
-  async playSoundEffectById(effectId: string, options: { volume?: number; pan?: number; group?: string; restart?: boolean } = {}) {
-    if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.effectsVolume <= 0) return
+  async playSoundEffectById(effectId: string, options: { volume?: number; pan?: number; group?: string; restart?: boolean } = {}): Promise<boolean> {
+    if (!this.settings.enabled || this.settings.masterVolume <= 0 || this.settings.effectsVolume <= 0) return false
+    const context = this.getContext()
     const asset = this.soundEffectCatalog[effectId]
-    if (!asset?.url || !this.soundEffectsGain) return
+    if (!asset?.url) return false
     const group = options.group || effectId
     const previousId = this.activeSoundByGroup.get(group)
     const previous = previousId ? this.soundEffectElements.get(previousId) : null
-    if (previous && !previous.paused && previousId === effectId && !options.restart) return
+    if (previous && !previous.paused && previousId === effectId && !options.restart) return true
     if (previous && !previous.paused) { previous.pause(); previous.currentTime = 0 }
-    const context = this.getContext()
     if (context.state === 'suspended') await context.resume()
     let element = this.soundEffectElements.get(effectId)
     if (!element) {
@@ -408,7 +413,7 @@ class AudioManager {
       const source = context.createMediaElementSource(element)
       const panner = context.createStereoPanner()
       source.connect(panner)
-      panner.connect(this.soundEffectsGain)
+      panner.connect(this.soundEffectsGain!)
       this.soundEffectSources.set(effectId, source)
       this.soundEffectPanners.set(effectId, panner)
       element.addEventListener('ended', () => { if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group) })
@@ -422,7 +427,14 @@ class AudioManager {
     element.loop = false
     element.currentTime = 0
     this.activeSoundByGroup.set(group, effectId)
-    try { await element.play() } catch (error) { if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group); throw error }
+    try { await element.play(); return true } catch (error) { if (this.activeSoundByGroup.get(group) === effectId) this.activeSoundByGroup.delete(group); throw error }
+  }
+
+  async playSuccessCue() {
+    try {
+      if (await this.playSoundEffectById('magical-discovery', { restart: true })) return
+    } catch { /* Fall back only when the approved Studio asset cannot be played. */ }
+    await this.play('equipmentSuccess')
   }
 
   async playSoundEffectByIdAndWait(effectId: string, options: { volume?: number; pan?: number; group?: string; restart?: boolean } = {}, signal?: AbortSignal) {
@@ -617,6 +629,21 @@ class AudioManager {
 
   stopMusic(fadeMs = 0) {
     this.fadeMusicOut(fadeMs)
+  }
+
+  stopMusicImmediately() {
+    this.currentMusicUrl = ''
+    const now = this.context?.currentTime ?? 0
+    this.musicDecks.forEach((deck, index) => {
+      if (this.musicFadeTimers[index] !== null) window.clearTimeout(this.musicFadeTimers[index]!)
+      this.musicFadeTimers[index] = null
+      deck.element.pause()
+      deck.element.removeAttribute('src')
+      deck.element.load()
+      deck.loopCrossfading = false
+      deck.gain.gain.cancelScheduledValues(now)
+      deck.gain.gain.setValueAtTime(0, now)
+    })
   }
 
   private ensureMusicDecks(context: AudioContext) {

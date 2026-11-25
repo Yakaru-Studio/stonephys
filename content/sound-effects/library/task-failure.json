@@ -1,0 +1,22 @@
+{
+  "id": "task-failure",
+  "name": "Falha de tarefa",
+  "category": "Feedback de tarefa",
+  "description": "Uma batida curta e abafada de madeira bruta, com a textura seca de um golpe feito à mão.",
+  "prompt": "Real close-miked Foley of one short, restrained knock: a hand strikes a rough hollow log once with a small piece of raw hardwood. A low, dry woody thud with a slightly gritty contact and an immediate natural decay. Primitive, handmade and tactile. Isolated single impact. No melody, pitched chimes, synth, electronic tones, metallic ringing, reverberation, voices, or ambience.",
+  "provider": "elevenlabs",
+  "model": "eleven_text_to_sound_v3",
+  "durationSeconds": 1,
+  "promptInfluence": 0.75,
+  "loop": false,
+  "outputFormat": "mp3_44100_128",
+  "defaultVolume": 0.72,
+  "eventBindings": ["task.failure"],
+  "license": {
+    "plan": "unknown",
+    "commercialRightsConfirmed": false,
+    "evaluationOnly": true,
+    "notes": ""
+  },
+  "promptRevisions": []
+}

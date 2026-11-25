@@ -6,13 +6,13 @@ export type AppLocale = 'pt-BR' | 'en'
 const LOCALE_KEY = 'sharpstone-phys.locale.v1'
 const messages = {
   'pt-BR': {
-    'app.title': 'Pedra Lascada: Física', 'app.brand': 'SharpStone Phys', 'app.modules': 'Módulos', 'app.universe': 'Universo de módulos científicos',
+    'app.title': 'Pedra Lascada: Física', 'app.brand': 'Sharp Stone', 'app.modules': 'Módulos', 'app.universe': 'Universo de módulos científicos',
     'audio.title': 'Áudio', 'audio.effects': 'Efeitos sonoros', 'audio.master': 'Volume geral', 'audio.music': 'Música ambiente', 'audio.musicToggle': 'Ativar música ambiente', 'audio.voice': 'Narração', 'audio.language': 'Idioma', 'audio.portuguese': 'Português (Brasil)', 'audio.english': 'English', 'audio.close': 'Fechar configurações de áudio', 'audio.open': 'Configurações de áudio',
     'scene.back': 'Voltar ao mapa', 'scene.skip': 'Pular introdução', 'scene.pause': 'Pausar cena', 'scene.resume': 'Continuar cena', 'scene.next': 'Próxima viagem', 'scene.return': 'Voltar ao primeiro ato', 'scene.debug': 'Depuração da cena', 'scene.location': 'Oficina de John Harrison', 'scene.period': 'Londres, Inglaterra · 1760', 'scene.loading': 'Preparando a oficina…',
     'constellation.back': 'Voltar aos módulos', 'arc.back': 'Voltar à constelação', 'arc.start': 'INICIAR ATO', 'arc.review': 'REVER ATO', 'arc.complete': 'CONCLUIR ATO', 'arc.completed': 'ATO CONCLUÍDO', 'arc.parchment.close': 'Fechar pergaminho', 'arc.current': 'Ato atual',
   },
   en: {
-    'app.title': 'Science Learning Universe', 'app.brand': 'SharpStone Phys', 'app.modules': 'Modules', 'app.universe': 'Universe of scientific modules',
+    'app.title': 'Science Learning Universe', 'app.brand': 'Sharp Stone', 'app.modules': 'Modules', 'app.universe': 'Universe of scientific modules',
     'audio.title': 'Audio', 'audio.effects': 'Sound effects', 'audio.master': 'Master volume', 'audio.music': 'Ambient music', 'audio.musicToggle': 'Enable ambient music', 'audio.voice': 'Narration', 'audio.language': 'Language', 'audio.portuguese': 'Português (Brasil)', 'audio.english': 'English', 'audio.close': 'Close audio settings', 'audio.open': 'Audio settings',
     'scene.back': 'Back to map', 'scene.skip': 'Skip introduction', 'scene.pause': 'Pause scene', 'scene.resume': 'Resume scene', 'scene.next': 'Next journey', 'scene.return': 'Return to Act I', 'scene.debug': 'Scene debug', 'scene.location': 'John Harrison’s workshop', 'scene.period': 'London, England · 1760', 'scene.loading': 'Preparing the workshop…',
     'constellation.back': 'Back to modules', 'arc.back': 'Back to constellation', 'arc.start': 'START ACT', 'arc.review': 'REVIEW ACT', 'arc.complete': 'COMPLETE ACT', 'arc.completed': 'ACT COMPLETED', 'arc.parchment.close': 'Close scroll', 'arc.current': 'Current act',
@@ -94,7 +94,7 @@ export function localizeArc(locale: AppLocale, arc: LearningArc): LearningArc {
   const acts: Record<string, [string, string]> = {
     'first-observation': ['The First Look', 'Before clocks, the sky helped people recognize cycles. Observe the stars and discover how early communities found reference points for the passage of time.'],
     'shadow-measure': ['The Shadow That Measures', 'The Sun’s height turns a shadow into a measure. Follow the creation of calendars and early ways to organize the day.'],
-    'age-of-sun': ['The Age of the Sun', 'A changing world where sunlight shapes life, environments, and the earliest rhythms of time.'],
+    'age-of-sun': ['The Taosi Gnomon', 'At Taosi, a vertical rod and its shadow helped people follow the Sun’s path. A wooden bowl and spoon complete the objects used in this ancient observation.'],
     wayfinder: ['The Compass Rose', 'The stars guided journeys over land and sea. Discover how direction and motion helped people measure distances and duration.'],
     'counting-marks': ['The Lebombo Bone', 'Marks on stone and bone preserved counts long before writing. Revisit early gestures for tracking cycles.'],
     'last-seal': ['The Cycle Still Hidden', 'One final discovery waits beyond the paths already known.'],

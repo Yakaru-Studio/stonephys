@@ -1,7 +1,8 @@
 export type ActStatus = 'locked' | 'available' | 'completed'
 export type ActKind = 'main' | 'optional'
-export type ActSymbol = 'telescope' | 'pyramid' | 'bull' | 'compass' | 'tally' | 'bone' | 'lock' | 'sun-moon'
+export type ActSymbol = 'telescope' | 'pyramid' | 'bull' | 'compass' | 'tally' | 'bone' | 'lock' | 'sun-moon' | 'gnomon' | 'wooden-bowl'
 export type ActSiteEnvironment = 'lebombo-rock-shelter'
+export type ActShelfArtifact = 'baboon-skull' | 'wooden-bowl'
 
 export type ArcAct = {
   id: string
@@ -15,6 +16,7 @@ export type ArcAct = {
   topEmblem?: ActSymbol
   bottomEmblem?: ActSymbol
   siteEnvironment?: ActSiteEnvironment
+  shelfArtifact?: ActShelfArtifact
   position: { x: number; y: number }
   prerequisites: string[]
   connections: string[]
@@ -32,10 +34,10 @@ export type LearningArc = {
 }
 
 const skyWatch = new URL('./assets/arcs/sky-watch.svg', import.meta.url).href
-const sunAge = new URL('./assets/arcs/sun-age.svg', import.meta.url).href
 const shadowMeasure = new URL('./assets/arcs/shadow-measure.svg', import.meta.url).href
 const starWayfinder = new URL('./assets/arcs/star-wayfinder.svg', import.meta.url).href
-const tallyHours = new URL('./assets/arcs/tally-hours.svg', import.meta.url).href
+const borderCaveActBanner = new URL('./assets/arcs/border-cave-act-banner.png', import.meta.url).href
+const taosiStaffActBanner = new URL('./assets/arcs/taosi-staff-act-banner.png', import.meta.url).href
 
 const timeActs: ArcAct[] = [
   {
@@ -51,9 +53,9 @@ const timeActs: ArcAct[] = [
     position: { x: 61, y: 35 }, prerequisites: ['wayfinder'], connections: ['last-seal'],
   },
   {
-    id: 'age-of-sun', number: 2, title: 'A Idade do Sol',
-    description: 'Um mundo em transformação, onde a luz do Sol molda a vida, os ambientes e os primeiros equilíbrios do tempo.',
-    illustration: sunAge, status: 'locked', kind: 'main', symbol: 'bull',
+    id: 'age-of-sun', number: 2, title: 'A Haste de Taosi',
+    description: 'Em Taosi, uma haste vertical e sua sombra ajudavam a acompanhar o caminho do Sol. Uma tigela de madeira e uma colher completam os objetos desta antiga observação.',
+    illustration: taosiStaffActBanner, status: 'locked', kind: 'main', symbol: 'gnomon', topEmblem: 'gnomon', bottomEmblem: 'wooden-bowl', shelfArtifact: 'wooden-bowl',
     position: { x: 34, y: 56 }, prerequisites: ['counting-marks'], connections: ['first-observation', 'wayfinder'],
   },
   {
@@ -65,7 +67,7 @@ const timeActs: ArcAct[] = [
   {
     id: 'counting-marks', number: 1, title: 'O osso de Lebombo',
     description: 'Riscos em pedra e osso guardaram contagens muito antes da escrita. Relembre os primeiros gestos usados para registrar os ciclos.',
-    illustration: tallyHours, status: 'available', kind: 'main', symbol: 'bone', topEmblem: 'bone', bottomEmblem: 'sun-moon', siteEnvironment: 'lebombo-rock-shelter',
+    illustration: borderCaveActBanner, status: 'available', kind: 'main', symbol: 'bone', topEmblem: 'bone', bottomEmblem: 'sun-moon', siteEnvironment: 'lebombo-rock-shelter',
     position: { x: 34, y: 84 }, prerequisites: [], connections: ['age-of-sun'],
   },
   {

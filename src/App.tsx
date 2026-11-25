@@ -1,13 +1,11 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { Compass, ChartNoAxesColumnIncreasing, Trophy } from 'lucide-react'
 import Neuron from './Neuron'
-import { initialModules, stageForProgress } from './data'
+import { contentCatalog, getUnlockedAchievementIds } from './contentCatalog'
 import ConstellationPage from './ConstellationPage'
-import { constellations } from './constellations'
 import AudioControls from './audio/AudioControls'
 import { audioManager } from './audio/AudioManager'
 import ArcMapPage, { type DevSceneTarget } from './ArcMapPage'
-import { learningArcs } from './arcActs'
 import { localizeModule, useLocale } from './i18n'
 import BorderCaveArrival from './scenes/time/BorderCaveArrival'
 import dawnOfHumanity from '../content/music/dawn-of-humanity/composition.json'
@@ -17,10 +15,18 @@ import './home-tabs.css'
 import { readGameProgress, resetLocalProgress, saveGameProgress, type ArcLocation } from './gameProgress'
 import { readScientificNotes, scientificNoteReadEvent } from './scientificNotes'
 
+const { modules: initialModules, stageForProgress, constellations, arcs: learningArcs } = contentCatalog
+
 const HarrisonWorkshopExperience = lazy(() => import('./scenes/time/HarrisonWorkshopExperience'))
+const TaosiScene = lazy(() => import('./scenes/time/TaosiScene'))
 const VoiceStudio = lazy(() => import('./narration/VoiceStudio'))
 const MusicStudio = lazy(() => import('./music/MusicStudio'))
 const SoundEffectsStudio = lazy(() => import('./sound-effects/SoundEffectsStudio'))
+const studioRoutes = new Map([
+  ['/__voice-studio', { Component: VoiceStudio, loading: 'Abrindo o estúdio de voz…' }],
+  ['/__audio-studio', { Component: MusicStudio, loading: 'Abrindo o estúdio de música…' }],
+  ['/__sound-effects-studio', { Component: SoundEffectsStudio, loading: 'Abrindo o estúdio de efeitos…' }],
+])
 const packagedMusic = import.meta.glob('../content/music/*/composition.json', { eager: true, import: 'default' }) as Record<string, Record<string, any>>
 const workshopIntroStorageKey = 'stonephys.time.arc-one.workshop-intro-seen.v1'
 function hasSeenWorkshopIntro() {
@@ -32,7 +38,7 @@ function startLebomboDiscoveryMusic() {
   if (!composition.approvedAssetUrl) return Promise.resolve()
   audioManager.setNarrationMusicLevel(composition.ducking.musicLevelDuringNarration)
   return audioManager.playMusicAsset(composition.approvedAssetUrl, {
-    fadeMs: 500,
+    fadeMs: 0,
     loop: true,
     loopCrossfadeMs: composition.loop?.crossfadeMs ?? 1800,
     trackGain: composition.introVolume?.gain ?? composition.defaultVolume,
@@ -43,6 +49,7 @@ function startLebomboDiscoveryMusic() {
 }
 
 export default function App() {
+  const studio = import.meta.env.DEV ? studioRoutes.get(window.location.pathname) : undefined
   const { locale, t } = useLocale()
   const [initialGameProgress] = useState(readGameProgress)
   const [pulse, setPulse] = useState<Record<string, number>>({})
@@ -53,6 +60,7 @@ export default function App() {
   const [selectedArc, setSelectedArc] = useState<ArcLocation | null>(null)
   const [harrisonSceneOpen, setHarrisonSceneOpen] = useState(false)
   const [borderCaveSceneOpen, setBorderCaveSceneOpen] = useState(false)
+  const [taosiSceneOpen, setTaosiSceneOpen] = useState(false)
   const [devSceneOverride, setDevSceneOverride] = useState<DevSceneTarget | null>(null)
   const [workshopIntroSeen, setWorkshopIntroSeen] = useState(hasSeenWorkshopIntro)
   const [transitioningModuleId, setTransitioningModuleId] = useState<string | null>(null)
@@ -66,11 +74,7 @@ export default function App() {
   const [audioUnlocked, setAudioUnlocked] = useState(false)
 
   useEffect(() => {
-    const achieved = completedActs.time?.includes('counting-marks')
-      ? ['lebombo', 'flaked-stone', 'aru', 'border-cave', 'counting', 'first-step', 'chacma-baboon', 'chacma-baboon-fossil', 'plains-zebra', 'impala', 'african-warthog', 'cape-vulture', 'sweet-thorn-acacia']
-      : []
-    if (scientificNoteCount > 0) achieved.push('curious-mind')
-    if (scientificNoteCount >= 10) achieved.push('thirst-for-knowledge')
+    const achieved = getUnlockedAchievementIds(completedActs.time ?? [], scientificNoteCount)
     saveGameProgress({
       version: 1,
       updatedAt: new Date().toISOString(),
@@ -119,6 +123,7 @@ export default function App() {
     setSelectedModuleId(null)
     setHarrisonSceneOpen(false)
     setBorderCaveSceneOpen(false)
+    setTaosiSceneOpen(false)
     setDevSceneOverride(null)
   }
 
@@ -137,8 +142,11 @@ export default function App() {
         if (import.meta.env.DEV) {
           const result = await fetch('/__voice-studio/api/sfx/status').then((response) => response.ok ? response.json() : null)
           for (const effect of result?.effects || []) {
-            const version = effect.versions?.find((item: any) => item.id === effect.previewVersionId)
-            const url = version ? effect.previewUrl : effect.approvedAssetUrl
+            const version = effect.versions?.find((item: any) => item.id === effect.approvedVersionId)
+              ?? effect.versions?.find((item: any) => item.id === effect.previewVersionId)
+            const url = version
+              ? `/__voice-studio/api/sfx/file/${effect.id}/${version.id}`
+              : effect.approvedAssetUrl
             if (url) effects[effect.id] = { url, volume: version?.volume ?? effect.defaultVolume ?? .72, loop: version?.loop ?? effect.loop ?? false }
           }
         } else {
@@ -154,6 +162,14 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    if (studio) {
+      audioManager.stopMusic()
+      return
+    }
+    if (taosiSceneOpen) {
+      audioManager.stopMusicImmediately()
+      return
+    }
     if (borderCaveSceneOpen || (import.meta.env.DEV && ['/__border-cave-preview', '/__lebombo-discovery-preview'].includes(window.location.pathname))) return
     const wisdomSanctuaryApproved = import.meta.env.DEV
       ? music.some((item) => item.id === 'the-sanctuary-of-wisdom' && item.approvedVersionId)
@@ -161,7 +177,7 @@ export default function App() {
     const targetId = harrisonSceneOpen
       ? 'the-clockmaker-of-time'
       : selectedArc ? wisdomSanctuaryApproved ? 'the-sanctuary-of-wisdom' : 'paths-of-discovery' : 'eternity-of-knowledge'
-    if (!targetId) { audioManager.fadeMusicOut(900); return }
+    if (!targetId) { audioManager.stopMusicImmediately(); return }
     const composition = music.find((item) => item.id === targetId)
     const packaged = Object.entries(packagedMusic).find(([file]) => file.includes(`/${targetId}/composition.json`))?.[1]
     const source = import.meta.env.DEV ? composition?.previewUrl : packaged?.approvedAssetUrl
@@ -171,27 +187,27 @@ export default function App() {
     const cropEndSeconds = import.meta.env.DEV ? composition?.previewCropEndSeconds ?? null : packaged?.approvedCropEndSeconds ?? null
     const volume = import.meta.env.DEV ? composition?.previewVolume ?? 1 : packaged?.approvedVolume ?? 1
     audioManager.setNarrationMusicLevel(settings?.ducking?.musicLevelDuringNarration ?? .42)
-    if (!source) { audioManager.fadeMusicOut(900); return }
+    if (!source) { audioManager.stopMusicImmediately(); return }
     // Loop behavior is configured in Music Studio; tracks default to looping.
-    const fadeMs = harrisonSceneOpen ? 550 : loopSettings?.crossfadeMs ?? 1800
+    const fadeMs = selectedArc || harrisonSceneOpen ? 0 : loopSettings?.crossfadeMs ?? 1800
     void audioManager.playMusicAsset(source, { loop: loopSettings?.enabled ?? true, fadeMs, loopCrossfadeMs: loopSettings?.crossfadeMs ?? 1800, trackGain: settings?.defaultVolume ?? .2, volume, cropStartSeconds, cropEndSeconds }).catch(() => {})
-  }, [music, selectedModuleId, selectedArc, harrisonSceneOpen, borderCaveSceneOpen, audioUnlocked])
+  }, [studio, music, selectedModuleId, selectedArc, harrisonSceneOpen, borderCaveSceneOpen, taosiSceneOpen, audioUnlocked])
 
   useEffect(() => {
     document.documentElement.lang = locale
     document.title = `${t('app.brand')} — ${t('app.title')}`
   }, [locale, t])
 
-  if (import.meta.env.DEV && window.location.pathname === '/__voice-studio') {
-    return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de voz…</div>}><VoiceStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
+  if (studio) {
+    const { Component, loading } = studio
+    return <Suspense fallback={<div className="historical-scene-loading">{loading}</div>}><Component onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   }
-  if (import.meta.env.DEV && window.location.pathname === '/__audio-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de música…</div>}><MusicStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
-  if (import.meta.env.DEV && window.location.pathname === '/__sound-effects-studio') return <Suspense fallback={<div className="historical-scene-loading">Abrindo o estúdio de efeitos…</div>}><SoundEffectsStudio onClose={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/></Suspense>
   if (import.meta.env.DEV && window.location.pathname === '/__border-cave-preview') return <BorderCaveArrival locale={locale} onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
   if (import.meta.env.DEV && window.location.pathname === '/__lebombo-discovery-preview') return <BorderCaveArrival locale={locale} startInDiscovery onExit={() => { window.history.replaceState(null, '', '/'); window.location.reload() }}/>
   if (import.meta.env.DEV && devSceneOverride === 'border-cave-cycle') return <BorderCaveArrival locale={locale} onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
   if (import.meta.env.DEV && devSceneOverride === 'lebombo-discovery') return <BorderCaveArrival locale={locale} startInDiscovery onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
   if (import.meta.env.DEV && devSceneOverride === 'lebombo-bone-activity') return <BorderCaveArrival locale={locale} startInBoneActivity onExit={() => { setDevSceneOverride(null); setBorderCaveSceneOpen(false) }}/>
+  if (taosiSceneOpen) return <Suspense fallback={<div className="historical-scene-loading">{t('scene.loading')}</div>}><TaosiScene onExit={() => { audioManager.stopMusicImmediately(); setTaosiSceneOpen(false) }}/></Suspense>
 
   const selectedModule = selectedModuleId ? initialModules.find((module) => module.id === selectedModuleId) : null
   if (selectedModule && constellations[selectedModule.id]) {
@@ -271,8 +287,10 @@ export default function App() {
         })}
         onBack={() => {
           audioManager.play('navigation')
+          audioManager.stopMusicImmediately()
           setHarrisonSceneOpen(false)
           setBorderCaveSceneOpen(false)
+          setTaosiSceneOpen(false)
           setSelectedArc(null)
           if (homeTab === 'progress') setSelectedModuleId(null)
         }}
@@ -281,7 +299,7 @@ export default function App() {
           // browser autoplay restrictions do not silently suppress ambience.
           void audioManager.resumeAudioContext().catch(() => {})
           if (import.meta.env.DEV && devScene) {
-            audioManager.fadeMusicOut(500)
+            audioManager.stopMusicImmediately()
             if (devScene === 'lebombo-discovery') void startLebomboDiscoveryMusic().catch(() => {})
             setBorderCaveSceneOpen(true)
             setDevSceneOverride(devScene)
@@ -289,8 +307,12 @@ export default function App() {
           }
           const arc = learningArcs[selectedArc.moduleId]
           if (selectedArc.moduleId === 'time' && act.id === 'counting-marks') {
-            audioManager.fadeMusicOut(650)
+            audioManager.stopMusicImmediately()
             setBorderCaveSceneOpen(true)
+          }
+          if (selectedArc.moduleId === 'time' && act.id === 'age-of-sun') {
+            audioManager.stopMusicImmediately()
+            setTaosiSceneOpen(true)
           }
           window.dispatchEvent(new CustomEvent('stonephys:start-act', {
             detail: {
@@ -304,7 +326,7 @@ export default function App() {
         }}
       />}
       {harrisonSceneOpen && <Suspense fallback={<div className="historical-scene-loading">{t('scene.loading')}</div>}><HarrisonWorkshopExperience onExit={() => setHarrisonSceneOpen(false)}/></Suspense>}
-      {selectedArc && borderCaveSceneOpen && !harrisonSceneOpen && <BorderCaveArrival locale={locale} onExit={() => setBorderCaveSceneOpen(false)}/>}
+      {selectedArc && borderCaveSceneOpen && !harrisonSceneOpen && <BorderCaveArrival locale={locale} onExit={() => { audioManager.stopMusicImmediately(); setBorderCaveSceneOpen(false) }}/>}
     </>
   }
 

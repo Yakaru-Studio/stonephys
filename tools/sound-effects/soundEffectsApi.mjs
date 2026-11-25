@@ -3,7 +3,7 @@ import { createHash, randomUUID } from 'node:crypto'
 import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
-const EFFECT_IDS = ['library-scroll-unroll', 'library-scroll-roll', 'border-cave-wind', 'border-cave-vegetation', 'border-cave-night-crickets', 'border-cave-ring-necked-dove', 'border-cave-crested-francolin', 'border-cave-natal-spurfowl', 'border-cave-chacma-baboon', 'border-cave-plains-zebra', 'lebombo-bone-engraving', 'magical-discovery']
+const EFFECT_IDS = ['library-scroll-unroll', 'library-scroll-roll', 'border-cave-wind', 'border-cave-vegetation', 'border-cave-night-crickets', 'border-cave-ring-necked-dove', 'border-cave-crested-francolin', 'border-cave-natal-spurfowl', 'border-cave-chacma-baboon', 'border-cave-plains-zebra', 'lebombo-bone-engraving', 'magical-discovery', 'task-failure']
 const definitionName = (id) => id.startsWith('library-scroll-') ? id.replace('library-scroll-', 'scroll-') : id
 const APPROVAL = 'I understand this may consume quota or be billed'
 const MAX_IMPORT_BYTES = 24 * 1024 * 1024

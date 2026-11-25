@@ -15,10 +15,11 @@ const boneSealArtwork = new URL('./assets/arcs/library-bone-seal.png', import.me
 const lockSealArtwork = new URL('./assets/arcs/library-lock-seal.png', import.meta.url).href
 const completedSealArtwork = new URL('./assets/arcs/library-completed-seal.png', import.meta.url).href
 const parchmentScrollArtwork = new URL('./assets/arcs/act-parchment-scroll.png', import.meta.url).href
+const taosiGnomonSealArtwork = new URL('./assets/arcs/taosi-gnomon-seal.png', import.meta.url).href
 
 function ParchmentEmblem({ symbol, position }: { symbol: ArcAct['symbol']; position: 'top' | 'bottom' }) {
   return <span className={`parchment-emblem parchment-emblem-${position} emblem-${symbol}`} aria-hidden="true">
-    {symbol === 'bone' ? <img src={boneSealArtwork} alt="" draggable={false}/> : <svg viewBox="0 0 64 64" focusable="false">
+    {symbol === 'bone' || symbol === 'gnomon' ? <img src={symbol === 'bone' ? boneSealArtwork : taosiGnomonSealArtwork} alt="" draggable={false}/> : <svg viewBox="0 0 64 64" focusable="false">
       {symbol === 'sun-moon' && <g transform="translate(5.5 0)"><circle cx="23" cy="31" r="10"/><path d="M41 14a18 18 0 1 0 8 34 16 16 0 0 1-8-34Z"/><path d="M23 14v-6m0 46v-5m-17-18H1m44 0h7M11 19l-4-4m31 31 4 4"/></g>}
       {symbol === 'tally' && <><path d="M13 14v36m10-36v36m10-36v36m10-36v36m-31-7 34-24"/></>}
       {symbol === 'compass' && <><circle cx="32" cy="32" r="24"/><path d="m42 21-7 16-14 6 7-16 14-6Z"/><circle cx="32" cy="32" r="2"/></>}
@@ -26,6 +27,7 @@ function ParchmentEmblem({ symbol, position }: { symbol: ArcAct['symbol']; posit
       {symbol === 'pyramid' && <><path d="m8 51 24-39 24 39H8Zm24-39v39m-15-12h30"/></>}
       {symbol === 'bull' && <><path d="M19 24 8 15l1 18 10 4m26-13 11-9-1 18-10 4M19 25c4-8 22-8 26 0l-2 22c-5 8-17 8-22 0l-2-22Zm6 11h.1m14 0h.1M27 47h10"/></>}
       {symbol === 'lock' && <><rect x="15" y="28" width="34" height="27" rx="4"/><path d="M22 28v-8a10 10 0 0 1 20 0v8m-10 10v8"/></>}
+      {symbol === 'wooden-bowl' && <><path d="M9 31h46l-5 15c-2 7-8 11-18 11S16 53 14 46L9 31Z"/><path d="M8 29c0-5 48-5 48 0s-48 5-48 0Z"/><path d="m20 12 24 19m-5-22 6 2-5 5"/></>}
     </svg>}
   </span>
 }
@@ -57,7 +59,7 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
         <div className="parchment-divider" aria-hidden="true"><span/><b>✦</b><span/></div>
         <p className="parchment-description">{act.description}</p>
         <div className={`parchment-state ${completed ? 'is-completed' : ''}`}>{completed ? (locale === 'en' ? 'Completed' : 'Concluído') : (locale === 'en' ? 'Available' : 'Disponível')}</div>
-        {import.meta.env.DEV && <label className="parchment-dev-scene-control">
+        {import.meta.env.DEV && act.id === 'counting-marks' && <label className="parchment-dev-scene-control">
           <span>{locale === 'en' ? 'Start directly in scene' : 'Iniciar diretamente na cena'}</span>
           <select value={devScene} onChange={(event) => onDevSceneChange(event.currentTarget.value as DevSceneTarget)}>
             <option value="border-cave-cycle">{locale === 'en' ? 'Scene 1 · Sun and Moon' : 'Cena 1 · Sol e Lua'}</option>
@@ -83,7 +85,7 @@ function Parchment({ act, closing, onClose, onStart, onComplete, starting, local
 export type DevSceneTarget = 'border-cave-cycle' | 'lebombo-discovery' | 'lebombo-bone-activity'
 
 function LibraryScroll({ act, current, onSelect }: { act: ArcAct; current: boolean; onSelect: () => void }) {
-  const sealArtwork = act.status === 'locked' ? lockSealArtwork : act.status === 'completed' ? completedSealArtwork : act.symbol === 'bone' ? boneSealArtwork : null
+  const sealArtwork = act.status === 'locked' ? lockSealArtwork : act.status === 'completed' ? completedSealArtwork : act.symbol === 'bone' ? boneSealArtwork : act.symbol === 'gnomon' ? taosiGnomonSealArtwork : null
   return <button className={`library-scroll ${act.status} ${current ? 'is-current' : ''}`} onClick={onSelect} disabled={act.status === 'locked'} aria-label={act.title}>
     <img className="scroll-artwork" src={libraryScrollArtwork} alt="" draggable={false}/>
     <span className={`scroll-wax ${sealArtwork ? 'has-artwork' : ''} ${act.status === 'completed' ? 'is-completed' : ''}`}>
@@ -118,7 +120,7 @@ function LibraryShelf({ acts, currentActId, onSelect, locale }: { acts: ArcAct[]
       <div className="shelf-columns"><i/><i/></div>
       <div className="shelf-content">
         {shelfActs.map((act) => <div className={`shelf-row ${act.status}`} key={act.id}>
-          <div className="shelf-artifact">{act.siteEnvironment && <img src={baboonSkullArtwork} alt="Crânio de babuíno" draggable={false}/>}</div>
+          <div className={`shelf-artifact ${act.shelfArtifact ? `artifact-${act.shelfArtifact}` : ''}`}>{(act.siteEnvironment || act.shelfArtifact === 'baboon-skull') && <img src={baboonSkullArtwork} alt="Crânio de babuíno" draggable={false}/>} {act.shelfArtifact === 'wooden-bowl' && <svg viewBox="0 0 128 96" role="img" aria-label={locale === 'en' ? 'Empty wooden bowl with a spoon' : 'Tigela de madeira vazia com colher'}><path d="M14 44h100l-10 29c-5 12-19 18-40 18S29 85 24 73L14 44Z" fill="#7e3c1c" stroke="#351809" strokeWidth="5"/><path d="M12 41c0-10 104-10 104 0s-104 10-104 0Z" fill="#bd742f" stroke="#40200d" strokeWidth="5"/><path d="M28 44c11-5 61-5 72 0" fill="none" stroke="#e2a04b" strokeWidth="4"/><path d="m27 16 50 31" stroke="#8b4a20" strokeWidth="9" strokeLinecap="round"/><path d="m22 13 11-8 7 14-8 8Z" fill="#c7833d" stroke="#573016" strokeWidth="3"/></svg>}</div>
           <LibraryScroll act={act} current={act.id === currentActId} onSelect={() => onSelect(act)}/>
           <div className={`shelf-lamp ${act.id === currentActId ? 'lit' : ''} ${act.id === 'counting-marks' ? 'bone-act-lamp' : ''}`} aria-hidden="true"><img src={libraryLampArtwork} alt=""/><span className="lamp-flame"/></div>
         </div>)}
@@ -147,7 +149,7 @@ export default function ArcMapPage({ moduleId, completedActIds, backToProgress, 
   const [flameActId, setFlameActId] = useState<string | null>(null)
   const [startingAct, setStartingAct] = useState(false)
   const [devScene, setDevScene] = useState<DevSceneTarget>('border-cave-cycle')
-  const acts = useMemo(() => arc.acts.filter((act) => moduleId !== 'time' || act.id === 'counting-marks').map((act) => {
+  const acts = useMemo(() => arc.acts.map((act) => {
     const completed = completedActIds.includes(act.id)
     const available = !completed && act.prerequisites.every((prerequisite) => completedActIds.includes(prerequisite))
     return { ...act, status: completed ? 'completed' as const : available ? 'available' as const : 'locked' as const }
@@ -173,6 +175,18 @@ export default function ArcMapPage({ moduleId, completedActIds, backToProgress, 
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [selectedAct])
 
+  useEffect(() => {
+    const openNextAct = (event: Event) => {
+      const actId = (event as CustomEvent<{ actId?: string }>).detail?.actId
+      if (!actId || !arc.acts.some((act) => act.id === actId)) return
+      setStartingAct(false)
+      setClosingParchment(false)
+      setSelectedActId(actId)
+    }
+    window.addEventListener('stonephys:arc-open-next-act', openNextAct)
+    return () => window.removeEventListener('stonephys:arc-open-next-act', openNextAct)
+  }, [arc.acts])
+
   function closeParchment() {
     if (!selectedActId || closingParchment) return
     void audioManager.playSoundEvent('library.scroll.roll')
@@ -196,7 +210,7 @@ export default function ArcMapPage({ moduleId, completedActIds, backToProgress, 
     const actToStart = selectedAct
     setFlameActId(actToStart.id)
     setStartingAct(true)
-    const begin = () => onStartAct(actToStart, import.meta.env.DEV ? devScene : undefined)
+    const begin = () => onStartAct(actToStart, import.meta.env.DEV && actToStart.id === 'counting-marks' ? devScene : undefined)
     if (reducedMotion) {
       begin()
       return

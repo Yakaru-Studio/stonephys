@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-19T16:58:34.267Z",
+  "updatedAt": "2026-11-23T23:29:35.261Z",
   "effects": {
     "library-scroll-unroll": {
       "versions": [
@@ -1059,6 +1059,273 @@
       ],
       "previewVersionId": "gen-b80fc82f-dd1b-4ead-8d31-a67b370b55cb",
       "approvedVersionId": "gen-b80fc82f-dd1b-4ead-8d31-a67b370b55cb"
+    },
+    "task-failure": {
+      "versions": [
+        {
+          "id": "gen-b0d84cd1-2daf-4515-aa14-376fc675d112",
+          "effectId": "task-failure",
+          "name": "Falha de tarefa",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Clear failure cue for a prehistoric adventure: two quick hits, sharp stone then hollow clay, a tiny pause, then a heavy low hide drum hit. Exactly with that final hit, add a brief raspy reed-horn note that bends sharply downward, like a short warning call. Three distinct attacks, descending register, punchy, dry and organic. End abruptly. No extra beats, synth, voices or ambience.",
+          "requestedDurationSeconds": 1,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-23T23:27:13.283Z",
+          "createdAt": "2026-11-23T23:27:13.283Z",
+          "estimatedCredits": 40,
+          "actualCredits": null,
+          "providerCostHeader": "10",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/task-failure/gen-b0d84cd1-2daf-4515-aa14-376fc675d112.mp3",
+          "bytes": 17179,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "task.failure",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-59cb1eaf-c8d9-4bc6-9d30-a1cf707616c4",
+          "effectId": "task-failure",
+          "name": "Falha de tarefa",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Forceful three-hit failure cue for a prehistoric adventure. Quick sharp stone crack, quick hollow clay clack, tiny pause, then a decisive low hide-drum slam with a short gritty rattle. Keep the descending high-mid-low register and quick-quick-pause-heavy rhythm. Hard dry attacks, rough edges and a solid low-mid punch on the last hit. Abrupt cutoff. No extra hits, synth or ambience.",
+          "requestedDurationSeconds": 1,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-23T23:24:45.664Z",
+          "createdAt": "2026-11-23T23:24:45.664Z",
+          "estimatedCredits": 40,
+          "actualCredits": null,
+          "providerCostHeader": "10",
+          "status": "approved",
+          "assetPath": "tools/sound-effects/generations/task-failure/gen-59cb1eaf-c8d9-4bc6-9d30-a1cf707616c4.mp3",
+          "bytes": 17179,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "task.failure",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": "Aprovada para publicação no jogo.",
+          "reviewedAt": "2026-11-23T23:29:35.260Z",
+          "productionEligible": false,
+          "assetUrl": null,
+          "evaluationOnly": true
+        },
+        {
+          "id": "gen-2018245a-f002-427a-9d13-b28a7b155b50",
+          "effectId": "task-failure",
+          "name": "Falha de tarefa",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Distinct try-again cue for a prehistoric adventure game. Three clearly separated hits in a descending, slightly tense rhythm: a sharp stone click, a hollow clay clack, then a heavier low hide-drum thump with a brief rattle. The first two are quick and the last lands firmly after a tiny pause. Close, tactile, punchy. Short cutoff. No synth, buzzer, vocals or ambience.",
+          "requestedDurationSeconds": 1,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-23T23:21:04.751Z",
+          "createdAt": "2026-11-23T23:21:04.751Z",
+          "estimatedCredits": 40,
+          "actualCredits": null,
+          "providerCostHeader": "10",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/task-failure/gen-2018245a-f002-427a-9d13-b28a7b155b50.mp3",
+          "bytes": 17179,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "task.failure",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-01946b19-262b-44ac-8006-a5509ea2fe65",
+          "effectId": "task-failure",
+          "name": "Falha de tarefa",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "One emphatic close-miked hardwood strike on a thick hollow log. A sharp, grainy wooden crack at the instant of impact, immediately backed by a weighty low-mid thump you can feel. Raw hand-played percussion for a prehistoric adventure. Short, dry, and assertive, with a quick natural decay. One clean hit. No melody, electronics, metallic ring, echo, or background.",
+          "requestedDurationSeconds": 1,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-23T23:19:30.671Z",
+          "createdAt": "2026-11-23T23:19:30.671Z",
+          "estimatedCredits": 40,
+          "actualCredits": null,
+          "providerCostHeader": "10",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/task-failure/gen-01946b19-262b-44ac-8006-a5509ea2fe65.mp3",
+          "bytes": 17179,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "task.failure",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        },
+        {
+          "id": "gen-0b824923-3f1e-4e88-834b-b36b969f9a9c",
+          "effectId": "task-failure",
+          "name": "Falha de tarefa",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "Real close-miked Foley of one short, restrained knock: a hand strikes a rough hollow log once with a small piece of raw hardwood. A low, dry woody thud with a slightly gritty contact and an immediate natural decay. Primitive, handmade and tactile. Isolated single impact. No melody, pitched chimes, synth, electronic tones, metallic ringing, reverberation, voices, or ambience.",
+          "requestedDurationSeconds": 1,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-23T23:16:31.637Z",
+          "createdAt": "2026-11-23T23:16:31.637Z",
+          "estimatedCredits": 40,
+          "actualCredits": null,
+          "providerCostHeader": "10",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/task-failure/gen-0b824923-3f1e-4e88-834b-b36b969f9a9c.mp3",
+          "bytes": 17179,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.94,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "task.failure",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": "",
+          "cropEndSeconds": null,
+          "syncOffsetMs": 0,
+          "playback": {
+            "loop": false
+          }
+        },
+        {
+          "id": "gen-6abb11ef-b89e-4ea5-a53c-bb25286196c6",
+          "effectId": "task-failure",
+          "name": "Falha de tarefa",
+          "source": "generated",
+          "provider": "elevenlabs",
+          "model": "eleven_text_to_sound_v3",
+          "prompt": "A single short try-again cue for an educational adventure about ancient discoveries and the night sky. Three soft descending notes on a mellow wooden chime, with a faint crystal shimmer and a warm low final note. Gently unresolved, clear and encouraging. Quick attack and a short natural decay. No buzzer, harsh dissonance, arcade beeps, voices, music bed or ambience.",
+          "requestedDurationSeconds": 1,
+          "promptInfluence": 0.75,
+          "loop": false,
+          "outputFormat": "mp3_44100_128",
+          "generatedAt": "2026-11-23T23:13:00.646Z",
+          "createdAt": "2026-11-23T23:13:00.646Z",
+          "estimatedCredits": 40,
+          "actualCredits": null,
+          "providerCostHeader": "10",
+          "status": "generated",
+          "assetPath": "tools/sound-effects/generations/task-failure/gen-6abb11ef-b89e-4ea5-a53c-bb25286196c6.mp3",
+          "bytes": 17179,
+          "validation": {
+            "ffprobe": false,
+            "ffprobeNote": "FFprobe não instalado; o navegador fará a leitura da duração.",
+            "signal": {
+              "ffmpeg": false,
+              "note": "FFmpeg não instalado; os demais dados técnicos permanecem disponíveis."
+            }
+          },
+          "volume": 0.72,
+          "cropStartSeconds": 0,
+          "synchronization": {
+            "event": "task.failure",
+            "offsetMs": 0
+          },
+          "license": {
+            "plan": "unknown",
+            "commercialRightsConfirmed": false,
+            "evaluationOnly": true,
+            "notes": ""
+          },
+          "notes": ""
+        }
+      ],
+      "previewVersionId": "gen-59cb1eaf-c8d9-4bc6-9d30-a1cf707616c4",
+      "approvedVersionId": "gen-59cb1eaf-c8d9-4bc6-9d30-a1cf707616c4"
     }
   },
   "requests": [
@@ -1478,6 +1745,120 @@
       "completedAt": "2026-11-19T15:23:55.163Z",
       "providerUsage": {
         "characterCostHeader": "20"
+      }
+    },
+    {
+      "requestId": "d89e200b-495a-4e7c-b653-932222576416",
+      "effectId": "task-failure",
+      "configHash": "52affbbc89c35954fab2e5e009fde10c462b45d7a27ab4a13acd149e9b7a7a30",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 1,
+      "estimatedCredits": 40,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-23T23:12:59.268Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-6abb11ef-b89e-4ea5-a53c-bb25286196c6",
+      "bytes": 17179,
+      "completedAt": "2026-11-23T23:13:00.646Z",
+      "providerUsage": {
+        "characterCostHeader": "10"
+      }
+    },
+    {
+      "requestId": "26f250e7-6d53-48d4-8739-f27be6311c16",
+      "effectId": "task-failure",
+      "configHash": "964a6039a5c9ef95e07e1804b6d3f3d689e8f08613b33fb86eb183b469664a3c",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 1,
+      "estimatedCredits": 40,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-23T23:16:30.248Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-0b824923-3f1e-4e88-834b-b36b969f9a9c",
+      "bytes": 17179,
+      "completedAt": "2026-11-23T23:16:31.637Z",
+      "providerUsage": {
+        "characterCostHeader": "10"
+      }
+    },
+    {
+      "requestId": "b75c9a03-cce2-4644-b293-cecd41fed4c5",
+      "effectId": "task-failure",
+      "configHash": "35d9164eb32166979dae26cd511e969f07e7505a16960e68b9c106bdf535423f",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 1,
+      "estimatedCredits": 40,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-23T23:19:29.122Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-01946b19-262b-44ac-8006-a5509ea2fe65",
+      "bytes": 17179,
+      "completedAt": "2026-11-23T23:19:30.671Z",
+      "providerUsage": {
+        "characterCostHeader": "10"
+      }
+    },
+    {
+      "requestId": "1b37b32d-fdf4-4ce0-911d-f9c755963b53",
+      "effectId": "task-failure",
+      "configHash": "6ffaa80617bdea03b8153e30902569cd55ae31fd4a700606304c4164394872e5",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 1,
+      "estimatedCredits": 40,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-23T23:21:03.125Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-2018245a-f002-427a-9d13-b28a7b155b50",
+      "bytes": 17179,
+      "completedAt": "2026-11-23T23:21:04.751Z",
+      "providerUsage": {
+        "characterCostHeader": "10"
+      }
+    },
+    {
+      "requestId": "80e559ee-aae0-4c81-b509-f3f1a6808cb9",
+      "effectId": "task-failure",
+      "configHash": "bce4ddf2cffeb5897558f480f1ebcb2f66c3fd36f6199e527a5a50956e46c3b5",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 1,
+      "estimatedCredits": 40,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-23T23:24:43.756Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-59cb1eaf-c8d9-4bc6-9d30-a1cf707616c4",
+      "bytes": 17179,
+      "completedAt": "2026-11-23T23:24:45.664Z",
+      "providerUsage": {
+        "characterCostHeader": "10"
+      }
+    },
+    {
+      "requestId": "20d3e264-0656-4777-ab59-a13cb016ae99",
+      "effectId": "task-failure",
+      "configHash": "1e309378d6af222f48026cf3605c4f32668ffea23559b9fd0e1d83ac50670487",
+      "model": "eleven_text_to_sound_v3",
+      "durationRequestedSeconds": 1,
+      "estimatedCredits": 40,
+      "actualCredits": null,
+      "status": "generated",
+      "startedAt": "2026-11-23T23:27:11.513Z",
+      "externalRequestMade": true,
+      "outputFormat": "mp3_44100_128",
+      "versionId": "gen-b0d84cd1-2daf-4515-aa14-376fc675d112",
+      "bytes": 17179,
+      "completedAt": "2026-11-23T23:27:13.284Z",
+      "providerUsage": {
+        "characterCostHeader": "10"
       }
     }
   ]

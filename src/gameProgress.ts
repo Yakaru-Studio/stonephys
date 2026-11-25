@@ -1,6 +1,5 @@
-import { initialModules } from './data'
-import { constellations } from './constellations'
-import { learningArcs } from './arcActs'
+import { contentCatalog } from './contentCatalog'
+const { modules: initialModules, constellations, arcs: learningArcs } = contentCatalog
 
 export const GAME_PROGRESS_KEY = 'sharpstone.game-progress.v1'
 export const LEGACY_JOURNEY_KEY = 'stonephys.journey.v1'

@@ -371,6 +371,7 @@
 .scroll-artwork{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;user-select:none}
 .scroll-wax{top:50%;left:50%;width:clamp(46px,8vh,88px);border-width:4px}
 .scroll-wax svg{fill:#e9ae52;stroke:#f0bd69}
+.shelf-artifact svg{display:block;width:100%;height:86%;overflow:visible;filter:drop-shadow(0 2px 1px rgba(25,9,3,.6))}
 .scroll-lock{top:50%;left:50%;width:32px;height:36px}
 .library-scroll.locked{filter:brightness(.37) saturate(.48) drop-shadow(0 4px 4px rgba(7,4,2,.62))}
 .shelf-lamp{position:absolute;right:0;bottom:9%;width:12%;height:79%;margin:0;display:block;filter:drop-shadow(0 6px 4px rgba(14,6,2,.62))}
@@ -453,3 +454,5 @@
 .parchment-paper{inset:14.2% 11.5% 12.8%;padding-top:2.2%}
 .parchment-paper h2{margin-top:0;margin-bottom:8px}
 @media(max-width:700px){.parchment-paper{inset:15.2% 10.5% 12.8%;padding-top:1.8%}}
+.parchment-emblem-top.emblem-gnomon{top:.5%;width:20%;max-width:132px;min-width:72px;aspect-ratio:1;transform:translateX(-50%);filter:drop-shadow(0 3px 3px rgba(43,15,8,.65))}
+.parchment-emblem-top.emblem-gnomon img{display:block;width:100%;height:100%;object-fit:contain}

@@ -1,10 +1,10 @@
 import { ArrowRight, BookOpen, Layers3, RotateCcw, Sparkles } from 'lucide-react'
-import { learningArcs } from './arcActs'
 import AudioControls from './audio/AudioControls'
-import { constellations } from './constellations'
-import { initialModules } from './data'
+import { contentCatalog } from './contentCatalog'
 import { type AppLocale } from './i18n'
 import type { ArcLocation } from './gameProgress'
+
+const { arcs: learningArcs, constellations, modules: initialModules } = contentCatalog
 
 type StarProgress = { unlocked: string[]; completed: string[] }
 
@@ -49,7 +49,7 @@ export default function ProgressHome({ locale, completedActs, stageProgress, mod
   return <main className="progress-home">
     <div className="progress-home-content">
       <header className="progress-home-heading">
-        <h1>Stone Phys</h1>
+        <h1>Sharp Stone</h1>
         <AudioControls/>
       </header>
       <section className="journey-card" aria-label={english ? 'Overall progress' : 'Progresso geral'}>

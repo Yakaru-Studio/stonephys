@@ -348,7 +348,7 @@ export default function VoiceStudio({ onClose }: { onClose: () => void }) {
   />
 
   return <main className="voice-studio">
-    <header className="voice-studio-header"><button onClick={onClose} aria-label="Fechar estúdio"><ArrowLeft size={18}/></button><div><span>SHARPSTONE PHYS · FERRAMENTA LOCAL DE DESENVOLVIMENTO</span><h1>Voice Studio <i>John Harrison</i></h1></div><a className="voice-studio-audio-link" href="/__audio-studio">Music Studio</a><AudioLines size={22}/></header>
+    <header className="voice-studio-header"><button onClick={onClose} aria-label="Fechar estúdio"><ArrowLeft size={18}/></button><div><span>SHARP STONE · FERRAMENTA LOCAL DE DESENVOLVIMENTO</span><h1>Voice Studio <i>John Harrison</i></h1></div><a className="voice-studio-audio-link" href="/__audio-studio">Music Studio</a><AudioLines size={22}/></header>
     <div className="voice-studio-layout">
       <section className="voice-studio-card voice-studio-profile"><h2>Identidade vocal</h2><p>{hasIdentityApproval ? 'A identidade vocal escolhida está aprovada e é a única ativa. Ouça a prévia salva ou avance para a narração completa.' : 'A voz escolhida por você fica como única candidata ativa. Edite a fala curta abaixo para gerar uma amostra padronizada e aprovar a identidade.'}</p>
         <dl><dt>Personagem</dt><dd>John Harrison · aproximadamente 67 anos</dd><dt>Idioma</dt><dd>Português brasileiro</dd><dt>Identidade</dt><dd>{profile?.voiceId || 'Aguardando seleção humana'}</dd><dt>Aprovação</dt><dd>{hasIdentityApproval ? 'Aprovada pelo desenvolvedor' : 'Pendente'}</dd></dl>

@@ -92,6 +92,10 @@ function frameAtTime(frames: SpriteFrame[], elapsedSeconds: number, startsAtMs: 
 
 export default function BorderCaveArrival({ locale, onExit, startInBoneActivity = false, startInDiscovery = false }: { locale: SceneLocale; onExit: () => void; startInBoneActivity?: boolean; startInDiscovery?: boolean }) {
   const english = locale === 'en'
+  const [restartAtSceneOne, setRestartAtSceneOne] = useState(false)
+  const [musicRestartCount, setMusicRestartCount] = useState(0)
+  const directBoneActivity = startInBoneActivity && !restartAtSceneOne
+  const directDiscovery = startInDiscovery && !restartAtSceneOne
   const [elapsed, setElapsed] = useState(startInDiscovery ? CONTEMPLATION_SECONDS : 0)
   const [introNarrations, setIntroNarrations] = useState<Record<string, NarrationManifest | null>>({})
   const [introCaption, setIntroCaption] = useState('')
@@ -106,8 +110,8 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
   const [sceneTransition, setSceneTransition] = useState<'idle' | 'fade-out' | 'covered' | 'fade-in'>('idle')
   const curiosityNarration = english ? null : introNarrations[ARU_CURIOSITY_AUDIO_DIR]
   const canStartCuriosity = curiosityNarration && waningSpeechEndedAt !== null && elapsed >= waningSpeechEndedAt + CONTEMPLATION_SECONDS
-  const narrationDirectory = english || startInBoneActivity ? null : canStartCuriosity ? ARU_CURIOSITY_AUDIO_DIR
-    : startInDiscovery ? null
+  const narrationDirectory = english || directBoneActivity ? null : canStartCuriosity ? ARU_CURIOSITY_AUDIO_DIR
+    : directDiscovery ? null
     : elapsed >= INTRO_SECONDS + 1 ? BORDER_CAVE_ARRIVAL_AUDIO_DIR
     : elapsed >= SCENE_TITLE_RISE_SECONDS ? BORDER_CAVE_TITLE_AUDIO_DIR : null
   const narration = narrationDirectory ? introNarrations[narrationDirectory] : undefined
@@ -160,6 +164,31 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
     const startAt = elapsedRef.current
     setBoneActivityRound((current) => makeBoneRound(startAt, previousDays, (current?.revision ?? 0) + 1))
     setPlaying(true)
+  }
+  const restartActFromSceneOne = () => {
+    audioManager.stopNarration()
+    setRestartAtSceneOne(true)
+    setElapsed(0)
+    setPlaying(true)
+    setIntroCaption('')
+    setLunarTransitionAt(null)
+    setFullMoonStartAt(null)
+    setLaterMoonStartAt(null)
+    setWaningSpeechEndedAt(null)
+    setAruPlaybackTime(0)
+    setDiscoveryToolsReady(false)
+    setBoneActivityRound(null)
+    setBoneActivityReady(false)
+    setSceneTransition('idle')
+    setMusicRestartCount((count) => count + 1)
+    boneActivityStartedRef.current = false
+    narrationAnchorRef.current = null
+    fullMoonStartedRef.current = false
+    lunarTransitionStartedRef.current = false
+    waningSpeechEndCapturedRef.current = false
+    aruToolsPauseCapturedRef.current = false
+    curiositySpeechCutRef.current = false
+    curiosityTransitionStartedRef.current = false
   }
 
   useEffect(() => {
@@ -214,7 +243,7 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
   useEffect(() => {
     const { approvedVersionId, approvedAssetUrl } = sceneMusic
     if (!approvedVersionId || !approvedAssetUrl) {
-      audioManager.fadeMusicOut(1100)
+      audioManager.stopMusicImmediately()
       return
     }
     const controller = new AbortController()
@@ -222,7 +251,7 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
       if (controller.signal.aborted) return
       audioManager.setNarrationMusicLevel(sceneMusic.ducking.musicLevelDuringNarration)
       void audioManager.playMusicAsset(approvedAssetUrl, {
-        fadeMs: 350,
+        fadeMs: 0,
         loop: false,
         trackGain: sceneMusic.introVolume.gain,
         volume: sceneMusic.approvedVolume,
@@ -253,14 +282,14 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
     })
     return () => {
       controller.abort()
-      audioManager.fadeMusicOut(1100)
+      audioManager.stopMusicImmediately()
     }
-  }, [])
+  }, [musicRestartCount])
 
   useEffect(() => {
-    if (english || startInBoneActivity) return
+    if (english || directBoneActivity) return
     const controller = new AbortController()
-    const directories = startInDiscovery ? [ARU_CURIOSITY_AUDIO_DIR] : [BORDER_CAVE_TITLE_AUDIO_DIR, BORDER_CAVE_ARRIVAL_AUDIO_DIR, ARU_CURIOSITY_AUDIO_DIR]
+    const directories = directDiscovery ? [ARU_CURIOSITY_AUDIO_DIR] : [BORDER_CAVE_TITLE_AUDIO_DIR, BORDER_CAVE_ARRIVAL_AUDIO_DIR, ARU_CURIOSITY_AUDIO_DIR]
     for (const directory of directories) {
       void fetch(`${directory}/manifest.json`, { signal: controller.signal, cache: 'no-cache' })
         .then((response) => response.ok && response.headers.get('content-type')?.includes('application/json') ? response.json() : null)
@@ -272,7 +301,7 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
         })
     }
     return () => controller.abort()
-  }, [english, startInBoneActivity, startInDiscovery])
+  }, [directBoneActivity, directDiscovery, english])
 
   useEffect(() => {
     if (boneActivityRound === null) void preloadBoneFrames()
@@ -291,7 +320,7 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
       setLunarTransitionAt(null)
       setFullMoonStartAt(null)
       setLaterMoonStartAt(null)
-      setWaningSpeechEndedAt(startInDiscovery ? 0 : null)
+      setWaningSpeechEndedAt(directDiscovery ? 0 : null)
       setDiscoveryToolsReady(false)
       aruToolsPauseCapturedRef.current = false
       curiositySpeechCutRef.current = false
@@ -544,7 +573,8 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
     ? (boneActivityRound.lunarStart + boneActivityElapsed / LEBOMBO_ACTIVITY_CONFIG.dayDurationSeconds / LEBOMBO_ACTIVITY_CONFIG.lunarCycleDays) % 1
     : 0
   const moonPhaseOffset = (moonPhase < .5 ? moonPhase * 200 : -(1 - moonPhase) * 200).toFixed(2)
-  const moonRiseStart = .4 + (boneActivityRound?.moonriseOffset ?? 0) * .2
+  // Randomize moonrise throughout the daytime and nighttime cycle.
+  const moonRiseStart = (boneActivityRound?.moonriseOffset ?? 0) * .65
   const moonProgress = boneActivityActive
     ? clamp01((activityCycleFraction - moonRiseStart) / .3)
     : fullMoonStartAt === null ? 0 : clamp01((elapsed - fullMoonStartAt) / MOON_RISE_SECONDS)
@@ -569,7 +599,7 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
   const visibleLaterMoonFraction = clamp01((laterMoonRidgeY - laterMoonScreenY + sunCoreDiameter / 2) / sunCoreDiameter)
   const laterMoonOpacity = smoothstep(laterMoonProgress / .035) * (1 - smoothstep((laterMoonProgress - .82) / .16)) * smoothstep(visibleLaterMoonFraction / .22)
   const moonIllumination = (1 - Math.cos(2 * Math.PI * moonPhase)) / 2
-  const activityMoonOpacity = boneActivityActive ? (playing && activityCycleFraction >= .4 ? moonProgressOpacity : 0) : initialMoonOpacity
+  const activityMoonOpacity = boneActivityActive ? (playing ? moonProgressOpacity : 0) : initialMoonOpacity
   const moonStyle = { ...moonScreen, width: `${sunCoreDiameter}px`, opacity: activityMoonOpacity, '--moon-visible': `${visibleMoonFraction * 100}%`, '--moon-phase': boneActivityActive ? `${moonPhaseOffset}%` : '0%', '--moon-shadow-opacity': boneActivityActive ? 1 - moonIllumination : 0, '--moon-transition': boneActivityActive ? '0s' : '4.5s' } as CSSProperties
   const laterMoonStyle = { ...laterMoonScreen, width: `${sunCoreDiameter}px`, opacity: boneActivityActive ? 0 : laterMoonOpacity, '--moon-visible': `${visibleLaterMoonFraction * 100}%`, '--moon-phase': '18%', '--moon-shadow-opacity': .88 } as CSSProperties
   const lunarBlackoutOpacity = transitionElapsed < 0 ? 0 : smoothstep(transitionElapsed / MOON_TRANSITION_OUT_SECONDS) * (1 - smoothstep((transitionElapsed - MOON_TRANSITION_OUT_SECONDS) / (MOON_TRANSITION_SECONDS - MOON_TRANSITION_OUT_SECONDS)))
@@ -597,11 +627,11 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
   const curiosityPlaybackStarted = narrationDirectory === ARU_CURIOSITY_AUDIO_DIR && aruPlaybackTime > 0
   const curiosityFallbackAt = waningSpeechEndedAt === null ? null : waningSpeechEndedAt + CONTEMPLATION_SECONDS + 15
   const curiosityFallbackOpacity = curiosityFallbackAt === null ? 0 : smoothstep((elapsed - curiosityFallbackAt) / FINAL_BLACKOUT_SECONDS)
-  const shouldStartFallbackBoneActivity = !startInBoneActivity && !curiosityNarration && finalBlackoutOpacity >= 1
+  const shouldStartFallbackBoneActivity = !directBoneActivity && !curiosityNarration && finalBlackoutOpacity >= 1
   useEffect(() => {
     if (boneActivityRound === null && shouldStartFallbackBoneActivity) beginBoneActivity()
   }, [boneActivityRound, elapsed, shouldStartFallbackBoneActivity])
-  const showDiscovery = !startInBoneActivity && boneActivityRound === null && (curiosityNarration
+  const showDiscovery = !directBoneActivity && boneActivityRound === null && (curiosityNarration
     ? curiosityPlaybackStarted ? aruPlaybackTime >= ARU_DISCOVERY_SECONDS : curiosityFallbackOpacity >= 1
     : finalBlackoutOpacity >= 1)
 
@@ -628,7 +658,7 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
     {birds && !boneActivityActive && <DistantBirdFlock variant="border-cave"/>}
     {!boneActivityActive && <div className="border-cave-shade" aria-hidden="true"/>}
     <div className="border-cave-lunar-blackout" style={lunarBlackoutStyle} aria-hidden="true"/>
-    {!boneActivityActive && !startInDiscovery && <SceneIntroTitle
+    {!boneActivityActive && !directDiscovery && <SceneIntroTitle
       place="Border Cave"
       temporal={english ? '42,000 years ago' : '42 mil anos atrás'}
       geographical={english ? 'Region of present-day South Africa and Eswatini' : 'Região da atual África do Sul e Essuatíni'}
@@ -654,8 +684,14 @@ export default function BorderCaveArrival({ locale, onExit, startInBoneActivity 
     locale={locale}
     onExit={onExit}
     onRestartRound={startNextBoneRound}
+    onRestartAct={restartActFromSceneOne}
     onRoundEnded={() => setPlaying(false)}
     onComplete={() => { window.dispatchEvent(new CustomEvent('stonephys:lebombo-activity-complete')); onExit() }}
+    onNextAct={() => {
+      window.dispatchEvent(new CustomEvent('stonephys:lebombo-activity-complete'))
+      window.dispatchEvent(new CustomEvent('stonephys:arc-open-next-act', { detail: { actId: 'age-of-sun' } }))
+      onExit()
+    }}
   />}
   {sceneTransition !== 'idle' && <div
     className="border-cave-scene-transition"

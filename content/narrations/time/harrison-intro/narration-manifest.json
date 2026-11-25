@@ -3,396 +3,308 @@
   "characterId": "john-harrison",
   "language": "pt-BR",
   "status": "approved",
-  "audioAssetId": "harrison-intro-2026-11-17-932587.wav",
-  "durationMs": 33160,
+  "audioAssetId": "harrison-intro-2026-11-24-2c333b.wav",
+  "durationMs": 32080,
   "segments": [
     {
       "id": "harrison-caption-1",
       "text": "Tempo... Estamos atravessando-o agora…",
-      "startMs": 200,
-      "endMs": 3200,
+      "startMs": 500,
+      "endMs": 5000,
       "wordTimings": [
         {
           "text": "Tempo.",
-          "startMs": 200,
-          "endMs": 500
+          "startMs": 500,
+          "endMs": 1200
         },
         {
           "text": "Estamos",
-          "startMs": 1600,
-          "endMs": 2000
+          "startMs": 2400,
+          "endMs": 3100
+        },
+        {
+          "text": "atravessando-o",
+          "startMs": 3200,
+          "endMs": 4400
         },
         {
           "text": "agora.",
-          "startMs": 2800,
-          "endMs": 3300
+          "startMs": 4400,
+          "endMs": 5000
         }
       ]
     },
     {
       "id": "harrison-caption-2",
-      "text": "E nesse exato momento,",
-      "startMs": 4200,
-      "endMs": 5400,
+      "text": "As ideias que desenvolvi há séculos chegaram até ti",
+      "startMs": 6100,
+      "endMs": 10600,
       "wordTimings": [
         {
-          "text": "exato",
-          "startMs": 4500,
-          "endMs": 4800
-        },
-        {
-          "text": "momento",
-          "startMs": 4800,
-          "endMs": 5400
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-3",
-      "text": "estou eu falando contigo,",
-      "startMs": 5500,
-      "endMs": 6900,
-      "wordTimings": [
-        {
-          "text": "estou",
-          "startMs": 5500,
-          "endMs": 5900
-        },
-        {
-          "text": "eu",
-          "startMs": 5900,
-          "endMs": 6100
-        },
-        {
-          "text": "falando",
+          "text": "As",
           "startMs": 6100,
-          "endMs": 6500
+          "endMs": 6200
         },
         {
-          "text": "contigo.",
-          "startMs": 6500,
-          "endMs": 6900
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-4",
-      "text": "e minhas ideias,",
-      "startMs": 7800,
-      "endMs": 9100,
-      "wordTimings": [
-        {
-          "text": "E",
-          "startMs": 7800,
-          "endMs": 7900
+          "text": "ideias",
+          "startMs": 6200,
+          "endMs": 6800
         },
         {
-          "text": "minhas",
-          "startMs": 7900,
-          "endMs": 8200
+          "text": "que",
+          "startMs": 6800,
+          "endMs": 7200
         },
         {
-          "text": "ideias,",
-          "startMs": 8200,
-          "endMs": 9100
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-5",
-      "text": "criadas há séculos,",
-      "startMs": 9200,
-      "endMs": 10400,
-      "wordTimings": [
-        {
-          "text": "criadas",
-          "startMs": 9200,
-          "endMs": 9600
+          "text": "desenvolvi",
+          "startMs": 7200,
+          "endMs": 8000
         },
         {
           "text": "há",
-          "startMs": 9600,
-          "endMs": 9700
+          "startMs": 8000,
+          "endMs": 8200
         },
         {
-          "text": "séculos,",
-          "startMs": 9700,
+          "text": "séculos",
+          "startMs": 8200,
+          "endMs": 9200
+        },
+        {
+          "text": "chegaram",
+          "startMs": 9500,
+          "endMs": 10100
+        },
+        {
+          "text": "até",
+          "startMs": 10100,
           "endMs": 10400
         }
       ]
     },
     {
-      "id": "harrison-caption-6",
-      "text": "chegaram até ti…",
-      "startMs": 10900,
-      "endMs": 11900,
+      "id": "harrison-caption-3",
+      "text": "As coisas nem sempre foram assim...",
+      "startMs": 11000,
+      "endMs": 14000,
       "wordTimings": [
         {
-          "text": "chegaram",
-          "startMs": 10900,
-          "endMs": 11400
-        },
-        {
-          "text": "até",
-          "startMs": 11400,
-          "endMs": 11600
-        },
-        {
           "text": "ti.",
-          "startMs": 11600,
-          "endMs": 11900
+          "startMs": 10400,
+          "endMs": 10700
+        },
+        {
+          "text": "As",
+          "startMs": 11700,
+          "endMs": 11800
+        },
+        {
+          "text": "coisas",
+          "startMs": 11800,
+          "endMs": 12400
+        },
+        {
+          "text": "nem",
+          "startMs": 12400,
+          "endMs": 12700
+        },
+        {
+          "text": "sempre",
+          "startMs": 12700,
+          "endMs": 13200
+        },
+        {
+          "text": "foram",
+          "startMs": 13200,
+          "endMs": 13600
+        },
+        {
+          "text": "assim.",
+          "startMs": 13600,
+          "endMs": 14000
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-4",
+      "text": "houve um tempo em que",
+      "startMs": 14900,
+      "endMs": 16000,
+      "wordTimings": [
+        {
+          "text": "Houve",
+          "startMs": 14900,
+          "endMs": 15100
+        },
+        {
+          "text": "um",
+          "startMs": 15100,
+          "endMs": 15300
+        },
+        {
+          "text": "tempo",
+          "startMs": 15300,
+          "endMs": 15700
+        },
+        {
+          "text": "em",
+          "startMs": 15700,
+          "endMs": 15800
+        },
+        {
+          "text": "que",
+          "startMs": 15800,
+          "endMs": 16000
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-5",
+      "text": "o tempo não tinha nome…",
+      "startMs": 16700,
+      "endMs": 19000,
+      "wordTimings": [
+        {
+          "text": "o",
+          "startMs": 16700,
+          "endMs": 16800
+        },
+        {
+          "text": "tempo",
+          "startMs": 16800,
+          "endMs": 17600
+        },
+        {
+          "text": "não",
+          "startMs": 17900,
+          "endMs": 18200
+        },
+        {
+          "text": "tinha",
+          "startMs": 18200,
+          "endMs": 18600
+        },
+        {
+          "text": "nome.",
+          "startMs": 18600,
+          "endMs": 19000
+        }
+      ]
+    },
+    {
+      "id": "harrison-caption-6",
+      "text": "E agora nós vamos,",
+      "startMs": 20000,
+      "endMs": 21900,
+      "wordTimings": [
+        {
+          "text": "E",
+          "startMs": 20000,
+          "endMs": 20100
+        },
+        {
+          "text": "agora",
+          "startMs": 20100,
+          "endMs": 20400
+        },
+        {
+          "text": "nós",
+          "startMs": 21100,
+          "endMs": 21300
+        },
+        {
+          "text": "vamos",
+          "startMs": 21300,
+          "endMs": 21900
         }
       ]
     },
     {
       "id": "harrison-caption-7",
-      "text": "Mas houve um tempo",
-      "startMs": 12800,
-      "endMs": 14700,
+      "text": "juntos, descobrir como ele foi percebido,",
+      "startMs": 22000,
+      "endMs": 25900,
       "wordTimings": [
         {
-          "text": "Mas",
-          "startMs": 12800,
-          "endMs": 13200
+          "text": "juntos",
+          "startMs": 22000,
+          "endMs": 22700
         },
         {
-          "text": "houve",
-          "startMs": 13900,
-          "endMs": 14100
+          "text": "descobrir",
+          "startMs": 23200,
+          "endMs": 23900
         },
         {
-          "text": "um",
-          "startMs": 14100,
-          "endMs": 14200
+          "text": "como",
+          "startMs": 23900,
+          "endMs": 24400
         },
         {
-          "text": "tempo",
-          "startMs": 14200,
-          "endMs": 14700
+          "text": "ele",
+          "startMs": 24400,
+          "endMs": 24500
+        },
+        {
+          "text": "foi",
+          "startMs": 24500,
+          "endMs": 24900
+        },
+        {
+          "text": "percebido,",
+          "startMs": 24900,
+          "endMs": 25900
         }
       ]
     },
     {
       "id": "harrison-caption-8",
-      "text": "em que o tempo não tinha nome…",
-      "startMs": 15300,
-      "endMs": 17700,
+      "text": "definido e mensurado.",
+      "startMs": 26300,
+      "endMs": 28900,
       "wordTimings": [
         {
-          "text": "em",
-          "startMs": 15300,
-          "endMs": 15400
+          "text": "definido",
+          "startMs": 26300,
+          "endMs": 27200
         },
         {
-          "text": "que",
-          "startMs": 15400,
-          "endMs": 15600
+          "text": "e",
+          "startMs": 27900,
+          "endMs": 28000
         },
         {
-          "text": "o",
-          "startMs": 15600,
-          "endMs": 15800
-        },
-        {
-          "text": "tempo",
-          "startMs": 15800,
-          "endMs": 16400
-        },
-        {
-          "text": "não",
-          "startMs": 16800,
-          "endMs": 17000
-        },
-        {
-          "text": "tinha",
-          "startMs": 17000,
-          "endMs": 17300
-        },
-        {
-          "text": "nome.",
-          "startMs": 17300,
-          "endMs": 17700
+          "text": "mensurado.",
+          "startMs": 28000,
+          "endMs": 28900
         }
       ]
     },
     {
       "id": "harrison-caption-9",
-      "text": "E vamos, juntos,",
-      "startMs": 18600,
-      "endMs": 20000,
-      "wordTimings": [
-        {
-          "text": "E",
-          "startMs": 18600,
-          "endMs": 18700
-        },
-        {
-          "text": "vamos",
-          "startMs": 18700,
-          "endMs": 19200
-        },
-        {
-          "text": "juntos",
-          "startMs": 19400,
-          "endMs": 20000
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-10",
-      "text": "descobrir como ele foi percebido,",
-      "startMs": 20600,
-      "endMs": 22700,
-      "wordTimings": [
-        {
-          "text": "descobrir",
-          "startMs": 20600,
-          "endMs": 21100
-        },
-        {
-          "text": "como",
-          "startMs": 21100,
-          "endMs": 21500
-        },
-        {
-          "text": "ele",
-          "startMs": 21500,
-          "endMs": 21700
-        },
-        {
-          "text": "foi",
-          "startMs": 21700,
-          "endMs": 21900
-        },
-        {
-          "text": "percebido,",
-          "startMs": 21900,
-          "endMs": 22700
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-11",
-      "text": "definido e mensurado.",
-      "startMs": 23200,
-      "endMs": 24400,
-      "wordTimings": [
-        {
-          "text": "definido",
-          "startMs": 23200,
-          "endMs": 24100
-        },
-        {
-          "text": "e",
-          "startMs": 24300,
-          "endMs": 24400
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-12",
-      "text": "Vamos viajar no tempo então.",
-      "startMs": 26000,
-      "endMs": 27500,
+      "text": "Vamos viajar ao passado...",
+      "startMs": 29800,
+      "endMs": 31800,
       "wordTimings": [
         {
           "text": "Vamos",
-          "startMs": 26100,
-          "endMs": 26300
+          "startMs": 29800,
+          "endMs": 30300
         },
         {
           "text": "viajar",
-          "startMs": 26300,
-          "endMs": 26700
-        },
-        {
-          "text": "no",
-          "startMs": 26700,
-          "endMs": 26900
-        },
-        {
-          "text": "tempo,",
-          "startMs": 26900,
-          "endMs": 27300
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-13",
-      "text": "Mas, dessa vez,",
-      "startMs": 28000,
-      "endMs": 29100,
-      "wordTimings": [
-        {
-          "text": "então.",
-          "startMs": 27300,
-          "endMs": 27700
-        },
-        {
-          "text": "Mas",
-          "startMs": 28400,
-          "endMs": 28600
-        },
-        {
-          "text": "dessa",
-          "startMs": 28600,
-          "endMs": 28800
-        },
-        {
-          "text": "vez",
-          "startMs": 28800,
-          "endMs": 29100
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-14",
-      "text": "não ao futuro...",
-      "startMs": 29700,
-      "endMs": 30500,
-      "wordTimings": [
-        {
-          "text": "não",
-          "startMs": 29700,
-          "endMs": 29900
+          "startMs": 30500,
+          "endMs": 31100
         },
         {
           "text": "ao",
-          "startMs": 29900,
-          "endMs": 30000
-        },
-        {
-          "text": "futuro,",
-          "startMs": 30000,
-          "endMs": 30500
-        }
-      ]
-    },
-    {
-      "id": "harrison-caption-15",
-      "text": "e sim ao passado…",
-      "startMs": 31200,
-      "endMs": 32800,
-      "wordTimings": [
-        {
-          "text": "e",
-          "startMs": 31200,
-          "endMs": 31300
-        },
-        {
-          "text": "sim",
-          "startMs": 31300,
-          "endMs": 31600
-        },
-        {
-          "text": "ao",
-          "startMs": 32100,
-          "endMs": 32200
+          "startMs": 31100,
+          "endMs": 31200
         },
         {
           "text": "passado.",
-          "startMs": 32200,
-          "endMs": 32800
+          "startMs": 31200,
+          "endMs": 31800
         }
       ]
     }
@@ -403,7 +315,13 @@
       "webVtt": "/audio/narration/pt-BR/time/harrison-intro/harrison-intro-2026-11-17-932587.vtt",
       "approvedAt": "2026-11-17T17:28:50.429Z",
       "durationMs": 33160
+    },
+    {
+      "audioUrl": "/audio/narration/pt-BR/time/harrison-intro/harrison-intro-2026-11-24-2c333b.wav",
+      "webVtt": "/audio/narration/pt-BR/time/harrison-intro/harrison-intro-2026-11-24-2c333b.vtt",
+      "approvedAt": "2026-11-24T01:12:18.272Z",
+      "durationMs": 32080
     }
   ],
-  "webVtt": "/audio/narration/pt-BR/time/harrison-intro/harrison-intro-2026-11-17-932587.vtt"
+  "webVtt": "/audio/narration/pt-BR/time/harrison-intro/harrison-intro-2026-11-24-2c333b.vtt"
 }

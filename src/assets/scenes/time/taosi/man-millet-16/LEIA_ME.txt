@@ -1,0 +1,1 @@
+16 frames PNG RGBA 313x313; sprite sheet 4x4; 9 FPS; loop. Fundo alfa transparente.
